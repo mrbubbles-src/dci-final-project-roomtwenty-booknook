@@ -1,0 +1,26 @@
+{
+    "name": "bookt-backend",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www",
+        "dev": "nodemon ./bin/www"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cookie-parser": "~1.4.4",
+        "cors": "^2.8.5",
+        "debug": "~2.6.9",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-validator": "^7.0.1",
+        "http-errors": "^2.0.0",
+        "jsonwebtoken": "^9.0.1",
+        "mongodb": "^5.7.0",
+        "mongoose": "^7.3.2",
+        "morgan": "~1.9.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
+}
