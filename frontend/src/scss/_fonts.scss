@@ -1,0 +1,89 @@
+// Playfair Display // Headings
+
+@font-face {
+    font-family: headings-regular;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf)
+        format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: headings-regular-italic;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-Italic.ttf)
+        format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: headings-medium;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-Medium.ttf)
+        format("truetype");
+    font-weight: 500;
+}
+@font-face {
+    font-family: headings-medium-italic;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-MediumItalic.ttf)
+        format("truetype");
+    font-weight: 500;
+}
+@font-face {
+    font-family: headings-semibold;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-SemiBold.ttf)
+        format("truetype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: headings-semibold-italic;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-SemiBoldItalic.ttf)
+        format("truetype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: headings-bold;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf)
+        format("truetype");
+    font-weight: 700;
+}
+@font-face {
+    font-family: headings-bold-italic;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-BoldItalic.ttf)
+        format("truetype");
+    font-weight: 700;
+}
+@font-face {
+    font-family: headings-extra-bold;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-ExtraBold.ttf)
+        format("truetype");
+    font-weight: 800;
+}
+@font-face {
+    font-family: headings-extra-bold-italic;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-ExtraBoldItalic.ttf)
+        format("truetype");
+    font-weight: 800;
+}
+@font-face {
+    font-family: headings-black;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf)
+        format("truetype");
+    font-weight: 900;
+}
+@font-face {
+    font-family: headings-black-italic;
+    src: url(../assets/fonts/PlayfairDisplay/PlayfairDisplay-BlackItalic.ttf)
+        format("truetype");
+    font-weight: 900;
+}
+
+// Quattrocento // Text
+
+@font-face {
+    font-family: text-regular;
+    src: url(../assets/fonts/Quattrocento/Quattrocento-Regular.ttf)
+        format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: text-bold;
+    src: url(../assets/fonts/Quattrocento/Quattrocento-Bold.ttf)
+        format("truetype");
+    font-weight: 700;
+}
