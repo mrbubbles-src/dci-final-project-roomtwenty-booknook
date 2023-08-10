@@ -1,0 +1,19 @@
+@import "../../scss/styleVariables";
+
+// .main {
+//     border: 1px solid red;
+//     display: flex;
+//     justify-content: center;
+// }
+.landingpage-search-section {
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    flex: {
+        direction: column;
+        // wrap: wrap;
+    }
+}
+.landingpage-search-book-cover {
+    width: 100px;
+}
