@@ -4,7 +4,6 @@ import PlaceholderSearchImg2 from "../../../public/images/placeholder/potter1alt
 import "./landingpageSearchNotLoggedIn.scss";
 const LandingpageSearchNotLoggedIn = () => {
     return (
-        // <div className="main">
         <section className="landingpage-search-section">
             <h3 className="landingpage-search-title">
                 Probier unsere Büchersuche doch schon einmal aus
@@ -40,7 +39,6 @@ const LandingpageSearchNotLoggedIn = () => {
                 />
             </div>
         </section>
-        // </div>
     );
 };
 
