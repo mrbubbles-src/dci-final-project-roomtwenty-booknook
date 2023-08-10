@@ -1,19 +1,77 @@
 @import "../../scss/styleVariables";
 
-// .main {
-//     border: 1px solid red;
-//     display: flex;
-//     justify-content: center;
-// }
 .landingpage-search-section {
     border: 1px solid blue;
+    background-color: $background;
     display: flex;
     align-items: center;
     flex: {
         direction: column;
         // wrap: wrap;
     }
-}
-.landingpage-search-book-cover {
-    width: 100px;
+    .landingpage-searchbar-form {
+        // border: 1px solid red;
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        flex: {
+            direction: row;
+        }
+        align-items: center;
+        margin: 1rem 2rem;
+        padding: 0 1rem;
+
+        #landingpage-searchbar {
+            width: 35rem;
+            height: 3rem;
+            font: {
+                size: $m;
+            }
+            border: none;
+            border-radius: 4px 0 0 4px;
+            &::placeholder {
+                font: {
+                    family: text-bold, sans-serif;
+                    size: 1.5rem;
+                }
+                color: $placeholder;
+            }
+            &:focus,
+            &:hover {
+                outline: none;
+                border-bottom: 2px inset $accent-1;
+                margin-bottom: -1px;
+            }
+        }
+        #landingpage-search-submit {
+            all: unset;
+            height: 3rem;
+            background-color: $accent-1;
+            border-radius: 0 4px 4px 0;
+        }
+
+        #landingpage-searchbar,
+        #landingpage-search-submit {
+            font: {
+                family: text-bold, sans-serif;
+            }
+            color: $font;
+            padding: 0 0.5em;
+        }
+    }
+    .landingpage-search-results-container {
+        border: 1px solid green;
+        .landingpage-search-book-cover {
+            width: 10rem;
+            height: 15rem;
+            object-fit: cover;
+            align-self: flex-start;
+            // margin: {
+            // top: 1rem;
+            // right: 0.5rem;
+            // bottom: 1rem;
+            // left: 0.5rem;
+            // }
+        }
+    }
 }
