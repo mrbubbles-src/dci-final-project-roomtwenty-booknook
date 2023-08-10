@@ -6,7 +6,7 @@ import Footer from "../components/Footer/Footer";
 const SharedLayout = () => {
     return (
         <>
-            <Navbar /> // transparenter hintergrund; farbig ab Desktop größe
+            <Navbar />
             <main className="main-container">
                 <Outlet />
             </main>
