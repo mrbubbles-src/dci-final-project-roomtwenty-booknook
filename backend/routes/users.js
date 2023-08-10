@@ -23,7 +23,7 @@ const {
 const router = express.Router();
 
 router.get("/", authenticateToken, function (req, res, next) {
-    res.send("Welcome to the bookt server");
+    res.send("Welcome to the booknook server");
 });
 
 router.post(

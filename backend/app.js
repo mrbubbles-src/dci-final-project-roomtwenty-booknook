@@ -29,10 +29,10 @@ mongoose
         }
     )
     .then(() => {
-        console.log("Connected to BooktDB");
+        console.log("Connected to BookNookDB");
     })
     .catch((error) => {
-        console.error("BooktDB connection error:", error);
+        console.error("BookNookDB connection error:", error);
     });
 app.use(cors());
 
