@@ -19,7 +19,7 @@ async function httpCreateUser(req, res, next) {
         const userData = req.body;
         const newUser = await createUser(userData);
         res.json({
-            message: "Willkommen bei bookt! Auf gutes lesen!",
+            message: "Willkommen bei booknook! Auf gutes lesen!",
             registeredUser: newUser,
         });
     } catch (error) {
