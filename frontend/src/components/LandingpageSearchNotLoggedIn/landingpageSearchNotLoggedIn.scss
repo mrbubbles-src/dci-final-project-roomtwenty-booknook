@@ -1,13 +1,15 @@
 @import "../../scss/styleVariables";
 
 .landingpage-search-section {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     background-color: $background;
     display: flex;
     align-items: center;
     flex: {
         direction: column;
-        // wrap: wrap;
+    }
+    .landingpage-search-title {
+        margin-top: 1em;
     }
     .landingpage-searchbar-form {
         // border: 1px solid red;
@@ -17,6 +19,7 @@
         flex: {
             direction: row;
         }
+        justify-content: center;
         align-items: center;
         margin: 1rem 2rem;
         padding: 0 1rem;
@@ -40,7 +43,7 @@
             &:hover {
                 outline: none;
                 border-bottom: 2px inset $accent-1;
-                margin-bottom: -1px;
+                margin-bottom: -2px;
             }
         }
         #landingpage-search-submit {
@@ -61,17 +64,15 @@
     }
     .landingpage-search-results-container {
         border: 1px solid green;
+        width: 100%;
+        display: flex;
         .landingpage-search-book-cover {
             width: 10rem;
             height: 15rem;
             object-fit: cover;
-            align-self: flex-start;
-            // margin: {
-            // top: 1rem;
-            // right: 0.5rem;
-            // bottom: 1rem;
-            // left: 0.5rem;
-            // }
+            justify-content: space-around;
+            margin: 1em 0.5em;
+            border-radius: 4px;
         }
     }
 }
