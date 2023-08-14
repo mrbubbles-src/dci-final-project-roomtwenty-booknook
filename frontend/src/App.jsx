@@ -5,6 +5,7 @@ import SharedLayout from "./pages/SharedLayout";
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./helpers/ScrollToTop";
 import LandingpageSearchNotLoggedIn from "./components/LandingpageSearchNotLoggedIn/LandingpageSearchNotLoggedIn";
+import Test from "./components/test/test";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <BrowserRouter>
                 <ScrollToTop />
                 <LandingpageSearchNotLoggedIn />
+                <Test />
                 <Routes>
                     <Route path="/" element={<SharedLayout />}>
                         {/* die jeweiligen pages routes hier zwische rein */}
