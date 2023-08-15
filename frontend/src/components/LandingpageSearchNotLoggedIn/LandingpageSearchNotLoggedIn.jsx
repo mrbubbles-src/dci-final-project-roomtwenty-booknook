@@ -1,8 +1,8 @@
 import React from "react";
-import PlaceholderSearchImg1 from "../../../public/images/placeholder/potter1.jpeg";
-import PlaceholderSearchImg2 from "../../../public/images/placeholder/potter1alt.jpg";
 import "./landingpageSearchNotLoggedIn.scss";
+import { Link } from "react-router-dom";
 import BookSearch from "../BookSearch/BookSearch";
+
 const LandingpageSearchNotLoggedIn = () => {
     return (
         <section className="landingpage-search-section">
@@ -14,7 +14,7 @@ const LandingpageSearchNotLoggedIn = () => {
                     type="text"
                     name="landingpage-searchbar"
                     id="landingpage-searchbar"
-                    placeholder="Harry Potter und der Stein der Weisen"
+                    placeholder="Harry Potter"
                 />
                 <input
                     type="submit"
@@ -23,22 +23,18 @@ const LandingpageSearchNotLoggedIn = () => {
                 />
             </form>
             <div className="landingpage-search-results-container">
-                <BookSearch />
-                <img
-                    className="landingpage-search-book-cover"
-                    src={PlaceholderSearchImg1}
-                    alt="Buch cover"
+                <BookSearch
+                    classname="landingpage-search-book-cover"
+                    amountShown={[0, 3]}
                 />
-                <img
-                    className="landingpage-search-book-cover"
-                    src={PlaceholderSearchImg2}
-                    alt="Buch cover"
-                />
-                <img
-                    className="landingpage-search-book-cover"
-                    src={PlaceholderSearchImg1}
-                    alt="Buch cover"
-                />
+                <Link
+                    to={"https://www.google.de/"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="landingpage-show-more-results"
+                >
+                    ...mehr
+                </Link>
             </div>
         </section>
     );
