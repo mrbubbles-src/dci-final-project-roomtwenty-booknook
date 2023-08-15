@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
 const util = require("util");
+require("dotenv").config();
 
-async function getAllBooksAPI(searchQuery) {
+const apiKey = process.env.GOOGLE_API_KEY;
+
+async function searchBooksOnGoogleAPI(searchQuery) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
         searchQuery
-    )}&key=AIzaSyBs5nj0QSOS5mYDn0xA83t5eAlW7LQ-Ytg`;
+    )}&key=${apiKey}`;
     return fetch(url)
         .then((response) => {
             return response.json();
@@ -24,4 +27,4 @@ async function getAllBooksAPI(searchQuery) {
         });
 }
 
-module.exports = getAllBooksAPI;
+module.exports = { searchBooksOnGoogleAPI };

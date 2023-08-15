@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Book = require("./book.schema");
 const User = require("./user.schema");
-const { getAllBooksAPI } = require("./google.book.api");
+const { searchBooksOnGoogleAPI } = require("./google.book.api");
 
 async function searchBooksOnGoogle(searchQuery) {
     try {
-        return await getAllBooksAPI(searchQuery);
+        return await searchBooksOnGoogleAPI(searchQuery);
     } catch (error) {
         throw new Error();
     }
