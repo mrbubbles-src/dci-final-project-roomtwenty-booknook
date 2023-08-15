@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "dotenv/config";
-
-const api_key = process.env.BOOKS_API_KEY;
 
 const Test = () => {
     const [bookData, setBookData] = useState({});
-    // const [isLoading, setLoading] = useState(true);
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(
-                `https://www.googleapis.com/books/v1/volumes?q=harrypotter&key=${api_key}`
+                `https://www.googleapis.com/books/v1/volumes?q=harrypotter&key=${
+                    import.meta.env.VITE_BOOKS_API_KEY
+                }`
             );
             const data = await res.json();
-            // console.log("data", data);
             setBookData(data);
-            // setLoading(false);
         }
         fetchData();
     }, []);
-    // console.log("bookdata", bookData);
     return (
         <>
             <ul>
