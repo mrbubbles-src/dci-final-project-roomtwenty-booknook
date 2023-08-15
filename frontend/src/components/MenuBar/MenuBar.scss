@@ -1,0 +1,17 @@
+@import "../../scss/styleVariables";
+
+.menubar-container {
+    display: flex;
+    background-color: $secondary;
+    padding: 0.01em;
+    justify-content: center;
+    .nav {
+        border: 2px solid $accent-2;
+        color: black;
+        border-radius: 15px;
+        margin: 9px;
+        padding: 9px 13px;
+        background-color: $primary;
+        font-size: $m;
+    }
+}
