@@ -13,7 +13,6 @@ function App() {
             <BrowserRouter>
                 <ScrollToTop />
                 <LandingpageSearchNotLoggedIn />
-                <Test />
                 <Routes>
                     <Route path="/" element={<SharedLayout />}>
                         {/* die jeweiligen pages routes hier zwische rein */}
