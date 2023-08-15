@@ -1,5 +1,8 @@
 const express = require("express");
-const { httpGetAllBooks } = require("../controller/book.controller");
+const {
+    httpGetAllBooks,
+    httpSearchBooksOnGoogle,
+} = require("../controller/book.controller");
 const {
     authenticateToken,
     adminCheck,
@@ -10,6 +13,8 @@ const {
 } = require("../controller/book.controller");
 
 const router = express.Router();
+
+router.get("/searchbooks", httpSearchBooksOnGoogle);
 
 router.get("/", authenticateToken, adminCheck, httpGetAllBooks);
 
