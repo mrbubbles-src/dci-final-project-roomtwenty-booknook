@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import NoImage from "../../../public/images/various/no-image.png";
 
-const Test = () => {
+const BookSearch = ({ classname, amountShown }) => {
     const [bookData, setBookData] = useState({});
     useEffect(() => {
         async function fetchData() {
@@ -17,20 +17,27 @@ const Test = () => {
     }, []);
     return (
         <>
-            <ul>
-                {bookData &&
-                    bookData.items &&
-                    bookData.items.map((book, index) => {
-                        return (
-                            <li key={index}>
-                                {book.volumeInfo.title}{" "}
-                                <Link>{book.selfLink}</Link>
-                            </li>
-                        );
-                    })}
-            </ul>
+            {bookData &&
+                bookData.items &&
+                bookData.items.slice(...amountShown).map((book, index) => {
+                    return (
+                        <a href={book.selfLink} key={index}>
+                            {
+                                <img
+                                    key={index + 1}
+                                    className={classname}
+                                    src={
+                                        book.volumeInfo.imageLinks?.thumbnail ||
+                                        NoImage
+                                    }
+                                    alt={book.volumeInfo.title}
+                                />
+                            }
+                        </a>
+                    );
+                })}
         </>
     );
 };
 
-export default Test;
+export default BookSearch;
