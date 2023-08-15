@@ -14,9 +14,9 @@ const {
 
 const router = express.Router();
 
-router.get("/searchbooks", httpSearchBooksOnGoogle);
-
 router.get("/", authenticateToken, adminCheck, httpGetAllBooks);
+
+router.get("/searchbooks", httpSearchBooksOnGoogle);
 
 router.post("/addBooks", authenticateToken, httpSaveBook);
 
