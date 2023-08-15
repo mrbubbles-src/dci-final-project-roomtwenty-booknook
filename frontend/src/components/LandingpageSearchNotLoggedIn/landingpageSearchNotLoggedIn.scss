@@ -9,7 +9,8 @@
         direction: column;
     }
     .landingpage-search-title {
-        margin-top: 1em;
+        margin: 1em 1em 0 1em;
+        text-align: center;
     }
     .landingpage-searchbar-form {
         // border: 1px solid red;
@@ -25,7 +26,7 @@
         padding: 0 1rem;
 
         #landingpage-searchbar {
-            width: 35rem;
+            width: 24em;
             height: 3rem;
             font: {
                 size: $m;
@@ -63,16 +64,35 @@
         }
     }
     .landingpage-search-results-container {
-        border: 1px solid green;
+        // border: 1px solid green;
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         .landingpage-search-book-cover {
+            // border: 1px solid red;
+
             width: 10rem;
             height: 15rem;
             object-fit: cover;
-            justify-content: space-around;
+
             margin: 1em 0.5em;
             border-radius: 4px;
+        }
+        .landingpage-show-more-results {
+            // border: 1px solid purple;
+            margin-bottom: 1.2em;
+            align-self: flex-end;
+            font: {
+                family: text-bold, sans-serif;
+            }
+            color: $accent-1;
+            text-decoration: underline solid $primary 2px;
+            // &:visited,
+            // &:hover {
+            //     color: $primary;
+            //     text-decoration: underline solid $accent-1 2px;
+            // }
         }
     }
 }
