@@ -2,6 +2,7 @@ import React from "react";
 import PlaceholderSearchImg1 from "../../../public/images/placeholder/potter1.jpeg";
 import PlaceholderSearchImg2 from "../../../public/images/placeholder/potter1alt.jpg";
 import "./landingpageSearchNotLoggedIn.scss";
+import BookSearch from "../BookSearch/BookSearch";
 const LandingpageSearchNotLoggedIn = () => {
     return (
         <section className="landingpage-search-section">
@@ -22,6 +23,7 @@ const LandingpageSearchNotLoggedIn = () => {
                 />
             </form>
             <div className="landingpage-search-results-container">
+                <BookSearch />
                 <img
                     className="landingpage-search-book-cover"
                     src={PlaceholderSearchImg1}
