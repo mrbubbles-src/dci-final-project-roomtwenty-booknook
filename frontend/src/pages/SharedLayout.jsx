@@ -7,12 +7,13 @@ import Herosection from "../components/Herosection/Herosection";
 const SharedLayout = () => {
     return (
         <>
+
             <Navbar />
             <Herosection />
             <main className='main-container'>
                 <Outlet />
             </main>
-            <MenuBar /> // ausgeschaltet ab Desktop größe
+            <MenuBar /> {/*ausgeschaltet ab Desktop größe */}
             <Footer />
         </>
     );
