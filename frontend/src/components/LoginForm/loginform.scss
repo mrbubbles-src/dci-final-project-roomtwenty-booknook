@@ -1,0 +1,59 @@
+@import "../../scss/styleVariables";
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal {
+    background-color: $secondary;
+    padding: 25px;
+    border-radius: 4px;
+    position: relative;
+}
+form {
+    display: flex;
+    flex-flow: column;
+    .heading-login {
+        font-size: $xxl;
+        font-family: headings-medium;
+    }
+    .formInput {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        margin: 10px;
+    }
+    .buttonContainer {
+        display: flex;
+        justify-content: space-evenly;
+
+        button {
+            background: none;
+            border: 2px solid $accent-2;
+            border-radius: 20px;
+            color: $accent-2;
+            padding: 8px;
+            font: {
+                size: $m;
+            }
+        }
+        margin: 5px 0 10px 0;
+    }
+    .login-text {
+        font-family: text-regular;
+        font-size: $s;
+        .site-links {
+            color: $accent-1;
+            font-family: text-bold;
+        }
+    }
+}
