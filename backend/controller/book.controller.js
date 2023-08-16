@@ -1,5 +1,6 @@
 const Book = require("../model/book.schema");
 const {
+    searchBooksOnGoogle,
     saveBook,
     getAllBooks,
     adminDeleteBookFromDb,
@@ -8,8 +9,33 @@ const {
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 
-// Buch in Datenbank/ Readlist speichern
+async function httpSearchBooksOnGoogle(req, res, next) {
+    try {
+        //auf url zugreifen auf encodeURL...
+        const searchQuery = req.query.q;
+        //suchegriff in q Url finden und suchen
+        const searchBooks = await searchBooksOnGoogle(searchQuery);
+        //suchergebniss anzeigen
+        res.json(searchBooks);
+    } catch (error) {
+        next(error);
+    }
+}
 
+// alle Bücher in database anzeigen
+async function httpGetAllBooks(req, res) {
+    try {
+        const books = await getAllBooks();
+        res.status(200).json({
+            title: "List of all books in the database:",
+            booksInDb: books,
+        });
+    } catch (error) {
+        res.status(200).json([]);
+    }
+}
+
+// Buch in Datenbank/ Readlist speichern
 async function httpSaveBook(req, res, next) {
     try {
         // buch daten
@@ -67,18 +93,6 @@ async function httpSaveBook(req, res, next) {
         next(error);
     }
 }
-// alle Bücher in database anzeigen
-async function httpGetAllBooks(req, res) {
-    try {
-        const books = await getAllBooks();
-        res.status(200).json({
-            title: "List of all books in the database:",
-            booksInDb: books,
-        });
-    } catch (error) {
-        res.status(200).json([]);
-    }
-}
 
 // Buchdaten zu ausgewähltem Buch aus der Datenbank löschen
 async function httpAdminDeleteBookFromDb(req, res, next) {
@@ -116,6 +130,7 @@ async function httpDeleteBookFromReadlist(req, res, next) {
 }
 
 module.exports = {
+    httpSearchBooksOnGoogle,
     httpSaveBook,
     httpGetAllBooks,
     httpAdminDeleteBookFromDb,
