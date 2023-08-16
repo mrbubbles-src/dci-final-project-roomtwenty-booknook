@@ -1,5 +1,4 @@
 import React from "react";
-import heroPic from "../../assets/pics/heroBook.png";
 import "./herosection.scss";
 
 const Herosection = () => {
@@ -8,7 +7,7 @@ const Herosection = () => {
             <p className='hero-text'>
                 Hier könnte unser Text stehen! <br />
                 Wie dieser lauten wird, werden mir meine Freunde erzählen.
-            </p>
+            </p> 
         </section>
     );
 };

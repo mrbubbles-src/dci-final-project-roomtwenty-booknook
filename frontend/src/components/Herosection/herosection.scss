@@ -1,6 +1,10 @@
 @import "../../scss/styleVariables";
 
 section {
+    
+    // Temporär für das Styling
+    // Background wird durch Video ersetzt
+
     background-image: url("../../assets/pics/heroBook.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +14,7 @@ section {
     align-items: center;
     justify-content: center;
 
+    // Zur illustration des Backgrounds
     height: 300px;
 }
 
