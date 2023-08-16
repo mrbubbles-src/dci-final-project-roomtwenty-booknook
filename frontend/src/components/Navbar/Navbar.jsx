@@ -26,11 +26,12 @@ const Navbar = () => {
                 <p>bookNook</p>{" "}
             </div>
             <div className='btn-container'>
-                <button className='btn-login' onClick={handleLoginClick}>Login</button>
+                <button className='btn-login' onClick={handleLoginClick}>
+                    Login
+                </button>
                 {showLoginModal && (
                     <div className='modal-overlay'>
                         <div className='modal'>
-                            <h2>Login</h2>
                             <LoginForm
                                 onSubmit={handleLoginFormSubmit}
                                 onCancel={handleCloseModal}

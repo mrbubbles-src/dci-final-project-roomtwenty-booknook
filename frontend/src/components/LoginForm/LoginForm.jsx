@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../LoginForm/loginform.scss";
 
 const LoginForm = ({ onSubmit, onCancel }) => {
@@ -21,6 +22,7 @@ const LoginForm = ({ onSubmit, onCancel }) => {
     };
     return (
         <form onSubmit={handleSubmit}>
+            <h2 className='heading-login'>Login</h2>
             <label htmlFor='username'></label>
             <input
                 placeholder='Username'
@@ -31,7 +33,6 @@ const LoginForm = ({ onSubmit, onCancel }) => {
                 required
                 onChange={handleUsernameChange}
             />
-            <br />
             <label htmlFor='password'></label>
             <input
                 placeholder='Password'
@@ -42,13 +43,19 @@ const LoginForm = ({ onSubmit, onCancel }) => {
                 required
                 onChange={handlePasswordChange}
             />
-            <br />
             <div className='buttonContainer'>
                 <button type='submit'>Login</button>
                 <button type='button' onClick={onCancel}>
                     Cancel
                 </button>
             </div>
+            <p className='login-text'>
+                Noch kein Mitglied? Registriere dich{" "}
+                <Link to='/' className='site-links'>
+                    hier
+                </Link>
+                !
+            </p>
         </form>
     );
 };
