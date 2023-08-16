@@ -4,9 +4,12 @@ import "./herosection.scss";
 
 const Herosection = () => {
     return (
-        <>
-            <img className='logo' src={heroPic} alt='This is an image.' />
-        </>
+        <section className='hero-section'>
+            <p className='hero-text'>
+                Hier könnte unser Text stehen! <br />
+                Wie dieser lauten wird, werden mir meine Freunde erzählen.
+            </p>
+        </section>
     );
 };
 

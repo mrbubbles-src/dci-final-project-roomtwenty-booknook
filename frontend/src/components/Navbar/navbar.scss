@@ -1,11 +1,14 @@
 @import "../../scss/styleVariables";
 
 .navbar-container {
+
+    z-index: 1;
+
+    position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     opacity: 1;
-    position: fixed;
     width: 100%;
     padding: 3px 10px;
     color: $accent-2;
