@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const apiKey = process.env.GOOGLE_API_KEY;
 
+//fetch von der Google Book API
 async function searchBooksOnGoogleAPI(searchQuery) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
         searchQuery

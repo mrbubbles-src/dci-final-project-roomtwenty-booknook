@@ -14,12 +14,16 @@ const {
 
 const router = express.Router();
 
+//ONLY ADMIN -> Alle Bücher anzeigen
 router.get("/", authenticateToken, adminCheck, httpGetAllBooks);
 
+//EVERYONE -> Bücher Suchen
 router.get("/searchbooks", httpSearchBooksOnGoogle);
 
+//USER -> Buch speichern
 router.post("/addBooks", authenticateToken, httpSaveBook);
 
+//ADMIN -> buch löschen
 router.delete(
     "/deleteBookFromDb/:id",
     authenticateToken,

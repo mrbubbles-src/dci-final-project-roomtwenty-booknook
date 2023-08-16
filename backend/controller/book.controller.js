@@ -9,6 +9,7 @@ const {
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 
+//Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
     try {
         //auf url zugreifen auf encodeURL...

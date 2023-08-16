@@ -3,6 +3,7 @@ const Book = require("./book.schema");
 const User = require("./user.schema");
 const { searchBooksOnGoogleAPI } = require("./google.book.api");
 
+//Volumens(Bücher/Bände) in Google Datenbank suchen
 async function searchBooksOnGoogle(searchQuery) {
     try {
         return await searchBooksOnGoogleAPI(searchQuery);
