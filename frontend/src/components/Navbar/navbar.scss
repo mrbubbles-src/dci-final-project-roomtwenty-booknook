@@ -1,9 +1,44 @@
+@import "../../scss/styleVariables";
+
 .navbar-container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     opacity: 1;
+    position: fixed;
+    width: 100%;
+    padding: 3px 10px;
+    color: $accent-2;
+    font: {
+        family: headings-black;
+        size: $xl;
+    }
+
+    .logo-container {
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-container {
+        grid-column: 3;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
     .logo {
         width: 50px;
+    }
+
+    .btn-login {
+        background: none;
+        border: 2px solid $accent-2;
+        border-radius: 20px;
+        font: {
+            size: $m;
+        }
+        color: $accent-2;
+        padding: 8px;
     }
 }

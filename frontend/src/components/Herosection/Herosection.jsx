@@ -1,5 +1,6 @@
 import React from "react";
 import heroPic from "../../assets/pics/heroBook.png";
+import "./herosection.scss";
 
 const Herosection = () => {
     return (
