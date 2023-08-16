@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbar.scss";
 import { useState } from "react";
-import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
 
 const Navbar = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
                 <p>bookNook</p>{" "}
             </div>
             <div className='btn-container'>
-                <button className='btn-login'>Login</button>
+                <button className='btn-login' onClick={handleLoginClick}>Login</button>
                 {showLoginModal && (
                     <div className='modal-overlay'>
                         <div className='modal'>
