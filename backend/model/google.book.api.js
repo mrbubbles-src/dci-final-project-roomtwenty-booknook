@@ -7,7 +7,7 @@ const apiKey = process.env.GOOGLE_API_KEY;
 async function searchBooksOnGoogleAPI(searchQuery) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
         searchQuery
-    )}&key=${apiKey}`;
+    )}&key=${apiKey}&maxResults=40`;
     return fetch(url)
         .then((response) => {
             return response.json();
