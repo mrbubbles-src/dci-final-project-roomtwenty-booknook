@@ -6,9 +6,10 @@ const BookSearch = ({ classname, amountShown }) => {
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(
-                `https://www.googleapis.com/books/v1/volumes?q=harry%20potter&key=${
-                    import.meta.env.VITE_BOOKS_API_KEY
-                }&maxResults=40`
+                // `https://www.googleapis.com/books/v1/volumes?q=harry%20potter&key=${
+                //     import.meta.env.VITE_BOOKS_API_KEY
+                // }&maxResults=40`
+                `http://localhost:3000/books/searchbooksq=${searchTerm}`
             );
             const data = await res.json();
             setBookData(data);
