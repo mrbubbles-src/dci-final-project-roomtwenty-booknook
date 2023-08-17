@@ -21,7 +21,10 @@ const BookSearch = ({ amountShown }) => {
                     const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
-                            <a href={book.selfLink}>
+                            <a
+                                className="card-image-anchor-tag"
+                                href={book.selfLink}
+                            >
                                 <img
                                     className="card-image"
                                     src={
@@ -46,7 +49,13 @@ const BookSearch = ({ amountShown }) => {
                             <p className="card-infotext">
                                 {textSnippet || "Keine beschreibung verfügbar"}
                                 {textSnippet && (
-                                    <a href={book.selfLink}> ...mehr</a>
+                                    <a
+                                        className="show-more-results"
+                                        href={book.selfLink}
+                                    >
+                                        {" "}
+                                        ...mehr
+                                    </a>
                                 )}
                             </p>
                         </div>
