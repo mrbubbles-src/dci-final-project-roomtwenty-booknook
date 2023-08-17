@@ -4,7 +4,7 @@ export const BookNookContext = React.createContext();
 
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
-    // buch suche context start
+    // buch suche spezifischer context start
     const [userInput, setUserInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [bookData, setBookData] = useState({});
@@ -30,7 +30,7 @@ const BookNookProvider = ({ children }) => {
             fetchData();
         }
     }, [searchTerm]);
-    // buch suche context ende
+    // buch suche spezifischer context ende
     return (
         <BookNookContext.Provider
             value={{
