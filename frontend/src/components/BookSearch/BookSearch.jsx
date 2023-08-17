@@ -16,19 +16,33 @@ const BookSearch = ({ classname, amountShown }) => {
                 bookData.items &&
                 bookData.items.slice(...amountShown).map((book, index) => {
                     return (
-                        <a href={book.selfLink} key={index}>
-                            {
-                                <img
-                                    key={index + 1}
-                                    className={classname}
-                                    src={
-                                        book.volumeInfo.imageLinks?.thumbnail ||
-                                        NoImage
-                                    }
-                                    alt={book.volumeInfo.title}
-                                />
-                            }
-                        </a>
+                        <div className="card-container" key={index}>
+                            <a href={book.selfLink}>
+                                {
+                                    <img
+                                        className={classname}
+                                        src={
+                                            book.volumeInfo.imageLinks
+                                                ?.thumbnail || NoImage
+                                        }
+                                        alt={book.volumeInfo.title}
+                                    />
+                                }
+                            </a>
+                            <h4>{book.volumeInfo.title}</h4>
+                            <h5>
+                                by{" "}
+                                {book.volumeInfo.authors.join(
+                                    book.volumeInfo.authors.length === 1
+                                        ? ""
+                                        : " & "
+                                )}
+                            </h5>
+                            <p>
+                                {book.searchInfo.textSnippet}
+                                <a href={book.selfLink}> ...mehr</a>
+                            </p>
+                        </div>
                     );
                 })}
         </>
