@@ -17,3 +17,9 @@
         color: lightblue;
     }
 }
+
+@media screen and (min-width: 600px) {
+    .text-container {
+        padding: 1.6em 1.6em 0 1.6em;
+    }
+}
