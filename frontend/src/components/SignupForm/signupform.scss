@@ -1,6 +1,6 @@
 @import "../../scss/styleVariables";
 
-.login-form {
+.signup-form {
     display: flex;
     flex-flow: column;
     .heading-login {
@@ -18,12 +18,12 @@
         justify-content: space-evenly;
 
         .btn-login {
-            width: 100%;
             background: none;
             border: 2px solid $accent-2;
             border-radius: 20px;
             color: $accent-2;
             padding: 8px;
+            width: 100%;
             font: {
                 size: $m;
             }
