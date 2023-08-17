@@ -6,7 +6,7 @@ const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
     // buch suche spezifischer context start
     const [userInput, setUserInput] = useState("");
-    const [searchTerm, setSearchTerm] = useState("Harry Potter");
+    const [searchTerm, setSearchTerm] = useState("harry potter");
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
 
