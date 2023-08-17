@@ -1,25 +1,6 @@
 @import "../../scss/styleVariables";
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.modal {
-    background-color: $secondary;
-    padding: 25px;
-    border-radius: 4px;
-    position: relative;
-}
-form {
+.login-form {
     display: flex;
     flex-flow: column;
     .heading-login {
@@ -36,7 +17,8 @@ form {
         display: flex;
         justify-content: space-evenly;
 
-        button {
+        .btn-login {
+            width: 100%;
             background: none;
             border: 2px solid $accent-2;
             border-radius: 20px;
@@ -55,5 +37,9 @@ form {
             color: $accent-1;
             font-family: text-bold;
         }
+    }
+    .btn-toSignup {
+        background: $accent-2;
+        border: none;
     }
 }

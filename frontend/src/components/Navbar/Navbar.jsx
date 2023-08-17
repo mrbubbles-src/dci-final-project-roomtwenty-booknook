@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.scss";
-import { useState } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import Modal from "../Modal/Modal";
 
 const Navbar = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -14,30 +13,20 @@ const Navbar = () => {
         setShowLoginModal(true);
     };
 
-    const handleLoginFormSubmit = (formData) => {
-        console.log("Username:", formData.username);
-        console.log("Password:", formData);
-        setShowLoginModal(false);
-    };
-
     return (
         <nav className='navbar-container'>
             <div className='logo-container'>
-                <p>bookNook</p>{" "}
+                <p className="logo-text">bookNook</p>{" "}
             </div>
             <div className='btn-container'>
                 <button className='btn-login' onClick={handleLoginClick}>
                     Login
                 </button>
                 {showLoginModal && (
-                    <div className='modal-overlay'>
-                        <div className='modal'>
-                            <LoginForm
-                                onSubmit={handleLoginFormSubmit}
-                                onCancel={handleCloseModal}
-                            />
-                        </div>{" "}
-                    </div>
+                    <Modal
+                        showLogin={showLoginModal}
+                        onClose={handleCloseModal}
+                    />
                 )}
             </div>
         </nav>

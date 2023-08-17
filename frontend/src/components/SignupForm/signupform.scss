@@ -1,0 +1,45 @@
+@import "../../scss/styleVariables";
+
+.signup-form {
+    display: flex;
+    flex-flow: column;
+    .heading-login {
+        font-size: $xxl;
+        font-family: headings-medium;
+    }
+    .formInput {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        margin: 10px;
+    }
+    .buttonContainer {
+        display: flex;
+        justify-content: space-evenly;
+
+        .btn-login {
+            background: none;
+            border: 2px solid $accent-2;
+            border-radius: 20px;
+            color: $accent-2;
+            padding: 8px;
+            width: 100%;
+            font: {
+                size: $m;
+            }
+        }
+        margin: 5px 0 10px 0;
+    }
+    .login-text {
+        font-family: text-regular;
+        font-size: $s;
+        .site-links {
+            color: $accent-1;
+            font-family: text-bold;
+        }
+    }
+    .btn-toSignup {
+        background: $accent-2;
+        border: none;
+    }
+}

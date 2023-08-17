@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import "../LoginForm/loginform.scss";
 
-const LoginForm = ({ onSubmit, onCancel }) => {
+const LoginForm = ({ onSubmit, onClose }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -19,9 +18,11 @@ const LoginForm = ({ onSubmit, onCancel }) => {
         onSubmit({ username, password });
         setUsername("");
         setPassword("");
+        onClose();
     };
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='login-form' onSubmit={handleSubmit}>
             <h2 className='heading-login'>Login</h2>
             <label htmlFor='username'></label>
             <input
@@ -44,18 +45,10 @@ const LoginForm = ({ onSubmit, onCancel }) => {
                 onChange={handlePasswordChange}
             />
             <div className='buttonContainer'>
-                <button type='submit'>Login</button>
-                <button type='button' onClick={onCancel}>
-                    Cancel
+                <button className='btn-login' type='submit'>
+                    Login
                 </button>
             </div>
-            <p className='login-text'>
-                Noch kein Mitglied? Registriere dich{" "}
-                <Link to='/' className='site-links'>
-                    hier
-                </Link>
-                !
-            </p>
         </form>
     );
 };
