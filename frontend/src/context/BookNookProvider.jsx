@@ -7,7 +7,7 @@ const BookNookProvider = ({ children }) => {
     const [userInput, setUserInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [bookData, setBookData] = useState({});
-    const [searchReadMore, SetsearchReadMore] = useState(false);
+    const [searchReadMore, setsearchReadMore] = useState(false);
 
     function handleSearchSubmit(dataResponse) {
         setBookData(dataResponse);
@@ -24,6 +24,7 @@ const BookNookProvider = ({ children }) => {
                 handleSearchSubmit(data);
                 setUserInput("");
                 setIsLoading(false);
+                setsearchReadMore(true);
             }
             fetchData();
         }
@@ -36,7 +37,7 @@ const BookNookProvider = ({ children }) => {
                 setSearchTerm,
                 bookData,
                 searchReadMore,
-                SetsearchReadMore,
+                setsearchReadMore,
                 isLoading,
                 userInput,
                 setUserInput,

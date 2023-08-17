@@ -5,7 +5,7 @@ import BookSearch from "../BookSearch/BookSearch";
 import { BookNookContext } from "../../context/BookNookProvider";
 
 const SearchForm = ({ title }) => {
-    const { userInput, setUserInput, setSearchTerm } =
+    const { userInput, setUserInput, setSearchTerm, searchReadMore } =
         useContext(BookNookContext);
 
     const handleSubmit = (event) => {
@@ -35,7 +35,7 @@ const SearchForm = ({ title }) => {
                     to={"https://www.google.de/"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="show-more-results"
+                    className={searchReadMore ? "show-more-results" : "hidden"}
                 >
                     ...mehr
                 </Link>
