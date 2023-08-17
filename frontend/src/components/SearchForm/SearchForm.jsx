@@ -27,10 +27,7 @@ const SearchForm = ({ title }) => {
                 <input type="submit" id="search-submit" value="Suchen" />
             </form>
             <div className="search-results-container">
-                <BookSearch
-                    classname="search-book-cover"
-                    amountShown={[0, 4]}
-                />
+                <BookSearch amountShown={[0, 4]} />
                 <Link
                     to={"https://www.google.de/"}
                     target="_blank"
