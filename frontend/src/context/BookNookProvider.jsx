@@ -1,12 +1,12 @@
-import React from "react";
-
-// context provider: rohling vorhanden, bei bedarf befüllen ansonsten am ende löschen.
+import React, { useState } from "react";
 
 export const BookNookContext = React.createContext();
 
 const BookNookProvider = ({ children }) => {
+    const [searchTerm, setSearchTerm] = useState("");
+
     return (
-        <BookNookContext.Provider value={{}}>
+        <BookNookContext.Provider value={{ searchTerm, setSearchTerm }}>
             {children}
         </BookNookContext.Provider>
     );
