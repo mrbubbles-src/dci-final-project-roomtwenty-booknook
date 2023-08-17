@@ -3,7 +3,7 @@ import NoImage from "../../../public/images/various/no-image.png";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
-const BookSearch = ({ classname, amountShown }) => {
+const BookSearch = ({ amountShown }) => {
     const { bookData, isLoading } = useContext(BookNookContext);
 
     if (isLoading) {
@@ -15,32 +15,34 @@ const BookSearch = ({ classname, amountShown }) => {
             {bookData &&
                 bookData.items &&
                 bookData.items.slice(...amountShown).map((book, index) => {
+                    const { title, authors, imageLinks } =
+                        book.volumeInfo || {};
+                    const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
                             <a href={book.selfLink}>
-                                {
-                                    <img
-                                        className={classname}
-                                        src={
-                                            book.volumeInfo.imageLinks
-                                                ?.thumbnail || NoImage
-                                        }
-                                        alt={book.volumeInfo.title}
-                                    />
-                                }
+                                <img
+                                    className="card-image"
+                                    src={imageLinks?.thumbnail || NoImage}
+                                    alt={title}
+                                />
                             </a>
-                            <h4>{book.volumeInfo.title}</h4>
-                            <h5>
-                                by{" "}
-                                {book.volumeInfo.authors.join(
-                                    book.volumeInfo.authors.length === 1
-                                        ? ""
-                                        : " & "
-                                )}
+                            <h4 className="card-title">
+                                {title || "Titel nicht verfügbar"}
+                            </h4>
+                            <h5 className="card-author">
+                                von{" "}
+                                {(authors &&
+                                    authors.join(
+                                        authors.length === 1 ? "" : " & "
+                                    )) ||
+                                    "Unbekannter Autor"}
                             </h5>
-                            <p>
-                                {book.searchInfo.textSnippet}
-                                <a href={book.selfLink}> ...mehr</a>
+                            <p className="card-infotext">
+                                {textSnippet || "Keine beschreibung verfügbar"}
+                                {textSnippet && (
+                                    <a href={book.selfLink}> ...mehr</a>
+                                )}
                             </p>
                         </div>
                     );
