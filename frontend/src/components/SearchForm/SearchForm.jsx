@@ -27,7 +27,7 @@ const SearchForm = ({ title, formClassName, searchBarId, searchSubmitId }) => {
                 <input type="submit" id={searchSubmitId} value="Suchen" />
             </form>
             <div className="search-results-container">
-                <BookSearch amountShown={[0, 4]} />
+                <BookSearch amountShown={[0, 3]} />
                 <Link
                     to={"https://www.google.de/"}
                     target="_blank"
