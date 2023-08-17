@@ -1,0 +1,19 @@
+@import "../../scss/styleVariables";
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $primary;
+    padding: 1em 1em 0 1em;
+    // gap: 14px;
+    .text {
+        color: black;
+        text-align: center;
+        margin-bottom: 1em;
+        font-family: text-bold, sans-serif;
+    }
+    a {
+        color: lightblue;
+    }
+}
