@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import NoImage from "../../../public/images/various/no-image.png";
+import { BookNookContext } from "../../context/BookNookProvider";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const BookSearch = ({ classname, amountShown }) => {
-    const [bookData, setBookData] = useState({});
-    useEffect(() => {
-        async function fetchData() {
-            const res = await fetch(
-                // `https://www.googleapis.com/books/v1/volumes?q=harry%20potter&key=${
-                //     import.meta.env.VITE_BOOKS_API_KEY
-                // }&maxResults=40`
-                `http://localhost:3000/books/searchbooksq=${searchTerm}`
-            );
-            const data = await res.json();
-            setBookData(data);
-        }
-        fetchData();
-    }, []);
+    const { bookData, isLoading } = useContext(BookNookContext);
+
+    if (isLoading) {
+        return <LoadingSpinner />;
+    }
+
     return (
         <>
             {bookData &&
