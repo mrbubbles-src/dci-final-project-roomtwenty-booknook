@@ -29,10 +29,15 @@ const Modal = ({ showLogin, onClose }) => {
                 {isLoginVisible ? (
                     <LoginForm onSubmit={handleLoginSubmit} onClose={onClose} />
                 ) : (
-                    <SignupForm onSubmit={handleSignupSubmit} onCancel={onClose} />
+                    <SignupForm
+                        onSubmit={handleSignupSubmit}
+                        onCancel={onClose}
+                    />
                 )}
                 <button className='btn-style' onClick={toggleForm}>
-                    {isLoginVisible ? "Noch kein Mitglied?" : "Bereits Mitglied?"}
+                    {isLoginVisible
+                        ? "Noch kein Mitglied?"
+                        : "Bereits Mitglied?"}
                 </button>
             </div>
         </div>
