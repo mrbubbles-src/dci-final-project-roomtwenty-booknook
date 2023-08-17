@@ -66,34 +66,10 @@
     }
     .search-results-container {
         // border: 1px solid green;
-        width: 100%;
+        // width: 100%;
+        margin: 0 0.3em;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        .search-book-cover {
-            // border: 1px solid red;
-
-            width: 10rem;
-            height: 15rem;
-            object-fit: cover;
-
-            margin: 1em 0.5em;
-            border-radius: 4px;
-        }
-        .show-more-results {
-            // border: 1px solid purple;
-            margin-bottom: 1.2em;
-            align-self: flex-end;
-            font: {
-                family: text-bold, sans-serif;
-            }
-            color: $accent-1;
-            text-decoration: underline solid $primary 2px;
-            // &:visited,
-            // &:hover {
-            //     color: $primary;
-            //     text-decoration: underline solid $accent-1 2px;
-            // }
-        }
     }
 }
