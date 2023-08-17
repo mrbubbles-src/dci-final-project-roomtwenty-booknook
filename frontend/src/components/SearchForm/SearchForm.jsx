@@ -20,7 +20,7 @@ const SearchForm = ({ title }) => {
                     type="text"
                     name="searchbar"
                     id="searchbar"
-                    placeholder="Harry Potter"
+                    placeholder="z. B. Harry Potter"
                     value={userInput}
                     onChange={(event) => setUserInput(event.target.value)}
                 />
