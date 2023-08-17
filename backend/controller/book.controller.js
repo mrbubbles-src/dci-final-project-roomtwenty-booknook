@@ -44,8 +44,8 @@ async function httpSaveBook(req, res, next) {
         // userID aus dem token
         const { userID: _userID } = req;
 
-        // überprüfung ob buch anhand olid n DB vorhanden ist
-        const existingBook = await Book.findOne({ olid: book.olid });
+        // überprüfung ob buch anhand ID n DB vorhanden ist
+        const existingBook = await Book.findOne({ id: book.id });
 
         // variable zum einspeichern der Buch ID
         let bookID;
