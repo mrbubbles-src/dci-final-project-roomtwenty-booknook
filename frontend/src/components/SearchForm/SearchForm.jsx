@@ -29,7 +29,7 @@ const SearchForm = ({ title }) => {
             <div className="search-results-container">
                 <BookSearch
                     classname="search-book-cover"
-                    amountShown={[0, 3]}
+                    amountShown={[0, 4]}
                 />
                 <Link
                     to={"https://www.google.de/"}
@@ -37,7 +37,7 @@ const SearchForm = ({ title }) => {
                     rel="noopener noreferrer"
                     className={searchReadMore ? "show-more-results" : "hidden"}
                 >
-                    ...mehr
+                    Mehr Suchergebnisse
                 </Link>
             </div>
         </section>
