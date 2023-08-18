@@ -33,7 +33,7 @@ const SearchForm = ({
                 <input type="submit" id={searchSubmitId} value="Suchen" />
             </form>
             <div className="search-results-container">
-                <BookSearch amountShown={[amountShown]} />
+                <BookSearch amountShown={amountShown} />
                 <Link
                     to={"https://www.google.de/"}
                     target="_blank"
