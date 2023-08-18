@@ -1,0 +1,16 @@
+@import "../../scss/styleVariables";
+
+.footer-container {
+    height: 7rem;
+    background-color: $primary;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .footer-links {
+        font: {
+            family: text-bold, sans-serif;
+        }
+        color: $font;
+        text-decoration: 1px underline $accent-2;
+    }
+}
