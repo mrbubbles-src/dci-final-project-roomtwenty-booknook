@@ -1,6 +1,8 @@
 import React from "react";
 import Herosection from "../../components/Herosection/Herosection";
+import LandingpageRegisterAndLogin from "../../components/LandingpageRegisterAndLogin/LandingpageRegisterAndLogin";
 import SearchForm from "../../components/SearchForm/SearchForm";
+
 
 const LandingPageNotLoggedInPage = () => {
     return (
@@ -12,6 +14,7 @@ const LandingPageNotLoggedInPage = () => {
                 searchBarId={"searchbar"}
                 searchSubmitId={"search-submit"}
             />
+            <LandingpageRegisterAndLogin />
         </>
     );
 };
