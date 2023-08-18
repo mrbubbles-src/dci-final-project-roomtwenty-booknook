@@ -5,7 +5,7 @@ const Search = () => {
     return (
         <>
             <SearchForm
-                title={"Probier unsere Büchersuche doch schon einmal aus"}
+                title={"Suche"}
                 formClassName={"searchbar-form"}
                 searchBarId={"searchbar"}
                 searchSubmitId={"search-submit"}
