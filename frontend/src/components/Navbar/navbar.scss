@@ -1,7 +1,6 @@
 @import "../../scss/styleVariables";
 
 .navbar-container {
-
     z-index: 1;
 
     position: absolute;
@@ -30,10 +29,6 @@
         align-items: center;
     }
 
-    .logo {
-        width: 50px;
-    }
-
     .btn-login {
         background: none;
         border: 2px solid $accent-2;
@@ -43,5 +38,8 @@
         }
         color: $accent-2;
         padding: 8px;
+    }
+    .heading-login{
+        text-align: center;
     }
 }

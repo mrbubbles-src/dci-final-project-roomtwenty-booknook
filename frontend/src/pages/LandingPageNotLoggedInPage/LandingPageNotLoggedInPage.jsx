@@ -1,13 +1,19 @@
 import React from "react";
 import Herosection from "../../components/Herosection/Herosection";
 import LandingpageRegisterAndLogin from "../../components/LandingpageRegisterAndLogin/LandingpageRegisterAndLogin";
-import LandingpageSearchNotLoggedIn from "../../components/LandingpageSearchNotLoggedIn/LandingpageSearchNotLoggedIn";
+import SearchForm from "../../components/SearchForm/SearchForm";
+
 
 const LandingPageNotLoggedInPage = () => {
     return (
         <>
             <Herosection />
-            <LandingpageSearchNotLoggedIn />
+            <SearchForm
+                title={"Probier unsere Büchersuche doch schon einmal aus"}
+                formClassName={"searchbar-form"}
+                searchBarId={"searchbar"}
+                searchSubmitId={"search-submit"}
+            />
             <LandingpageRegisterAndLogin />
         </>
     );

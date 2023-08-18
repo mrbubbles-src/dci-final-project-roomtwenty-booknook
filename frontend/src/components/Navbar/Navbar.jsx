@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.scss";
+import Modal from "../Modal/Modal";
 
 const Navbar = () => {
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
+    const handleCloseModal = () => {
+        setShowLoginModal(false);
+    };
+
+    const handleLoginClick = () => {
+        setShowLoginModal(true);
+    };
+
     return (
         <nav className='navbar-container'>
             <div className='logo-container'>
-                <p>bookNook</p>{" "}
+                <p className="logo-text">bookNook</p>{" "}
             </div>
             <div className='btn-container'>
-                <button className='btn-login'>Login</button>
+                <button className='btn-login' onClick={handleLoginClick}>
+                    Login
+                </button>
+                {showLoginModal && (
+                    <Modal
+                        showLogin={showLoginModal}
+                        onClose={handleCloseModal}
+                    />
+                )}
             </div>
         </nav>
     );
