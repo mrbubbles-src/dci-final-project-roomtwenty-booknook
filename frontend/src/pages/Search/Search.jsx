@@ -1,12 +1,16 @@
 import React from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import BookSearch from "../../components/BookSearch/BookSearch";
 
 const Search = () => {
     return (
         <>
-            <SearchForm />
-            <BookSearch />
+            <SearchForm
+                title={"Probier unsere Büchersuche doch schon einmal aus"}
+                formClassName={"searchbar-form"}
+                searchBarId={"searchbar"}
+                searchSubmitId={"search-submit"}
+                amountShown={[0]}
+            />
         </>
     );
 };
