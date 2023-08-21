@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 import BookSearch from "../BookSearch/BookSearch";
 import { BookNookContext } from "../../context/BookNookProvider";
 
-const SearchForm = ({ title, formClassName, searchBarId, searchSubmitId }) => {
+const SearchForm = ({
+    title,
+    formClassName,
+    searchBarId,
+    searchSubmitId,
+    amountShown,
+}) => {
     const { userInput, setUserInput, setSearchTerm, searchReadMore } =
         useContext(BookNookContext);
 
@@ -27,7 +33,7 @@ const SearchForm = ({ title, formClassName, searchBarId, searchSubmitId }) => {
                 <input type="submit" id={searchSubmitId} value="Suchen" />
             </form>
             <div className="search-results-container">
-                <BookSearch amountShown={[0, 3]} />
+                <BookSearch amountShown={amountShown} />
                 <Link
                     to={"https://www.google.de/"}
                     target="_blank"
