@@ -11,12 +11,15 @@ const SingleBookDetails = () => {
             );
             const data = await response.json();
             setSingleBookData(data);
+            console.log(singleBookData, "sbd");
         }
+        fetchData();
     }, []);
 
     return (
         <div>
-            <h1>{singleBookData.volumeInfo.title}</h1>
+            {/* <h1>{singleBookData.volumeInfo.title}</h1> */}
+            <h1>test</h1>
         </div>
     );
 };

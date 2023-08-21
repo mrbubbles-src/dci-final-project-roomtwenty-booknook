@@ -29,7 +29,7 @@ async function GoogleBooksAPI(searchQuery) {
 
 async function SingleGoogleBookURLWithID(id) {
     try {
-        const singleURL = `${url}/${id}&key=${apiKey}`;
+        const singleURL = `${url}/${id}`;
         const response = await fetch(singleURL);
         const data = await response.json();
         console.log(data, "dsb");
