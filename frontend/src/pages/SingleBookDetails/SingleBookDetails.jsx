@@ -16,7 +16,7 @@ const SingleBookDetails = () => {
 
     return (
         <div>
-            <h1>{id}</h1>
+            <h1>{singleBookData.volumeInfo.title}</h1>
         </div>
     );
 };
