@@ -5,8 +5,7 @@ export const BookNookContext = React.createContext();
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
     // buch suche spezifischer context start
-    const [userInput, setUserInput] = useState("");
-    const [searchTerm, setSearchTerm] = useState("harry potter");
+    const [searchTerm, setSearchTerm] = useState(null);
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
 
@@ -15,7 +14,7 @@ const BookNookProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        if (searchTerm !== "") {
+        if (searchTerm !== null) {
             async function fetchData() {
                 setIsLoading(true);
                 const res = await fetch(
@@ -23,7 +22,6 @@ const BookNookProvider = ({ children }) => {
                 );
                 const data = await res.json();
                 handleSearchSubmit(data);
-                setUserInput("");
                 setIsLoading(false);
                 setsearchReadMore(true);
             }
@@ -40,8 +38,6 @@ const BookNookProvider = ({ children }) => {
                 searchReadMore,
                 setsearchReadMore,
                 isLoading,
-                userInput,
-                setUserInput,
             }}
         >
             {children}
