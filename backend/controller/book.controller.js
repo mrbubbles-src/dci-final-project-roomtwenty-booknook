@@ -23,6 +23,13 @@ async function httpSearchBooksOnGoogle(req, res, next) {
     }
 }
 
+//Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
+async function httpSingleBook(req, res, next) {
+    try {
+        const { selfLink } = req.body;
+    } catch (error) {}
+}
+
 // alle Bücher in database anzeigen
 async function httpGetAllBooks(req, res) {
     try {
