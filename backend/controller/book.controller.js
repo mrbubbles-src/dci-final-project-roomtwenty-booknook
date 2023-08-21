@@ -5,10 +5,10 @@ const {
     getAllBooks,
     adminDeleteBookFromDb,
     deleteBookFromReadlist,
-    getSingleBook,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
+const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
 
 //Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
@@ -28,8 +28,8 @@ async function httpSearchBooksOnGoogle(req, res, next) {
 async function httpGetSingleBook(req, res, next) {
     const { id } = req.params;
     try {
-        const singleBookData = await getSingleBook(id);
-        return singleBookData;
+        const singleBookData = await SingleGoogleBookURLWithID(id);
+        res.json(singleBookData);
     } catch (error) {
         next(error);
     }

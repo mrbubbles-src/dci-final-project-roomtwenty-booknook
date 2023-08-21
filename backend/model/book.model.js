@@ -14,14 +14,6 @@ async function searchBooksOnGoogle(searchQuery) {
         throw new Error();
     }
 }
-// alle Bücher in Datenbank finden
-async function getSingleBook(id) {
-    try {
-        return await SingleGoogleBookURLWithID(id);
-    } catch (error) {
-        throw new Error(error);
-    }
-}
 
 // alle Bücher in Datenbank finden
 async function getAllBooks() {
@@ -75,5 +67,4 @@ module.exports = {
     getAllBooks,
     adminDeleteBookFromDb,
     deleteBookFromReadlist,
-    getSingleBook,
 };
