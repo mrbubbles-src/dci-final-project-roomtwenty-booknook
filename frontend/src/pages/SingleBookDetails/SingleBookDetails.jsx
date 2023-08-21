@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import "./singleBookDetails.scss";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
@@ -14,7 +15,6 @@ const SingleBookDetails = () => {
             const data = await response.json();
             setSingleBookData(data);
             setIsSingleBookLoading(false);
-            console.log(data, "sbd");
         }
         fetchData();
     }, []);
@@ -23,10 +23,10 @@ const SingleBookDetails = () => {
     }
 
     return (
-        <div>
-            <h1>{singleBookData.volumeInfo.title}</h1>
+        <>
+            <h2>{singleBookData.volumeInfo.title}</h2>
             {/* <h1>test</h1> */}
-        </div>
+        </>
     );
 };
 
