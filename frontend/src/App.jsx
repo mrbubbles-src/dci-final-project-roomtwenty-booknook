@@ -6,6 +6,7 @@ import LandingPageNotLoggedInPage from "./pages/LandingPageNotLoggedInPage/Landi
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./helpers/ScrollToTop";
 import Search from "./pages/Search/Search";
+import SingleBookDetails from "./pages/SingleBookDetails/SingleBookDetails";
 
 function App() {
     return (
@@ -17,6 +18,10 @@ function App() {
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route index element={<LandingPageNotLoggedInPage />} />
                         <Route path="suche" element={<Search />} />
+                        <Route
+                            path="buch/:id"
+                            element={<SingleBookDetails />}
+                        />
 
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route path="*" element={<NotFound />} />
