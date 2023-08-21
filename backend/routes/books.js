@@ -13,7 +13,6 @@ const {
     httpAdminDeleteBookFromDb,
 } = require("../controller/book.controller");
 
-const httpGetSingleBook = require("../model/google.book.api");
 const router = express.Router();
 
 //ONLY ADMIN -> Alle Bücher anzeigen
