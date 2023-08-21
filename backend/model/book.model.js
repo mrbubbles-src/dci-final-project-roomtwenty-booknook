@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const Book = require("./book.schema");
 const User = require("./user.schema");
-const { GoogleBooksAPI } = require("./google.book.api");
+const {
+    GoogleBooksAPI,
+    SingleGoogleBookURLWithID,
+} = require("./google.book.api");
 
 //Volumens(Bücher/Bände) in Google Datenbank suchen
 async function searchBooksOnGoogle(searchQuery) {
@@ -9,14 +12,6 @@ async function searchBooksOnGoogle(searchQuery) {
         return await GoogleBooksAPI(searchQuery);
     } catch (error) {
         throw new Error();
-    }
-}
-// alle Bücher in Datenbank finden
-async function getSingleBook() {
-    try {
-        return await GoogleBooksAPI();
-    } catch (error) {
-        throw new Error(error);
     }
 }
 
@@ -72,5 +67,4 @@ module.exports = {
     getAllBooks,
     adminDeleteBookFromDb,
     deleteBookFromReadlist,
-    getSingleBook,
 };

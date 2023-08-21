@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./searchForm.scss";
 import { Link } from "react-router-dom";
 import BookSearch from "../BookSearch/BookSearch";
@@ -11,8 +11,8 @@ const SearchForm = ({
     searchSubmitId,
     amountShown,
 }) => {
-    const { userInput, setUserInput, setSearchTerm, searchReadMore } =
-        useContext(BookNookContext);
+    const { setSearchTerm, searchReadMore } = useContext(BookNookContext);
+    const [userInput, setUserInput] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -36,8 +36,6 @@ const SearchForm = ({
                 <BookSearch amountShown={amountShown} />
                 <Link
                     to={"/suche"}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className={searchReadMore ? "show-more-results" : "hidden"}
                 >
                     Mehr Suchergebnisse
