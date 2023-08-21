@@ -9,6 +9,7 @@ const {
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 
+//Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
     try {
         //auf url zugreifen auf encodeURL...
@@ -20,6 +21,13 @@ async function httpSearchBooksOnGoogle(req, res, next) {
     } catch (error) {
         next(error);
     }
+}
+
+//Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
+async function httpSingleBook(req, res, next) {
+    try {
+        const { selfLink } = req.body;
+    } catch (error) {}
 }
 
 // alle Bücher in database anzeigen
@@ -43,8 +51,8 @@ async function httpSaveBook(req, res, next) {
         // userID aus dem token
         const { userID: _userID } = req;
 
-        // überprüfung ob buch anhand olid n DB vorhanden ist
-        const existingBook = await Book.findOne({ olid: book.olid });
+        // überprüfung ob buch anhand ID n DB vorhanden ist
+        const existingBook = await Book.findOne({ id: book.id });
 
         // variable zum einspeichern der Buch ID
         let bookID;

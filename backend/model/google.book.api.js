@@ -1,30 +1,44 @@
+const { error } = require("console");
 const fetch = require("node-fetch");
 const util = require("util");
 require("dotenv").config();
 
 const apiKey = process.env.GOOGLE_API_KEY;
+const url = " https://www.googleapis.com/books/v1/volumes";
+//fetch von der Google Book API
+async function GoogleBooksAPI(searchQuery) {
+    try {
+        const searchURL = `${url}?q=${encodeURIComponent(
+            searchQuery
+        )}&key=${apiKey}&maxResults=10`;
 
-async function searchBooksOnGoogleAPI(searchQuery) {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
-        searchQuery
-    )}&key=${apiKey}&maxResults=40`;
-    return fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(
-                util.inspect(data, {
-                    showHidden: false,
-                    depth: null,
-                    colors: true,
-                })
-            );
-            return data;
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+        const responseSearchURL = await fetch(searchURL);
+
+        const dataSearchURL = await responseSearchURL.json();
+        console.log(
+            util.inspect(dataSearchURL, {
+                showHidden: false,
+                depth: null,
+                colors: true,
+            })
+        );
+        return dataSearchURL;
+    } catch (err) {
+        console.error(err);
+    }
 }
 
-module.exports = { searchBooksOnGoogleAPI };
+async function SingleGoogleBookURLWithID(id) {
+    try {
+        const singleURL = `${url}/${id}&key=${apiKey}&maxResults=10`;
+        const responseSingleBook = await fetch(singleURL);
+        const dataSingleBook = await responseSingleBook.json();
+        return dataSingleBook;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+module.exports = { GoogleBooksAPI, SingleGoogleBookURLWithID };
+
+//volumeId
