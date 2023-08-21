@@ -35,7 +35,7 @@ const SearchForm = ({
             <div className="search-results-container">
                 <BookSearch amountShown={amountShown} />
                 <Link
-                    to={"https://www.google.de/"}
+                    to={"/suche"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={searchReadMore ? "show-more-results" : "hidden"}

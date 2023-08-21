@@ -24,7 +24,7 @@ async function httpSearchBooksOnGoogle(req, res, next) {
 }
 
 //Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
-async function httpSingleBook(req, res, next) {
+async function httpGetSingleBook(req, res, next) {
     try {
         const { selfLink } = req.body;
     } catch (error) {}
@@ -143,4 +143,5 @@ module.exports = {
     httpGetAllBooks,
     httpAdminDeleteBookFromDb,
     httpDeleteBookFromReadlist,
+    httpGetSingleBook,
 };
