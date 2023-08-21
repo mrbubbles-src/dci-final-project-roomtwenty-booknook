@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const Book = require("./book.schema");
 const User = require("./user.schema");
-const { GoogleBooksAPI } = require("./google.book.api");
+const {
+    GoogleBooksAPI,
+    SingleGoogleBookURLWithID,
+} = require("./google.book.api");
 
 //Volumens(Bücher/Bände) in Google Datenbank suchen
 async function searchBooksOnGoogle(searchQuery) {
@@ -12,9 +15,9 @@ async function searchBooksOnGoogle(searchQuery) {
     }
 }
 // alle Bücher in Datenbank finden
-async function getSingleBook() {
+async function getSingleBook(id) {
     try {
-        return await GoogleBooksAPI();
+        return await SingleGoogleBookURLWithID(id);
     } catch (error) {
         throw new Error(error);
     }

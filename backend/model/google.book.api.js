@@ -1,4 +1,3 @@
-const { error } = require("console");
 const fetch = require("node-fetch");
 const util = require("util");
 require("dotenv").config();
@@ -15,13 +14,13 @@ async function GoogleBooksAPI(searchQuery) {
         const responseSearchURL = await fetch(searchURL);
 
         const dataSearchURL = await responseSearchURL.json();
-        console.log(
-            util.inspect(dataSearchURL, {
-                showHidden: false,
-                depth: null,
-                colors: true,
-            })
-        );
+        // console.log(
+        //     util.inspect(dataSearchURL, {
+        //         showHidden: false,
+        //         depth: null,
+        //         colors: true,
+        //     })
+        // );
         return dataSearchURL;
     } catch (err) {
         console.error(err);
@@ -30,10 +29,11 @@ async function GoogleBooksAPI(searchQuery) {
 
 async function SingleGoogleBookURLWithID(id) {
     try {
-        const singleURL = `${url}/${id}&key=${apiKey}&maxResults=10`;
-        const responseSingleBook = await fetch(singleURL);
-        const dataSingleBook = await responseSingleBook.json();
-        return dataSingleBook;
+        const singleURL = `${url}/${id}&key=${apiKey}`;
+        const response = await fetch(singleURL);
+        const data = await response.json();
+        console.log(data, "dsb");
+        return data;
     } catch (err) {
         console.error(err);
     }

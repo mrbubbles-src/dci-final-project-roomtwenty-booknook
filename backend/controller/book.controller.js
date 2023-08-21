@@ -5,14 +5,15 @@ const {
     getAllBooks,
     adminDeleteBookFromDb,
     deleteBookFromReadlist,
+    getSingleBook,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 
 //Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
+    //auf url zugreifen auf encodeURL...
     try {
-        //auf url zugreifen auf encodeURL...
         const searchQuery = req.query.q;
         //suchegriff in q Url finden und suchen
         const searchBooks = await searchBooksOnGoogle(searchQuery);
@@ -25,9 +26,13 @@ async function httpSearchBooksOnGoogle(req, res, next) {
 
 //Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
 async function httpGetSingleBook(req, res, next) {
+    const { id } = req.params;
     try {
-        const { selfLink } = req.body;
-    } catch (error) {}
+        const singleBookData = await getSingleBook(id);
+        return singleBookData;
+    } catch (error) {
+        next(error);
+    }
 }
 
 // alle Bücher in database anzeigen
