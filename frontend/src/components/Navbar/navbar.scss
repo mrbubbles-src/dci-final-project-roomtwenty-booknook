@@ -3,7 +3,7 @@
 .navbar-container {
     z-index: 1;
 
-    position: absolute;
+    // position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
@@ -39,7 +39,7 @@
         color: $accent-2;
         padding: 8px;
     }
-    .heading-login{
+    .heading-login {
         text-align: center;
     }
 }
