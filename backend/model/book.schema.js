@@ -14,6 +14,14 @@ const isbnSchema = new mongoose.Schema({
 const searchInfoSchema = new mongoose.Schema({
     textSnippet: { type: String },
 });
+const imageLinksSchema = new mongoose.Schema({
+    smallThumbnail: { type: String },
+    thumbnail: { type: String },
+    small: { type: String },
+    medium: { type: String },
+    large: { type: String },
+    extraLarge: { type: String },
+});
 
 const volumeInfoSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -33,15 +41,6 @@ const volumeInfoSchema = new mongoose.Schema({
     categories: [{ type: String }],
     pageCount: { type: Number },
     imageLinks: { imageLinksSchema },
-});
-
-const imageLinksSchema = new mongoose.Schema({
-    smallThumbnail: { type: String },
-    thumbnail: { type: String },
-    small: { type: String },
-    medium: { type: String },
-    large: { type: String },
-    extraLarge: { type: String },
 });
 
 const bookSchema = new mongoose.Schema({
