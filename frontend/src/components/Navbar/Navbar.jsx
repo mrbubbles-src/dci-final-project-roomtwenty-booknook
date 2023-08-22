@@ -14,12 +14,12 @@ const Navbar = () => {
     };
 
     return (
-        <nav className='navbar-container'>
-            <div className='logo-container'>
+        <nav className="navbar-container">
+            <div className="logo-container">
                 <p className="logo-text">bookNook</p>{" "}
             </div>
-            <div className='btn-container'>
-                <button className='btn-login' onClick={handleLoginClick}>
+            <div className="btn-container">
+                <button className="btn-login" onClick={handleLoginClick}>
                     Login
                 </button>
                 {showLoginModal && (
