@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const isbnSchema = new mongoose.Schema({
     isbn_10: {
         type: String,
@@ -14,17 +15,7 @@ const searchInfoSchema = new mongoose.Schema({
     textSnippet: { type: String },
 });
 
-const imageLinksSchema = new mongoose.Schema({
-    smallThumbnail: { type: String },
-    thumbnail: { type: String },
-    small: { type: String },
-    medium: { type: String },
-    large: { type: String },
-    extraLarge: { type: String },
-});
-
-const bookSchema = new mongoose.Schema({
-    id: { type: String, required: true, unique: true },
+const volumeInfoSchema = new mongoose.Schema({
     title: { type: String, required: true },
     subtitle: { type: String },
     authors: [{ type: String, required: true }],
@@ -42,6 +33,22 @@ const bookSchema = new mongoose.Schema({
     categories: [{ type: String }],
     pageCount: { type: Number },
     imageLinks: { imageLinksSchema },
+});
+
+const imageLinksSchema = new mongoose.Schema({
+    smallThumbnail: { type: String },
+    thumbnail: { type: String },
+    small: { type: String },
+    medium: { type: String },
+    large: { type: String },
+    extraLarge: { type: String },
+});
+
+const bookSchema = new mongoose.Schema({
+    id: { type: String, required: true, unique: true },
+    volumeInfo: {
+        volumeInfoSchema,
+    },
 });
 
 module.exports = mongoose.model("Book", bookSchema);

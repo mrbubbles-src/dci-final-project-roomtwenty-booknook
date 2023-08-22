@@ -13,7 +13,10 @@ const readingsSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-    profileImage: { type: String },
+    profileImage: {
+        type: String,
+        default: "https://example.com/default-profile-pic.jpg",
+    },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
