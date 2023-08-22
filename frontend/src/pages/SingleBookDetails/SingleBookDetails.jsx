@@ -39,7 +39,7 @@ const SingleBookDetails = () => {
         industryIdentifiers,
     } = singleBookData.volumeInfo || {};
 
-    const { smallThumbnail, thumbnail, medium, extraLarge } =
+    const { smallThumbnail, thumbnail, small, medium, large, extraLarge } =
         singleBookData.volumeInfo.imageLinks || {};
 
     const { webReaderLink } = singleBookData.accessInfo || {};
@@ -87,10 +87,25 @@ const SingleBookDetails = () => {
             <h5 className="single-book-author">
                 von {authors || "Unbekannter Autor"}
             </h5>
-            <img
-                src={medium || thumbnail || smallThumbnail || NoImage}
+            <a
+                href={
+                    extraLarge ||
+                    large ||
+                    medium ||
+                    small ||
+                    thumbnail ||
+                    smallThumbnail ||
+                    NoImage
+                }
+                target="_blank"
+                rel="noopener noreferrer"
                 alt={`${title} cover`}
-            />
+            >
+                <img
+                    src={medium || thumbnail || smallThumbnail || NoImage}
+                    alt={`${title} cover`}
+                />
+            </a>
             <p className="single-book-description">
                 {description?.replace("<p>", "").replace("</p>", "") ||
                     "Keine Beschreibung verfügbar"}
