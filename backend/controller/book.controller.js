@@ -8,15 +8,28 @@ const {
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
+const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
 
+//Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
+    //auf url zugreifen auf encodeURL...
     try {
-        //auf url zugreifen auf encodeURL...
         const searchQuery = req.query.q;
         //suchegriff in q Url finden und suchen
         const searchBooks = await searchBooksOnGoogle(searchQuery);
         //suchergebniss anzeigen
         res.json(searchBooks);
+    } catch (error) {
+        next(error);
+    }
+}
+
+//Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
+async function httpGetSingleBook(req, res, next) {
+    const { id } = req.params;
+    try {
+        const singleBookData = await SingleGoogleBookURLWithID(id);
+        res.json(singleBookData);
     } catch (error) {
         next(error);
     }
@@ -43,8 +56,8 @@ async function httpSaveBook(req, res, next) {
         // userID aus dem token
         const { userID: _userID } = req;
 
-        // überprüfung ob buch anhand olid n DB vorhanden ist
-        const existingBook = await Book.findOne({ olid: book.olid });
+        // überprüfung ob buch anhand ID n DB vorhanden ist
+        const existingBook = await Book.findOne({ id: book.id });
 
         // variable zum einspeichern der Buch ID
         let bookID;
@@ -135,4 +148,5 @@ module.exports = {
     httpGetAllBooks,
     httpAdminDeleteBookFromDb,
     httpDeleteBookFromReadlist,
+    httpGetSingleBook,
 };

@@ -23,7 +23,7 @@ const BookSearch = ({ amountShown }) => {
                         <div className="card-container" key={index}>
                             <a
                                 className="card-image-anchor-tag"
-                                href={book.selfLink}
+                                href={`/buch/${book.id}`}
                             >
                                 <img
                                     className="card-image"
@@ -50,7 +50,7 @@ const BookSearch = ({ amountShown }) => {
                                 {textSnippet && (
                                     <a
                                         className="show-more-results"
-                                        href={book.selfLink}
+                                        href={`/buch/${book.id}`}
                                     >
                                         {" "}
                                         ...mehr
