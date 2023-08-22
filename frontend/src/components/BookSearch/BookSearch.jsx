@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 
 const BookSearch = ({ amountShown }) => {
     const { bookData, isLoading } = useContext(BookNookContext);
-    // const placeholderImageSmall =
-    //     "http://books.google.com/books/content?id=9N8qdq07gswC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73vt1p4GUsN69p0vcbzwOHdVmGLAI43rstkOVYSRKrbwQiYOVWZAzyAjEhOq7rRMR6N1O7a-0TJ474mZCoocveeclRb5gghJhvb4gjItpFusoVPudqlMJtqyxoXM4UBBRu0Hekn&source=gbs_api";
+
     if (isLoading) {
         return <LoadingSpinner />;
     }
@@ -28,10 +27,7 @@ const BookSearch = ({ amountShown }) => {
                             >
                                 <img
                                     className="card-image"
-                                    src={
-                                        // placeholderImageSmall ||
-                                        imageLinks?.thumbnail || NoImage
-                                    }
+                                    src={imageLinks?.thumbnail || NoImage}
                                     alt={title}
                                 />
                             </Link>
