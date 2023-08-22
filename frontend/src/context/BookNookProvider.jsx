@@ -9,10 +9,6 @@ const BookNookProvider = ({ children }) => {
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
 
-    function handleSearchSubmit(dataResponse) {
-        setBookData(dataResponse);
-    }
-
     useEffect(() => {
         if (searchTerm !== null) {
             async function fetchData() {
@@ -21,7 +17,7 @@ const BookNookProvider = ({ children }) => {
                     `http://localhost:3000/books/searchbooks?q=${searchTerm}`
                 );
                 const data = await res.json();
-                handleSearchSubmit(data);
+                setBookData(data);
                 setIsLoading(false);
                 setsearchReadMore(true);
             }
