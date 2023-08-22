@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import NoImage from "../../../public/images/various/no-image.png";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const BookSearch = ({ amountShown }) => {
     const { bookData, isLoading } = useContext(BookNookContext);
@@ -21,9 +22,9 @@ const BookSearch = ({ amountShown }) => {
                     const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
-                            <a
+                            <Link
                                 className="card-image-anchor-tag"
-                                href={`/buch/${book.id}`}
+                                to={`/buch/${book.id}`}
                             >
                                 <img
                                     className="card-image"
@@ -33,7 +34,7 @@ const BookSearch = ({ amountShown }) => {
                                     }
                                     alt={title}
                                 />
-                            </a>
+                            </Link>
                             <h4 className="card-title">
                                 {title || "Titel nicht verfügbar"}
                             </h4>
@@ -48,13 +49,13 @@ const BookSearch = ({ amountShown }) => {
                             <p className="card-infotext">
                                 {textSnippet || "Keine beschreibung verfügbar"}
                                 {textSnippet && (
-                                    <a
+                                    <Link
                                         className="show-more-results"
-                                        href={`/buch/${book.id}`}
+                                        to={`/buch/${book.id}`}
                                     >
                                         {" "}
                                         ...mehr
-                                    </a>
+                                    </Link>
                                 )}
                             </p>
                         </div>
