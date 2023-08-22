@@ -35,13 +35,14 @@ const SingleBookDetails = () => {
         categories,
         averageRating,
         ratingsCount,
-        previewLink,
+        canonicalVolumeLink,
         industryIdentifiers,
     } = singleBookData.volumeInfo || {};
-    // const { type, identifier } =
-    //     singleBookData.volumeInfo.industryIdentifiers || {}; // isbn 10+13
+
     const { smallThumbnail, thumbnail, medium, extraLarge } =
         singleBookData.volumeInfo.imageLinks || {};
+
+    const { webReaderLink } = singleBookData.accessInfo || {};
 
     let isbn10Title = "";
     let isbn10Number = "";
@@ -76,7 +77,7 @@ const SingleBookDetails = () => {
         });
 
     return (
-        <div className="single-book-container">
+        <section className="single-book-container">
             <h2 className="single-book-title">
                 {title || "Unbekannter Titel"}
             </h2>
@@ -91,7 +92,8 @@ const SingleBookDetails = () => {
                 alt={`${title} cover`}
             />
             <p className="single-book-description">
-                {description?.replace("<p>", "").replace("</p>", "")}
+                {description?.replace("<p>", "").replace("</p>", "") ||
+                    "Keine Beschreibung verfügbar"}
             </p>
             <p className="single-book-genre-container">
                 Genres:{" "}
@@ -105,7 +107,7 @@ const SingleBookDetails = () => {
                       })
                     : "keine Genres bekannt"}
             </p>
-            <section className="single-book-info-section">
+            <div className="single-book-info-section">
                 <h5 className="single-book-info-section-title">
                     Buchinformationen:
                 </h5>
@@ -143,8 +145,8 @@ const SingleBookDetails = () => {
                         {ratingsCount || "unbekannter anzahl"} Bewertungen
                     </span>
                 </p>
-            </section>
-        </div>
+            </div>
+        </section>
     );
 };
 
