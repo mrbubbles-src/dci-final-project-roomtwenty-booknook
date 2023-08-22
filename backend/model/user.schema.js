@@ -6,17 +6,30 @@ const { UserRoles } = require("../lib/security/roles");
 const readListSchema = new mongoose.Schema({
     book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
 });
+const readingsSchema = new mongoose.Schema({
+    currentlyReading: [readListSchema],
+    alreadyRead: [readListSchema],
+    wantToRead: [readListSchema],
+});
 
 const userSchema = new mongoose.Schema({
+    profileImage: {
+        type: String,
+        default: "https://example.com/default-profile-pic.jpg",
+    },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    readingLevel: { type: Number },
+    readingRank: { type: String },
     role: {
         type: String,
         enum: Object.values(UserRoles),
         default: UserRoles.USER,
     },
-    readList: [readListSchema],
+    /* Readlist: [currentlyReading, alreadyRead, wantToRead ]
+     */
+    readList: [readingsSchema],
 });
 
 userSchema.pre("save", async function (next) {

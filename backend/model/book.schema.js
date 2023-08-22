@@ -1,12 +1,54 @@
 const mongoose = require("mongoose");
-const bookSchema = new mongoose.Schema({
+
+const isbnSchema = new mongoose.Schema({
+    isbn_10: {
+        type: String,
+        required: true,
+    },
+    isbn_13: {
+        type: String,
+        required: true,
+    },
+});
+
+const searchInfoSchema = new mongoose.Schema({
+    textSnippet: { type: String },
+});
+
+const volumeInfoSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    author: { type: String, required: true },
-    genre: { type: String },
-    description: { type: String },
-    cover: { type: String },
-    published: { type: Number, required: true },
-    olid: { type: String, required: true, unique: true },
+    subtitle: { type: String },
+    authors: [{ type: String, required: true }],
+    publisher: { type: String, required: true },
+    publisheddate: { type: String, required: true },
+    descriptions: { type: String },
+    searchInfo: { searchInfoSchema },
+    averageRating: { type: Number },
+    ratingsCount: { type: Number },
+    language: { type: String },
+    previewLink: { type: String },
+    infoLink: { type: String },
+    industryIdentifiers: [isbnSchema],
+    /* aus selflink */
+    categories: [{ type: String }],
+    pageCount: { type: Number },
+    imageLinks: { imageLinksSchema },
+});
+
+const imageLinksSchema = new mongoose.Schema({
+    smallThumbnail: { type: String },
+    thumbnail: { type: String },
+    small: { type: String },
+    medium: { type: String },
+    large: { type: String },
+    extraLarge: { type: String },
+});
+
+const bookSchema = new mongoose.Schema({
+    id: { type: String, required: true, unique: true },
+    volumeInfo: {
+        volumeInfoSchema,
+    },
 });
 
 module.exports = mongoose.model("Book", bookSchema);
