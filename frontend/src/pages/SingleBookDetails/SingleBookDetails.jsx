@@ -1,15 +1,49 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import NoImage from "../../../public/images/various/no-image.png";
 import "./singleBookDetails.scss";
-import { BookNookContext } from "../../context/BookNookProvider";
+// import { BookNookContext } from "../../context/BookNookProvider";
+import ReactCountryFlag from "react-country-flag";
+import StarRatings from "react-star-ratings";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
-    const { bookData } = useContext(BookNookContext);
+    // const { bookData } = useContext(BookNookContext);
+    const [sendToBackendDB, setSendToBackendDB] = useState({
+        id: "",
+        volumenInfo: {
+            title: "",
+            subtitle: "",
+            authors: [""],
+            publisher: "",
+            publisherDate: "",
+            descriptions: "",
+            averageRating: 0,
+            ratingsCount: 0,
+            language: "",
+            canonicalVolumeLink: "",
+            industryIdentifiers: [
+                { type: "", identifier: "" },
+                { type: "", identifier: "" },
+            ],
+            categories: [""],
+            pageCount: 0,
+            imageLinks: {
+                smallThumbnail: "",
+                thumbnail: "",
+                medium: "",
+                large: "",
+                extraLarge: "",
+            },
+        },
+        accessInfo: {
+            webReaderLink: "",
+        },
+    });
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
@@ -35,11 +69,12 @@ const SingleBookDetails = () => {
         categories,
         averageRating,
         ratingsCount,
+        language,
         canonicalVolumeLink,
         industryIdentifiers,
     } = singleBookData.volumeInfo || {};
 
-    const { smallThumbnail, thumbnail, small, medium, large, extraLarge } =
+    const { smallThumbnail, thumbnail, medium, large, extraLarge } =
         singleBookData.volumeInfo.imageLinks || {};
 
     const { webReaderLink } = singleBookData.accessInfo || {};
@@ -55,10 +90,10 @@ const SingleBookDetails = () => {
                 industryIdentifier.type === "ISBN_10" ||
                 industryIdentifier.type.includes("10")
             ) {
-                isbn10Title = industryIdentifier.type.replace("_", "-");
+                isbn10Title = industryIdentifier.type;
                 isbn10Number = industryIdentifier.identifier;
             } else {
-                isbn13Title = industryIdentifier.type.replace("_", "-");
+                isbn13Title = industryIdentifier.type;
                 isbn13Number = industryIdentifier.identifier;
             }
         }
@@ -75,9 +110,60 @@ const SingleBookDetails = () => {
                 }
             });
         });
+    const handleSendToReadList = async () => {
+        try {
+            setSendToBackendDB({
+                id: id,
+                volumenInfo: {
+                    title: title,
+                    subtitle: subtitle,
+                    authors: [authors],
+                    publisher: publisher,
+                    publisherDate: publishedDate,
+                    descriptions: description,
+                    averageRating: averageRating,
+                    ratingsCount: ratingsCount,
+                    language: language,
+                    canonicalVolumeLink: canonicalVolumeLink,
+                    industryIdentifiers: [
+                        { type: isbn10Title, identifier: isbn10Number },
+                        { type: isbn13Title, identifier: isbn13Number },
+                    ],
+                    categories: [categories],
+                    pageCount: pageCount,
+                    imageLinks: {
+                        smallThumbnail: smallThumbnail,
+                        thumbnail: thumbnail,
+                        medium: medium,
+                        large: large,
+                        extraLarge: extraLarge,
+                    },
+                },
+                accessInfo: {
+                    webReaderLink: "",
+                },
+            });
+            // console.log(sendToBackendDB);
+            const response = await fetch(
+                "http://localhost:3000/books/addBooks",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(sendToBackendDB),
+                }
+            );
+            const responseJson = await response.json();
+            console.log(responseJson);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <section className="single-book-container">
+            {/* <button onClick={handleSendToReadList}>click me</button> */}
             <h2 className="single-book-title">
                 {title || "Unbekannter Titel"}
             </h2>
@@ -87,27 +173,49 @@ const SingleBookDetails = () => {
             <h5 className="single-book-author">
                 von {authors || "Unbekannter Autor"}
             </h5>
-            <a
-                href={
-                    extraLarge ||
-                    large ||
-                    medium ||
-                    small ||
-                    thumbnail ||
-                    smallThumbnail ||
-                    NoImage
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-                alt={`${title} cover`}
-            >
-                <img
-                    src={medium || thumbnail || smallThumbnail || NoImage}
+            <div className="single-book-external-link-container">
+                <a
+                    href={
+                        extraLarge ||
+                        large ||
+                        medium ||
+                        thumbnail ||
+                        smallThumbnail ||
+                        NoImage
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
                     alt={`${title} cover`}
-                />
-            </a>
+                >
+                    <img
+                        src={medium || thumbnail || smallThumbnail || NoImage}
+                        alt={`${title} cover`}
+                    />
+                </a>
+                {canonicalVolumeLink ? (
+                    <a
+                        className="single-book-external-link"
+                        href={canonicalVolumeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Mehr Informationen auf GooglePlay Books
+                    </a>
+                ) : null}
+                {webReaderLink ? (
+                    <a
+                        className="single-book-external-link"
+                        href={webReaderLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Leseprobe auf GooglePlay Books
+                    </a>
+                ) : null}
+            </div>
             <p className="single-book-description">
-                {description?.replace("<p>", "").replace("</p>", "") ||
+                {/* entfernt jegliche html tags aus der beschreibung */}
+                {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
                     "Keine Beschreibung verfügbar"}
             </p>
             <p className="single-book-genre-container">
@@ -143,23 +251,43 @@ const SingleBookDetails = () => {
                     </span>
                 </p>
                 <p className="single-book-isbn">
-                    {isbn10Title || "ISBN-10"}:{" "}
+                    {isbn10Title?.replace("_", "-") || "ISBN-10"}:{" "}
                     {isbn10Number || "Keine ISBN-10 bekannt"}
                 </p>{" "}
                 <p className="single-book-isbn">
-                    {isbn13Title || "ISBN-13"}:{" "}
+                    {isbn13Title?.replace("_", "-") || "ISBN-13"}:{" "}
                     {isbn13Number || "Keine ISBN-13 bekannt"}
                 </p>
-                <p className="single-book-rating-container">
-                    <span className="single-book-avg-rating">
-                        Durchschnittlich bewertet mit{" "}
-                        {averageRating || "unbekannter anzahl von"} 🌟
-                    </span>{" "}
-                    bei{" "}
-                    <span className="single-book-ratingcount">
-                        {ratingsCount || "unbekannter anzahl"} Bewertungen
-                    </span>
+                <p className="single-book-language">
+                    Sprache:{" "}
+                    {language ? (
+                        <ReactCountryFlag
+                            countryCode={language === "en" ? "gb" : language}
+                            className="single-book-languageflag"
+                            svg
+                            alt={language}
+                            title={language}
+                        />
+                    ) : (
+                        "keine Information vorhanden."
+                    )}
                 </p>
+                <div className="single-book-rating-container">
+                    <span className="single-book-avg-rating">
+                        {averageRating || "0"}{" "}
+                    </span>{" "}
+                    <StarRatings
+                        rating={averageRating}
+                        starRatedColor="orange"
+                        name="single-book-rating"
+                        starDimension="20px"
+                        starSpacing="1px"
+                    />
+                    /{" "}
+                    <span className="single-book-ratingcount">
+                        {ratingsCount || "0"} Bewertungen
+                    </span>
+                </div>
             </div>
         </section>
     );
