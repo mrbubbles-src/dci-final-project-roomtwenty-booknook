@@ -43,7 +43,10 @@ const BookSearch = ({ amountShown }) => {
                                     "Unbekannter Autor"}
                             </h5>
                             <p className="card-infotext">
-                                {textSnippet || "Keine beschreibung verfügbar"}
+                                {textSnippet
+                                    ?.replace(/<\/?[^>]+(>|$)/g, "")
+                                    .replace("&quot;", "") ||
+                                    "Keine beschreibung verfügbar"}
                                 {textSnippet && (
                                     <Link
                                         className="show-more-results"
