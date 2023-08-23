@@ -23,7 +23,6 @@ const volumeInfoSchema = new mongoose.Schema({
     publisher: { type: String },
     publisheddate: { type: String },
     descriptions: { type: String },
-
     averageRating: { type: Number },
     ratingsCount: { type: Number },
     language: { type: String },

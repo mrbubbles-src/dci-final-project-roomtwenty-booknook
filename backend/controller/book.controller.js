@@ -7,7 +7,12 @@ const {
     deleteBookFromReadlist,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
-const { showReadlist } = require("../model/user.model");
+const {
+    showReadlist,
+    addBookToCurrentlyReading,
+    addBookToWantToRead,
+    addBookToAlreadyRead,
+} = require("../model/user.model");
 const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
 
 //Volumens(Bücher)suchen -> zugriffs Art

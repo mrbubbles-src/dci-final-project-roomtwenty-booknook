@@ -88,7 +88,21 @@ async function showReadlist(userID) {
         throw error;
     }
 }
-
+async function addBookToCurrentlyReading(userId, bookId) {
+    const user = await User.findById(userId);
+    user.currentlyReading.push({ currentlyReading: bookId });
+    await user.save();
+}
+async function addBookToAlreadyRead(userId, bookId) {
+    const user = await User.findById(userId);
+    user.currentlyReading.push({ alreadyRead: bookId });
+    await user.save();
+}
+async function addBookToWantToRead(userId, bookId) {
+    const user = await User.findById(userId);
+    user.currentlyReading.push({ wantToRead: bookId });
+    await user.save();
+}
 module.exports = {
     User,
     createUser,
@@ -98,4 +112,7 @@ module.exports = {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
+    addBookToCurrentlyReading,
+    addBookToWantToRead,
+    addBookToAlreadyRead,
 };
