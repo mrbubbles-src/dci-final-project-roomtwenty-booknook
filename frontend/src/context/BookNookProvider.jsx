@@ -4,6 +4,8 @@ export const BookNookContext = React.createContext();
 
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
+    // const [userRating, setUserRating] = useState([]);
+    // const [userRatingCount, setuserRatingCount] = useState(0);
     // buch suche spezifischer context start
     const [searchTerm, setSearchTerm] = useState(null);
     const [bookData, setBookData] = useState({});
