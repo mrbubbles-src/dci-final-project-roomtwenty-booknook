@@ -15,7 +15,7 @@ async function searchBooksOnGoogle(searchQuery) {
     }
 }
 
-// alle Bücher in Datenbank finden
+// alle Bücher in Datenbank finden (nur Admins)
 async function getAllBooks() {
     try {
         return await GoogleBooksAPI();

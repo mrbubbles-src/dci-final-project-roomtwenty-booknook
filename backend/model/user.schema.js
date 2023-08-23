@@ -3,14 +3,9 @@ const bcrypt = require("bcrypt");
 
 const { UserRoles } = require("../lib/security/roles");
 
-const readListSchema = new mongoose.Schema({
-    book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
-});
-const readingsSchema = new mongoose.Schema({
-    currentlyReading: [readListSchema],
-    alreadyRead: [readListSchema],
-    wantToRead: [readListSchema],
-});
+// const readListSchema = new mongoose.Schema({
+//  [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+// });
 
 const userSchema = new mongoose.Schema({
     profileImage: {
@@ -29,7 +24,9 @@ const userSchema = new mongoose.Schema({
     },
     /* Readlist: [currentlyReading, alreadyRead, wantToRead ]
      */
-    readList: [readingsSchema],
+    currentlyReading: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+    alreadyRead: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+    wantToRead: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
 });
 
 userSchema.pre("save", async function (next) {
