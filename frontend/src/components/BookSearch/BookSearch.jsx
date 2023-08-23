@@ -3,6 +3,7 @@ import NoImage from "../../../public/images/various/no-image.png";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { Link } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 
 const BookSearch = ({ amountShown }) => {
     const { bookData, isLoading } = useContext(BookNookContext);
@@ -16,8 +17,13 @@ const BookSearch = ({ amountShown }) => {
             {bookData &&
                 bookData.items &&
                 bookData.items.slice(...amountShown).map((book, index) => {
-                    const { title, authors, imageLinks } =
-                        book.volumeInfo || {};
+                    const {
+                        title,
+                        authors,
+                        imageLinks,
+                        averageRating,
+                        ratingsCount,
+                    } = book.volumeInfo || {};
                     const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
@@ -42,6 +48,22 @@ const BookSearch = ({ amountShown }) => {
                                     )) ||
                                     "Unbekannter Autor"}
                             </h5>
+                            <div className="card-rating-container">
+                                <span className="card-avg-rating">
+                                    {averageRating || "0"}{" "}
+                                </span>{" "}
+                                <StarRatings
+                                    rating={averageRating}
+                                    starRatedColor="orange"
+                                    name="single-book-rating"
+                                    starDimension="20px"
+                                    starSpacing="1px"
+                                />
+                                /{" "}
+                                <span className="card-ratingcount">
+                                    {ratingsCount || "0"} Bewertungen
+                                </span>
+                            </div>
                             <p className="card-infotext">
                                 {textSnippet
                                     ?.replace(/<\/?[^>]+(>|$)/g, "")
