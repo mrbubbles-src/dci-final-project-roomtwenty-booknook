@@ -19,6 +19,7 @@ const BookSearch = ({ amountShown }) => {
                 bookData.items.slice(...amountShown).map((book, index) => {
                     const {
                         title,
+                        subtitle,
                         authors,
                         imageLinks,
                         averageRating,
@@ -40,6 +41,9 @@ const BookSearch = ({ amountShown }) => {
                             <h4 className="card-title">
                                 {title || "Titel nicht verfügbar"}
                             </h4>
+                            {subtitle ? (
+                                <h3 className="card-subtitle">{subtitle}</h3>
+                            ) : null}
                             <h5 className="card-author">
                                 von{" "}
                                 {(authors &&
