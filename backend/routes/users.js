@@ -45,9 +45,9 @@ router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 router.get("/getReadlist", authenticateToken, httpShowReadList);
 
 //3routes für die 3 leselisten
-router.post("/userList/:userId/currentReading/:bookId", httpCurrentlyReading);
-router.post("/userList/:userId/alreadyRead/:bookId");
-router.post("/userList/:userId/wantToRead/:bookId");
+// router.post("/userList/:userId/currentReading/:bookId", httpCurrentlyReading);
+// router.post("/userList/:userId/alreadyRead/:bookId");
+// router.post("/userList/:userId/wantToRead/:bookId");
 
 router.delete(
     "/deleteBookFromReadlist/:bookID",
