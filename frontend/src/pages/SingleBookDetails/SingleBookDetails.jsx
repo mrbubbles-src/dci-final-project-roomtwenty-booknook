@@ -210,7 +210,7 @@ const SingleBookDetails = () => {
                         Leseprobe auf GooglePlay Books
                     </a>
                 ) : null}
-                <AddToLists onClick={handleSendToLists} />
+                <AddToLists onButtonClick={handleSendToLists} />
             </div>
             <p className="single-book-description">
                 {/* entfernt jegliche html tags aus der beschreibung */}
