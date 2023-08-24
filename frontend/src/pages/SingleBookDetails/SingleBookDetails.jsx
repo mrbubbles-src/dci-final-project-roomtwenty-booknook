@@ -6,6 +6,7 @@ import "./singleBookDetails.scss";
 // import { BookNookContext } from "../../context/BookNookProvider";
 import ReactCountryFlag from "react-country-flag";
 import StarRatings from "react-star-ratings";
+import AddToLists from "../../components/AddToLists/AddToLists";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
@@ -173,28 +174,28 @@ const SingleBookDetails = () => {
             <h5 className="single-book-author">
                 von {authors || "Unbekannter Autor"}
             </h5>
-            <div className="single-book-external-link-container">
-                <a
-                    href={
-                        extraLarge ||
-                        large ||
-                        medium ||
-                        thumbnail ||
-                        smallThumbnail ||
-                        NoImage
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <a
+                href={
+                    extraLarge ||
+                    large ||
+                    medium ||
+                    thumbnail ||
+                    smallThumbnail ||
+                    NoImage
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                alt={`${title} cover`}
+            >
+                <img
+                    src={medium || thumbnail || smallThumbnail || NoImage}
                     alt={`${title} cover`}
-                >
-                    <img
-                        src={medium || thumbnail || smallThumbnail || NoImage}
-                        alt={`${title} cover`}
-                    />
-                </a>
+                />
+            </a>
+            <div className="single-book-actions-container">
                 {canonicalVolumeLink ? (
                     <a
-                        className="single-book-external-link"
+                        className="single-book-actions-external-link"
                         href={canonicalVolumeLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -204,7 +205,7 @@ const SingleBookDetails = () => {
                 ) : null}
                 {webReaderLink ? (
                     <a
-                        className="single-book-external-link"
+                        className="single-book-actions-external-link"
                         href={webReaderLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -212,6 +213,7 @@ const SingleBookDetails = () => {
                         Leseprobe auf GooglePlay Books
                     </a>
                 ) : null}
+                <AddToLists />
             </div>
             <p className="single-book-description">
                 {/* entfernt jegliche html tags aus der beschreibung */}
