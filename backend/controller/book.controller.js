@@ -55,11 +55,14 @@ async function httpGetAllBooks(req, res) {
 
 // Buch in Datenbank/ Readlist speichern
 async function httpSaveBook(req, res, next) {
+    console.log("PATH", req.path);
     try {
         // buch daten
         const book = req.body;
         // userID aus dem token
         const { userID: _userID } = req;
+        const listname = req.params.listname;
+        console.log("listname", listname);
 
         // überprüfung ob buch anhand ID n DB vorhanden ist
         const existingBook = await Book.findOne({ id: book.id });
@@ -86,36 +89,24 @@ async function httpSaveBook(req, res, next) {
         const user = await User.findOne({ _id: _userID });
 
         // abfrage ob bookID bereits in readList vorhanden ist
-        if (
-            user.currentlyReading.some(
-                (item) => item.book === bookID.toString()
-            )
-        ) {
+        if (user[listname].some((item) => item.book === bookID.toString())) {
             // wenn ja rückmeldung geben dass es der fall ist
-            console.log("Buch ist bereits auf ihrer Currently Reading list");
-        } else if (
-            user.alreadyRead.some((item) => item.book === bookID.toString())
-        ) {
-            console.log("Book is already on your alreadyRead list");
-        } else if (
-            user.wantToRead.some((item) => item.book === bookID.toString())
-        ) {
-            console.log("Book is already on your wantToRead list");
+            console.log(`Buch ist bereits auf ihrer ${listname} list`);
         } else {
             // otherwise push bookID into wantToRead array
-            user.wantToRead.push({ book: bookID });
+            user[listname].push({ book: bookID });
             // save user
             await user.save();
-            console.log("Book was added to your wantToRead list");
+            console.log(`Book was added to your ${listname} list`);
         }
 
         // get user's readlist
-        const readList = await showReadlist(_userID);
+        const lists = await showReadlist(_userID);
 
         // response
         res.status(200).json({
             title: `${user.username}'s Leseliste:`,
-            readlist: readList,
+            lists: lists,
         });
     } catch (error) {
         next(error);
