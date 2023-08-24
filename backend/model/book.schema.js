@@ -40,12 +40,9 @@ const accessInfoSchema = new mongoose.Schema({
 
 const bookSchema = new mongoose.Schema({
     id: { type: String, required: true, unique: true },
-    volumeInfo: {
-        volumeInfoSchema,
-    },
-    accessInfo: {
-        accessInfoSchema,
-    },
+    volumeInfo: volumeInfoSchema,
+
+    accessInfo: accessInfoSchema,
 });
 
 module.exports = mongoose.model("Book", bookSchema);

@@ -9,9 +9,9 @@ const {
 const User = require("../model/user.schema");
 const {
     showReadlist,
-    addBookToCurrentlyReading,
-    addBookToWantToRead,
-    addBookToAlreadyRead,
+    // addBookToCurrentlyReading,
+    // addBookToWantToRead,
+    // addBookToAlreadyRead,
 } = require("../model/user.model");
 const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
 
@@ -88,26 +88,22 @@ async function httpSaveBook(req, res, next) {
         // abfrage ob bookID bereits in readList vorhanden ist
         if (
             user.currentlyReading.some(
-                (item) => item.toString() === bookID.toString()
+                (item) => item.book === bookID.toString()
             )
         ) {
             // wenn ja rückmeldung geben dass es der fall ist
             console.log("Buch ist bereits auf ihrer Currently Reading list");
         } else if (
-            user.alreadyRead.some(
-                (item) => item.toString() === bookID.toString()
-            )
+            user.alreadyRead.some((item) => item.book === bookID.toString())
         ) {
             console.log("Book is already on your alreadyRead list");
         } else if (
-            user.wantToRead.some(
-                (item) => item.toString() === bookID.toString()
-            )
+            user.wantToRead.some((item) => item.book === bookID.toString())
         ) {
             console.log("Book is already on your wantToRead list");
         } else {
             // otherwise push bookID into wantToRead array
-            user.wantToRead.push(bookID);
+            user.wantToRead.push({ book: bookID });
             // save user
             await user.save();
             console.log("Book was added to your wantToRead list");

@@ -24,9 +24,15 @@ const userSchema = new mongoose.Schema({
     },
     /* Readlist: [currentlyReading, alreadyRead, wantToRead ]
      */
-    currentlyReading: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
-    alreadyRead: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
-    wantToRead: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+    currentlyReading: [
+        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+    ],
+    alreadyRead: [
+        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+    ],
+    wantToRead: [
+        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+    ],
 });
 
 userSchema.pre("save", async function (next) {
