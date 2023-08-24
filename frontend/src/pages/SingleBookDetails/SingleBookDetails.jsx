@@ -13,7 +13,7 @@ const SingleBookDetails = () => {
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
     // const { bookData } = useContext(BookNookContext);
-    const [sendToBackendDB, setSendToBackendDB] = useState({
+    const [sendToBackendDbLists, setSendToBackendDbLists] = useState({
         id: "",
         volumenInfo: {
             title: "",
@@ -111,9 +111,9 @@ const SingleBookDetails = () => {
                 }
             });
         });
-    const handleSendToReadList = async () => {
+    const handleSendToLists = async (url) => {
         try {
-            setSendToBackendDB({
+            setSendToBackendDbLists({
                 id: id,
                 volumenInfo: {
                     title: title,
@@ -144,17 +144,14 @@ const SingleBookDetails = () => {
                     webReaderLink: "",
                 },
             });
-            // console.log(sendToBackendDB);
-            const response = await fetch(
-                "http://localhost:3000/books/addBooks",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(sendToBackendDB),
-                }
-            );
+            // console.log(sendToBackendDbLists);
+            const response = await fetch(`${url}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(sendToBackendDbLists),
+            });
             const responseJson = await response.json();
             console.log(responseJson);
         } catch (error) {
@@ -213,7 +210,7 @@ const SingleBookDetails = () => {
                         Leseprobe auf GooglePlay Books
                     </a>
                 ) : null}
-                <AddToLists />
+                <AddToLists onClick={handleSendToLists} />
             </div>
             <p className="single-book-description">
                 {/* entfernt jegliche html tags aus der beschreibung */}
