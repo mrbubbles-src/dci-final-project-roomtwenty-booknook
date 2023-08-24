@@ -87,21 +87,35 @@ async function httpSaveBook(req, res, next) {
 
         // abfrage ob bookID bereits in readList vorhanden ist
         if (
-            user.readList.some(
-                (item) => item.book.toString() === bookID.toString()
+            user.currentlyReading.some(
+                (item) => item.toString() === bookID.toString()
             )
         ) {
             // wenn ja rückmeldung geben dass es der fall ist
-            console.log("Buch ist bereits auf ihrer Readlist");
+            console.log("Buch ist bereits auf ihrer Currently Reading list");
+        } else if (
+            user.alreadyRead.some(
+                (item) => item.toString() === bookID.toString()
+            )
+        ) {
+            console.log("Book is already on your alreadyRead list");
+        } else if (
+            user.wantToRead.some(
+                (item) => item.toString() === bookID.toString()
+            )
+        ) {
+            console.log("Book is already on your wantToRead list");
         } else {
-            // ansonsten bookID in readList array pushen
-            user.readList.push({ book: bookID });
-            // user speichern
+            // otherwise push bookID into wantToRead array
+            user.wantToRead.push(bookID);
+            // save user
             await user.save();
-            console.log("Buch wurde der Readlist hinzugefügt");
+            console.log("Book was added to your wantToRead list");
         }
-        // readlist des users erhalten
+
+        // get user's readlist
         const readList = await showReadlist(_userID);
+
         // response
         res.status(200).json({
             title: `${user.username}'s Leseliste:`,
