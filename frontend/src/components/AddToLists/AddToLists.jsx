@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const AddToLists = ({ onButtonClick }) => {
+    const serverURL = "http://localhost:3000/books/addBooks/";
+    // `${serverURL}currentlyReading`
+    // `${serverURL}alreadyReadd`
+    // `${serverURL}wantToRead`
     const handleButtonClick = (url) => {
         onButtonClick(url);
     };
@@ -11,7 +15,7 @@ const AddToLists = ({ onButtonClick }) => {
             <div className="book-actions-add-to-lists-container">
                 <button
                     className="book-actions-add-to-lists want-to-read"
-                    onClick={() => handleButtonClick("url string here")}
+                    onClick={() => handleButtonClick(`${serverURL}wantToRead`)}
                 >
                     Möchte ich lesen
                 </button>
