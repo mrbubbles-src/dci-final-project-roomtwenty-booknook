@@ -7,6 +7,7 @@ const {
     httpAdminDeleteUser,
     httpUserDeleteSelf,
     httpShowReadList,
+    httpCurrentlyReading,
 } = require("../controller/user.controller");
 
 const { httpDeleteBookFromReadlist } = require("../controller/book.controller");
@@ -44,7 +45,9 @@ router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 router.get("/getReadlist", authenticateToken, httpShowReadList);
 
 //3routes für die 3 leselisten
-router.post("/userList/:userId/currentReading/:bookId");
+router.post("/userList/:userId/currentReading/:bookId", httpCurrentlyReading);
+router.post("/userList/:userId/alreadyRead/:bookId");
+router.post("/userList/:userId/wantToRead/:bookId");
 
 router.delete(
     "/deleteBookFromReadlist/:bookID",

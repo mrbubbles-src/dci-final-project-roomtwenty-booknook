@@ -95,12 +95,12 @@ async function addBookToCurrentlyReading(userId, bookId) {
 }
 async function addBookToAlreadyRead(userId, bookId) {
     const user = await User.findById(userId);
-    user.currentlyReading.push({ alreadyRead: bookId });
+    user.alreadyRead.push({ alreadyRead: bookId });
     await user.save();
 }
 async function addBookToWantToRead(userId, bookId) {
     const user = await User.findById(userId);
-    user.currentlyReading.push({ wantToRead: bookId });
+    user.wantToRead.push({ wantToRead: bookId });
     await user.save();
 }
 module.exports = {
