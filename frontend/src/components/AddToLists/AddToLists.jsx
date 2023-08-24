@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const AddToLists = () => {
+const AddToLists = ({}) => {
     return (
         <div>
             <div className="book-actions-add-to-lists-container">
