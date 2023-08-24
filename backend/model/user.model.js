@@ -79,7 +79,7 @@ async function showReadlist(userID) {
             );
 
         return {
-            title: `Hier ist deine Leseliste, ${user.username}:`,
+            title: `Hier ist deine Listen, ${user.username}:`,
             currentlyReading: user.currentlyReading,
             alreadyRead: user.alreadyRead,
             wantToRead: user.wantToRead,
