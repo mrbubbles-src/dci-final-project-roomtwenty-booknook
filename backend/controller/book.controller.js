@@ -56,8 +56,8 @@ async function httpSaveBook(req, res, next) {
         const book = req.body;
         // userID aus dem token
         const { userID: _userID } = req;
+        // listname aus url params
         const listname = req.params.listname;
-        console.log("listname", listname);
 
         // überprüfung ob buch anhand ID n DB vorhanden ist
         const existingBook = await Book.findOne({ id: book.id });
@@ -84,15 +84,19 @@ async function httpSaveBook(req, res, next) {
         const user = await User.findOne({ _id: _userID });
 
         // abfrage ob bookID bereits in readList vorhanden ist
-        if (user[listname].some((item) => item.book === bookID.toString())) {
+        if (
+            user[listname].some(
+                (item) => item.book.toString() === bookID.toString()
+            )
+        ) {
             // wenn ja rückmeldung geben dass es der fall ist
-            console.log(`Buch ist bereits auf ihrer ${listname} list`);
+            console.log(`Buch ist bereits auf ihrer ${listname} liste`);
         } else {
             // otherwise push bookID into wantToRead array
             user[listname].push({ book: bookID });
             // save user
             await user.save();
-            console.log(`Book was added to your ${listname} list`);
+            console.log(`Book was added to your ${listname} liste`);
         }
 
         // get user's readlist
