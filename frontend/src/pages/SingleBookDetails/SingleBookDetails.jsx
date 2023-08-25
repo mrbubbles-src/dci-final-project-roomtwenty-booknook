@@ -115,22 +115,19 @@ const SingleBookDetails = () => {
         try {
             setSendToBackendDbLists({
                 id: id,
-                volumenInfo: {
+                volumeInfo: {
                     title: title,
                     subtitle: subtitle,
-                    authors: [authors],
+                    authors: authors,
                     publisher: publisher,
-                    publisherDate: publishedDate,
-                    descriptions: description,
+                    publishedDate: publishedDate,
+                    description: description,
                     averageRating: averageRating,
                     ratingsCount: ratingsCount,
                     language: language,
                     canonicalVolumeLink: canonicalVolumeLink,
-                    industryIdentifiers: [
-                        { type: isbn10Title, identifier: isbn10Number },
-                        { type: isbn13Title, identifier: isbn13Number },
-                    ],
-                    categories: [categories],
+                    industryIdentifiers: industryIdentifiers,
+                    categories: categories,
                     pageCount: pageCount,
                     imageLinks: {
                         smallThumbnail: smallThumbnail,
@@ -149,6 +146,8 @@ const SingleBookDetails = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization:
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjdiYmVmNWRiNmIyZGJkNzhhYTEiLCJ1c2VybmFtZSI6Im1hbnVUZXN0IiwicGFzc3dvcmQiOiIkMmIkMTAkaERiaEtma0t5ZzNEUEVGMzZQa1JaT21xVVNXR0J3Y1dLejh0L1dXLkw4dUt1bWRxMWpzNjIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTI5NTI1MjJ9.lif_bNGvFQaHTkbO5kx9Yv736XTA42lT1ueRkSZyBk8",
                 },
                 body: JSON.stringify(sendToBackendDbLists),
             });
