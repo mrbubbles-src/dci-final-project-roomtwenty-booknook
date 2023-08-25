@@ -12,7 +12,6 @@ import Impressum from "./pages/Impressum/Impressum";
 import Search from "./pages/Search/Search";
 import SingleBookDetails from "./pages/SingleBookDetails/SingleBookDetails";
 
-
 function App() {
     return (
         <BookNookProvider>
@@ -23,6 +22,11 @@ function App() {
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route index element={<LandingPageNotLoggedInPage />} />
 
+                        <Route
+                            path="Kontaktformular"
+                            element={<Datenschutz />}
+                        />
+
                         <Route path="Datenschutz" element={<Datenschutz />} />
                         <Route path="Impressum" element={<Impressum />} />
 
@@ -31,7 +35,6 @@ function App() {
                             path="buch/:id"
                             element={<SingleBookDetails />}
                         />
-
 
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route path="*" element={<NotFound />} />
