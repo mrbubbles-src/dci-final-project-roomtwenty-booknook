@@ -3,14 +3,9 @@ const bcrypt = require("bcrypt");
 
 const { UserRoles } = require("../lib/security/roles");
 
-const readListSchema = new mongoose.Schema({
-    book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
-});
-const readingsSchema = new mongoose.Schema({
-    currentlyReading: [readListSchema],
-    alreadyRead: [readListSchema],
-    wantToRead: [readListSchema],
-});
+// const readListSchema = new mongoose.Schema({
+//  [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
+// });
 
 const userSchema = new mongoose.Schema({
     profileImage: {
@@ -20,8 +15,8 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    readingLevel: { type: Number },
-    readingRank: { type: String },
+    readingLevel: { type: Number, default: 0 },
+    readingRank: { type: String, default: "Lesewurm" },
     role: {
         type: String,
         enum: Object.values(UserRoles),
@@ -29,7 +24,15 @@ const userSchema = new mongoose.Schema({
     },
     /* Readlist: [currentlyReading, alreadyRead, wantToRead ]
      */
-    readList: [readingsSchema],
+    currentlyReading: [
+        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+    ],
+    alreadyRead: [
+        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+    ],
+    wantToRead: [
+        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+    ],
 });
 
 userSchema.pre("save", async function (next) {

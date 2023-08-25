@@ -1,19 +1,12 @@
 const mongoose = require("mongoose");
 
 const isbnSchema = new mongoose.Schema({
-    isbn_10: {
+    type: {
         type: String,
-        required: true,
     },
-    isbn_13: {
-        type: String,
-        required: true,
-    },
+    identifiers: { type: String },
 });
 
-const searchInfoSchema = new mongoose.Schema({
-    textSnippet: { type: String },
-});
 const imageLinksSchema = new mongoose.Schema({
     smallThumbnail: { type: String },
     thumbnail: { type: String },
@@ -24,17 +17,16 @@ const imageLinksSchema = new mongoose.Schema({
 });
 
 const volumeInfoSchema = new mongoose.Schema({
-    title: { type: String, required: true },
+    title: { type: String },
     subtitle: { type: String },
-    authors: [{ type: String, required: true }],
-    publisher: { type: String, required: true },
-    publisheddate: { type: String, required: true },
+    authors: [{ type: String }],
+    publisher: { type: String },
+    publisheddate: { type: String },
     descriptions: { type: String },
-    searchInfo: { searchInfoSchema },
     averageRating: { type: Number },
     ratingsCount: { type: Number },
     language: { type: String },
-    previewLink: { type: String },
+    canonicalVolumeLink: { type: String },
     infoLink: { type: String },
     industryIdentifiers: [isbnSchema],
     /* aus selflink */
@@ -42,12 +34,15 @@ const volumeInfoSchema = new mongoose.Schema({
     pageCount: { type: Number },
     imageLinks: { imageLinksSchema },
 });
+const accessInfoSchema = new mongoose.Schema({
+    webReaderLink: { type: String },
+});
 
 const bookSchema = new mongoose.Schema({
     id: { type: String, required: true, unique: true },
-    volumeInfo: {
-        volumeInfoSchema,
-    },
+    volumeInfo: volumeInfoSchema,
+
+    accessInfo: accessInfoSchema,
 });
 
 module.exports = mongoose.model("Book", bookSchema);
