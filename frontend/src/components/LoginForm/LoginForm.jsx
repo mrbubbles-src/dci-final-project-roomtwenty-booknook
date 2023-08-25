@@ -1,26 +1,58 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 import "../LoginForm/loginform.scss";
 
+const LoginForm = () => {
+    const navigate = useNavigate();
+    const [loginValue, setLoginValue] = useState({
+        username: "",
+        password: "",
+    });
+    const { username, password } = loginValue;
 
-
-const LoginForm = ({ onSubmit, onClose }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
+    const handleOnChange = (e, name) => {
+        const { value } = e.target;
+        console.log(name, value);
+        setLoginValue({ ...loginValue, [name]: value });
     };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    //state variable ändern
 
-    const handleSubmit = (e) => {
+    const handleError = (err) =>
+        toast.error(err, {
+            position: "bottom-left",
+        });
+    const handleSuccess = (msg) =>
+        toast.success(msg, {
+            position: "bottom-left",
+        });
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        onSubmit({ username, password });
-        setUsername("");
-        setPassword("");
-        onClose();
+        try {
+            const { data } = await axios.post(
+                "http://localhost:4000/users/login",
+                {
+                    username,
+                    password,
+                },
+                { withCredentials: true }
+            );
+            console.log(data);
+            const { success, message } = data;
+            if (success) {
+                handleSuccess(message);
+                setTimeout(() => {
+                    navigate("/users/profile");
+                }, 1000);
+            } else {
+                handleError(message);
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -34,7 +66,7 @@ const LoginForm = ({ onSubmit, onClose }) => {
                 className='formInput'
                 value={username}
                 required
-                onChange={handleUsernameChange}
+                onChange={(e) => handleOnChange(e, "username")}
             />
             <label htmlFor='password'></label>
             <input
@@ -44,7 +76,7 @@ const LoginForm = ({ onSubmit, onClose }) => {
                 className='formInput'
                 value={password}
                 required
-                onChange={handlePasswordChange}
+                onChange={(e) => handleOnChange(e, "password")}
             />
             <div className='buttonContainer'>
                 <button className='btn-login' type='submit'>

@@ -11,11 +11,13 @@ const Modal = ({ showLogin, onClose }) => {
     };
 
     const handleLoginSubmit = (formData) => {
+        formData.preventDefault();
         console.log("Login Daten:", formData);
         onClose();
     };
 
     const handleSignupSubmit = (formData) => {
+        formData.preventDefault();
         console.log("Signup Data:", formData);
         onClose();
     };
