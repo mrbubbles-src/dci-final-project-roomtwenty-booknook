@@ -7,7 +7,7 @@ const {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
-    addBookToCurrentlyReading,
+
     // addBookToAlreadyRead,
     // addBookToWantToRead,
 } = require("../model/user.model");
@@ -107,29 +107,6 @@ async function httpShowReadList(req, res, next) {
     }
 }
 
-async function httpCurrentlyReading(req, res, next) {
-    try {
-        const { userId, bookId } = req.params;
-        const responseCurrentlyReading = await addBookToCurrentlyReading(
-            userId,
-            bookId
-        );
-        res.status(200).json(responseCurrentlyReading);
-    } catch (error) {
-        next(error);
-    }
-}
-// async function httpAlreadyRead(req, res, next) {
-//     try {
-//         const { userId, bookId } = req.params;
-//     } catch (error) {}
-// }
-// async function httpWantToRead(req, res, next) {
-//     try {
-//         const { userId, bookId } = req.params;
-//     } catch (error) {}
-// }
-
 module.exports = {
     httpCreateUser,
     httpAuthenticateUser,
@@ -138,5 +115,4 @@ module.exports = {
     httpUserDeleteSelf,
     httpAdminDeleteUser,
     httpShowReadList,
-    httpCurrentlyReading,
 };
