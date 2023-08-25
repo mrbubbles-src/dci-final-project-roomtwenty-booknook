@@ -2,6 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
+// modal bauen um daten an die entsprechenden routen zu schicken
+// aktuell verfügbares funktioniert
+
 const AddToLists = ({ onButtonClick }) => {
     const serverURL = "http://localhost:3000/books/addBooks";
     // `${serverURL}currentlyReading`
