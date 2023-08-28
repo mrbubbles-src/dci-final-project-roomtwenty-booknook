@@ -292,10 +292,10 @@ const SingleBookDetails = () => {
                 </p>
                 <div className="single-book-rating-container">
                     <span className="single-book-avg-rating">
-                        {averageRating || bookDataAverageRating || "0"}{" "}
+                        {averageRating || bookDataAverageRating || 0}{" "}
                     </span>{" "}
                     <StarRatings
-                        rating={averageRating || bookDataAverageRating}
+                        rating={averageRating || bookDataAverageRating || 0}
                         starRatedColor="orange"
                         name="single-book-rating"
                         starDimension="20px"
@@ -303,8 +303,10 @@ const SingleBookDetails = () => {
                     />
                     /{" "}
                     <span className="single-book-ratingcount">
-                        {ratingsCount || bookDataRatingsCount || "0"}{" "}
-                        Bewertungen
+                        {ratingsCount || bookDataRatingsCount || 0}{" "}
+                        {ratingsCount === 1 || bookDataRatingsCount === 1
+                            ? "Bewertung"
+                            : "Bewertungen"}
                     </span>
                 </div>
             </div>
