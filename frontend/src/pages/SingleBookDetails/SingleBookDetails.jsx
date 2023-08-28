@@ -112,6 +112,21 @@ const SingleBookDetails = () => {
                 }
             });
         });
+
+    function findInBookData(bookData, id) {
+        if (!bookData || !bookData.items) {
+            return null;
+        }
+        for (let i = 0; i < bookData.items.length; i++) {
+            if (bookData.items[i].id === id) {
+                return bookData.items[i];
+            }
+        }
+        return null;
+    }
+    const item = findInBookData(bookData, singleBookData.id);
+    const bookDataAverageRating = item ? item.volumeInfo.averageRating : 0;
+    const bookDataRatingsCount = item ? item.volumeInfo.ratingsCount : 0;
     const handleSendToLists = async (url) => {
         try {
             setSendToBackendDbLists({
@@ -123,8 +138,8 @@ const SingleBookDetails = () => {
                     publisher: publisher,
                     publishedDate: publishedDate,
                     description: description,
-                    averageRating: averageRating || bookDataAvgRating,
-                    ratingsCount: ratingsCount || bookDataRatingCount,
+                    averageRating: averageRating || bookDataAverageRating,
+                    ratingsCount: ratingsCount || bookDataRatingsCount,
                     language: language,
                     canonicalVolumeLink: canonicalVolumeLink,
                     industryIdentifiers: industryIdentifiers,
@@ -277,12 +292,10 @@ const SingleBookDetails = () => {
                 </p>
                 <div className="single-book-rating-container">
                     <span className="single-book-avg-rating">
-                        {averageRating ||
-                            bookData.items[0].volumeInfo.averageRating ||
-                            "0"}{" "}
+                        {averageRating || bookDataAverageRating || "0"}{" "}
                     </span>{" "}
                     <StarRatings
-                        rating={averageRating}
+                        rating={averageRating || bookDataAverageRating}
                         starRatedColor="orange"
                         name="single-book-rating"
                         starDimension="20px"
@@ -290,9 +303,7 @@ const SingleBookDetails = () => {
                     />
                     /{" "}
                     <span className="single-book-ratingcount">
-                        {ratingsCount ||
-                            bookData.items[0].volumeInfo.ratingsCount ||
-                            "0"}{" "}
+                        {ratingsCount || bookDataRatingsCount || "0"}{" "}
                         Bewertungen
                     </span>
                 </div>
