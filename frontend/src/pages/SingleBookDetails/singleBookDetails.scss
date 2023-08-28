@@ -1,1 +1,11 @@
 @import "../../scss/styleVariables";
+.single-book-container {
+    border: 1px solid blue;
+    border-top-width: 2px;
+    // padding-top: 100px;
+}
+
+.single-book-genre {
+    margin: 5px;
+    text-decoration: underline;
+}
