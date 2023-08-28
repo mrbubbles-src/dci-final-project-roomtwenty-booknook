@@ -182,7 +182,9 @@ const SingleBookDetails = () => {
                 <h3 className="single-book-subtitle">{subtitle}</h3>
             ) : null}
             <h5 className="single-book-author">
-                von {authors || "Unbekannter Autor"}
+                von{" "}
+                {(authors && authors.join(authors.length === 1 ? "" : " & ")) ||
+                    "Unbekannter Autor"}
             </h5>
             <a
                 href={
