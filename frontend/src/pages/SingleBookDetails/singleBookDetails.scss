@@ -2,22 +2,16 @@
 .single-book-container {
     border: 1px solid blue;
     display: grid;
-    .single-book-title {
-    }
-    .single-book-subtitle {
-    }
-    .single-book-author {
+    .single-books-headings-container {
+        .single-book-title {
+        }
+        .single-book-subtitle {
+        }
+        .single-book-author {
+        }
     }
     .single-book-image {
         width: 300px;
-    }
-    .single-book-actions-container {
-        .single-book-actions-external-link {
-        }
-    }
-    .single-book-genre-container {
-        .single-book-genre {
-        }
     }
     .single-book-info-section {
         .single-book-info-section-title {
@@ -38,11 +32,21 @@
         }
         .single-book-language {
         }
-        .single-book-rating-container {
-            .single-book-avg-rating {
-            }
-            .single-book-ratingcount {
-            }
+    }
+    .single-book-actions-container {
+        .single-book-actions-external-link {
+        }
+    }
+    .single-book-rating-container {
+        .single-book-avg-rating {
+        }
+        .single-book-ratingcount {
+        }
+    }
+    .single-book-description {
+    }
+    .single-book-genre-container {
+        .single-book-genre {
         }
     }
 }
