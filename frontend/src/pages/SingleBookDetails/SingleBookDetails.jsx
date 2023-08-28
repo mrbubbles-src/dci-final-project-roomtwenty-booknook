@@ -184,7 +184,12 @@ const SingleBookDetails = () => {
                 alt={`${title} cover`}
             >
                 <img
-                    src={medium || thumbnail || smallThumbnail || NoImage}
+                    src={
+                        (medium || thumbnail || smallThumbnail).replace(
+                            "http",
+                            "https"
+                        ) || NoImage
+                    }
                     alt={`${title} cover`}
                 />
             </a>
