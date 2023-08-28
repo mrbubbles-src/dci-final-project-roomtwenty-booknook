@@ -171,19 +171,25 @@ const SingleBookDetails = () => {
             </h5>
             <a
                 href={
-                    extraLarge ||
-                    large ||
-                    medium ||
-                    thumbnail ||
-                    smallThumbnail ||
-                    NoImage
+                    (
+                        extraLarge ||
+                        large ||
+                        medium ||
+                        thumbnail ||
+                        smallThumbnail
+                    ).replace("http", "https") || NoImage
                 }
                 target="_blank"
                 rel="noopener noreferrer"
                 alt={`${title} cover`}
             >
                 <img
-                    src={medium || thumbnail || smallThumbnail || NoImage}
+                    src={
+                        (medium || thumbnail || smallThumbnail).replace(
+                            "http",
+                            "https"
+                        ) || NoImage
+                    }
                     alt={`${title} cover`}
                 />
             </a>
