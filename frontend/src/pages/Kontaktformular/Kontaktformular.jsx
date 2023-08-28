@@ -1,45 +1,25 @@
 import React from "react";
+import "./Kontaktformular.scss";
+
+import { BuchNichtVorhanden } from "./Themenauswahl/BuchNichtVorhanden";
+import { Fragen } from "./Themenauswahl/Fragen";
+import { Anregungen } from "./Themenauswahl/Anregungen";
+import { Irgendwas } from "./Themenauswahl/Irgendwas";
+import { NochIrgendwas } from "./Themenauswahl/NochIrgendwas";
 
 const Kontaktformular = () => {
     return (
         <div>
             <div>
-                <form id="Kontaktformular" method="post" action="submit">
-                    {" "}
-                    <div>
-                        <h1>Kontakt - Was ist dein Anliegen?</h1>
-                        <p>Wir antworten Dir persönlich!</p>
-                    </div>
-                    <div className="Formfelderrahmen">
-                        <label>
-                            Name{" "}
-                            <input
-                                type="text"
-                                name="Kontaktname"
-                                id="Kontaktname"
-                                required
-                            />
-                        </label>
-                        <label>
-                            Email{" "}
-                            <input
-                                type="text"
-                                name="Kontaktemail"
-                                id="Kontaktemail"
-                                required
-                            />
-                        </label>
-                        <label>
-                            Kommentar / Fragen
-                            <textarea
-                                name="Kontaktnachricht"
-                                id="Kontaktnachricht"
-                                cols="30"
-                                rows="10"
-                            ></textarea>
-                        </label>
-                    </div>
-                </form>
+                <select name={"Themenauswahl"} size={"5"}>
+                    <option value={BuchNichtVorhanden}>
+                        Buch nicht vorhanden?
+                    </option>
+                    <option value={Fragen}>Fragen</option>
+                    <option value={Anregungen}>Anregungen</option>
+                    <option value={Irgendwas}>Irgendwas</option>
+                    <option value={NochIrgendwas}>Noch Irgendwas</option>
+                </select>
             </div>
         </div>
     );

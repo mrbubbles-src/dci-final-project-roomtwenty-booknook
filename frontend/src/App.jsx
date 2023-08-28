@@ -6,6 +6,7 @@ import LandingPageNotLoggedInPage from "./pages/LandingPageNotLoggedInPage/Landi
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./helpers/ScrollToTop";
 
+import Kontaktformular from "./pages/Kontaktformular/Kontaktformular";
 import Datenschutz from "./pages/Datenschutz/Datenschutz";
 import Impressum from "./pages/Impressum/Impressum";
 
@@ -24,7 +25,7 @@ function App() {
 
                         <Route
                             path="Kontaktformular"
-                            element={<Datenschutz />}
+                            element={<Kontaktformular />}
                         />
 
                         <Route path="Datenschutz" element={<Datenschutz />} />
