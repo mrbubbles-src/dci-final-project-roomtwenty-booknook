@@ -25,6 +25,22 @@ const AddToLists = ({ onButtonClick }) => {
                 <button className="book-actions-add-to-lists-dropdown">
                     {<FontAwesomeIcon icon={faChevronDown} />}
                 </button>
+                <button
+                    className="book-actions-add-to-lists currently-reading"
+                    onClick={() =>
+                        handleButtonClick(`${serverURL}/currentlyReading`)
+                    }
+                >
+                    Lese ich gerade
+                </button>{" "}
+                <button
+                    className="book-actions-add-to-lists already-read"
+                    onClick={() =>
+                        handleButtonClick(`${serverURL}/alreadyRead`)
+                    }
+                >
+                    Habe ich schon gelesen
+                </button>
             </div>
         </div>
     );
