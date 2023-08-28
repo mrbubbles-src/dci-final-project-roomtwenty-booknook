@@ -174,18 +174,20 @@ const SingleBookDetails = () => {
 
     return (
         <section className="single-book-container">
-            {/* <button onClick={handleSendToReadList}>click me</button> */}
-            <h2 className="single-book-title">
-                {title || "Unbekannter Titel"}
-            </h2>
-            {subtitle ? (
-                <h3 className="single-book-subtitle">{subtitle}</h3>
-            ) : null}
-            <h5 className="single-book-author">
-                von{" "}
-                {(authors && authors.join(authors.length === 1 ? "" : " & ")) ||
-                    "Unbekannter Autor"}
-            </h5>
+            <div className="single-book-headings-container">
+                <h2 className="single-book-title">
+                    {title || "Unbekannter Titel"}
+                </h2>
+                {subtitle ? (
+                    <h3 className="single-book-subtitle">{subtitle}</h3>
+                ) : null}
+                <h5 className="single-book-author">
+                    von{" "}
+                    {(authors &&
+                        authors.join(authors.length === 1 ? "" : " & ")) ||
+                        "Unbekannter Autor"}
+                </h5>
+            </div>
             <a
                 href={
                     (
@@ -210,47 +212,7 @@ const SingleBookDetails = () => {
                     }
                     alt={`${title} cover`}
                 />
-            </a>
-            <div className="single-book-actions-container">
-                {canonicalVolumeLink ? (
-                    <a
-                        className="single-book-actions-external-link"
-                        href={canonicalVolumeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Mehr Informationen auf GooglePlay Books
-                    </a>
-                ) : null}
-                {webReaderLink ? (
-                    <a
-                        className="single-book-actions-external-link"
-                        href={webReaderLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Leseprobe auf GooglePlay Books
-                    </a>
-                ) : null}
-                <AddToLists onButtonClick={handleSendToLists} />
-            </div>
-            <p className="single-book-description">
-                {/* entfernt jegliche html tags aus der beschreibung */}
-                {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
-                    "Keine Beschreibung verfügbar"}
-            </p>
-            <p className="single-book-genre-container">
-                Genres:{" "}
-                {genres && genres.length >= 1
-                    ? genres.map((category, index) => {
-                          return (
-                              <span className="single-book-genre" key={index}>
-                                  {category}
-                              </span>
-                          );
-                      })
-                    : "keine Genres bekannt"}
-            </p>
+            </a>{" "}
             <div className="single-book-info-section">
                 <h5 className="single-book-info-section-title">
                     Buchinformationen:
@@ -293,26 +255,66 @@ const SingleBookDetails = () => {
                         "keine Information vorhanden."
                     )}
                 </p>
-                <div className="single-book-rating-container">
-                    <span className="single-book-avg-rating">
-                        {averageRating || bookDataAverageRating || 0}{" "}
-                    </span>{" "}
-                    <StarRatings
-                        rating={averageRating || bookDataAverageRating || 0}
-                        starRatedColor="orange"
-                        name="single-book-rating"
-                        starDimension="20px"
-                        starSpacing="1px"
-                    />
-                    /{" "}
-                    <span className="single-book-ratingcount">
-                        {ratingsCount || bookDataRatingsCount || 0}{" "}
-                        {ratingsCount === 1 || bookDataRatingsCount === 1
-                            ? "Bewertung"
-                            : "Bewertungen"}
-                    </span>
-                </div>
             </div>
+            <div className="single-book-actions-container">
+                {canonicalVolumeLink ? (
+                    <a
+                        className="single-book-actions-external-link"
+                        href={canonicalVolumeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Mehr Informationen auf GooglePlay Books
+                    </a>
+                ) : null}
+                {webReaderLink ? (
+                    <a
+                        className="single-book-actions-external-link"
+                        href={webReaderLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Leseprobe auf GooglePlay Books
+                    </a>
+                ) : null}
+                <AddToLists onButtonClick={handleSendToLists} />
+            </div>
+            <div className="single-book-rating-container">
+                <span className="single-book-avg-rating">
+                    {averageRating || bookDataAverageRating || 0}{" "}
+                </span>{" "}
+                <StarRatings
+                    rating={averageRating || bookDataAverageRating || 0}
+                    starRatedColor="orange"
+                    name="single-book-rating"
+                    starDimension="20px"
+                    starSpacing="1px"
+                />
+                /{" "}
+                <span className="single-book-ratingcount">
+                    {ratingsCount || bookDataRatingsCount || 0}{" "}
+                    {ratingsCount === 1 || bookDataRatingsCount === 1
+                        ? "Bewertung"
+                        : "Bewertungen"}
+                </span>
+            </div>
+            <p className="single-book-description">
+                {/* entfernt jegliche html tags aus der beschreibung */}
+                {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+                    "Keine Beschreibung verfügbar"}
+            </p>
+            <p className="single-book-genre-container">
+                Genres:{" "}
+                {genres && genres.length >= 1
+                    ? genres.map((category, index) => {
+                          return (
+                              <span className="single-book-genre" key={index}>
+                                  {category}
+                              </span>
+                          );
+                      })
+                    : "keine Genres bekannt"}
+            </p>
         </section>
     );
 };
