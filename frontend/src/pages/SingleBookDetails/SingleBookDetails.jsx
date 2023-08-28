@@ -146,8 +146,6 @@ const SingleBookDetails = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization:
-                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjdiYmVmNWRiNmIyZGJkNzhhYTEiLCJ1c2VybmFtZSI6Im1hbnVUZXN0IiwicGFzc3dvcmQiOiIkMmIkMTAkaERiaEtma0t5ZzNEUEVGMzZQa1JaT21xVVNXR0J3Y1dLejh0L1dXLkw4dUt1bWRxMWpzNjIiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTI5NTI1MjJ9.lif_bNGvFQaHTkbO5kx9Yv736XTA42lT1ueRkSZyBk8",
                 },
                 body: JSON.stringify(sendToBackendDbLists),
             });
