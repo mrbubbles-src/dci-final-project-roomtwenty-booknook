@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import NoImage from "../../../public/images/various/no-image.png";
 import "./singleBookDetails.scss";
-// import { BookNookContext } from "../../context/BookNookProvider";
+import { BookNookContext } from "../../context/BookNookProvider";
 import ReactCountryFlag from "react-country-flag";
 import StarRatings from "react-star-ratings";
 import AddToLists from "../../components/AddToLists/AddToLists";
@@ -12,7 +12,7 @@ const SingleBookDetails = () => {
     const { id } = useParams();
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
-    // const { bookData } = useContext(BookNookContext);
+    const { bookData } = useContext(BookNookContext);
     const [sendToBackendDbLists, setSendToBackendDbLists] = useState({
         id: "",
         volumenInfo: {
@@ -59,6 +59,7 @@ const SingleBookDetails = () => {
     if (isSingleBookLoading) {
         return <LoadingSpinner />;
     }
+
     const {
         title,
         subtitle,
@@ -122,8 +123,8 @@ const SingleBookDetails = () => {
                     publisher: publisher,
                     publishedDate: publishedDate,
                     description: description,
-                    averageRating: averageRating,
-                    ratingsCount: ratingsCount,
+                    averageRating: averageRating || bookDataAvgRating,
+                    ratingsCount: ratingsCount || bookDataRatingCount,
                     language: language,
                     canonicalVolumeLink: canonicalVolumeLink,
                     industryIdentifiers: industryIdentifiers,
@@ -270,7 +271,9 @@ const SingleBookDetails = () => {
                 </p>
                 <div className="single-book-rating-container">
                     <span className="single-book-avg-rating">
-                        {averageRating || "0"}{" "}
+                        {averageRating ||
+                            bookData.items[0].volumeInfo.averageRating ||
+                            "0"}{" "}
                     </span>{" "}
                     <StarRatings
                         rating={averageRating}
@@ -281,7 +284,10 @@ const SingleBookDetails = () => {
                     />
                     /{" "}
                     <span className="single-book-ratingcount">
-                        {ratingsCount || "0"} Bewertungen
+                        {ratingsCount ||
+                            bookData.items[0].volumeInfo.ratingsCount ||
+                            "0"}{" "}
+                        Bewertungen
                     </span>
                 </div>
             </div>
