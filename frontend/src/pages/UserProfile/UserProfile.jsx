@@ -1,4 +1,5 @@
 import React from "react";
+import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import useAuth from "../../customhooks/auth";
 
 const UserProfile = () => {
@@ -6,7 +7,10 @@ const UserProfile = () => {
 
     return (
         <>
-            <h1>Profile</h1>
+            <h1>Profile</h1> 
+            <div>
+                <LeseChallenge />
+            </div>
             <button onClick={logout}>Logout</button>
         </>
     );

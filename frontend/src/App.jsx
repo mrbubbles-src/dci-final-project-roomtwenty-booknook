@@ -24,13 +24,12 @@ function App() {
                     <Route path='/' element={<SharedLayout />}>
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route index element={<LandingPageNotLoggedInPage />} />
+                        <Route path="users/profile" element={<UserProfile />} />
                         <Route
                             path="Kontaktformular"
                             element={<Kontaktformular />}
                         />
-                            path='/users/profile'
-                            element={<UserProfile />}
-                        />
+
                         <Route path="Datenschutz" element={<Datenschutz />} />
                         <Route path="Impressum" element={<Impressum />} />
 
@@ -39,6 +38,7 @@ function App() {
                             path="buch/:id"
                             element={<SingleBookDetails />}
                         />
+
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route path='*' element={<NotFound />} />
                     </Route>

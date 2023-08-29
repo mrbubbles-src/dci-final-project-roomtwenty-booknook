@@ -25,6 +25,7 @@ $delay: calc($duration/6);
     top: 60%;
     left: 40%;
     transform: translate(-50%, -50%);
+    // height: 20px;
 }
 
 .books_list {
@@ -196,6 +197,7 @@ $delay: calc($duration/6);
         @include polka(10px, 30%, $secondary, $accent-1);
         top: 200%;
         left: 7.6%;
+
         animation: move #{$duration, 10}ms linear infinite;
     }
 

@@ -1,0 +1,47 @@
+@import "../../scss/styleVariables";
+
+.lese-fortschritt {
+    display: flex;
+    flex-flow: column;
+    margin: 1em 1em;
+    font-family: text-bold, sans-serif;
+    .profile-card-container {
+        display: flex;
+        background-color: $primary;
+        border: 3px solid black;
+        border-radius: 25px;
+        padding: 5px;
+        gap: 14em;
+        span {
+            color: red;
+        }
+        .text-right {
+            border: 1px solid red;
+            .progress-bar {
+                height: 10px; // Höhe des Balkens
+                background-color: #4caf50; // Farbe des Fortschrittsbalkens
+                width: 0; // Der Balken wird über die Breite gesteuert
+                transition: width 0.5s; // Eine sanfte Animation beim Ändern des Fortschritts
+            }
+        }
+        .profile-img {
+            border: 1px solid white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .img-container {
+            border: 1px solid white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    }
+    .book-cover {
+        // font-family: text-bold, sans-serif;
+        background-color: $primary;
+        display: flex;
+        .reading-now {
+        }
+    }
+}
