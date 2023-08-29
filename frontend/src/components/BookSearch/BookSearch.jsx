@@ -54,10 +54,10 @@ const BookSearch = ({ amountShown }) => {
                             </h5>
                             <div className="card-rating-container">
                                 <span className="card-avg-rating">
-                                    {averageRating || "0"}{" "}
+                                    {averageRating || 0}{" "}
                                 </span>{" "}
                                 <StarRatings
-                                    rating={averageRating}
+                                    rating={averageRating || 0}
                                     starRatedColor="orange"
                                     name="single-book-rating"
                                     starDimension="20px"
@@ -65,7 +65,10 @@ const BookSearch = ({ amountShown }) => {
                                 />
                                 /{" "}
                                 <span className="card-ratingcount">
-                                    {ratingsCount || "0"} Bewertungen
+                                    {ratingsCount || 0}{" "}
+                                    {ratingsCount === 1
+                                        ? "Bewertung"
+                                        : "Bewertungen"}
                                 </span>
                             </div>
                             <p className="card-infotext">
