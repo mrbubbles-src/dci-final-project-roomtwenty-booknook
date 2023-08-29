@@ -1,56 +1,69 @@
 import React, { useState } from "react";
 import "./signupform.scss";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 
-const SignupForm = ({ onSubmit, onCancel }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [userCreated, setUserCreated] = useState("");
+const SignupForm = ({ onClose }) => {
+    const navigate = useNavigate();
+    const [signupValue, setSignupValue] = useState({
+        username: "",
+        password: "",
+        email: "",
+    });
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
+    const { email, password, username } = signupValue;
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setSignupValue({
+            ...signupValue,
+            [name]: value,
+        });
     };
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+
+    const handleError = (err) =>
+        toast.error(err, {
+            position: "bottom-left",
+        });
+    const handleSuccess = (msg) =>
+        toast.success(msg, {
+            position: "bottom-right",
+        });
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const userData = {
-                username: username,
-                password: password,
-                email: email,
-            };
-            const response = await fetch("http://localhost:3000/users/signup", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(userData),
-            });
-            const data = await response.json();
-            setUserCreated(data.message);
-            onSubmit(userData);
+            const { data } = await axios.post(
+                "http://localhost:3000/users/signup",
+                { ...signupValue },
+                { withCredentials: true }
+            );
+            const { success, message } = data;
+            if (success) {
+                handleSuccess(message);
+                onClose();
+                setTimeout(() => {
+                    navigate("/users/profile");
+                }, 1000);
+            } else {
+                handleError(message);
+            }
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
-        setUsername("");
-        setPassword("");
-        setEmail("");
     };
+
     return (
         <form onSubmit={handleSubmit} className='signup-form'>
             <h2 className='heading-login'>Sign up!</h2>
             <label htmlFor='username'></label>
             <input
-                placeholder='Username'
+                placeholder='Enter your username'
                 type='text'
                 id='username'
                 className='formInput'
                 value={username}
                 required
-                onChange={handleUsernameChange}
+                onChange={handleOnChange}
             />
             <label htmlFor='password'></label>
             <input
@@ -60,7 +73,7 @@ const SignupForm = ({ onSubmit, onCancel }) => {
                 className='formInput'
                 value={password}
                 required
-                onChange={handlePasswordChange}
+                onChange={handleOnChange}
             />
             <input
                 placeholder='E-Mail'
@@ -69,14 +82,13 @@ const SignupForm = ({ onSubmit, onCancel }) => {
                 className='formInput'
                 value={email}
                 required
-                onChange={handleEmailChange}
+                onChange={handleOnChange}
             />
             <div className='buttonContainer'>
                 <button type='submit' className='btn-login'>
                     Sign Up !
                 </button>
             </div>
-            {userCreated && <p>{userCreated}</p>}
         </form>
     );
 };

@@ -5,6 +5,8 @@ import SharedLayout from "./pages/SharedLayout";
 import LandingPageNotLoggedInPage from "./pages/LandingPageNotLoggedInPage/LandingPageNotLoggedInPage";
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./helpers/ScrollToTop";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import "react-toastify/dist/ReactToastify.css";
 
 import Datenschutz from "./pages/Datenschutz/Datenschutz";
 import Impressum from "./pages/Impressum/Impressum";
@@ -19,10 +21,14 @@ function App() {
             <BrowserRouter>
                 <ScrollToTop />
                 <Routes>
-                    <Route path="/" element={<SharedLayout />}>
+                    <Route path='/' element={<SharedLayout />}>
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route index element={<LandingPageNotLoggedInPage />} />
 
+                        <Route
+                            path='/users/profile'
+                            element={<UserProfile />}
+                        />
                         <Route path="Datenschutz" element={<Datenschutz />} />
                         <Route path="Impressum" element={<Impressum />} />
 
@@ -31,10 +37,8 @@ function App() {
                             path="buch/:id"
                             element={<SingleBookDetails />}
                         />
-
-
                         {/* die jeweiligen pages routes hier zwische rein */}
-                        <Route path="*" element={<NotFound />} />
+                        <Route path='*' element={<NotFound />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
