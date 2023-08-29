@@ -4,7 +4,7 @@ const isbnSchema = new mongoose.Schema({
     type: {
         type: String,
     },
-    identifiers: { type: String },
+    identifier: { type: String },
 });
 
 const imageLinksSchema = new mongoose.Schema({
@@ -21,15 +21,13 @@ const volumeInfoSchema = new mongoose.Schema({
     subtitle: { type: String },
     authors: [{ type: String }],
     publisher: { type: String },
-    publisheddate: { type: String },
-    descriptions: { type: String },
+    publishedDate: { type: String },
+    description: { type: String },
     averageRating: { type: Number },
     ratingsCount: { type: Number },
     language: { type: String },
     canonicalVolumeLink: { type: String },
-    infoLink: { type: String },
     industryIdentifiers: [isbnSchema],
-    /* aus selflink */
     categories: [{ type: String }],
     pageCount: { type: Number },
     imageLinks: { imageLinksSchema },

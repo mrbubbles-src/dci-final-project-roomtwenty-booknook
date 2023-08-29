@@ -1,24 +1,46 @@
 import React, { useState } from "react";
-import "../LoginForm/loginform.scss";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import useAuth from "../../customhooks/auth"
+import "./loginform.scss";
 
-const LoginForm = ({ onSubmit, onClose }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+const LoginForm = ({ onClose }) => {
+    const navigate = useNavigate();
+    const { login } = useAuth();
+    const [loginValue, setLoginValue] = useState({
+        username: "",
+        password: "",
+    });
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
+    const handleOnChange = (e) => {
+        const { value, name } = e.target;
+        setLoginValue({ ...loginValue, [name]: value });
     };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        onSubmit({ username, password });
-        setUsername("");
-        setPassword("");
-        onClose();
+        try {
+            const { data } = await axios.post(
+                "http://localhost:3000/users/login",
+                {
+                    username: loginValue.username,
+                    password: loginValue.password,
+                },
+                { withCredentials: true }
+            );
+            if (data.securityToken) {
+                login(data.securityToken);
+                toast.success("Login Success");
+                onClose();
+                navigate("/users/profile");
+            } else {
+                toast.error("Username or Password wrong.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            toast.error("An error occurred.");
+        }
     };
 
     return (
@@ -29,20 +51,22 @@ const LoginForm = ({ onSubmit, onClose }) => {
                 placeholder='Username'
                 type='text'
                 id='username'
+                name='username'
                 className='formInput'
-                value={username}
+                value={loginValue.username}
                 required
-                onChange={handleUsernameChange}
+                onChange={handleOnChange}
             />
             <label htmlFor='password'></label>
             <input
                 placeholder='Password'
                 type='password'
                 id='password'
+                name='password'
                 className='formInput'
-                value={password}
+                value={loginValue.password}
                 required
-                onChange={handlePasswordChange}
+                onChange={handleOnChange}
             />
             <div className='buttonContainer'>
                 <button className='btn-login' type='submit'>

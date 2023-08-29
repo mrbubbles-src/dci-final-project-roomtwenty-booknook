@@ -1,1 +1,57 @@
 @import "../../scss/styleVariables";
+.single-book-container {
+    border: 1px solid blue;
+
+    .single-book-grid-container {
+        // display: grid;
+        // grid-template-rows: 1fr 100px 100px;
+        // grid-template-columns: repeat(2, 1fr);
+        .single-books-headings-container {
+            .single-book-title {
+            }
+            .single-book-subtitle {
+            }
+            .single-book-author {
+            }
+        }
+        .single-book-image {
+            width: 300px;
+        }
+        .single-book-info-section {
+            .single-book-info-section-title {
+            }
+            .single-book-pagecount-container {
+                .single-book-pagecount-count {
+                }
+            }
+            .single-book-publisher-contaier {
+                .single-book-publisher {
+                }
+            }
+            .single-book-published-container {
+                .single-book-published-date {
+                }
+            }
+            .single-book-isbn {
+            }
+            .single-book-language {
+            }
+        }
+        .single-book-actions-container {
+            .single-book-actions-external-link {
+            }
+        }
+        .single-book-rating-container {
+            .single-book-avg-rating {
+            }
+            .single-book-ratingcount {
+            }
+        }
+    }
+    .single-book-description {
+    }
+    .single-book-genre-container {
+        .single-book-genre {
+        }
+    }
+}

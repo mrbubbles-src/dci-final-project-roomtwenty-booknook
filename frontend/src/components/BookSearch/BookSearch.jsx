@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import NoImage from "../../../public/images/various/no-image.png";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import { Link } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 
 const BookSearch = ({ amountShown }) => {
     const { bookData, isLoading } = useContext(BookNookContext);
-    // const placeholderImageSmall =
-    //     "http://books.google.com/books/content?id=9N8qdq07gswC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73vt1p4GUsN69p0vcbzwOHdVmGLAI43rstkOVYSRKrbwQiYOVWZAzyAjEhOq7rRMR6N1O7a-0TJ474mZCoocveeclRb5gghJhvb4gjItpFusoVPudqlMJtqyxoXM4UBBRu0Hekn&source=gbs_api";
+
     if (isLoading) {
         return <LoadingSpinner />;
     }
@@ -16,27 +17,33 @@ const BookSearch = ({ amountShown }) => {
             {bookData &&
                 bookData.items &&
                 bookData.items.slice(...amountShown).map((book, index) => {
-                    const { title, authors, imageLinks } =
-                        book.volumeInfo || {};
+                    const {
+                        title,
+                        subtitle,
+                        authors,
+                        imageLinks,
+                        averageRating,
+                        ratingsCount,
+                    } = book.volumeInfo || {};
                     const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
-                            <a
+                            <Link
                                 className="card-image-anchor-tag"
-                                href={`/buch/${book.id}`}
+                                to={`/buch/${book.id}`}
                             >
                                 <img
                                     className="card-image"
-                                    src={
-                                        // placeholderImageSmall ||
-                                        imageLinks?.thumbnail || NoImage
-                                    }
+                                    src={imageLinks?.thumbnail || NoImage}
                                     alt={title}
                                 />
-                            </a>
+                            </Link>
                             <h4 className="card-title">
                                 {title || "Titel nicht verfügbar"}
                             </h4>
+                            {subtitle ? (
+                                <h3 className="card-subtitle">{subtitle}</h3>
+                            ) : null}
                             <h5 className="card-author">
                                 von{" "}
                                 {(authors &&
@@ -45,16 +52,38 @@ const BookSearch = ({ amountShown }) => {
                                     )) ||
                                     "Unbekannter Autor"}
                             </h5>
+                            <div className="card-rating-container">
+                                <span className="card-avg-rating">
+                                    {averageRating || 0}{" "}
+                                </span>{" "}
+                                <StarRatings
+                                    rating={averageRating || 0}
+                                    starRatedColor="orange"
+                                    name="single-book-rating"
+                                    starDimension="20px"
+                                    starSpacing="1px"
+                                />
+                                /{" "}
+                                <span className="card-ratingcount">
+                                    {ratingsCount || 0}{" "}
+                                    {ratingsCount === 1
+                                        ? "Bewertung"
+                                        : "Bewertungen"}
+                                </span>
+                            </div>
                             <p className="card-infotext">
-                                {textSnippet || "Keine beschreibung verfügbar"}
+                                {textSnippet
+                                    ?.replace(/<\/?[^>]+(>|$)/g, "")
+                                    .replace("&quot;", "") ||
+                                    "Keine beschreibung verfügbar"}
                                 {textSnippet && (
-                                    <a
+                                    <Link
                                         className="show-more-results"
-                                        href={`/buch/${book.id}`}
+                                        to={`/buch/${book.id}`}
                                     >
                                         {" "}
                                         ...mehr
-                                    </a>
+                                    </Link>
                                 )}
                             </p>
                         </div>
