@@ -10,7 +10,6 @@ import AddToLists from "../../components/AddToLists/AddToLists";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
-
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
     const { bookData, token } = useContext(BookNookContext);
