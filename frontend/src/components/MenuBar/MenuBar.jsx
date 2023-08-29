@@ -16,7 +16,7 @@ const MenuBar = () => {
                 <NavLink className="nav" to="/#">
                     {<FontAwesomeIcon icon={faCalendarDays} />}
                 </NavLink>
-                <NavLink className="nav" to="/#">
+                <NavLink className="nav" to="suche">
                     {<FontAwesomeIcon icon={faMagnifyingGlass} />}
                 </NavLink>
                 <NavLink className="nav" to="/#">

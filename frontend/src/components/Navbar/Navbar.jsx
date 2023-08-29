@@ -29,8 +29,8 @@ const Navbar = () => {
                     bookNook
                 </Link>{" "}
             </div>
-            <div className='btn-container'>
-                <button className='btn-login' onClick={handleLoginClick}>
+            <div className="btn-container">
+                <button className="btn-login" onClick={handleLoginClick}>
                     Login
                 </button>
                 {showModal && (

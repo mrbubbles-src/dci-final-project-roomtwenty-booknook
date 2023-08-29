@@ -8,6 +8,13 @@ import ScrollToTop from "./helpers/ScrollToTop";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import "react-toastify/dist/ReactToastify.css";
 
+import Datenschutz from "./pages/Datenschutz/Datenschutz";
+import Impressum from "./pages/Impressum/Impressum";
+
+import Search from "./pages/Search/Search";
+import SingleBookDetails from "./pages/SingleBookDetails/SingleBookDetails";
+
+
 function App() {
     return (
         <BookNookProvider>
@@ -17,9 +24,18 @@ function App() {
                     <Route path='/' element={<SharedLayout />}>
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route index element={<LandingPageNotLoggedInPage />} />
+
                         <Route
                             path='/users/profile'
                             element={<UserProfile />}
+                        />
+                        <Route path="Datenschutz" element={<Datenschutz />} />
+                        <Route path="Impressum" element={<Impressum />} />
+
+                        <Route path="suche" element={<Search />} />
+                        <Route
+                            path="buch/:id"
+                            element={<SingleBookDetails />}
                         />
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route path='*' element={<NotFound />} />

@@ -1,0 +1,15 @@
+@import "../../scss/styleVariables";
+
+div {
+    // background-color: $accent-2;
+
+    .paragraph {
+        color: black;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 1em 1em 0 1em;
+        padding: 0.8em 1em 0.8em 1em;
+        font-family: text-bold, sans-serif;
+    }
+}

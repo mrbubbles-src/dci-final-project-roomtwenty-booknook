@@ -1,20 +1,24 @@
 const mongoose = require("mongoose");
 const Book = require("./book.schema");
 const User = require("./user.schema");
-const { searchBooksOnGoogleAPI } = require("./google.book.api");
+const {
+    GoogleBooksAPI,
+    SingleGoogleBookURLWithID,
+} = require("./google.book.api");
 
+//Volumens(Bücher/Bände) in Google Datenbank suchen
 async function searchBooksOnGoogle(searchQuery) {
     try {
-        return await searchBooksOnGoogleAPI(searchQuery);
+        return await GoogleBooksAPI(searchQuery);
     } catch (error) {
         throw new Error();
     }
 }
 
-// alle Bücher in Datenbank finden
+// alle Bücher in Datenbank finden (nur Admins)
 async function getAllBooks() {
     try {
-        return await Book.find({});
+        return await GoogleBooksAPI();
     } catch (error) {
         throw new Error(error);
     }
@@ -22,8 +26,12 @@ async function getAllBooks() {
 
 // einzelnes Buch mit Buchdaten speichern
 async function saveBook(bookData) {
+    console.log("seebook:", bookData);
     try {
-        return await Book.create(bookData);
+        const book = new Book(bookData);
+        const response = await book.save();
+        console.log("response:", response);
+        return response;
     } catch (error) {
         throw error;
     }
