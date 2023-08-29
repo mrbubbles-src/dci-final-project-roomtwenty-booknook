@@ -50,11 +50,14 @@ async function httpGetAllBooks(req, res) {
 
 // Buch in Datenbank/ Readlist speichern
 async function httpSaveBook(req, res, next) {
+    console.log("PATH", req.path);
     try {
         // buch daten
         const book = req.body;
         // userID aus dem token
         const { userID: _userID } = req;
+        // listname aus url params
+        const listname = req.params.listname;
 
         // überprüfung ob buch anhand ID n DB vorhanden ist
         const existingBook = await Book.findOne({ id: book.id });
@@ -82,25 +85,27 @@ async function httpSaveBook(req, res, next) {
 
         // abfrage ob bookID bereits in readList vorhanden ist
         if (
-            user.readList.some(
+            user[listname].some(
                 (item) => item.book.toString() === bookID.toString()
             )
         ) {
             // wenn ja rückmeldung geben dass es der fall ist
-            console.log("Buch ist bereits auf ihrer Readlist");
+            console.log(`Buch ist bereits auf ihrer ${listname} liste`);
         } else {
-            // ansonsten bookID in readList array pushen
-            user.readList.push({ book: bookID });
-            // user speichern
+            // otherwise push bookID into wantToRead array
+            user[listname].push({ book: bookID });
+            // save user
             await user.save();
-            console.log("Buch wurde der Readlist hinzugefügt");
+            console.log(`Book was added to your ${listname} liste`);
         }
-        // readlist des users erhalten
-        const readList = await showReadlist(_userID);
+
+        // get user's readlist
+        const lists = await showReadlist(_userID);
+
         // response
         res.status(200).json({
             title: `${user.username}'s Leseliste:`,
-            readlist: readList,
+            lists: lists,
         });
     } catch (error) {
         next(error);

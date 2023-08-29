@@ -72,12 +72,17 @@ async function adminDeleteUser(id) {
 async function showReadlist(userID) {
     try {
         const user = await User.findOne({ _id: userID })
-            .select("username readList")
-            .populate("readList.book", "title author published");
-        const readList = user.readList.map((singleBook) => singleBook.book);
+            .select("username currentlyReading alreadyRead wantToRead")
+            .populate(
+                "currentlyReading alreadyRead wantToRead",
+                "title author published"
+            );
+
         return {
-            title: `Hier ist deine Leseliste, ${user.username}:`,
-            usersReadlist: readList,
+            title: `Hier sind deine Listen, ${user.username}:`,
+            currentlyReading: user.currentlyReading,
+            alreadyRead: user.alreadyRead,
+            wantToRead: user.wantToRead,
         };
     } catch (error) {
         throw error;

@@ -16,7 +16,9 @@
         family: headings-black;
         size: $xl;
     }
-
+    .logo-text {
+        color: $accent-2;
+    }
     .logo-container {
         grid-column: 2;
         display: flex;
