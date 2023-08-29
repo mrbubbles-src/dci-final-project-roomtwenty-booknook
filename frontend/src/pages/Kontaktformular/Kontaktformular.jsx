@@ -1,11 +1,11 @@
 import React from "react";
 import "./Kontaktformular.scss";
 
-import { BuchNichtVorhanden } from "./Themenauswahl/BuchNichtVorhanden";
-import { Fragen } from "./Themenauswahl/Fragen";
-import { Anregungen } from "./Themenauswahl/Anregungen";
-import { Irgendwas } from "./Themenauswahl/Irgendwas";
-import { NochIrgendwas } from "./Themenauswahl/NochIrgendwas";
+import BuchNichtVorhanden from "./Themenauswahl/BuchNichtVorhanden";
+import Fragen from "./Themenauswahl/Fragen";
+import Anregungen from "./Themenauswahl/Anregungen";
+import Irgendwas from "./Themenauswahl/Irgendwas";
+import NochIrgendwas from "./Themenauswahl/NochIrgendwas";
 
 const Kontaktformular = () => {
     return (
