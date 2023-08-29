@@ -1,57 +1,45 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "../LoginForm/loginform.scss";
+import useAuth from "../../customhooks/auth"
+import "./loginform.scss";
 
-const LoginForm = () => {
+const LoginForm = ({ onClose }) => {
     const navigate = useNavigate();
+    const { login } = useAuth();
     const [loginValue, setLoginValue] = useState({
         username: "",
         password: "",
     });
-    const { username, password } = loginValue;
 
-    const handleOnChange = (e, name) => {
-        const { value } = e.target;
-        console.log(name, value);
+    const handleOnChange = (e) => {
+        const { value, name } = e.target;
         setLoginValue({ ...loginValue, [name]: value });
     };
-
-    //state variable ändern
-
-    const handleError = (err) =>
-        toast.error(err, {
-            position: "bottom-left",
-        });
-    const handleSuccess = (msg) =>
-        toast.success(msg, {
-            position: "bottom-left",
-        });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/users/login",
+                "http://localhost:3000/users/login",
                 {
-                    username,
-                    password,
+                    username: loginValue.username,
+                    password: loginValue.password,
                 },
                 { withCredentials: true }
             );
-            console.log(data);
-            const { success, message } = data;
-            if (success) {
-                handleSuccess(message);
-                setTimeout(() => {
-                    navigate("/users/profile");
-                }, 1000);
+            if (data.securityToken) {
+                login(data.securityToken);
+                toast.success("Login Success");
+                onClose();
+                navigate("/users/profile");
             } else {
-                handleError(message);
+                toast.error("Username or Password wrong.");
             }
         } catch (error) {
-            console.log(error);
+            console.error("Error:", error);
+            toast.error("An error occurred.");
         }
     };
 
@@ -63,20 +51,22 @@ const LoginForm = () => {
                 placeholder='Username'
                 type='text'
                 id='username'
+                name='username'
                 className='formInput'
-                value={username}
+                value={loginValue.username}
                 required
-                onChange={(e) => handleOnChange(e, "username")}
+                onChange={handleOnChange}
             />
             <label htmlFor='password'></label>
             <input
                 placeholder='Password'
                 type='password'
                 id='password'
+                name='password'
                 className='formInput'
-                value={password}
+                value={loginValue.password}
                 required
-                onChange={(e) => handleOnChange(e, "password")}
+                onChange={handleOnChange}
             />
             <div className='buttonContainer'>
                 <button className='btn-login' type='submit'>

@@ -1,7 +1,15 @@
 import React from "react";
+import useAuth from "../../customhooks/auth";
 
 const UserProfile = () => {
-    return <h1>Profile</h1>;
+    const { logout } = useAuth();
+
+    return (
+        <>
+            <h1>Profile</h1>
+            <button onClick={logout}>Logout</button>
+        </>
+    );
 };
 
 export default UserProfile;

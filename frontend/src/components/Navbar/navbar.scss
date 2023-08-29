@@ -15,7 +15,9 @@
         family: headings-black;
         size: $xl;
     }
-
+    .logo-text {
+        color: $accent-2;
+    }
     .logo-container {
         grid-column: 2;
         display: flex;
@@ -39,7 +41,7 @@
         color: $accent-2;
         padding: 8px;
     }
-    .heading-login{
+    .heading-login {
         text-align: center;
     }
 }

@@ -21,7 +21,6 @@ function App() {
                             path='/users/profile'
                             element={<UserProfile />}
                         />
-
                         {/* die jeweiligen pages routes hier zwische rein */}
                         <Route path='*' element={<NotFound />} />
                     </Route>

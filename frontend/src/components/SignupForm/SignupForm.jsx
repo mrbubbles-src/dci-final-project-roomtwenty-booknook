@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./signupform.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const SignupForm = () => {
+const SignupForm = ({ onClose }) => {
     const navigate = useNavigate();
     const [signupValue, setSignupValue] = useState({
         username: "",
@@ -40,11 +40,13 @@ const SignupForm = () => {
             const { success, message } = data;
             if (success) {
                 handleSuccess(message);
+                onClose();
                 setTimeout(() => {
                     navigate("/users/profile");
                 }, 1000);
+            } else {
+                handleError(message);
             }
-            handleError(message);
         } catch (error) {
             console.log(error);
         }
