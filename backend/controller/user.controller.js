@@ -7,6 +7,9 @@ const {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
+
+    // addBookToAlreadyRead,
+    // addBookToWantToRead,
 } = require("../model/user.model");
 const { createSecurityToken } = require("../lib/security/token");
 
@@ -103,6 +106,7 @@ async function httpShowReadList(req, res, next) {
         next(error);
     }
 }
+
 module.exports = {
     httpCreateUser,
     httpAuthenticateUser,

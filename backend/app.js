@@ -19,6 +19,7 @@ const mongoUser = process.env.MONGO_USER;
 const mongoPassword = process.env.MONGO_PASSWORD;
 const mongoCluster = process.env.MONGO_CLUSTER;
 const mongoDatabase = process.env.MONGO_DATABASE;
+const PORT = process.env.PORT || 4000;
 
 mongoose
     .connect(
@@ -34,6 +35,7 @@ mongoose
     .catch((error) => {
         console.error("BookNookDB connection error:", error);
     });
+
 app.use(cors());
 
 app.use(logger("dev"));
@@ -47,5 +49,9 @@ app.use("/users", usersRouter);
 app.use("/books", booksRouter);
 
 app.use(errorHandler);
+
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+});
 
 module.exports = app;

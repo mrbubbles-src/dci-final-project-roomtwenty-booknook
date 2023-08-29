@@ -19,6 +19,7 @@ const {
     authenticateToken,
     adminCheck,
 } = require("../middleware/userValidation");
+const { httpFeedback } = require("../controller/nodemailer.controller");
 
 const router = express.Router();
 
@@ -63,4 +64,5 @@ router.delete(
     httpAdminDeleteUser
 );
 
+router.post("/feedback", httpFeedback);
 module.exports = router;

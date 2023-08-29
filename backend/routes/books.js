@@ -25,7 +25,7 @@ router.get("/searchbooks", httpSearchBooksOnGoogle);
 router.get("/singleBook/:id", httpGetSingleBook);
 
 //USER -> Buch speichern
-router.post("/addBooks", authenticateToken, httpSaveBook);
+router.post("/addBooks/:listname", authenticateToken, httpSaveBook);
 
 //ADMIN -> buch löschen
 router.delete(

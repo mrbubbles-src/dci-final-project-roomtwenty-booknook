@@ -9,7 +9,7 @@ async function GoogleBooksAPI(searchQuery) {
     try {
         const searchURL = `${url}?q=${encodeURIComponent(
             searchQuery
-        )}&key=${apiKey}&maxResults=10`;
+        )}&key=${apiKey}&maxResults=40`;
 
         const responseSearchURL = await fetch(searchURL);
 
