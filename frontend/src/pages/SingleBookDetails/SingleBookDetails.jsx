@@ -10,40 +10,10 @@ import AddToLists from "../../components/AddToLists/AddToLists";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
+
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
-    const { bookData } = useContext(BookNookContext);
-    const [sendToBackendDbLists, setSendToBackendDbLists] = useState({
-        id: "",
-        volumenInfo: {
-            title: "",
-            subtitle: "",
-            authors: [""],
-            publisher: "",
-            publisherDate: "",
-            descriptions: "",
-            averageRating: 0,
-            ratingsCount: 0,
-            language: "",
-            canonicalVolumeLink: "",
-            industryIdentifiers: [
-                { type: "", identifier: "" },
-                { type: "", identifier: "" },
-            ],
-            categories: [""],
-            pageCount: 0,
-            imageLinks: {
-                smallThumbnail: "",
-                thumbnail: "",
-                medium: "",
-                large: "",
-                extraLarge: "",
-            },
-        },
-        accessInfo: {
-            webReaderLink: "",
-        },
-    });
+    const { bookData, token } = useContext(BookNookContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -128,42 +98,42 @@ const SingleBookDetails = () => {
     const bookDataAverageRating = item ? item.volumeInfo.averageRating : 0;
     const bookDataRatingsCount = item ? item.volumeInfo.ratingsCount : 0;
     const handleSendToLists = async (url) => {
+        const body = {
+            id: id,
+            volumeInfo: {
+                title: title,
+                subtitle: subtitle,
+                authors: authors,
+                publisher: publisher,
+                publishedDate: publishedDate,
+                description: description,
+                averageRating: averageRating || bookDataAverageRating,
+                ratingsCount: ratingsCount || bookDataRatingsCount,
+                language: language,
+                canonicalVolumeLink: canonicalVolumeLink,
+                industryIdentifiers: industryIdentifiers,
+                categories: categories,
+                pageCount: pageCount,
+                imageLinks: {
+                    smallThumbnail: smallThumbnail,
+                    thumbnail: thumbnail,
+                    medium: medium,
+                    large: large,
+                    extraLarge: extraLarge,
+                },
+            },
+            accessInfo: {
+                webReaderLink: "",
+            },
+        };
         try {
-            setSendToBackendDbLists({
-                id: id,
-                volumeInfo: {
-                    title: title,
-                    subtitle: subtitle,
-                    authors: authors,
-                    publisher: publisher,
-                    publishedDate: publishedDate,
-                    description: description,
-                    averageRating: averageRating || bookDataAverageRating,
-                    ratingsCount: ratingsCount || bookDataRatingsCount,
-                    language: language,
-                    canonicalVolumeLink: canonicalVolumeLink,
-                    industryIdentifiers: industryIdentifiers,
-                    categories: categories,
-                    pageCount: pageCount,
-                    imageLinks: {
-                        smallThumbnail: smallThumbnail,
-                        thumbnail: thumbnail,
-                        medium: medium,
-                        large: large,
-                        extraLarge: extraLarge,
-                    },
-                },
-                accessInfo: {
-                    webReaderLink: "",
-                },
-            });
-            // console.log(sendToBackendDbLists);
             const response = await fetch(`${url}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(sendToBackendDbLists),
+                body: JSON.stringify(body),
             });
             const responseJson = await response.json();
             console.log(responseJson);
