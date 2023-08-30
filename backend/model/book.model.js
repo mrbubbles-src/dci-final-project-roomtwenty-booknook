@@ -57,40 +57,32 @@ async function removeBookFromLists(userID, bookID) {
         let userCurrentlyReadingList = user.currentlyReading;
         let userAlreadyReadList = user.alreadyRead;
         if (
-            userWantToReadList.lenght === 0 &&
-            userCurrentlyReadingList.lenght === 0 &&
+            userWantToReadList.length === 0 &&
+            userCurrentlyReadingList.length === 0 &&
             userAlreadyReadList.length === 0
         ) {
             console.log("Du hast nichts auf deinen Listen");
-        } else {
+        }
+        // buch auf den listen suchen
+        // wenn buch nicht gefunden wurde meldung rausgeben
+        // wenn buch gefunden wurde das hier was in der else steht ausführen
+        else {
             const updatedWantToReadList = userWantToReadList.filter(
                 (bookInList) => bookInList.book.toString() !== bookID
             );
-
             const updatedCurrentlyReadingList = userCurrentlyReadingList.filter(
                 (bookInList) => bookInList.book.toString() !== bookID
             );
-
             const updatedAlreadyReadingList = userAlreadyReadList.filter(
                 (bookInList) => bookInList.book.toString() !== bookID
             );
-            userWantToReadList = updatedWantToReadList;
-            userCurrentlyReadingList = updatedCurrentlyReadingList;
-            userAlreadyReadList = updatedAlreadyReadingList;
-
-            await user.save();
-
-            console.log("Das Buch wurde aus deinen Listen gelöscht");
+            const res = await User.findByIdAndUpdate(userID, {
+                currentlyReading: updatedCurrentlyReadingList,
+                wantToRead: updatedWantToReadList,
+                alreadyRead: updatedAlreadyReadingList,
+            });
+            return res;
         }
-        // if (userReadlist.length === 0) {
-        //     console.log("Keine Bücher auf der leseliste vorhanden.");
-        // } else {
-        //     const updatedReadlist = userReadlist.filter(
-        //         (bookInList) => bookInList.book.toString() !== bookID
-        //     );
-        //     user.readList = updatedReadlist;
-        //     await user.save();
-        // }
     } catch (error) {
         throw new Error(error);
     }
