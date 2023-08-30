@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 export const BookNookContext = React.createContext();
 
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
+    const [token, setToken] = useState(null);
     // const [userRating, setUserRating] = useState([]);
     // const [userRatingCount, setuserRatingCount] = useState(0);
     // buch suche spezifischer context start
@@ -27,6 +29,10 @@ const BookNookProvider = ({ children }) => {
         }
     }, [searchTerm]);
     // buch suche spezifischer context ende
+    useEffect(() => {
+        setToken(Cookies.get("jwtToken"));
+        // console.log("cookie.get", Cookies.get("gibts nicht"));
+    }, []);
     return (
         <BookNookContext.Provider
             value={{
@@ -36,6 +42,7 @@ const BookNookProvider = ({ children }) => {
                 searchReadMore,
                 setsearchReadMore,
                 isLoading,
+                token,
             }}
         >
             {children}

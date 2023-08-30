@@ -5,7 +5,7 @@ import axios from "axios";
 import useAuth from "../../customhooks/auth";
 import "./loginform.scss";
 
-const LoginForm = ({ onClose }) => {
+const LoginForm = ({ onClose, onLogin }) => {
     const navigate = useNavigate();
     const { login } = useAuth();
     const [loginValue, setLoginValue] = useState({
@@ -33,6 +33,7 @@ const LoginForm = ({ onClose }) => {
                 login(data.securityToken);
                 toast.success("Login Success");
                 onClose();
+                onLogin();
                 navigate("/users/profile");
             } else {
                 toast.error("Username or Password wrong.");

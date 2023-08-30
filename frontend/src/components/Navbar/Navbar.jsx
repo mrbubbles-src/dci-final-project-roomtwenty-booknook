@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.scss";
 import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import useAuth from "../../customhooks/auth";
 
 const Navbar = () => {
-    const { logout, isLoggedIn } = useAuth();
+    const { logout } = useAuth();
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const toggleForm = () => {
         setIsLoginVisible(!isLoginVisible);
@@ -23,6 +24,11 @@ const Navbar = () => {
         setShowModal(true);
     };
 
+    const handleLogout = () => {
+        logout();
+        setIsLoggedIn(false);
+    };
+
     return (
         <nav className='navbar-container'>
             <div className='logo-container'>
@@ -32,7 +38,7 @@ const Navbar = () => {
             </div>
             <div className='btn-container'>
                 {isLoggedIn ? (
-                    <button className='btn-login' onClick={logout}>
+                    <button className='btn-login' onClick={handleLogout}>
                         Logout
                     </button>
                 ) : (
@@ -44,7 +50,10 @@ const Navbar = () => {
                 {showModal && (
                     <Modal onClose={handleCloseModal}>
                         {isLoginVisible ? (
-                            <LoginForm onClose={handleCloseModal} />
+                            <LoginForm
+                                onClose={handleCloseModal}
+                                onLogin={() => setIsLoggedIn(true)}
+                            />
                         ) : (
                             <SignupForm onClose={handleCloseModal} />
                         )}
