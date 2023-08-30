@@ -4,11 +4,12 @@ import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
 import { Link } from "react-router-dom";
+import useAuth from "../../customhooks/auth";
 
 const Navbar = () => {
+    const { logout } = useAuth();
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
-    const [checkCookie, setCheckCookie] = useState("")
 
     const toggleForm = () => {
         setIsLoginVisible(!isLoginVisible);
@@ -29,9 +30,12 @@ const Navbar = () => {
                     bookNook
                 </Link>{" "}
             </div>
-            <div className="btn-container">
-                <button className="btn-login" onClick={handleLoginClick}>
+            <div className='btn-container'>
+                <button className='btn-login' onClick={handleLoginClick}>
                     Login
+                </button>
+                <button className='btn-login' onClick={logout}>
+                    Logout
                 </button>
                 {showModal && (
                     <Modal onClose={handleCloseModal}>
