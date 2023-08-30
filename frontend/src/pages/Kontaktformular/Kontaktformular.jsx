@@ -1,26 +1,38 @@
 import React from "react";
 import "./Kontaktformular.scss";
+import Link from "react-router-dom";
 
-import BuchNichtVorhanden from "./Themenauswahl/BuchNichtVorhanden";
-import Fragen from "./Themenauswahl/Fragen";
+import BuchNichtVorhanden from "../Themenauswahl/BuchNichtVorhanden";
+import Fragen from "../Themenauswahl/Fragen";
 import Anregungen from "./Themenauswahl/Anregungen";
-import Irgendwas from "./Themenauswahl/Irgendwas";
-import NochIrgendwas from "./Themenauswahl/NochIrgendwas";
+import Irgendwas from "../Themenauswahl/Irgendwas";
+import NochIrgendwas from "../Themenauswahl/NochIrgendwas";
 
-const Kontaktformular = () => {
+const Kontaktformular = ({ children }) => {
     return (
         <div>
-            <div>
-                <select name={"Themenauswahl"} size={"5"}>
-                    <option value={BuchNichtVorhanden}>
+            <select name={"Themenauswahl"} size={"5"}>
+                <option>
+                    <Link to={"../Themenauswahl/BuchNichtVorhanden"}>
                         Buch nicht vorhanden?
-                    </option>
-                    <option value={Fragen}>Fragen</option>
-                    <option value={Anregungen}>Anregungen</option>
-                    <option value={Irgendwas}>Irgendwas</option>
-                    <option value={NochIrgendwas}>Noch Irgendwas</option>
-                </select>
-            </div>
+                    </Link>
+                </option>
+                <option>
+                    <Link to={"../Themenauswahl/Fragen"}>Fragen?</Link>
+                </option>
+                <option>
+                    <Link to={"../Themenauswahl/Anregungen"}>Anregungen</Link>
+                </option>
+                <option>
+                    <Link to={"../Themenauswahl/Irgendwas"}>Irgendwas</Link>
+                </option>
+                <option>
+                    <Link to={"../Themenauswahl/NochIrgendwas"}>
+                        Noch Irgendwas
+                    </Link>
+                </option>
+            </select>
+            {children}
         </div>
     );
 };

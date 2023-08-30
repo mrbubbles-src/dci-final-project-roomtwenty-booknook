@@ -1,8 +1,9 @@
 import React from "react";
+import Kontaktformular from "../Kontaktformular";
 
 const BuchNichtVorhanden = () => {
     return (
-        <div>
+        <Kontaktformular>
             <form id="Kontaktformular" method="post" action="submit">
                 {" "}
                 <div>
@@ -67,7 +68,7 @@ const BuchNichtVorhanden = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </Kontaktformular>
     );
 };
 export default BuchNichtVorhanden;

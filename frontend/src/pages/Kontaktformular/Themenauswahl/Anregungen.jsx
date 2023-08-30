@@ -1,8 +1,9 @@
 import React from "react";
+import Kontaktformular from "../Kontaktformular";
 
 const Anregungen = () => {
     return (
-        <div>
+        <Kontaktformular>
             <form id="Kontaktformular" method="post" action="submit">
                 {" "}
                 <div>
@@ -44,7 +45,7 @@ const Anregungen = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </Kontaktformular>
     );
 };
 
