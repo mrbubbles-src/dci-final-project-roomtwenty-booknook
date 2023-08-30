@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import "./Kontaktformular.scss";
-import { Link } from "react-router-dom";
 
 import BuchNichtVorhanden from "./Themenauswahl/BuchNichtVorhanden";
 import Anregungen from "./Themenauswahl/Anregungen";
 import Feedback from "./Themenauswahl/Feedback";
 
-// import Irgendwas from "./Themenauswahl/Irgendwas";
-// import NochIrgendwas from "./Themenauswahl/NochIrgendwas";
-
 const Kontaktformular = () => {
     const [selectedOption, setSelectedOption] = useState("Feedback");
 
     const handleSelectChange = (event) => {
-        console.log("DAAA:" + event.target.value);
         setSelectedOption(event.target.value);
     };
     return (
