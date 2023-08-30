@@ -23,7 +23,6 @@ const AddToLists = ({ onButtonClick, bookId }) => {
 
     const handleDeleteFromLists = async (url) => {
         try {
-            console.log(bookId);
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -32,9 +31,6 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                 },
                 body: JSON.stringify({ bookID: bookId }),
             });
-
-            const responseJson = await response.json();
-            console.log(responseJson);
         } catch (error) {
             console.error(error);
         }
