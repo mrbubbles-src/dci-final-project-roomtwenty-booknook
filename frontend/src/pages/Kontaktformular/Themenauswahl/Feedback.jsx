@@ -1,12 +1,11 @@
 import React from "react";
-import Kontaktformular from "../Kontaktformular";
 
-const Anregungen = () => {
+const Feedback = () => {
     return (
         <form id="Kontaktformular" method="post" action="submit">
             {" "}
             <div>
-                <h1>Anregungen?</h1>
+                <h1>Fragen?</h1>
                 <p>Wir antworten Dir persönlich!</p>
             </div>
             <div className="Formfelderrahmen">
@@ -47,4 +46,4 @@ const Anregungen = () => {
     );
 };
 
-export default Anregungen;
+export default Feedback;

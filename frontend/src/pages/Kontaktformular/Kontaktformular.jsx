@@ -1,38 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Kontaktformular.scss";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import BuchNichtVorhanden from "../Themenauswahl/BuchNichtVorhanden";
-import Fragen from "../Themenauswahl/Fragen";
+import BuchNichtVorhanden from "./Themenauswahl/BuchNichtVorhanden";
+// import Fragen from "./Themenauswahl/Fragen";
 import Anregungen from "./Themenauswahl/Anregungen";
-import Irgendwas from "../Themenauswahl/Irgendwas";
-import NochIrgendwas from "../Themenauswahl/NochIrgendwas";
+import Feedback from "./Themenauswahl/Feedback";
 
-const Kontaktformular = ({ children }) => {
+// import Irgendwas from "./Themenauswahl/Irgendwas";
+// import NochIrgendwas from "./Themenauswahl/NochIrgendwas";
+
+const Kontaktformular = () => {
+    const [selectedOption, setSelectedOption] = useState("Feedback");
+
+    const handleSelectChange = (event) => {
+        console.log("DAAA:" + event.target.value);
+        setSelectedOption(event.target.value);
+    };
     return (
         <div>
-            <select name={"Themenauswahl"} size={"5"}>
-                <option>
-                    <Link to={"../Themenauswahl/BuchNichtVorhanden"}>
-                        Buch nicht vorhanden?
-                    </Link>
-                </option>
-                <option>
-                    <Link to={"../Themenauswahl/Fragen"}>Fragen?</Link>
-                </option>
-                <option>
-                    <Link to={"../Themenauswahl/Anregungen"}>Anregungen</Link>
-                </option>
-                <option>
-                    <Link to={"../Themenauswahl/Irgendwas"}>Irgendwas</Link>
-                </option>
-                <option>
-                    <Link to={"../Themenauswahl/NochIrgendwas"}>
-                        Noch Irgendwas
-                    </Link>
-                </option>
+            <select
+                name="Themenauswahl"
+                onChange={handleSelectChange}
+                value={selectedOption}
+            >
+                <option value="Feedback">Deine meinung ist uns wichtig!</option>
+                <option value="BuchNichtVorhanden">Buch not availabe?</option>
+                <option value="Anregungen">Anregung</option>
             </select>
-            {children}
+            {selectedOption === "BuchNichtVorhanden" ? (
+                <BuchNichtVorhanden />
+            ) : (
+                ""
+            )}
+            {selectedOption === "Anregungen" ? <Anregungen /> : null}
+            {selectedOption === "Feedback" ? <Feedback /> : null}
         </div>
     );
 };

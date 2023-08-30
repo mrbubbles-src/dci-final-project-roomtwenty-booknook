@@ -10,10 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Kontaktformular from "./pages/Kontaktformular/Kontaktformular";
 import BuchNichtVorhanden from "./pages/Kontaktformular/Themenauswahl/BuchNichtVorhanden";
-import Fragen from "./pages/Kontaktformular/Themenauswahl/Fragen";
-import Anregungen from "./pages/Kontaktformular/Themenauswahl/Anregungen";
-import Irgendwas from "./pages/Kontaktformular/Themenauswahl/Irgendwas";
-import NochIrgendwas from "./pages/Kontaktformular/Themenauswahl/NochIrgendwas";
+// import Fragen from "./pages/Kontaktformular/Themenauswahl/Fragen";
+// import Anregungen from "./pages/Kontaktformular/Themenauswahl/Anregungen";
+// import Irgendwas from "./pages/Kontaktformular/Themenauswahl/Irgendwas";
+// import NochIrgendwas from "./pages/Kontaktformular/Themenauswahl/NochIrgendwas";
 import Datenschutz from "./pages/Datenschutz/Datenschutz";
 import Impressum from "./pages/Impressum/Impressum";
 
@@ -39,13 +39,13 @@ function App() {
                             path="/buchnichtvorhanden"
                             element={<BuchNichtVorhanden />}
                         />
-                        <Route path="/fragen" element={<Fragen />} />
+                        {/* <Route path="/fragen" element={<Fragen />} />
                         <Route path="/anregungen" element={<Anregungen />} />
                         <Route path="/irgendwas" element={<Irgendwas />} />
                         <Route
                             path="/nochirgendwas"
                             element={<NochIrgendwas />}
-                        />
+                        /> */}
                         <Route path="datenschutz" element={<Datenschutz />} />
                         <Route path="impressum" element={<Impressum />} />
 
