@@ -106,8 +106,8 @@ const SingleBookDetails = () => {
                 publisher: publisher,
                 publishedDate: publishedDate,
                 description: description,
-                averageRating: averageRating || bookDataAverageRating,
-                ratingsCount: ratingsCount || bookDataRatingsCount,
+                averageRating: averageRating || bookDataAverageRating || 0,
+                ratingsCount: ratingsCount || bookDataRatingsCount || 0,
                 language: language,
                 canonicalVolumeLink: canonicalVolumeLink,
                 industryIdentifiers: industryIdentifiers,
@@ -166,7 +166,7 @@ const SingleBookDetails = () => {
                             medium ||
                             thumbnail ||
                             smallThumbnail
-                        ).replace("http", "https") || NoImage
+                        )?.replace("http", "https") || NoImage
                     }
                     target="_blank"
                     rel="noopener noreferrer"
@@ -175,7 +175,7 @@ const SingleBookDetails = () => {
                     <img
                         className="single-book-image"
                         src={
-                            (medium || thumbnail || smallThumbnail).replace(
+                            (medium || thumbnail || smallThumbnail)?.replace(
                                 "http",
                                 "https"
                             ) || NoImage
