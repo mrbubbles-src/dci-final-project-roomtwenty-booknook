@@ -30,7 +30,7 @@ const volumeInfoSchema = new mongoose.Schema({
     industryIdentifiers: [isbnSchema],
     categories: [{ type: String }],
     pageCount: { type: Number },
-    imageLinks: { imageLinksSchema },
+    imageLinks: imageLinksSchema,
 });
 const accessInfoSchema = new mongoose.Schema({
     webReaderLink: { type: String },
