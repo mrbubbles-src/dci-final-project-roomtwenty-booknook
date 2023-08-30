@@ -1,5 +1,6 @@
 import React from "react";
 import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
+import "./userprofile.scss";
 import useAuth from "../../customhooks/auth";
 
 const UserProfile = () => {
@@ -7,7 +8,7 @@ const UserProfile = () => {
 
     return (
         <>
-            <h1>Profile</h1> 
+            <h1 className="profile">Profile</h1>
             <div>
                 <LeseChallenge />
             </div>

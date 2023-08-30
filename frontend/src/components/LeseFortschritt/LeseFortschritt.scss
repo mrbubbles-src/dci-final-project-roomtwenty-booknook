@@ -4,25 +4,50 @@
     display: flex;
     flex-flow: column;
     margin: 1em 1em;
-    font-family: text-bold, sans-serif;
+    font-family: headings-semibold, sans-serif;
+    .progress-bar {
+        height: 20px; // Höhe des Balkens
+        background-color: #4caf50; // Farbe des Fortschrittsbalkens
+        max-width: 250px; // Der Balken wird über die Breite gesteuert
+        transition: width 0.5s; // Eine sanfte Animation beim Ändern des Fortschritts
+        text-align: center;
+        margin: 5px;
+    }
+    .user-profile {
+        display: grid;
+        grid-template-areas:
+            "a b"
+            "a c"
+            "a d";
+    }
+    .fortschritt {
+        display: grid;
+        grid-template-areas:
+            "a b"
+            "a c"
+            "a d";
+    }
+    .information-container {
+        border: 1px solid red;
+
+        .seiten-gelesen {
+            margin-top: 15px;
+            font-size: 1em;
+        }
+    }
     .profile-card-container {
-        display: flex;
         background-color: $primary;
+        height: 120px;
         border: 3px solid black;
         border-radius: 25px;
         padding: 5px;
-        gap: 14em;
-        span {
+        .number {
             color: red;
         }
         .text-right {
             border: 1px solid red;
-            .progress-bar {
-                height: 10px; // Höhe des Balkens
-                background-color: #4caf50; // Farbe des Fortschrittsbalkens
-                width: 0; // Der Balken wird über die Breite gesteuert
-                transition: width 0.5s; // Eine sanfte Animation beim Ändern des Fortschritts
-            }
+            justify-self: center;
+            width: 200px;
         }
         .profile-img {
             border: 1px solid white;
