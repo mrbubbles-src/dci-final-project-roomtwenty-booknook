@@ -12,6 +12,7 @@ const BookNookProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState(null);
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if (searchTerm !== null) {
@@ -43,6 +44,8 @@ const BookNookProvider = ({ children }) => {
                 setsearchReadMore,
                 isLoading,
                 token,
+                isLoggedIn,
+                setIsLoggedIn,
             }}
         >
             {children}
