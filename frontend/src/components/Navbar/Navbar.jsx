@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
-    const [checkCookie, setCheckCookie] = useState("")
 
     const toggleForm = () => {
         setIsLoginVisible(!isLoginVisible);
@@ -23,9 +22,9 @@ const Navbar = () => {
     };
 
     return (
-        <nav className='navbar-container'>
-            <div className='logo-container'>
-                <Link to={"/"} className='logo-text'>
+        <nav className="navbar-container">
+            <div className="logo-container">
+                <Link to={"/"} className="logo-text">
                     bookNook
                 </Link>{" "}
             </div>
@@ -40,7 +39,7 @@ const Navbar = () => {
                         ) : (
                             <SignupForm onClose={handleCloseModal} />
                         )}
-                        <button className='btn-style' onClick={toggleForm}>
+                        <button className="btn-style" onClick={toggleForm}>
                             {isLoginVisible
                                 ? "Noch kein Mitglied?"
                                 : "Bereits Mitglied?"}
