@@ -4,7 +4,7 @@ const {
     saveBook,
     getAllBooks,
     adminDeleteBookFromDb,
-    deleteBookFromReadlist,
+    removeBookFromLists,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
@@ -111,7 +111,6 @@ async function httpSaveBook(req, res, next) {
         next(error);
     }
 }
-
 // Buchdaten zu ausgewähltem Buch aus der Datenbank löschen
 async function httpAdminDeleteBookFromDb(req, res, next) {
     const { id } = req.params;
@@ -128,21 +127,21 @@ async function httpAdminDeleteBookFromDb(req, res, next) {
     }
 }
 
-// Buchdaten aus der Buchliste eines bestimmten users löschen (vom user selbst)
-async function httpDeleteBookFromReadlist(req, res, next) {
+// Buchdaten aus den listen eines bestimmten users löschen (vom user selbst)
+async function httpRemoveBookFromLists(req, res, next) {
     const { userID: _userID } = req;
-    const { bookID } = req.params;
+    const { bookID } = req.body;
 
     try {
-        const deletedBook = await deleteBookFromReadlist(_userID, bookID);
+        const deletedBook = await removeBookFromLists(_userID, bookID);
         res.status(204).json({
-            message: "Buch wurde aus der Leseliste gelöscht.",
+            message: "Buch wurde aus deinen Listen gelöscht.",
             bookDeleted: deletedBook,
         });
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            message: "Buch konnte nicht in der Leseliste gefunden werden.",
+            message: "Buch konnte nicht auf deinen Listen gefunden werden.",
         });
     }
 }
@@ -152,6 +151,6 @@ module.exports = {
     httpSaveBook,
     httpGetAllBooks,
     httpAdminDeleteBookFromDb,
-    httpDeleteBookFromReadlist,
     httpGetSingleBook,
+    httpRemoveBookFromLists,
 };
