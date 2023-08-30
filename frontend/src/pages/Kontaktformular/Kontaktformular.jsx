@@ -3,7 +3,6 @@ import "./Kontaktformular.scss";
 import { Link } from "react-router-dom";
 
 import BuchNichtVorhanden from "./Themenauswahl/BuchNichtVorhanden";
-// import Fragen from "./Themenauswahl/Fragen";
 import Anregungen from "./Themenauswahl/Anregungen";
 import Feedback from "./Themenauswahl/Feedback";
 
