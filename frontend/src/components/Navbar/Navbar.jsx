@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../customhooks/auth";
 
 const Navbar = () => {
-    const { logout } = useAuth();
+    const { logout, isLoggedIn } = useAuth();
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
 
@@ -31,12 +31,16 @@ const Navbar = () => {
                 </Link>{" "}
             </div>
             <div className='btn-container'>
-                <button className='btn-login' onClick={handleLoginClick}>
-                    Login
-                </button>
-                <button className='btn-login' onClick={logout}>
-                    Logout
-                </button>
+                {isLoggedIn ? (
+                    <button className='btn-login' onClick={logout}>
+                        Logout
+                    </button>
+                ) : (
+                    <button className='btn-login' onClick={handleLoginClick}>
+                        Login
+                    </button>
+                )}
+
                 {showModal && (
                     <Modal onClose={handleCloseModal}>
                         {isLoginVisible ? (
