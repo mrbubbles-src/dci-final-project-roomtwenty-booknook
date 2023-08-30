@@ -56,6 +56,9 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                 </button>
                 {showAddToListModal && (
                     <Modal onClose={handleCloseAddToListModal}>
+                        <h2 className="add-to-lists-title">
+                            Auf welche Liste möchtest du Das buch hinzufügen?
+                        </h2>
                         <button
                             className="book-actions-add-to-lists want-to-read"
                             onClick={() =>
