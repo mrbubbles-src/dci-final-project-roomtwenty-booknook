@@ -7,11 +7,9 @@ import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./helpers/ScrollToTop";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import "react-toastify/dist/ReactToastify.css";
-
 import Kontaktformular from "./pages/Kontaktformular/Kontaktformular";
 import Datenschutz from "./pages/Datenschutz/Datenschutz";
 import Impressum from "./pages/Impressum/Impressum";
-
 import Search from "./pages/Search/Search";
 import SingleBookDetails from "./pages/SingleBookDetails/SingleBookDetails";
 
