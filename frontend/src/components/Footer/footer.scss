@@ -11,6 +11,11 @@
             family: text-bold, sans-serif;
         }
         color: $font;
-        text-decoration: 1px underline $accent-2;
+        &:focus,
+        &:hover {
+            outline: none;
+            border-bottom: 2px inset $accent-1;
+            margin-bottom: -2px;
+        }
     }
 }

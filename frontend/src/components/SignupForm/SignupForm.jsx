@@ -42,7 +42,7 @@ const SignupForm = ({ onClose }) => {
                 handleSuccess(message);
                 onClose();
                 setTimeout(() => {
-                    navigate("/users/profile");
+                    navigate("/");
                 }, 1000);
             } else {
                 handleError(message);

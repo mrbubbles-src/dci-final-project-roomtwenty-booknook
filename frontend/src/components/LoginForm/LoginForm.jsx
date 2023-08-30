@@ -34,7 +34,7 @@ const LoginForm = ({ onClose, onLogin }) => {
                 toast.success("Login Success");
                 onClose();
                 onLogin();
-                navigate("/users/profile");
+                navigate("/");
             } else {
                 toast.error("Username or Password wrong.");
             }
