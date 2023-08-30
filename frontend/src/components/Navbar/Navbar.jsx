@@ -71,3 +71,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+// Setzen vom COokie im Provider, ob es ihn gibt, falls ja loginstate true
