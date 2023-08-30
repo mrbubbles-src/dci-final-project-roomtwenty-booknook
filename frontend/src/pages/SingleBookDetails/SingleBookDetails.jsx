@@ -7,44 +7,12 @@ import { BookNookContext } from "../../context/BookNookProvider";
 import ReactCountryFlag from "react-country-flag";
 import StarRatings from "react-star-ratings";
 import AddToLists from "../../components/AddToLists/AddToLists";
-import Cookies from "js-cookie";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
-    const { bookData } = useContext(BookNookContext);
-    const [sendToBackendDbLists, setSendToBackendDbLists] = useState({
-        id: "",
-        volumeInfo: {
-            title: "",
-            subtitle: "",
-            authors: [""],
-            publisher: "",
-            publishedDate: "",
-            description: "",
-            averageRating: 0,
-            ratingsCount: 0,
-            language: "",
-            canonicalVolumeLink: "",
-            industryIdentifiers: [
-                { type: "", identifier: "" },
-                { type: "", identifier: "" },
-            ],
-            categories: [""],
-            pageCount: 0,
-            imageLinks: {
-                smallThumbnail: "",
-                thumbnail: "",
-                medium: "",
-                large: "",
-                extraLarge: "",
-            },
-        },
-        accessInfo: {
-            webReaderLink: "",
-        },
-    });
+    const { bookData, token } = useContext(BookNookContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -132,50 +100,42 @@ const SingleBookDetails = () => {
     const bookDataRatingsCount = item ? item.volumeInfo.ratingsCount : 0;
 
     const handleSendToLists = async (url) => {
+        const body = {
+            id: id,
+            volumeInfo: {
+                title: title,
+                subtitle: subtitle,
+                authors: authors,
+                publisher: publisher,
+                publishedDate: publishedDate,
+                description: description,
+                averageRating: averageRating || bookDataAverageRating || 0,
+                ratingsCount: ratingsCount || bookDataRatingsCount || 0,
+                language: language,
+                canonicalVolumeLink: canonicalVolumeLink,
+                industryIdentifiers: industryIdentifiers,
+                categories: categories,
+                pageCount: pageCount,
+                imageLinks: {
+                    smallThumbnail: smallThumbnail,
+                    thumbnail: thumbnail,
+                    medium: medium,
+                    large: large,
+                    extraLarge: extraLarge,
+                },
+            },
+            accessInfo: {
+                webReaderLink: "",
+            },
+        };
         try {
-            const token = Cookies.get("jwtToken");
-            if (!token) {
-                console.log("Token nicht Aktiv");
-                return;
-            }
-            const authToken = `Bearer ${token}`;
-
-            const updatedSendToBackendDbLists = {
-                id: id,
-                volumeInfo: {
-                    title: title,
-                    subtitle: subtitle,
-                    authors: authors,
-                    publisher: publisher,
-                    publishedDate: publishedDate,
-                    description: description,
-                    averageRating: averageRating || bookDataAverageRating,
-                    ratingsCount: ratingsCount || bookDataRatingsCount,
-                    language: language,
-                    canonicalVolumeLink: canonicalVolumeLink,
-                    industryIdentifiers: industryIdentifiers,
-                    categories: categories,
-                    pageCount: pageCount,
-                    imageLinks: {
-                        smallThumbnail: smallThumbnail,
-                        thumbnail: thumbnail,
-                        medium: medium,
-                        large: large,
-                        extraLarge: extraLarge,
-                    },
-                },
-                accessInfo: {
-                    webReaderLink: "",
-                },
-            };
-
-            const response = await fetch(url, {
+            const response = await fetch(`${url}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: authToken,
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(updatedSendToBackendDbLists),
+                body: JSON.stringify(body),
             });
 
             const responseJson = await response.json();
@@ -210,7 +170,7 @@ const SingleBookDetails = () => {
                             medium ||
                             thumbnail ||
                             smallThumbnail
-                        ).replace("http", "https") || NoImage
+                        )?.replace("http", "https") || NoImage
                     }
                     target='_blank'
                     rel='noopener noreferrer'
@@ -219,7 +179,7 @@ const SingleBookDetails = () => {
                     <img
                         className='single-book-image'
                         src={
-                            (medium || thumbnail || smallThumbnail).replace(
+                            (medium || thumbnail || smallThumbnail)?.replace(
                                 "http",
                                 "https"
                             ) || NoImage
