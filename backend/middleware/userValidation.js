@@ -5,7 +5,7 @@ require("dotenv").config();
 const secretTokenPW = process.env.TOKEN_SECRET;
 
 async function authenticateToken(req, res, next) {
-    const token = req.headers.authorization;
+    const token = req.headers.authorization.replace("Bearer ", "");
     if (!token) {
         const error = new Error("Invalid token");
         error.statusCode = 401;

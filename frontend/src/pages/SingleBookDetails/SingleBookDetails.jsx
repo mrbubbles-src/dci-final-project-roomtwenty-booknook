@@ -12,38 +12,7 @@ const SingleBookDetails = () => {
     const { id } = useParams();
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
-    const { bookData } = useContext(BookNookContext);
-    const [sendToBackendDbLists, setSendToBackendDbLists] = useState({
-        id: "",
-        volumenInfo: {
-            title: "",
-            subtitle: "",
-            authors: [""],
-            publisher: "",
-            publisherDate: "",
-            descriptions: "",
-            averageRating: 0,
-            ratingsCount: 0,
-            language: "",
-            canonicalVolumeLink: "",
-            industryIdentifiers: [
-                { type: "", identifier: "" },
-                { type: "", identifier: "" },
-            ],
-            categories: [""],
-            pageCount: 0,
-            imageLinks: {
-                smallThumbnail: "",
-                thumbnail: "",
-                medium: "",
-                large: "",
-                extraLarge: "",
-            },
-        },
-        accessInfo: {
-            webReaderLink: "",
-        },
-    });
+    const { bookData, token } = useContext(BookNookContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -56,6 +25,7 @@ const SingleBookDetails = () => {
         }
         fetchData();
     }, []);
+
     if (isSingleBookLoading) {
         return <LoadingSpinner />;
     }
@@ -124,47 +94,50 @@ const SingleBookDetails = () => {
         }
         return null;
     }
+
     const item = findInBookData(bookData, singleBookData.id);
     const bookDataAverageRating = item ? item.volumeInfo.averageRating : 0;
     const bookDataRatingsCount = item ? item.volumeInfo.ratingsCount : 0;
+
     const handleSendToLists = async (url) => {
+        const body = {
+            id: id,
+            volumeInfo: {
+                title: title,
+                subtitle: subtitle,
+                authors: authors,
+                publisher: publisher,
+                publishedDate: publishedDate,
+                description: description,
+                averageRating: averageRating || bookDataAverageRating || 0,
+                ratingsCount: ratingsCount || bookDataRatingsCount || 0,
+                language: language,
+                canonicalVolumeLink: canonicalVolumeLink,
+                industryIdentifiers: industryIdentifiers,
+                categories: categories,
+                pageCount: pageCount,
+                imageLinks: {
+                    smallThumbnail: smallThumbnail,
+                    thumbnail: thumbnail,
+                    medium: medium,
+                    large: large,
+                    extraLarge: extraLarge,
+                },
+            },
+            accessInfo: {
+                webReaderLink: "",
+            },
+        };
         try {
-            setSendToBackendDbLists({
-                id: id,
-                volumeInfo: {
-                    title: title,
-                    subtitle: subtitle,
-                    authors: authors,
-                    publisher: publisher,
-                    publishedDate: publishedDate,
-                    description: description,
-                    averageRating: averageRating || bookDataAverageRating,
-                    ratingsCount: ratingsCount || bookDataRatingsCount,
-                    language: language,
-                    canonicalVolumeLink: canonicalVolumeLink,
-                    industryIdentifiers: industryIdentifiers,
-                    categories: categories,
-                    pageCount: pageCount,
-                    imageLinks: {
-                        smallThumbnail: smallThumbnail,
-                        thumbnail: thumbnail,
-                        medium: medium,
-                        large: large,
-                        extraLarge: extraLarge,
-                    },
-                },
-                accessInfo: {
-                    webReaderLink: "",
-                },
-            });
-            // console.log(sendToBackendDbLists);
             const response = await fetch(`${url}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(sendToBackendDbLists),
+                body: JSON.stringify(body),
             });
+
             const responseJson = await response.json();
             console.log(responseJson);
         } catch (error) {
@@ -173,16 +146,16 @@ const SingleBookDetails = () => {
     };
 
     return (
-        <section className="single-book-container">
-            <div className="single-book-grid-container">
-                <div className="single-book-headings-container">
-                    <h2 className="single-book-title">
+        <section className='single-book-container'>
+            <div className='single-book-grid-container'>
+                <div className='single-book-headings-container'>
+                    <h2 className='single-book-title'>
                         {title || "Unbekannter Titel"}
                     </h2>
                     {subtitle ? (
-                        <h3 className="single-book-subtitle">{subtitle}</h3>
+                        <h3 className='single-book-subtitle'>{subtitle}</h3>
                     ) : null}
-                    <h5 className="single-book-author">
+                    <h5 className='single-book-author'>
                         von{" "}
                         {(authors &&
                             authors.join(authors.length === 1 ? "" : " & ")) ||
@@ -197,16 +170,16 @@ const SingleBookDetails = () => {
                             medium ||
                             thumbnail ||
                             smallThumbnail
-                        ).replace("http", "https") || NoImage
+                        )?.replace("http", "https") || NoImage
                     }
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target='_blank'
+                    rel='noopener noreferrer'
                     alt={`${title} cover`}
                 >
                     <img
-                        className="single-book-image"
+                        className='single-book-image'
                         src={
-                            (medium || thumbnail || smallThumbnail).replace(
+                            (medium || thumbnail || smallThumbnail)?.replace(
                                 "http",
                                 "https"
                             ) || NoImage
@@ -214,44 +187,44 @@ const SingleBookDetails = () => {
                         alt={`${title} cover`}
                     />
                 </a>{" "}
-                <div className="single-book-info-section">
-                    <h5 className="single-book-info-section-title">
+                <div className='single-book-info-section'>
+                    <h5 className='single-book-info-section-title'>
                         Buchinformationen:
                     </h5>
-                    <p className="single-book-pagecount-container">
-                        <span className="single-book-pagecount-count">
+                    <p className='single-book-pagecount-container'>
+                        <span className='single-book-pagecount-count'>
                             {pageCount || "Unbekannte anzahl"}
                         </span>{" "}
                         Seiten
                     </p>
-                    <p className="single-book-publisher-container">
+                    <p className='single-book-publisher-container'>
                         Verlag:{" "}
-                        <span className="single-book-publisher">
+                        <span className='single-book-publisher'>
                             {publisher}
                         </span>
                     </p>
-                    <p className="single-book-first-published-container">
+                    <p className='single-book-first-published-container'>
                         Erstveröffentlichung:{" "}
-                        <span className="single-book-first-published-date">
+                        <span className='single-book-first-published-date'>
                             {publishedDate || "Unbekanntes Datum"}
                         </span>
                     </p>
-                    <p className="single-book-isbn">
+                    <p className='single-book-isbn'>
                         {isbn10Title?.replace("_", "-") || "ISBN-10"}:{" "}
                         {isbn10Number || "Keine ISBN-10 bekannt"}
                     </p>{" "}
-                    <p className="single-book-isbn">
+                    <p className='single-book-isbn'>
                         {isbn13Title?.replace("_", "-") || "ISBN-13"}:{" "}
                         {isbn13Number || "Keine ISBN-13 bekannt"}
                     </p>
-                    <p className="single-book-language">
+                    <p className='single-book-language'>
                         Sprache:{" "}
                         {language ? (
                             <ReactCountryFlag
                                 countryCode={
                                     language === "en" ? "gb" : language
                                 }
-                                className="single-book-languageflag"
+                                className='single-book-languageflag'
                                 svg
                                 alt={language}
                                 title={language}
@@ -261,42 +234,42 @@ const SingleBookDetails = () => {
                         )}
                     </p>
                 </div>
-                <div className="single-book-actions-container">
+                <div className='single-book-actions-container'>
                     {canonicalVolumeLink ? (
                         <a
-                            className="single-book-actions-external-link"
+                            className='single-book-actions-external-link'
                             href={canonicalVolumeLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target='_blank'
+                            rel='noopener noreferrer'
                         >
                             Mehr Informationen auf GooglePlay Books
                         </a>
                     ) : null}
                     {webReaderLink ? (
                         <a
-                            className="single-book-actions-external-link"
+                            className='single-book-actions-external-link'
                             href={webReaderLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target='_blank'
+                            rel='noopener noreferrer'
                         >
                             Leseprobe auf GooglePlay Books
                         </a>
                     ) : null}
                     <AddToLists onButtonClick={handleSendToLists} />
                 </div>
-                <div className="single-book-rating-container">
-                    <span className="single-book-avg-rating">
+                <div className='single-book-rating-container'>
+                    <span className='single-book-avg-rating'>
                         {averageRating || bookDataAverageRating || 0}{" "}
                     </span>{" "}
                     <StarRatings
                         rating={averageRating || bookDataAverageRating || 0}
-                        starRatedColor="orange"
-                        name="single-book-rating"
-                        starDimension="20px"
-                        starSpacing="1px"
+                        starRatedColor='orange'
+                        name='single-book-rating'
+                        starDimension='20px'
+                        starSpacing='1px'
                     />
                     /{" "}
-                    <span className="single-book-ratingcount">
+                    <span className='single-book-ratingcount'>
                         {ratingsCount || bookDataRatingsCount || 0}{" "}
                         {ratingsCount === 1 || bookDataRatingsCount === 1
                             ? "Bewertung"
@@ -305,17 +278,17 @@ const SingleBookDetails = () => {
                 </div>
             </div>
 
-            <p className="single-book-description">
+            <p className='single-book-description'>
                 {/* entfernt jegliche html tags aus der beschreibung */}
                 {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
                     "Keine Beschreibung verfügbar"}
             </p>
-            <p className="single-book-genre-container">
+            <p className='single-book-genre-container'>
                 Genres:{" "}
                 {genres && genres.length >= 1
                     ? genres.map((category, index) => {
                           return (
-                              <span className="single-book-genre" key={index}>
+                              <span className='single-book-genre' key={index}>
                                   {category}
                               </span>
                           );

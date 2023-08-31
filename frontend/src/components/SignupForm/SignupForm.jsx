@@ -42,7 +42,7 @@ const SignupForm = ({ onClose }) => {
                 handleSuccess(message);
                 onClose();
                 setTimeout(() => {
-                    navigate("/users/profile");
+                    navigate("/");
                 }, 1000);
             } else {
                 handleError(message);
@@ -61,6 +61,7 @@ const SignupForm = ({ onClose }) => {
                 type='text'
                 id='username'
                 className='formInput'
+                name='username'
                 value={username}
                 required
                 onChange={handleOnChange}
@@ -70,6 +71,7 @@ const SignupForm = ({ onClose }) => {
                 placeholder='Password'
                 type='password'
                 id='password'
+                name='password'
                 className='formInput'
                 value={password}
                 required
@@ -79,6 +81,7 @@ const SignupForm = ({ onClose }) => {
                 placeholder='E-Mail'
                 type='email'
                 id='email'
+                name='email'
                 className='formInput'
                 value={email}
                 required
