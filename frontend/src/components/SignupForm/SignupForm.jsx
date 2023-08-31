@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../customhooks/auth";
 import "./signupform.scss";
 const SignupForm = ({ onClose, onLogin }) => {
-    const navigate = useNavigate();
     const { register } = useAuth();
     const [signupValue, setSignupValue] = useState({
         username: "",
@@ -26,22 +24,17 @@ const SignupForm = ({ onClose, onLogin }) => {
         toast.error(err, {
             position: "bottom-left",
         });
-    const handleSuccess = (msg) =>
-        toast.success(msg, {
-            position: "bottom-right",
-        });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const success = await register(signupValue);
 
         if (success) {
-            handleSuccess("Willkommen!");
             onClose();
             onLogin();
-            navigate("/");
         } else {
-            handleError("Nachricht");
+            handleError("Username or Email already exist.");
         }
     };
 
@@ -85,6 +78,7 @@ const SignupForm = ({ onClose, onLogin }) => {
                     Sign Up !
                 </button>
             </div>
+            <ToastContainer />
         </form>
     );
 };
