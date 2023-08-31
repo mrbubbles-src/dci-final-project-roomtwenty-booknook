@@ -24,9 +24,7 @@ const Kontaktformular = () => {
             </select>
             {selectedOption === "BuchNichtVorhanden" ? (
                 <BuchNichtVorhanden />
-            ) : (
-                ""
-            )}
+            ) : null}
             {selectedOption === "Anregungen" ? <Anregungen /> : null}
             {selectedOption === "Feedback" ? <Feedback /> : null}
         </div>
