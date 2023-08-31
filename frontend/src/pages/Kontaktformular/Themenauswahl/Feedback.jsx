@@ -2,47 +2,15 @@ import React from "react";
 
 const Feedback = () => {
     return (
-        <form id="Kontaktformular" method="post" action="submit">
-            {" "}
-            <div>
-                <h1>Fragen?</h1>
-                <p>Wir antworten Dir persönlich!</p>
-            </div>
-            <div className="Formfelderrahmen">
-                <label className="name eingabe">
-                    Name{" "}
-                    <input
-                        type="text"
-                        name="Kontaktname"
-                        id="Kontaktname"
-                        placeholder="Name"
-                        required
-                    />
-                </label>
-                <label className="email eingabe">
-                    Email{" "}
-                    <input
-                        type="text"
-                        name="Kontaktemail"
-                        id="Kontaktemail"
-                        placeholder="du@beispiel.de"
-                        required
-                    />
-                </label>
-                <div>
-                    <label>
-                        Kommentar/Fragen
-                        <textarea
-                            name="Kontaktnachricht"
-                            id="Kontaktnachricht"
-                            cols="30"
-                            rows="10"
-                            placeholder="Anregungen/Wünsche/Ideen/Probleme"
-                        ></textarea>
-                    </label>
-                </div>
-            </div>
-        </form>
+        <div>
+            <h1>Herzlich Willkommen im Bereich Feedback!</h1>
+            <p>
+                Hier stehen wir dir gerne für Fragen zur Verfügung oder auch
+                wenn dich etwas bedrückt, dir etwas nicht gefällt oder du etwas
+                nicht findest. Wähle das passende Thema und schreib uns gerne
+                an. Wir antworten Dir persönlich!
+            </p>
+        </div>
     );
 };
 

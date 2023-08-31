@@ -5,7 +5,7 @@ const Anregungen = () => {
         <form id="Kontaktformular" method="post" action="submit">
             {" "}
             <div>
-                <h1>Anregungen?</h1>
+                <h1>Fragen/Anregungen?</h1>
                 <p>Wir antworten Dir persönlich!</p>
             </div>
             <div className="Formfelderrahmen">
