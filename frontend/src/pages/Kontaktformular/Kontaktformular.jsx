@@ -18,8 +18,10 @@ const Kontaktformular = () => {
                 onChange={handleSelectChange}
                 value={selectedOption}
             >
-                <option value="Feedback">Deine meinung ist uns wichtig!</option>
-                <option value="BuchNichtVorhanden">Buch not availabe?</option>
+                <option value="Feedback">Wähle dein Thema!</option>
+                <option value="BuchNichtVorhanden">
+                    Buch nicht vorhanden?
+                </option>
                 <option value="Anregungen">Anregung</option>
             </select>
             {selectedOption === "BuchNichtVorhanden" ? (
