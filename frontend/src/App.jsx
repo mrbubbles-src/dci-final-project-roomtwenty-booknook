@@ -22,8 +22,6 @@ function App() {
                 <Routes>
 
                     <Route path="/" element={<SharedLayout />}>
-                        <Route index element={<LandingPageNotLoggedInPage />} />
-                        <Route path="users/profile" element={<UserProfile />} />
                         <Route index element={<LandingpageChanger />} />
                         <Route
                             path='kontaktformular'
