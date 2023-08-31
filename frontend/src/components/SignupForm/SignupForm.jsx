@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "./signupform.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 
-const SignupForm = ({ onClose }) => {
+import useAuth from "../../customhooks/auth";
+import "./signupform.scss";
+const SignupForm = ({ onClose, onLogin }) => {
     const navigate = useNavigate();
+    const { register } = useAuth();
     const [signupValue, setSignupValue] = useState({
         username: "",
         password: "",
@@ -31,24 +32,16 @@ const SignupForm = ({ onClose }) => {
         });
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const { data } = await axios.post(
-                "http://localhost:3000/users/signup",
-                { ...signupValue },
-                { withCredentials: true }
-            );
-            const { success, message } = data;
-            if (success) {
-                handleSuccess(message);
-                onClose();
-                setTimeout(() => {
-                    navigate("/");
-                }, 1000);
-            } else {
-                handleError(message);
-            }
-        } catch (error) {
-            console.log(error);
+
+        const success = await register(signupValue);
+
+        if (success) {
+            handleSuccess("Willkommen!");
+            onClose();
+            onLogin();
+            navigate("/");
+        } else {
+            handleError("Nachricht");
         }
     };
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const useAuth = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +20,30 @@ const useAuth = () => {
         setIsLoggedIn(false);
     };
 
-    return { isLoggedIn, login, logout };
+    const register = async (userData) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:3000/users/signup",
+                userData,
+                { withCredentials: true }
+            );
+
+            const registeredUser = response.data;
+
+            if (registeredUser) {
+                login(registeredUser.securityToken);
+                setIsLoggedIn(true);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            return false;
+        }
+    };
+
+    return { isLoggedIn, login, logout, register };
 };
 
 export default useAuth;

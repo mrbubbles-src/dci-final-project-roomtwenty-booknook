@@ -56,7 +56,10 @@ const Navbar = () => {
                                 onLogin={() => setIsLoggedIn(true)}
                             />
                         ) : (
-                            <SignupForm onClose={handleCloseModal} />
+                            <SignupForm
+                                onClose={handleCloseModal}
+                                onLogin={() => setIsLoggedIn(true)}
+                            />
                         )}
                         <button className='btn-style' onClick={toggleForm}>
                             {isLoginVisible
