@@ -89,6 +89,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                         >
                             Habe ich schon gelesen
                         </button>
+                        {/* machen das button zum löschen nur angezeigt wird wenn das buch auch der liste ist */}
                         <button
                             onClick={() =>
                                 handleDeleteFromLists(
