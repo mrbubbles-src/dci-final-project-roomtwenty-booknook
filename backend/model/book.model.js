@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const Book = require("./book.schema");
 const User = require("./user.schema");
-const {
-    GoogleBooksAPI,
-    SingleGoogleBookURLWithID,
-} = require("./google.book.api");
+const { GoogleBooksAPI } = require("./google.book.api");
 
 //Volumens(Bücher/Bände) in Google Datenbank suchen
 async function searchBooksOnGoogle(searchQuery) {
@@ -19,6 +16,34 @@ async function searchBooksOnGoogle(searchQuery) {
 async function getAllBooks() {
     try {
         return await GoogleBooksAPI();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+// buch auf listen des users suchen
+async function findBookOnUserLists(user, bookID) {
+    try {
+        const wantToRead = user.wantToRead;
+        const currentlyReading = user.currentlyReading;
+        const alreadyRead = user.alreadyRead;
+
+        const isOnWantToRead = wantToRead.find((book) =>
+            book.book.equals(bookID)
+        );
+        const isOnCurrentlyReading = currentlyReading.find((book) =>
+            book.book.equals(bookID)
+        );
+        const isOnAlreadyRead = alreadyRead.find((book) =>
+            book.book.equals(bookID)
+        );
+
+        const response = {
+            wantToRead: !!isOnWantToRead,
+            currentlyReading: !!isOnCurrentlyReading,
+            alreadyRead: !!isOnAlreadyRead,
+        };
+        return response;
     } catch (error) {
         throw new Error(error);
     }
@@ -52,37 +77,44 @@ async function removeBookFromLists(userID, bookID) {
     console.log("userID", userID);
     console.log("bookID", bookID);
     try {
-        const user = await User.findOne({ _id: userID });
-        let userWantToReadList = user.wantToRead;
-        let userCurrentlyReadingList = user.currentlyReading;
-        let userAlreadyReadList = user.alreadyRead;
-        if (
-            userWantToReadList.length === 0 &&
-            userCurrentlyReadingList.length === 0 &&
-            userAlreadyReadList.length === 0
-        ) {
-            console.log("Du hast nichts auf deinen Listen");
-        }
+        const user = await User.findOne({
+            _id: userID,
+        });
+        // console.log("user remove fkt", user);
+        // let userWantToReadList = user.wantToRead;
+        // let userCurrentlyReadingList = user.currentlyReading;
+        // let userAlreadyReadList = user.alreadyRead;
+
+        // if (
+        //     userWantToReadList.length === 0 &&
+        //     userCurrentlyReadingList.length === 0 &&
+        //     userAlreadyReadList.length === 0
+        // ) {
+        //     console.log("Du hast nichts auf deinen Listen");
+        // }
+        const isBookOnLists = await findBookOnUserLists(user, bookID);
+        console.log(isBookOnLists);
         // buch auf den listen suchen
         // wenn buch nicht gefunden wurde meldung rausgeben
+
         // wenn buch gefunden wurde das hier was in der else steht ausführen
-        else {
-            const updatedWantToReadList = userWantToReadList.filter(
-                (bookInList) => bookInList.book.toString() !== bookID
-            );
-            const updatedCurrentlyReadingList = userCurrentlyReadingList.filter(
-                (bookInList) => bookInList.book.toString() !== bookID
-            );
-            const updatedAlreadyReadingList = userAlreadyReadList.filter(
-                (bookInList) => bookInList.book.toString() !== bookID
-            );
-            const res = await User.findByIdAndUpdate(userID, {
-                currentlyReading: updatedCurrentlyReadingList,
-                wantToRead: updatedWantToReadList,
-                alreadyRead: updatedAlreadyReadingList,
-            });
-            return res;
-        }
+        // else {
+        //     const updatedWantToReadList = userWantToReadList.filter(
+        //         (bookInList) => bookInList.book.toString() !== bookID
+        //     );
+        //     const updatedCurrentlyReadingList = userCurrentlyReadingList.filter(
+        //         (bookInList) => bookInList.book.toString() !== bookID
+        //     );
+        //     const updatedAlreadyReadingList = userAlreadyReadList.filter(
+        //         (bookInList) => bookInList.book.toString() !== bookID
+        //     );
+        //     const res = await User.findByIdAndUpdate(userID, {
+        //         currentlyReading: updatedCurrentlyReadingList,
+        //         wantToRead: updatedWantToReadList,
+        //         alreadyRead: updatedAlreadyReadingList,
+        //     });
+        //     return res;
+        // }
     } catch (error) {
         throw new Error(error);
     }
