@@ -5,7 +5,6 @@ import SharedLayout from "./pages/SharedLayout";
 
 import NotFound from "./pages/NotFound/NotFound";
 import ScrollToTop from "./helpers/ScrollToTop";
-import "react-toastify/dist/ReactToastify.css";
 
 import Kontaktformular from "./pages/Kontaktformular/Kontaktformular";
 import Datenschutz from "./pages/Datenschutz/Datenschutz";
