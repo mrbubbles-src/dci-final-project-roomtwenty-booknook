@@ -21,25 +21,25 @@ function App() {
             <BrowserRouter>
                 <ScrollToTop />
                 <Routes>
-                    <Route path='/' element={<SharedLayout />}>
-                        {/* die jeweiligen pages routes hier zwische rein */}
+
+                    <Route path="/" element={<SharedLayout />}>
+                        <Route index element={<LandingPageNotLoggedInPage />} />
+                        <Route path="users/profile" element={<UserProfile />} />
                         <Route index element={<LandingpageChanger />} />
                         <Route
                             path='kontaktformular'
                             element={<Kontaktformular />}
                         />
 
-                        <Route path='datenschutz' element={<Datenschutz />} />
-                        <Route path='impressum' element={<Impressum />} />
-
+                        <Route path="datenschutz" element={<Datenschutz />} />
+                        <Route path="impressum" element={<Impressum />} />
                         <Route path='suche' element={<Search />} />
                         <Route
                             path='buch/:id'
                             element={<SingleBookDetails />}
                         />
+<Route path="*" element={<NotFound />} />
 
-                        {/* die jeweiligen pages routes hier zwische rein */}
-                        <Route path='*' element={<NotFound />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
