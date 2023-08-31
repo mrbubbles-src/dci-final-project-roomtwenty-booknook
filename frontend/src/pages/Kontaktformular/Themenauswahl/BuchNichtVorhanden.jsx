@@ -107,60 +107,6 @@ const BuchNichtVorhanden = () => {
                             required
                         />
                     </label>
-                    <label className="Publisher eingabe">
-                        Verlag{" "}
-                        <input
-                            type="text"
-                            name="Publisher"
-                            value={publisher}
-                            onChange={(event) =>
-                                setPublisher(event.target.value)
-                            }
-                            id="Publisher"
-                            placeholder="z.B. Carlsen Verlag"
-                        />
-                    </label>
-                    <label className="PublishedDate eingabe">
-                        Veröffentlichungsdatum{" "}
-                        <input
-                            type="date"
-                            name="PublishedDate"
-                            value={publishedDate}
-                            onChange={(event) =>
-                                setPublishedDate(event.target.value)
-                            }
-                            id="PublishedDate"
-                            placeholder="05.08.1997"
-                        />
-                    </label>
-                    <label className="description eingabe">
-                        Beschreibung{" "}
-                        <input
-                            type="text"
-                            name="Description"
-                            value={description}
-                            onChange={(event) =>
-                                setDescription(event.target.value)
-                            }
-                            id="Description"
-                            placeholder="z.B. Klappentext"
-                        />
-                    </label>
-
-                    <label className="linktobookinfos eingabe">
-                        BuchInfoLink{" "}
-                        <input
-                            type="text"
-                            name="linktobookinfos"
-                            value={bookInfoLink}
-                            onChange={(event) =>
-                                setBookInfoLink(event.target.value)
-                            }
-                            id="linktobookinfos"
-                            placeholder="z.B. https://..."
-                        />
-                    </label>
-
                     <label className="ISBN eingabe">
                         ISBN{" "}
                         <input
@@ -169,69 +115,8 @@ const BuchNichtVorhanden = () => {
                             value={isbn}
                             onChange={(event) => setIsbn(event.target.value)}
                             id="ISBN"
-                            placeholder="z.B. 978-3-95981-065-4"
-                        />
-                    </label>
-                    <label className="categorys eingabe">
-                        Genre{" "}
-                        <input
-                            type="text"
-                            name="categorys"
-                            value={genre}
-                            onChange={(event) => setGenre(event.target.value)}
-                            id="categorys"
-                            placeholder="z.B. Fantasy, Horror,.."
+                            placeholder="ISBN"
                             required
-                        />
-                    </label>
-                    <label className="pagecount eingabe">
-                        Seitenanzahl{" "}
-                        <input
-                            type="text"
-                            name="pagecount"
-                            value={pageCount}
-                            onChange={(event) =>
-                                setPageCount(event.target.value)
-                            }
-                            id="pagecount"
-                            placeholder="z.B. S.837"
-                        />
-                    </label>
-                    <label className="coversmall eingabe">
-                        cover klein{" "}
-                        <input
-                            type="file"
-                            name="coversmall"
-                            value={coverSmall}
-                            onChange={(event) =>
-                                setrCoverSmall(event.target.value)
-                            }
-                            id="coversmall"
-                        />
-                    </label>
-                    <label className="coverlarge eingabe">
-                        cover groß{" "}
-                        <input
-                            type="file"
-                            name="coverlarge"
-                            value={coverLarge}
-                            onChange={(event) =>
-                                setCoverLarge(event.target.value)
-                            }
-                            id="coverlarge"
-                        />
-                    </label>
-                    <label className="webreaderlink eingabe">
-                        Leseprobenlink{" "}
-                        <input
-                            type="url"
-                            name="webreaderlink"
-                            value={webReaderLink}
-                            onChange={(event) =>
-                                setWebReaderLink(event.target.value)
-                            }
-                            id="webreaderlink"
-                            placeholder="z.B. https://..."
                         />
                     </label>
                 </div>
