@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import useAuth from "../../customhooks/auth";
 import "./signupform.scss";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import axios from "axios";
-
-const SignupForm = ({ onClose }) => {
-    const navigate = useNavigate();
+const SignupForm = ({ onClose, onLogin }) => {
+    const { register } = useAuth();
     const [signupValue, setSignupValue] = useState({
         username: "",
         password: "",
@@ -25,30 +24,17 @@ const SignupForm = ({ onClose }) => {
         toast.error(err, {
             position: "bottom-left",
         });
-    const handleSuccess = (msg) =>
-        toast.success(msg, {
-            position: "bottom-right",
-        });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const { data } = await axios.post(
-                "http://localhost:3000/users/signup",
-                { ...signupValue },
-                { withCredentials: true }
-            );
-            const { success, message } = data;
-            if (success) {
-                handleSuccess(message);
-                onClose();
-                setTimeout(() => {
-                    navigate("/");
-                }, 1000);
-            } else {
-                handleError(message);
-            }
-        } catch (error) {
-            console.log(error);
+
+        const success = await register(signupValue);
+
+        if (success) {
+            onClose();
+            onLogin();
+        } else {
+            handleError("Username or Email already exist.");
         }
     };
 
@@ -92,6 +78,7 @@ const SignupForm = ({ onClose }) => {
                     Sign Up !
                 </button>
             </div>
+            <ToastContainer />
         </form>
     );
 };
