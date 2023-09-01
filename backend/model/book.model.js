@@ -131,4 +131,5 @@ module.exports = {
     getAllBooks,
     adminDeleteBookFromDb,
     removeBookFromLists,
+    findBookOnUserLists,
 };
