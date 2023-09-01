@@ -4,10 +4,12 @@ import "./LeseFortschritt.scss";
 const LeseFortschritt = ({ goal }) => {
     const [booksRead, setBooksRead] = useState(0);
     const [currentBook, setCurrentBook] = useState("");
-    const [currentBookProgress, setCurrentBookProgress] = useState(203);
+    const [currentBookProgress, setCurrentBookProgress] = useState(120);
     const [totalPages, setTotalPages] = useState(334);
     const [alreadyReadBooksList, setAlreadyReadBooksList] = useState([]);
 
+    // schema integrieren für den user,
+    // route bauen um die daten ans backend zu schicken
     const fetchAlreadyReadBooks = async () => {
         try {
             const response = await fetch("localhost:3000/");
@@ -56,16 +58,7 @@ const LeseFortschritt = ({ goal }) => {
             <div className="user-profile profile-card-container">
                 <div className="profile-img"></div>
                 <div className="text-right">
-                    <div className="usercard-info-container">
-                        {/* <div
-                            className="progress-bar"
-                            style={{
-                                width: `${calculateProgressPercentage(
-                                    totalPages,
-                                    currentBookProgress
-                                )}%`,
-                            }}
-                        ></div> */}
+                    <div className="usercard-info-container d">
                         <p className="bücher-gelesen text-info">
                             <span className="number">20</span> Bücher gelesen.
                         </p>
@@ -73,9 +66,9 @@ const LeseFortschritt = ({ goal }) => {
                             <span className="number">5</span> Challenges
                             gewonnen.
                         </p>
-                        <p className="freundes-liste text-info">
+                        {/* <p className="freundes-liste text-info ">
                             <span className="number">15</span> Freunde
-                        </p>
+                        </p> */}
                     </div>
                 </div>
             </div>
