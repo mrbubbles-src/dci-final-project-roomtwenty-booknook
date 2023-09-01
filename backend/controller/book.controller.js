@@ -5,11 +5,14 @@ const {
     getAllBooks,
     adminDeleteBookFromDb,
     removeBookFromLists,
+    findBookOnUserLists,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
 const { findUserInDb } = require("../middleware/errorHandler");
+const bookSchema = require("../model/book.schema");
+const { authenticateToken } = require("../middleware/userValidation");
 
 //Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
@@ -28,8 +31,15 @@ async function httpSearchBooksOnGoogle(req, res, next) {
 //Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
 async function httpGetSingleBook(req, res, next) {
     const { id } = req.params;
+    // const userValid = authenticateToken();
+    // const { userID: _userID } = userValid;
+    // const user = await findUserInDb(User, _userID);
+    // const bookID = await Book.findOne({ id: id });
+    // const isBookOnLists = await findBookOnUserLists(user, bookID);
+
     try {
         const singleBookData = await SingleGoogleBookURLWithID(id);
+        // res.json({ book: singleBookData, isBookOnAnyList: isBookOnLists });
         res.json(singleBookData);
     } catch (error) {
         next(error);
