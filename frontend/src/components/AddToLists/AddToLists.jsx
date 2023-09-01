@@ -9,11 +9,6 @@ const AddToLists = ({ onButtonClick, bookId }) => {
     const [showAddToListModal, setShowAddToListModal] = useState(false);
     const serverURL = "http://localhost:3000";
 
-    // `currentlyReading`
-    // `alreadyReadd`
-    // `wantToRead`
-    // `${serverURL}/removeBookFromList`
-
     const handleButtonClick = (url) => {
         onButtonClick(url);
     };
@@ -31,6 +26,8 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                 },
                 body: JSON.stringify({ bookID: bookId }),
             });
+            // const data = await response.json();
+            // console.log(data);
         } catch (error) {
             console.error(error);
         }

@@ -9,6 +9,7 @@ const {
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
+const { findUserInDb } = require("../middleware/errorHandler");
 
 //Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
@@ -81,7 +82,7 @@ async function httpSaveBook(req, res, next) {
         }
 
         // user anhand von _id aus dem token finden
-        const user = await User.findOne({ _id: _userID });
+        const user = await findUserInDb(User, _userID);
 
         // abfrage ob bookID bereits in readList vorhanden ist
         if (
@@ -131,9 +132,9 @@ async function httpAdminDeleteBookFromDb(req, res, next) {
 async function httpRemoveBookFromLists(req, res, next) {
     const { userID: _userID } = req;
     const { bookID } = req.body;
-
+    const user = await findUserInDb(User, _userID);
     try {
-        const deletedBook = await removeBookFromLists(_userID, bookID);
+        const deletedBook = await removeBookFromLists(user, bookID);
         res.status(204).json({
             message: "Buch wurde aus deinen Listen gelöscht.",
             bookDeleted: deletedBook,
