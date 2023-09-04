@@ -87,6 +87,15 @@ async function httpSaveBook(req, res, next) {
         // user anhand von _id aus dem token finden
         const user = await findUserInDb(User, _userID);
 
+        // remove book from all lists except the specified list
+        for (const list of ["wantToRead", "currentlyReading", "alreadyRead"]) {
+            if (list !== listname) {
+                user[list] = user[list].filter(
+                    (item) => item.book.toString() !== bookID.toString()
+                );
+            }
+        }
+
         // abfrage ob bookID bereits in readList vorhanden ist
         if (
             user[listname].some(
@@ -115,6 +124,69 @@ async function httpSaveBook(req, res, next) {
         next(error);
     }
 }
+
+// async function httpSaveBook(req, res, next) {
+//     console.log("PATH", req.path);
+//     try {
+//         // buch daten
+//         const book = req.body;
+//         // userID aus dem token
+//         const { userID: _userID } = req;
+//         // listname aus url params
+//         const listname = req.params.listname;
+
+//         // überprüfung ob buch anhand ID n DB vorhanden ist
+//         const existingBook = await Book.findOne({ id: book.id });
+
+//         // variable zum einspeichern der Buch ID
+//         let bookID;
+
+//         // abfrage ob buch bereits in buch collection ist
+//         if (existingBook) {
+//             // wenn buch vorhanden ist, wird dessen mongoDB_id in bookID abgespeichert
+//             bookID = existingBook._id;
+//             console.log("Das Buch ist bereits in der Datenbank vorhanden.");
+//         } else {
+//             // wenn buch nicht vorhanden ist, wird es erstellt
+//             const newBook = await saveBook(book);
+//             // mongoDB_id vom neuerstelltem buch wir in bookID abgespeichert
+//             bookID = newBook._id;
+//             console.log(
+//                 "Das Buch wurde erfolgreich in der Datenbank gespeichert."
+//             );
+//         }
+
+//         // user anhand von _id aus dem token finden
+//         const user = await findUserInDb(User, _userID);
+
+//         // abfrage ob bookID bereits in readList vorhanden ist
+//         if (
+//             user[listname].some(
+//                 (item) => item.book.toString() === bookID.toString()
+//             )
+//         ) {
+//             // wenn ja rückmeldung geben dass es der fall ist
+//             console.log(`Buch ist bereits auf ihrer ${listname} liste`);
+//         } else {
+//             // otherwise push bookID into wantToRead array
+//             user[listname].push({ book: bookID });
+//             // save user
+//             await user.save();
+//             console.log(`Book was added to your ${listname} liste`);
+//         }
+
+//         // get user's readlist
+//         const lists = await showReadlist(_userID);
+
+//         // response
+//         res.status(200).json({
+//             title: `${user.username}'s Leseliste:`,
+//             lists: lists,
+//         });
+//     } catch (error) {
+//         next(error);
+//     }
+// }
 // Buchdaten zu ausgewähltem Buch aus der Datenbank löschen
 async function httpAdminDeleteBookFromDb(req, res, next) {
     const { id } = req.params;
