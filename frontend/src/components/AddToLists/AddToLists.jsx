@@ -46,9 +46,6 @@ const AddToLists = ({ onButtonClick, bookId }) => {
         }
     }, []);
     const handleButtonClick = (url, listName) => {
-        console.log(
-            `handleButtonClick called with url: ${url}, listName: ${listName}`
-        );
         onButtonClick(url);
         setIsBookOnList((prevState) => ({
             ...prevState,
