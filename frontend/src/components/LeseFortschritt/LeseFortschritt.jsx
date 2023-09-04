@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./LeseFortschritt.scss";
+import LevelExpBar from "../LevelExpBar/LevelExpBar";
 
 const LeseFortschritt = ({ goal }) => {
     const [booksRead, setBooksRead] = useState(0);
     const [currentBook, setCurrentBook] = useState("");
-    const [currentBookProgress, setCurrentBookProgress] = useState(120);
+    const [currentBookProgress, setCurrentBookProgress] = useState(210);
     const [totalPages, setTotalPages] = useState(334);
     const [alreadyReadBooksList, setAlreadyReadBooksList] = useState([]);
 
@@ -58,6 +59,7 @@ const LeseFortschritt = ({ goal }) => {
             <div className="user-profile profile-card-container">
                 <div className="profile-img"></div>
                 <div className="text-right">
+                    <LevelExpBar />
                     <div className="usercard-info-container d">
                         <p className="bücher-gelesen text-info">
                             <span className="number">20</span> Bücher gelesen.
