@@ -12,6 +12,7 @@ const BookNookProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState(null);
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if (searchTerm !== null) {
@@ -31,8 +32,17 @@ const BookNookProvider = ({ children }) => {
     // buch suche spezifischer context ende
     useEffect(() => {
         setToken(Cookies.get("jwtToken"));
+        try {
+            const tokenForLogin = Cookies.get("jwtToken");
+            if (tokenForLogin) {
+                return setIsLoggedIn(true);
+            }
+        } catch (error) {
+            console.log(error);
+        }
         // console.log("cookie.get", Cookies.get("gibts nicht"));
     }, []);
+
     return (
         <BookNookContext.Provider
             value={{
@@ -43,6 +53,8 @@ const BookNookProvider = ({ children }) => {
                 setsearchReadMore,
                 isLoading,
                 token,
+                isLoggedIn,
+                setIsLoggedIn,
             }}
         >
             {children}

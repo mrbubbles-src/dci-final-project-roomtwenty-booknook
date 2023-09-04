@@ -1,35 +1,69 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const useAuth = () => {
-    const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        // Überprüfe, ob der Token im Cookie vorhanden ist
         const token = Cookies.get("jwtToken");
-        // Überprüfe ob token true oder false ist
         setIsLoggedIn(!!token);
     }, []);
+// Login \\
+    const login = async (userData) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:3000/users/login",
+                userData,
+                { withCredentials: true }
+            );
 
-    const login = (token) => {
-        // Setze den Cookien
-        Cookies.set("jwtToken", token, { expires: 7 });
-        setIsLoggedIn(true);
-        navigate("/users/profile");
+            const loggedInUser = response.data;
+
+            if (loggedInUser.securityToken) {
+                Cookies.set("jwtToken", loggedInUser.securityToken, {
+                    expires: 7,
+                });
+                setIsLoggedIn(true);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            return false;
+        }
     };
-
+// Logout \\
     const logout = () => {
-        // Lösche den Cookie
         Cookies.remove("jwtToken");
-        // setze den Status auf false
         setIsLoggedIn(false);
-        // Navigiere zum root
-        navigate("/");
+    };
+// Register \\
+    const register = async (userData) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:3000/users/signup",
+                userData,
+                { withCredentials: true }
+            );
+
+            const registeredUser = response.data;
+
+            if (registeredUser) {
+                login(userData);
+                setIsLoggedIn(true);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            return false;
+        }
     };
 
-    return { isLoggedIn, login, logout };
+    return { isLoggedIn, login, logout, register };
 };
 
 export default useAuth;
