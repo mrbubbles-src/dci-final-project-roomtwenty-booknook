@@ -22,7 +22,7 @@ const SingleBookDetails = () => {
             const data = await response.json();
             setSingleBookData(data);
             setIsSingleBookLoading(false);
-            console.log(data);
+            // console.log(data);
         }
         fetchData();
     }, []);

@@ -37,7 +37,6 @@ async function findBookOnUserLists(user, bookID) {
         const isOnAlreadyRead = alreadyRead.find((book) =>
             book.book.equals(bookID)
         );
-
         const response = {
             wantToRead: !!isOnWantToRead,
             currentlyReading: !!isOnCurrentlyReading,
