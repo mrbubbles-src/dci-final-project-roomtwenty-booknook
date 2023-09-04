@@ -47,10 +47,11 @@ const AddToLists = ({ onButtonClick, bookId }) => {
     }, []);
     const handleButtonClick = (url, listName) => {
         onButtonClick(url);
-        setIsBookOnList((prevState) => ({
-            ...prevState,
-            [listName]: true,
-        }));
+        setIsBookOnList({
+            wantToRead: listName === "wantToRead",
+            currentlyReading: listName === "currentlyReading",
+            alreadyRead: listName === "alreadyRead",
+        });
     };
 
     const handleShowAddToListModal = () => setShowAddToListModal(true);
