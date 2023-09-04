@@ -132,7 +132,8 @@ async function httpAdminDeleteBookFromDb(req, res, next) {
 }
 
 async function httpIsBookOnLists(req, res, next) {
-    const { userID: _userID, bookID: bookID } = req;
+    const { userID: _userID } = req;
+    const bookID = req.headers.bookid;
     try {
         const user = await findUserInDb(User, _userID);
         const isBookOnLists = await findBookOnUserLists(user, bookID);
