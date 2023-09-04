@@ -11,7 +11,6 @@ const {
     httpUserDeleteSelf,
     httpShowReadList,
 } = require("../controller/user.controller");
-
 const { httpDeleteBookFromReadlist } = require("../controller/book.controller");
 
 const { userValidationRules } = require("../lib/inputValidation/userRules");
