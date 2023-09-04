@@ -9,7 +9,7 @@ const useAuth = () => {
         const token = Cookies.get("jwtToken");
         setIsLoggedIn(!!token);
     }, []);
-// Login \\
+    // Login \\
     const login = async (userData) => {
         try {
             const response = await axios.post(
@@ -25,6 +25,7 @@ const useAuth = () => {
                     expires: 7,
                 });
                 setIsLoggedIn(true);
+                window.location.reload();
                 return true;
             } else {
                 return false;
@@ -34,12 +35,13 @@ const useAuth = () => {
             return false;
         }
     };
-// Logout \\
+    // Logout \\
     const logout = () => {
         Cookies.remove("jwtToken");
         setIsLoggedIn(false);
+        window.location.reload();
     };
-// Register \\
+    // Register \\
     const register = async (userData) => {
         try {
             const response = await axios.post(
