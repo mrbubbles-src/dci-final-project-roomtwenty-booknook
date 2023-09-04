@@ -31,15 +31,8 @@ async function httpSearchBooksOnGoogle(req, res, next) {
 //Ruft ein Volume(Buch) auf welches einen neuen Tab öffnet und die informationen aus dem selfLink(key) nimmt
 async function httpGetSingleBook(req, res, next) {
     const { id } = req.params;
-    // const userValid = authenticateToken();
-    // const { userID: _userID } = userValid;
-    // const user = await findUserInDb(User, _userID);
-    // const bookID = await Book.findOne({ id: id });
-    // const isBookOnLists = await findBookOnUserLists(user, bookID);
-
     try {
         const singleBookData = await SingleGoogleBookURLWithID(id);
-        // res.json({ book: singleBookData, isBookOnAnyList: isBookOnLists });
         res.json(singleBookData);
     } catch (error) {
         next(error);
@@ -145,7 +138,7 @@ async function httpRemoveBookFromLists(req, res, next) {
     const user = await findUserInDb(User, _userID);
     try {
         const deletedBook = await removeBookFromLists(user, bookID);
-        res.status(204).json({
+        res.status(200).json({
             message: "Buch wurde aus deinen Listen gelöscht.",
             bookDeleted: deletedBook,
         });
