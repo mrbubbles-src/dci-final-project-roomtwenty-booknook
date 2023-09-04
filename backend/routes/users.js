@@ -45,7 +45,7 @@ router.post(
 // Upload router
 router.post("/upload", upload.single("file"), async (req, res) => {
     try {
-        // Aus dem Frontend
+        // Aus dem Fronten
         const { originalname, path } = req.file;
         const file = new File({ name: originalname, path });
         await file.save();
