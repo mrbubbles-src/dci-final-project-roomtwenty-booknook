@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Modal from "../../components/Modal/Modal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 import { BookNookContext } from "../../context/BookNookProvider";
 import AddToListButton from "./AddToListButton";
 import ModalButtons from "./ModalButtons";
+import NotLoggedInButtons from "./NotLoggedInButtons";
 
 const AddToLists = ({ onButtonClick, bookId }) => {
     const [isBookOnList, setIsBookOnList] = useState({
@@ -79,18 +79,21 @@ const AddToLists = ({ onButtonClick, bookId }) => {
         }
     };
     return (
-        <>
-            <AddToListButton
-                isBookOnList={isBookOnList}
-                serverURL={serverURL}
-                handleButtonClick={handleButtonClick}
-            />
-            <button
-                onClick={handleShowAddToListModal}
-                className="book-actions-add-to-lists-dropdown"
-            >
-                {<FontAwesomeIcon icon={faChevronDown} />}
-            </button>
+        <div>
+            {token ? (
+                <>
+                    <AddToListButton
+                        isBookOnList={isBookOnList}
+                        serverURL={serverURL}
+                        handleButtonClick={handleButtonClick}
+                        handleShowAddToListModal={handleShowAddToListModal}
+                    />
+                </>
+            ) : (
+                <>
+                    <NotLoggedInButtons handleLoginClick={handleLoginClick} />
+                </>
+            )}
             {showAddToListModal && (
                 <Modal onClose={handleCloseAddToListModal}>
                     <h2 className="add-to-lists-title">
@@ -117,7 +120,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                     )}
                 </Modal>
             )}
-        </>
+        </div>
     );
 };
 
