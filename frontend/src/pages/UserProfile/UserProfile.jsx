@@ -1,5 +1,6 @@
 import React from "react";
 import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
+import FileUpload from "../../components/FileUpload/FileUpload";
 
 
 
@@ -9,6 +10,8 @@ const UserProfile = () => {
             <h1>Profile</h1>
             <div>
                 <LeseChallenge />
+                <FileUpload/>
+            
             </div>
 
         </>
