@@ -10,8 +10,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
         currentlyReading: false,
         alreadyRead: false,
     });
-    const { token, isLoggedIn, setIsLoggedIn, showModal, setShowModal } =
-        useContext(BookNookContext);
+    const { token, handleLoginClick } = useContext(BookNookContext);
     const [showAddToListModal, setShowAddToListModal] = useState(false);
     const serverURL = "http://localhost:3000";
     useEffect(() => {
@@ -140,12 +139,12 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                 <div className="book-actions-add-to-lists-container">
                     <button
                         className="book-actions-add-to-lists want-to-read"
-                        // onClick={}
+                        onClick={handleLoginClick}
                     >
                         pupsen
                     </button>
                     <button
-                        // onClick={}
+                        onClick={handleLoginClick}
                         className="book-actions-add-to-lists-dropdown"
                     >
                         {<FontAwesomeIcon icon={faChevronDown} />}
