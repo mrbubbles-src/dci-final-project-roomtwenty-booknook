@@ -11,7 +11,6 @@ const Navbar = () => {
         isLoggedIn,
         setIsLoggedIn,
         showModal,
-        setShowModal,
         handleCloseModal,
         handleLoginClick,
         handleLogout,
