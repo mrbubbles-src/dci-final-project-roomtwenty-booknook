@@ -75,6 +75,7 @@ async function adminDeleteBookFromDb(id) {
 // User löscht Buch aus Readlist
 async function removeBookFromLists(user, bookID) {
     try {
+        let res = {};
         let userWantToReadList = user.wantToRead;
         let userCurrentlyReadingList = user.currentlyReading;
         let userAlreadyReadList = user.alreadyRead;
@@ -93,13 +94,10 @@ async function removeBookFromLists(user, bookID) {
                 !isBookOnLists.currentlyReading &&
                 !isBookOnLists.alreadyRead
             ) {
-                console.log(
-                    "Buch konnte nicht auf deinen Listen gefunden werden."
-                );
-                return {
+                return (res = {
                     message:
-                        "Buch konnte nicht auf deinen Listen gefunden werden.",
-                };
+                        "Das Buch konnte nicht auf deinen Listen gefunden werden.",
+                });
             } else {
                 const updatedWantToReadList = userWantToReadList.filter(
                     (bookInList) => bookInList.book.toString() !== bookID
@@ -111,12 +109,12 @@ async function removeBookFromLists(user, bookID) {
                 const updatedAlreadyReadingList = userAlreadyReadList.filter(
                     (bookInList) => bookInList.book.toString() !== bookID
                 );
-                const res = await User.findByIdAndUpdate(user._id, {
+                await User.findByIdAndUpdate(user._id, {
                     currentlyReading: updatedCurrentlyReadingList,
                     wantToRead: updatedWantToReadList,
                     alreadyRead: updatedAlreadyReadingList,
                 });
-                console.log("Buch wurde aus deinen Listen gelöscht.");
+                res = { message: "Das Buch wurde aus deinen Listen gelöscht." };
                 return res;
             }
         }
