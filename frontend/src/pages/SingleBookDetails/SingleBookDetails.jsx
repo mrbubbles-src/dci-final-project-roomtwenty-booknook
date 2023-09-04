@@ -51,6 +51,8 @@ const SingleBookDetails = () => {
 
     const { webReaderLink } = singleBookData.accessInfo || {};
 
+    const mongoDBBookID = singleBookData._id;
+
     let isbn10Title = "";
     let isbn10Number = "";
     let isbn13Title = "";
@@ -255,7 +257,10 @@ const SingleBookDetails = () => {
                             Leseprobe auf GooglePlay Books
                         </a>
                     ) : null}
-                    <AddToLists onButtonClick={handleSendToLists} />
+                    <AddToLists
+                        onButtonClick={handleSendToLists}
+                        bookId={mongoDBBookID}
+                    />
                 </div>
                 <div className='single-book-rating-container'>
                     <span className='single-book-avg-rating'>

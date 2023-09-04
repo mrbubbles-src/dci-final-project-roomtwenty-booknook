@@ -11,10 +11,10 @@ const {
     httpUserDeleteSelf,
     httpShowReadList,
 } = require("../controller/user.controller");
-const { httpDeleteBookFromReadlist } = require("../controller/book.controller");
 
+const { findUserInDb } = require("../middleware/errorHandler");
+const { httpRemoveBookFromLists } = require("../controller/book.controller");
 const { userValidationRules } = require("../lib/inputValidation/userRules");
-
 const { validateInputs } = require("../middleware/inputValidation");
 
 const {
@@ -62,10 +62,11 @@ router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 
 router.get("/getReadlist", authenticateToken, httpShowReadList);
 
+//USER -> Buch auch Listen löschen
 router.delete(
-    "/deleteBookFromReadlist/:bookID",
+    "/removeBookFromLists",
     authenticateToken,
-    httpDeleteBookFromReadlist
+    httpRemoveBookFromLists
 );
 
 router.get(
