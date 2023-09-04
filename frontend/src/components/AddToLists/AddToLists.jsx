@@ -141,7 +141,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                         className="book-actions-add-to-lists want-to-read"
                         onClick={handleLoginClick}
                     >
-                        pupsen
+                        Möchte ich lesen
                     </button>
                     <button
                         onClick={handleLoginClick}
