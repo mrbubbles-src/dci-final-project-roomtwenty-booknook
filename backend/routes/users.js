@@ -9,6 +9,8 @@ const {
     httpShowReadList,
 } = require("../controller/user.controller");
 
+const { findUserInDb } = require("../middleware/errorHandler");
+
 const { httpRemoveBookFromLists } = require("../controller/book.controller");
 
 const { userValidationRules } = require("../lib/inputValidation/userRules");
