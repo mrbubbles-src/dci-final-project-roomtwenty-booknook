@@ -79,7 +79,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
         }
     };
     return (
-        <div>
+        <div className="book-actions-add-to-lists-container">
             {token ? (
                 <>
                     <AddToListButton
@@ -107,6 +107,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                     {/* machen das button zum löschen nur angezeigt wird wenn das buch auch der liste ist */}
                     {wantToRead || currentlyReading || alreadyRead ? (
                         <button
+                            className="book-actions-remove-from-list remove-btn"
                             onClick={() =>
                                 handleDeleteFromLists(
                                     `${serverURL}/users/removeBookFromLists`
