@@ -131,22 +131,27 @@ async function httpAdminDeleteBookFromDb(req, res, next) {
     }
 }
 
+async function httpIsBookOnLists(req, res, next) {
+    const { userID: _userID, bookID: bookID } = req;
+    try {
+        const user = await findUserInDb(User, _userID);
+        const isBookOnLists = await findBookOnUserLists(user, bookID);
+        res.status(200).json(isBookOnLists);
+    } catch (error) {
+        next(error);
+    }
+}
+
 // Buchdaten aus den listen eines bestimmten users löschen (vom user selbst)
 async function httpRemoveBookFromLists(req, res, next) {
     const { userID: _userID } = req;
     const { bookID } = req.body;
     const user = await findUserInDb(User, _userID);
     try {
-        const deletedBook = await removeBookFromLists(user, bookID);
-        res.status(200).json({
-            message: "Buch wurde aus deinen Listen gelöscht.",
-            bookDeleted: deletedBook,
-        });
+        const bookDeletedOrNot = await removeBookFromLists(user, bookID);
+        res.status(200).json(bookDeletedOrNot);
     } catch (error) {
-        console.log(error);
-        res.status(404).json({
-            message: "Buch konnte nicht auf deinen Listen gefunden werden.",
-        });
+        next(error);
     }
 }
 
@@ -156,5 +161,6 @@ module.exports = {
     httpGetAllBooks,
     httpAdminDeleteBookFromDb,
     httpGetSingleBook,
+    httpIsBookOnLists,
     httpRemoveBookFromLists,
 };

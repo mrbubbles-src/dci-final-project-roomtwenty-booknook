@@ -9,7 +9,10 @@ const {
     httpShowReadList,
 } = require("../controller/user.controller");
 
-const { httpRemoveBookFromLists } = require("../controller/book.controller");
+const {
+    httpRemoveBookFromLists,
+    httpIsBookOnLists,
+} = require("../controller/book.controller");
 
 const { userValidationRules } = require("../lib/inputValidation/userRules");
 
@@ -43,6 +46,8 @@ router.put("/updateUser", authenticateToken, httpUpdateUser);
 router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 
 router.get("/getReadlist", authenticateToken, httpShowReadList);
+
+router.get("/isBookOnLists", authenticateToken, httpIsBookOnLists);
 
 //USER -> Buch auch Listen löschen
 router.delete(

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +8,25 @@ const AddToLists = ({ onButtonClick, bookId }) => {
     const { token } = useContext(BookNookContext);
     const [showAddToListModal, setShowAddToListModal] = useState(false);
     const serverURL = "http://localhost:3000";
-
+    useEffect(() => {
+        async function fetchIsBookOnLists(url) {
+            try {
+                const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                        bookID: bookId,
+                    },
+                });
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchIsBookOnLists(`${serverURL}/users/isBookOnLists`);
+    }, []);
     const handleButtonClick = (url) => {
         onButtonClick(url);
     };
@@ -26,8 +44,8 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                 },
                 body: JSON.stringify({ bookID: bookId }),
             });
-            // const data = await response.json();
-            // console.log(data);
+            const data = await response.json();
+            console.log(data);
         } catch (error) {
             console.error(error);
         }
