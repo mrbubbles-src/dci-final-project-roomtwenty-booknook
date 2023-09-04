@@ -10,7 +10,8 @@ const AddToLists = ({ onButtonClick, bookId }) => {
         currentlyReading: false,
         alreadyRead: false,
     });
-    const { token } = useContext(BookNookContext);
+    const { token, isLoggedIn, setIsLoggedIn, showModal, setShowModal } =
+        useContext(BookNookContext);
     const [showAddToListModal, setShowAddToListModal] = useState(false);
     const serverURL = "http://localhost:3000";
     useEffect(() => {

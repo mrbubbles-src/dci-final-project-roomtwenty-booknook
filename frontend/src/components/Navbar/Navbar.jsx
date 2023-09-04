@@ -4,31 +4,20 @@ import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
 import { Link } from "react-router-dom";
-import useAuth from "../../customhooks/auth";
 import { BookNookContext } from "../../context/BookNookProvider";
 
 const Navbar = () => {
-    const { logout } = useAuth();
-    const [showModal, setShowModal] = useState(false);
-    const [isLoginVisible, setIsLoginVisible] = useState(true);
-    const { isLoggedIn, setIsLoggedIn } = useContext(BookNookContext);
-
-    const toggleForm = () => {
-        setIsLoginVisible(!isLoginVisible);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
-
-    const handleLoginClick = () => {
-        setShowModal(true);
-    };
-
-    const handleLogout = () => {
-        logout();
-        setIsLoggedIn(false);
-    };
+    const {
+        isLoggedIn,
+        setIsLoggedIn,
+        showModal,
+        setShowModal,
+        handleCloseModal,
+        handleLoginClick,
+        handleLogout,
+        isLoginVisible,
+        toggleForm,
+    } = useContext(BookNookContext);
 
     return (
         <nav className="navbar-container">
