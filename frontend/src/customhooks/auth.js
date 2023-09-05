@@ -9,7 +9,7 @@ const useAuth = () => {
         const token = Cookies.get("jwtToken");
         setIsLoggedIn(!!token);
     }, []);
-// Login \\
+    // Login \\
     const login = async (userData) => {
         try {
             const response = await axios.post(
@@ -34,12 +34,12 @@ const useAuth = () => {
             return false;
         }
     };
-// Logout \\
+    // Logout \\
     const logout = () => {
         Cookies.remove("jwtToken");
         setIsLoggedIn(false);
     };
-// Register \\
+    // Register \\
     const register = async (userData) => {
         try {
             const response = await axios.post(

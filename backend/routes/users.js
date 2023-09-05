@@ -1,4 +1,7 @@
 const express = require("express");
+// neue Importe
+const { upload } = require("../middleware/upload");
+const mongoose = require("mongoose");
 const {
     httpCreateUser,
     httpAuthenticateUser,
@@ -9,10 +12,9 @@ const {
     httpShowReadList,
 } = require("../controller/user.controller");
 
-const { httpDeleteBookFromReadlist } = require("../controller/book.controller");
-
+const { findUserInDb } = require("../middleware/errorHandler");
+const { httpRemoveBookFromLists } = require("../controller/book.controller");
 const { userValidationRules } = require("../lib/inputValidation/userRules");
-
 const { validateInputs } = require("../middleware/inputValidation");
 
 const {
@@ -20,8 +22,10 @@ const {
     adminCheck,
 } = require("../middleware/userValidation");
 const { httpFeedback } = require("../controller/nodemailer.controller");
+const { fileSchema } = require("../model/file.schema");
 
 const router = express.Router();
+const File = mongoose.model("File", fileSchema);
 
 router.get("/", authenticateToken, function (req, res, next) {
     res.send("Welcome to the booknook server");
@@ -37,6 +41,20 @@ router.post(
     validateInputs(userValidationRules.login),
     httpAuthenticateUser
 );
+// Upload router
+router.post("/upload", upload.single("file"), async (req, res) => {
+    try {
+        // Aus dem Fronten
+        const { originalname, path } = req.file;
+        const file = new File({ name: originalname, path });
+        await file.save();
+
+        res.status(200).json({ message: "Datei erfolgreich hochgeladen!" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Fehler beim Upload!?" });
+    }
+});
 
 router.put("/updateUser", authenticateToken, httpUpdateUser);
 
@@ -44,10 +62,11 @@ router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 
 router.get("/getReadlist", authenticateToken, httpShowReadList);
 
+//USER -> Buch auch Listen löschen
 router.delete(
-    "/deleteBookFromReadlist/:bookID",
+    "/removeBookFromLists",
     authenticateToken,
-    httpDeleteBookFromReadlist
+    httpRemoveBookFromLists
 );
 
 router.get(
