@@ -231,4 +231,5 @@ module.exports = {
     httpAdminDeleteBookFromDb,
     httpGetSingleBook,
     httpIsBookOnLists,
+    httpRemoveBookFromLists,
 };
