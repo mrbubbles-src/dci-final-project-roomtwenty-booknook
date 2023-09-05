@@ -28,16 +28,16 @@ const LeseChallenge = () => {
     };
 
     return (
-        <div>
-            <h2>Lese-Challenge: Bücher pro Jahr</h2>
-            <p>Dein Ziel: {goal} Bücher pro Jahr</p>
+        <div className="profile-challenge">
+            <h2 className="ueberschrift">Lese-Challenge: Bücher pro Jahr</h2>
+            <p className="ziele">Dein Ziel: {goal} Bücher pro Jahr</p>
             <input
                 type="number"
                 value={goal}
                 onChange={(e) => handleGoalChange(e)}
             />
             <LeseFortschritt goal={goal} />
-            <p>Aktueller Monat: {currentMonth}</p>
+            {/* <p>Aktueller Monat: {currentMonth}</p> */}
 
             {/* <button onClick={nextMonth}>Nächster Monat</button> */}
         </div>
