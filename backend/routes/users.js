@@ -12,8 +12,14 @@ const {
     httpShowReadList,
 } = require("../controller/user.controller");
 
+const {
+    httpRemoveBookFromLists,
+    httpIsBookOnLists,
+} = require("../controller/book.controller");
+
+
 const { findUserInDb } = require("../middleware/errorHandler");
-const { httpRemoveBookFromLists } = require("../controller/book.controller");
+
 const { userValidationRules } = require("../lib/inputValidation/userRules");
 const { validateInputs } = require("../middleware/inputValidation");
 
@@ -61,6 +67,9 @@ router.put("/updateUser", authenticateToken, httpUpdateUser);
 router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 
 router.get("/getReadlist", authenticateToken, httpShowReadList);
+
+
+router.get("/isBookOnLists", authenticateToken, httpIsBookOnLists);
 
 //USER -> Buch auch Listen löschen
 router.delete(

@@ -9,6 +9,9 @@ const {
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
 const { SingleGoogleBookURLWithID } = require("../model/google.book.api");
+const { findUserInDb } = require("../middleware/errorHandler");
+const bookSchema = require("../model/book.schema");
+const { authenticateToken } = require("../middleware/userValidation");
 
 //Volumens(Bücher)suchen -> zugriffs Art
 async function httpSearchBooksOnGoogle(req, res, next) {
@@ -81,7 +84,16 @@ async function httpSaveBook(req, res, next) {
         }
 
         // user anhand von _id aus dem token finden
-        const user = await User.findOne({ _id: _userID });
+        const user = await findUserInDb(User, _userID);
+
+        // remove book from all lists except the specified list
+        for (const list of ["wantToRead", "currentlyReading", "alreadyRead"]) {
+            if (list !== listname) {
+                user[list] = user[list].filter(
+                    (item) => item.book.toString() !== bookID.toString()
+                );
+            }
+        }
 
         // abfrage ob bookID bereits in readList vorhanden ist
         if (
@@ -111,6 +123,68 @@ async function httpSaveBook(req, res, next) {
         next(error);
     }
 }
+// async function httpSaveBook(req, res, next) {
+//     console.log("PATH", req.path);
+//     try {
+//         // buch daten
+//         const book = req.body;
+//         // userID aus dem token
+//         const { userID: _userID } = req;
+//         // listname aus url params
+//         const listname = req.params.listname;
+
+//         // überprüfung ob buch anhand ID n DB vorhanden ist
+//         const existingBook = await Book.findOne({ id: book.id });
+
+//         // variable zum einspeichern der Buch ID
+//         let bookID;
+
+//         // abfrage ob buch bereits in buch collection ist
+//         if (existingBook) {
+//             // wenn buch vorhanden ist, wird dessen mongoDB_id in bookID abgespeichert
+//             bookID = existingBook._id;
+//             console.log("Das Buch ist bereits in der Datenbank vorhanden.");
+//         } else {
+//             // wenn buch nicht vorhanden ist, wird es erstellt
+//             const newBook = await saveBook(book);
+//             // mongoDB_id vom neuerstelltem buch wir in bookID abgespeichert
+//             bookID = newBook._id;
+//             console.log(
+//                 "Das Buch wurde erfolgreich in der Datenbank gespeichert."
+//             );
+//         }
+
+//         // user anhand von _id aus dem token finden
+//         const user = await findUserInDb(User, _userID);
+
+//         // abfrage ob bookID bereits in readList vorhanden ist
+//         if (
+//             user[listname].some(
+//                 (item) => item.book.toString() === bookID.toString()
+//             )
+//         ) {
+//             // wenn ja rückmeldung geben dass es der fall ist
+//             console.log(`Buch ist bereits auf ihrer ${listname} liste`);
+//         } else {
+//             // otherwise push bookID into wantToRead array
+//             user[listname].push({ book: bookID });
+//             // save user
+//             await user.save();
+//             console.log(`Book was added to your ${listname} liste`);
+//         }
+
+//         // get user's readlist
+//         const lists = await showReadlist(_userID);
+
+//         // response
+//         res.status(200).json({
+//             title: `${user.username}'s Leseliste:`,
+//             lists: lists,
+//         });
+//     } catch (error) {
+//         next(error);
+//     }
+// }
 // Buchdaten zu ausgewähltem Buch aus der Datenbank löschen
 async function httpAdminDeleteBookFromDb(req, res, next) {
     const { id } = req.params;
@@ -126,23 +200,27 @@ async function httpAdminDeleteBookFromDb(req, res, next) {
         });
     }
 }
-
+async function httpIsBookOnLists(req, res, next) {
+    const { userID: _userID } = req;
+    const bookID = req.headers.bookid;
+    try {
+        const user = await findUserInDb(User, _userID);
+        const isBookOnLists = await findBookOnUserLists(user, bookID);
+        res.status(200).json(isBookOnLists);
+    } catch (error) {
+        next(error);
+    }
+}
 // Buchdaten aus den listen eines bestimmten users löschen (vom user selbst)
 async function httpRemoveBookFromLists(req, res, next) {
     const { userID: _userID } = req;
     const { bookID } = req.body;
-
+    const user = await findUserInDb(User, _userID);
     try {
-        const deletedBook = await removeBookFromLists(_userID, bookID);
-        res.status(204).json({
-            message: "Buch wurde aus deinen Listen gelöscht.",
-            bookDeleted: deletedBook,
-        });
+        const bookDeletedOrNot = await removeBookFromLists(user, bookID);
+        res.status(200).json(bookDeletedOrNot);
     } catch (error) {
-        console.log(error);
-        res.status(404).json({
-            message: "Buch konnte nicht auf deinen Listen gefunden werden.",
-        });
+        next(error);
     }
 }
 
@@ -152,5 +230,5 @@ module.exports = {
     httpGetAllBooks,
     httpAdminDeleteBookFromDb,
     httpGetSingleBook,
-    httpRemoveBookFromLists,
+    httpIsBookOnLists,
 };

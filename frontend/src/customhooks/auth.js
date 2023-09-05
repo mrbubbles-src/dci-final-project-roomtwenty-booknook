@@ -25,6 +25,7 @@ const useAuth = () => {
                     expires: 7,
                 });
                 setIsLoggedIn(true);
+                window.location.reload();
                 return true;
             } else {
                 return false;
@@ -38,6 +39,7 @@ const useAuth = () => {
     const logout = () => {
         Cookies.remove("jwtToken");
         setIsLoggedIn(false);
+        window.location.reload();
     };
     // Register \\
     const register = async (userData) => {
