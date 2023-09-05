@@ -17,7 +17,6 @@ const {
     httpIsBookOnLists,
 } = require("../controller/book.controller");
 
-
 const { findUserInDb } = require("../middleware/errorHandler");
 
 const { userValidationRules } = require("../lib/inputValidation/userRules");
@@ -48,26 +47,30 @@ router.post(
     httpAuthenticateUser
 );
 // Upload router
-router.post("/upload", upload.single("file"), async (req, res) => {
-    try {
-        // Aus dem Fronten
-        const { originalname, path } = req.file;
-        const file = new File({ name: originalname, path });
-        await file.save();
+router.post(
+    "/upload",
+    authenticateToken,
+    upload.single("file"),
+    async (req, res) => {
+        try {
+            // Aus dem Fronten
+            const { originalname, path } = req.file;
+            const file = new File({ name: originalname, path });
+            await file.save();
 
-        res.status(200).json({ message: "Datei erfolgreich hochgeladen!" });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Fehler beim Upload!?" });
+            res.status(200).json({ message: "Datei erfolgreich hochgeladen!" });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Fehler beim Upload!?" });
+        }
     }
-});
+);
 
 router.put("/updateUser", authenticateToken, httpUpdateUser);
 
 router.delete("/userDeleteSelf", authenticateToken, httpUserDeleteSelf);
 
 router.get("/getReadlist", authenticateToken, httpShowReadList);
-
 
 router.get("/isBookOnLists", authenticateToken, httpIsBookOnLists);
 

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { BookNookContext } from "../../context/BookNookProvider";
 
 const FileUpload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
-
+    const { token } = useContext(BookNookContext);
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
     };
@@ -17,6 +18,9 @@ const FileUpload = () => {
                     "http://localhost:3000/users/upload",
                     {
                         method: "POST",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
                         body: formData,
                     }
                 );
@@ -33,7 +37,7 @@ const FileUpload = () => {
 
     return (
         <>
-            <input type='file' onChange={handleFileChange} />
+            <input type="file" onChange={handleFileChange} />
             <button onClick={handleUpload}>Upload</button>
         </>
     );
