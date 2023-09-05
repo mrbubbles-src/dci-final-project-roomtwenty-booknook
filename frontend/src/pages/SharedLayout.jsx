@@ -7,7 +7,7 @@ const SharedLayout = () => {
     return (
         <>
             <Navbar />
-            <main className="main-container">
+            <main className='main-container'>
                 <Outlet />
             </main>
             <MenuBar /> {/*ausgeschaltet ab Desktop größe */}

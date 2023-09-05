@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Kontaktformular.scss";
 
 import BuchNichtVorhanden from "./Themenauswahl/BuchNichtVorhanden";
-import Fragen from "./Themenauswahl/Fragen";
 import Anregungen from "./Themenauswahl/Anregungen";
-import Irgendwas from "./Themenauswahl/Irgendwas";
-import NochIrgendwas from "./Themenauswahl/NochIrgendwas";
+import Feedback from "./Themenauswahl/Feedback";
 
 const Kontaktformular = () => {
+    const [selectedOption, setSelectedOption] = useState("Feedback");
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
     return (
         <div>
-            <div>
-                <select name={"Themenauswahl"} size={"5"}>
-                    <option value={BuchNichtVorhanden}>
-                        Buch nicht vorhanden?
-                    </option>
-                    <option value={Fragen}>Fragen</option>
-                    <option value={Anregungen}>Anregungen</option>
-                    <option value={Irgendwas}>Irgendwas</option>
-                    <option value={NochIrgendwas}>Noch Irgendwas</option>
-                </select>
-            </div>
+            <select
+                name="Themenauswahl"
+                onChange={handleSelectChange}
+                value={selectedOption}
+            >
+                <option value="Feedback">Wähle dein Thema!</option>
+                <option value="BuchNichtVorhanden">
+                    Buch nicht vorhanden?
+                </option>
+                <option value="Anregungen">Anregung</option>
+            </select>
+            {selectedOption === "BuchNichtVorhanden" ? (
+                <BuchNichtVorhanden />
+            ) : null}
+            {selectedOption === "Anregungen" ? <Anregungen /> : null}
+            {selectedOption === "Feedback" ? <Feedback /> : null}
         </div>
     );
 };

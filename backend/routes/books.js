@@ -3,6 +3,7 @@ const {
     httpGetAllBooks,
     httpSearchBooksOnGoogle,
     httpGetSingleBook,
+    httpRemoveBookFromLists,
 } = require("../controller/book.controller");
 const {
     authenticateToken,
@@ -34,5 +35,5 @@ router.delete(
     adminCheck,
     httpAdminDeleteBookFromDb
 );
-
+router.post("/expLevel");
 module.exports = router;

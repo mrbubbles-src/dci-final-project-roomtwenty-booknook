@@ -1,19 +1,20 @@
 import React from "react";
 import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
-
 import "./userprofile.scss";
-import useAuth from "../../customhooks/auth";
+import FileUpload from "../../components/FileUpload/FileUpload";
+import UserStatistic from "../../components/UserStatistic/UserStatistic";
 
 const UserProfile = () => {
-    const { logout } = useAuth();
-
     return (
         <>
             <h1 className="profile">Profile</h1>
             <div>
+                <UserStatistic/>
                 <LeseChallenge />
+                <FileUpload/>
+            
             </div>
-            <button onClick={logout}>Logout</button>
+
         </>
     );
 };

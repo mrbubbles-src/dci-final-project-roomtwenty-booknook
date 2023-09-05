@@ -1,16 +1,15 @@
 @import "../../scss/styleVariables";
 
 .navbar-container {
-    border: 1px solid red;
     z-index: 1;
-
+    background-color: #102d5b;
     // position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     opacity: 1;
     width: 100%;
-    padding: 3px 10px;
+    padding: 5px 10px;
     color: $accent-2;
     font: {
         family: headings-black;

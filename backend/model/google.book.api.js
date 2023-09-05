@@ -1,3 +1,4 @@
+const Book = require("../model/book.schema");
 const fetch = require("node-fetch");
 const util = require("util");
 require("dotenv").config();
@@ -29,13 +30,21 @@ async function GoogleBooksAPI(searchQuery) {
 
 async function SingleGoogleBookURLWithID(id) {
     try {
-        const singleURL = `${url}/${id}`;
-        const response = await fetch(singleURL);
-        const data = await response.json();
-        console.log(data, "dsb");
-        return data;
-    } catch (err) {
-        console.error(err);
+        const existingBook = await Book.findOne({ id: id });
+        // console.log("existingBook", existingBook);
+        if (!existingBook) {
+            try {
+                const singleURL = `${url}/${id}`;
+                const response = await fetch(singleURL);
+                const data = await response.json();
+                return data;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        return existingBook;
+    } catch (error) {
+        console.error(error);
     }
 }
 

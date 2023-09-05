@@ -77,7 +77,6 @@ async function showReadlist(userID) {
                 "currentlyReading alreadyRead wantToRead",
                 "title author published"
             );
-
         return {
             title: `Hier sind deine Listen, ${user.username}:`,
             currentlyReading: user.currentlyReading,
