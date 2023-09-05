@@ -22,6 +22,7 @@ const SingleBookDetails = () => {
             const data = await response.json();
             setSingleBookData(data);
             setIsSingleBookLoading(false);
+            // console.log(data);
         }
         fetchData();
     }, []);
@@ -50,6 +51,8 @@ const SingleBookDetails = () => {
         singleBookData.volumeInfo.imageLinks || {};
 
     const { webReaderLink } = singleBookData.accessInfo || {};
+
+    const mongoDBBookID = singleBookData._id;
 
     let isbn10Title = "";
     let isbn10Number = "";
@@ -129,7 +132,7 @@ const SingleBookDetails = () => {
             },
         };
         try {
-            const response = await fetch(`${url}`, {
+            const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -255,7 +258,10 @@ const SingleBookDetails = () => {
                             Leseprobe auf GooglePlay Books
                         </a>
                     ) : null}
-                    <AddToLists onButtonClick={handleSendToLists} />
+                    <AddToLists
+                        onButtonClick={handleSendToLists}
+                        bookId={mongoDBBookID}
+                    />
                 </div>
                 <div className='single-book-rating-container'>
                     <span className='single-book-avg-rating'>

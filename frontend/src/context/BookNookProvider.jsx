@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import useAuth from "../customhooks/auth";
 
 export const BookNookContext = React.createContext();
 
@@ -13,6 +14,8 @@ const BookNookProvider = ({ children }) => {
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [isLoginVisible, setIsLoginVisible] = useState(true);
 
     useEffect(() => {
         if (searchTerm !== null) {
@@ -42,7 +45,24 @@ const BookNookProvider = ({ children }) => {
         }
         // console.log("cookie.get", Cookies.get("gibts nicht"));
     }, []);
+    const { logout } = useAuth();
 
+    const toggleForm = () => {
+        setIsLoginVisible(!isLoginVisible);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleLoginClick = () => {
+        setShowModal(true);
+    };
+
+    const handleLogout = () => {
+        logout();
+        setIsLoggedIn(false);
+    };
     return (
         <BookNookContext.Provider
             value={{
@@ -55,6 +75,13 @@ const BookNookProvider = ({ children }) => {
                 token,
                 isLoggedIn,
                 setIsLoggedIn,
+                showModal,
+                setShowModal,
+                toggleForm,
+                handleCloseModal,
+                handleLoginClick,
+                handleLogout,
+                isLoginVisible,
             }}
         >
             {children}

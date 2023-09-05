@@ -3,6 +3,7 @@ const {
     httpGetAllBooks,
     httpSearchBooksOnGoogle,
     httpGetSingleBook,
+    httpRemoveBookFromLists,
 } = require("../controller/book.controller");
 const {
     authenticateToken,
