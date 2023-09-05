@@ -5,7 +5,6 @@ const {
     getAllBooks,
     adminDeleteBookFromDb,
     removeBookFromLists,
-    findBookOnUserLists,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
@@ -124,7 +123,6 @@ async function httpSaveBook(req, res, next) {
         next(error);
     }
 }
-
 // async function httpSaveBook(req, res, next) {
 //     console.log("PATH", req.path);
 //     try {
@@ -202,7 +200,6 @@ async function httpAdminDeleteBookFromDb(req, res, next) {
         });
     }
 }
-
 async function httpIsBookOnLists(req, res, next) {
     const { userID: _userID } = req;
     const bookID = req.headers.bookid;
@@ -214,7 +211,6 @@ async function httpIsBookOnLists(req, res, next) {
         next(error);
     }
 }
-
 // Buchdaten aus den listen eines bestimmten users löschen (vom user selbst)
 async function httpRemoveBookFromLists(req, res, next) {
     const { userID: _userID } = req;
@@ -235,5 +231,4 @@ module.exports = {
     httpAdminDeleteBookFromDb,
     httpGetSingleBook,
     httpIsBookOnLists,
-    httpRemoveBookFromLists,
 };

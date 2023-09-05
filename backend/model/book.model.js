@@ -116,7 +116,7 @@ async function removeBookFromLists(user, bookID) {
                 res = { message: "Das Buch wurde aus deinen Listen gelöscht." };
                 return res;
             }
-        }
+
     } catch (error) {
         throw new Error(error);
     }
