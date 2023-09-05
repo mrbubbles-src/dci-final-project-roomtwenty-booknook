@@ -111,7 +111,8 @@ async function httpShowReadList(req, res, next) {
     }
 }
 async function httpUploadUserAvatar(req, res, next) {
-    upload.single("file")(req, res, async (error) => {
+    const { userID: _userID } = req;
+    // upload.single("file")(req, res, async (error) => {
         if (error) {
             // Handle the error
             res.status(400).json({ message: error.message });
