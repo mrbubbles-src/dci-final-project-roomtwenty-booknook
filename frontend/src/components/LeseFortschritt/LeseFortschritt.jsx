@@ -21,6 +21,10 @@ const LeseFortschritt = ({ goal }) => {
         }
     };
 
+    // eine neue eigenschaft im backend (DB) für alle seiten die bis jetzt gelesen wurde.
+    // frontend: die neue seiten müssen aktualisiert werden und ins backend geschickt.
+    // frontend: darstellung
+
     // Initialisieren des Aufrufs.
     useEffect(() => {
         fetchAlreadyReadBooks();
@@ -54,12 +58,18 @@ const LeseFortschritt = ({ goal }) => {
         return 0;
     };
 
+    // funktion für die berechnung der insgesamt gelesenen seiten
+
+    // const allReadedPages = () => {
+    //     if()
+    // };
+
     return (
         <div className="lese-fortschritt">
             <div className="user-profile profile-card-container">
                 <div className="profile-img"></div>
                 <div className="text-right">
-                    <LevelExpBar />
+                    <LevelExpBar xpProzent={90} />
                     <div className="usercard-info-container d">
                         <p className="bücher-gelesen text-info">
                             <span className="number">20</span> Bücher gelesen.

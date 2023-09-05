@@ -2,7 +2,7 @@ import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import "./LevelExpBar.scss";
 
-const LevelExpBar = () => {
+const LevelExpBar = ({ xpProzent }) => {
     const mainDiv = {
         width: "150px",
     };
@@ -10,7 +10,7 @@ const LevelExpBar = () => {
     return (
         <div className="expLevel" style={mainDiv}>
             <ProgressBar
-                completed={90}
+                completed={xpProzent}
                 bgColor="red"
                 animateOnRender={false}
                 isLabelVisible={true}
