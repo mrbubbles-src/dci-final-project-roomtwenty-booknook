@@ -79,27 +79,6 @@ const AddToLists = ({ onButtonClick, bookId }) => {
         }
     };
 
-    const handleShowAddToListModal = () => setShowAddToListModal(true);
-    const handleCloseAddToListModal = () => setShowAddToListModal(false);
-
-    const handleDeleteFromLists = async (url) => {
-        try {
-            console.log(bookId);
-            const response = await fetch(url, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ bookID: bookId }),
-            });
-
-            const responseJson = await response.json();
-            console.log(responseJson);
-        } catch (error) {
-            console.error(error);
-        }
-    };
     return (
         <div className="book-actions-add-to-lists-container">
             {token ? (
@@ -138,13 +117,11 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                         >
                             Entferne das Buch von deinen Listen
                         </button>
-
                     ) : (
                         <></>
                     )}
                 </Modal>
             )}
-
         </div>
     );
 };
