@@ -1,4 +1,8 @@
+const mongoose = require("mongoose");
 require("dotenv").config();
+const { fileSchema } = require("../model/file.schema");
+const File = mongoose.model("File", fileSchema);
+const { upload } = require("../middleware/upload");
 const {
     createUser,
     authenticateUser,
@@ -106,10 +110,28 @@ async function httpShowReadList(req, res, next) {
         next(error);
     }
 }
+async function httpUploadUserAvatar(req, res, next) {
+    upload.single("file")(req, res, async (error) => {
+        if (error) {
+            // Handle the error
+            res.status(400).json({ message: error.message });
+        } else {
+            try {
+                // Aus dem Frontend
+                const { originalname, path } = req.file;
+                const file = new File({ name: originalname, path });
+                await file.save();
 
-// async function httpExpLevel(req,res,next){
-//     const userId,
-// }
+                res.status(200).json({
+                    message: "Datei erfolgreich hochgeladen!",
+                });
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ message: "Fehler beim Upload!?" });
+            }
+        }
+    });
+}
 module.exports = {
     httpCreateUser,
     httpAuthenticateUser,
@@ -118,4 +140,5 @@ module.exports = {
     httpUserDeleteSelf,
     httpAdminDeleteUser,
     httpShowReadList,
+    httpUploadUserAvatar,
 };
