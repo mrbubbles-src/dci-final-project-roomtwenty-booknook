@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CurrentlyReadingCard.scss";
+import "./CurrentlyReadingCard";
 const CurrentlyReadingCard = ({ goal }) => {
     const [totalPages, setTotalPages] = useState(334);
     const [currentBookProgress, setCurrentBookProgress] = useState(210);
