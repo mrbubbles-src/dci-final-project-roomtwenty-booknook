@@ -10,7 +10,7 @@ const { UserRoles } = require("../lib/security/roles");
 const userSchema = new mongoose.Schema({
     profileImage: {
         type: String,
-        default: "./backend/public/images/default_profile_picture.jpg",
+        default: "/images/default_profile_picture.jpg",
     },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
