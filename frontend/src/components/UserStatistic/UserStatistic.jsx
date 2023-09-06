@@ -40,7 +40,7 @@ const UserStatistic = () => {
         return <div>Lade...</div>;
     }
     const serverURL = "http://localhost:3000";
-    const Avatar = serverURL + readListData.profilePicture;
+    const Avatar = `${serverURL}${readListData.profilePicture}`;
     console.log("Avatar Path", Avatar);
     return (
         <div>
