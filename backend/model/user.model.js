@@ -72,7 +72,9 @@ async function adminDeleteUser(id) {
 async function showReadlist(userID) {
     try {
         const user = await User.findOne({ _id: userID })
-            .select("username currentlyReading alreadyRead wantToRead")
+            .select(
+                "username profileImage currentlyReading alreadyRead wantToRead"
+            )
             .populate(
                 "currentlyReading alreadyRead wantToRead",
                 "title author published"
@@ -82,6 +84,7 @@ async function showReadlist(userID) {
             currentlyReading: user.currentlyReading,
             alreadyRead: user.alreadyRead,
             wantToRead: user.wantToRead,
+            profilePicture: user.profileImage,
         };
     } catch (error) {
         throw error;

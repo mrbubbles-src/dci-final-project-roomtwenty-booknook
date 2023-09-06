@@ -5,6 +5,7 @@ const {
     getAllBooks,
     adminDeleteBookFromDb,
     removeBookFromLists,
+    findBookOnUserLists,
 } = require("../model/book.model");
 const User = require("../model/user.schema");
 const { showReadlist } = require("../model/user.model");
