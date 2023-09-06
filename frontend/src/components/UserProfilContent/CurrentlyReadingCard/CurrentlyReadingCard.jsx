@@ -64,3 +64,4 @@ const CurrentlyReadingCard = ({ goal }) => {
     );
 };
 export default CurrentlyReadingCard;
+//Hier kommt der Lesefortschritt mit dem modal rein irgendwie, du machts das schon

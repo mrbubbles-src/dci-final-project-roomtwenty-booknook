@@ -3,8 +3,10 @@ import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import "./userprofile.scss";
 import FileUpload from "../../components/FileUpload/FileUpload";
 import UserStatistic from "../../components/UserStatistic/UserStatistic";
-import LeseFortschritt from "../../components/UserProfilContent/LeseFortschritt";
-
+import UserInfoCard from "../../components/UserProfilContent/UserInfoCard/UserInfoCard";
+import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyReadingCard/CurrentlyReadingCard";
+import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
+import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 const UserProfile = () => {
     return (
         <>
@@ -12,7 +14,10 @@ const UserProfile = () => {
             <div>
                 <UserStatistic />
                 <LeseChallenge />
-                <LeseFortschritt />
+                <UserInfoCard />
+                <CurrentlyReadingCard />
+                <ReadCard />
+                <WantToReadCard />
                 <FileUpload />
             </div>
         </>
