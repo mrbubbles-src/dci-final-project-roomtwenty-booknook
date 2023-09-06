@@ -122,7 +122,7 @@ async function httpUploadUserAvatar(req, res, next) {
         } else {
             try {
                 // Aus dem Frontend
-                const { path } = req.file;
+                const { originalname, path } = req.file;
                 const user = await findUserInDb(User, _userID);
 
                 // Aktualisieren Sie das profileImage-Feld des Benutzers
