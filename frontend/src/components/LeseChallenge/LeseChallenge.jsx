@@ -1,5 +1,5 @@
 import "./LeseChallenge.scss";
-import LeseFortschritt from "../LeseFortschritt/LeseFortschritt.jsx";
+// import LeseFortschritt from "../LeseFortschritt/LeseFortschritt.jsx";
 import React, { useState, useEffect } from "react";
 
 const LeseChallenge = () => {
@@ -36,7 +36,7 @@ const LeseChallenge = () => {
                 value={goal}
                 onChange={(e) => handleGoalChange(e)}
             />
-            <LeseFortschritt goal={goal} />
+            {/* <LeseFortschritt goal={goal} /> */}
             {/* <p>Aktueller Monat: {currentMonth}</p> */}
 
             {/* <button onClick={nextMonth}>Nächster Monat</button> */}

@@ -19,4 +19,4 @@ const LevelExpBar = ({ xpProzent }) => {
     );
 };
 
-export default LevelExpBar;
+// export default LevelExpBar;
