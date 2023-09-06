@@ -10,7 +10,7 @@ const { UserRoles } = require("../lib/security/roles");
 const userSchema = new mongoose.Schema({
     profileImage: {
         type: String,
-        default: "https://example.com/default-profile-pic.jpg",
+        default: "./backend/public/images/default_profile_picture.jpg",
     },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
@@ -22,10 +22,12 @@ const userSchema = new mongoose.Schema({
         enum: Object.values(UserRoles),
         default: UserRoles.USER,
     },
-    /* Readlist: [currentlyReading, alreadyRead, wantToRead ]
-     */
+    readingChallenge: { type: Number, default: 0 },
     currentlyReading: [
-        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+        {
+            book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            currentPage: { type: Number, default: 0 },
+        },
     ],
     alreadyRead: [
         { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },

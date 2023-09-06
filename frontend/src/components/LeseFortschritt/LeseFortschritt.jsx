@@ -13,7 +13,7 @@ const LeseFortschritt = ({ goal }) => {
     // route bauen um die daten ans backend zu schicken
     const fetchAlreadyReadBooks = async () => {
         try {
-            const response = await fetch("localhost:3000/");
+            const response = await fetch("http://localhost:3000/");
             const data = await response.json();
             setAlreadyReadBooksList(data);
         } catch (error) {
@@ -27,7 +27,7 @@ const LeseFortschritt = ({ goal }) => {
 
     // Initialisieren des Aufrufs.
     useEffect(() => {
-        fetchAlreadyReadBooks();
+        // fetchAlreadyReadBooks();
     }, []);
 
     const updateBookProgress = (progress) => {

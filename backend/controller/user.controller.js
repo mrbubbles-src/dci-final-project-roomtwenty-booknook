@@ -1,4 +1,8 @@
+const mongoose = require("mongoose");
 require("dotenv").config();
+const { fileSchema } = require("../model/file.schema");
+const File = mongoose.model("File", fileSchema);
+const { upload } = require("../middleware/upload");
 const {
     createUser,
     authenticateUser,
@@ -12,6 +16,8 @@ const {
     // addBookToWantToRead,
 } = require("../model/user.model");
 const { createSecurityToken } = require("../lib/security/token");
+const { findUserInDb } = require("../middleware/errorHandler");
+const User = require("../model/user.schema");
 
 const secretTokenPW = process.env.TOKEN_SECRET;
 
@@ -107,8 +113,58 @@ async function httpShowReadList(req, res, next) {
     }
 }
 
-// async function httpExpLevel(req,res,next){
-//     const userId,
+async function httpUploadUserAvatar(req, res, next) {
+    const { userID: _userID } = req;
+    upload.single("file")(req, res, async (error) => {
+        if (error) {
+            // Handle the error
+            res.status(400).json({ message: error.message });
+        } else {
+            try {
+                // Aus dem Frontend
+                const { originalname, path } = req.file;
+                const user = await findUserInDb(User, _userID);
+
+                // Aktualisieren Sie das profileImage-Feld des Benutzers
+                user.profileImage = path.replace("public", "");
+                await user.save();
+
+                res.status(200).json({
+                    message: "Datei erfolgreich hochgeladen!",
+                    profileImage: path, // Send the updated profileImage URL back
+                });
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ message: "Fehler beim Upload!?" });
+            }
+        }
+    });
+}
+
+// async function httpUploadUserAvatar(req, res, next) {
+//     const { userID: _userID } = req;
+//     const user = await findUserInDb(User, _userID);
+//     console.log("user upload", user);
+//     upload.single("file")(req, res, async (error) => {
+//         if (error) {
+//             // Handle the error
+//             res.status(400).json({ message: error.message });
+//         } else {
+//             try {
+//                 // Aus dem Frontend
+//                 const { originalname, path } = req.file;
+//                 const file = new File({ name: originalname, path });
+//                 await file.save();
+
+//                 res.status(200).json({
+//                     message: "Datei erfolgreich hochgeladen!",
+//                 });
+//             } catch (error) {
+//                 console.error(error);
+//                 res.status(500).json({ message: "Fehler beim Upload!?" });
+//             }
+//         }
+//     });
 // }
 module.exports = {
     httpCreateUser,
@@ -118,4 +174,5 @@ module.exports = {
     httpUserDeleteSelf,
     httpAdminDeleteUser,
     httpShowReadList,
+    httpUploadUserAvatar,
 };

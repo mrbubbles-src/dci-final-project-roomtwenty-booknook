@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import userstatistic from "./userstatistic.scss";
 
 function getPluralText(count, singularText, pluralText) {
     if (count === 1) {
@@ -11,7 +12,7 @@ function getPluralText(count, singularText, pluralText) {
         return `Kein ${singularText}`;
     }
 }
-
+// nur /images/dateiname im backend abspeichern
 const UserStatistic = () => {
     const [readListData, setReadListData] = useState(null);
 
@@ -28,6 +29,7 @@ const UserStatistic = () => {
                     const readListData = response.data;
                     setReadListData(readListData);
                     console.log(readListData);
+                    console.log(readListData.profilePicture);
                 })
                 .catch((error) => {
                     console.error("Something went wrong?!", error);
@@ -38,7 +40,9 @@ const UserStatistic = () => {
     if (!readListData) {
         return <div>Lade...</div>;
     }
-
+    const serverURL = "http://localhost:3000";
+    const Avatar = `${serverURL}${readListData.profilePicture}`;
+    console.log("Avatar Path", Avatar);
     return (
         <div>
             <h1>{readListData.title}</h1>
@@ -63,6 +67,7 @@ const UserStatistic = () => {
                     "gewünschte Bücher"
                 )}
             </p>
+            <img src={Avatar} alt="avatar" width={"100px"} />
         </div>
     );
 };
