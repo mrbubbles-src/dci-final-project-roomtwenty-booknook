@@ -6,6 +6,11 @@ const storage = multer.diskStorage({
         const { userID: _userID } = req;
         const dir = `public/uploads/${_userID}`;
 
+        fs.readdirSync(dir).forEach((fileName) => {
+            if (fileName.includes("avatar")) {
+                fs.unlinkSync(`${dir}/${fileName}`);
+            }
+        });
         fs.mkdirSync(dir, { recursive: true });
 
         cb(null, dir);

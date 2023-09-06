@@ -66,7 +66,7 @@ const UserStatistic = () => {
                     "gewünschte Bücher"
                 )}
             </p>
-            <img src={Avatar} alt="avatar" />
+            <img src={Avatar} alt="avatar" width={"100px"} />
         </div>
     );
 };
