@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import userstatistic from "./userstatistic.scss";
 
 function getPluralText(count, singularText, pluralText) {
     if (count === 1) {

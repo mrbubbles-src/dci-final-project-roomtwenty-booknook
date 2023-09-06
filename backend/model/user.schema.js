@@ -22,10 +22,12 @@ const userSchema = new mongoose.Schema({
         enum: Object.values(UserRoles),
         default: UserRoles.USER,
     },
-    /* Readlist: [currentlyReading, alreadyRead, wantToRead ]
-     */
+    readingChallenge: { type: Number, default: 0 },
     currentlyReading: [
-        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+        {
+            book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            currentPage: { type: Number, default: 0 },
+        },
     ],
     alreadyRead: [
         { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
