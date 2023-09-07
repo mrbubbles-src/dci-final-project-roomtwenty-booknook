@@ -24,11 +24,31 @@ const UserProfile = () => {
                 }
             );
             const data = await response.json();
-            console.log("data response", data);
+            // console.log("data response", data);
             setUserdata(data);
         }
         fetchData();
     }, []);
+
+    const {
+        username,
+        readingRank,
+        readingLevel,
+        readingChallenge,
+        profileImage,
+        wantToRead,
+        currentlyReading,
+        alreadyRead,
+    } = userdata || {};
+
+    // console.log("username", username);
+    // console.log("readingRank", readingRank);
+    // console.log("readingLevel", readingLevel);
+    // console.log("readingChallenge", readingChallenge);
+    // console.log("profileImage", profileImage);
+    // console.log("wantToRead", wantToRead);
+    // console.log("currentlyReading", currentlyReading);
+    // console.log("alreadyRead", alreadyRead);
 
     return (
         <>
