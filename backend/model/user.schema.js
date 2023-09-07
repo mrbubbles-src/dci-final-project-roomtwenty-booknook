@@ -68,6 +68,7 @@ userSchema.methods.authenticate = async function (password) {
 userSchema.methods.toJSON = function () {
     const user = this.toObject();
     delete user.password;
+    delete user.email;
     return user;
 };
 
