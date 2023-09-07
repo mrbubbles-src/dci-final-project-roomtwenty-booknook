@@ -68,7 +68,8 @@ async function httpAdminGetAllUsers(req, res, next) {
 async function httpUpdateUser(req, res, next) {
     try {
         const { userID: id } = req;
-        const updatedUser = await updateUser(id, req.body);
+        const dataToUpdate = req.body;
+        const updatedUser = await updateUser(id, dataToUpdate);
         res.json(updatedUser);
     } catch (error) {
         next(error);

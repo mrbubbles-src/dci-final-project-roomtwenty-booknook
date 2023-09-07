@@ -41,12 +41,52 @@ async function adminGetAllUsers() {
 async function updateUser(id, data) {
     try {
         await findUserInDb(User, id);
+        if (data.currentlyReading) {
+            // Extract the book ID and currentPage from the data
+            const { book, currentPage } = data.currentlyReading;
+            // Update the currentlyReading array using the $ positional operator
+            await User.updateOne(
+                { _id: id, "currentlyReading.book": book },
+                { $set: { "currentlyReading.$.currentPage": currentPage } }
+            );
+            // Remove the currentlyReading field from the data object
+            delete data.currentlyReading;
+        }
+        // Update the rest of the user data
         return await User.findOneAndUpdate({ _id: id }, data, { new: true });
     } catch (error) {
         throw error;
     }
 }
-
+// async function updateUser(id, data) {
+//     try {
+//         await findUserInDb(User, id);
+//         return await User.findOneAndUpdate({ _id: id }, data, { new: true });
+//     } catch (error) {
+//         throw error;
+//     }
+// }
+// async function updateUser(id, data) {
+//     let dataupdate = data;
+//     let currentlyReading = dataupdate.currentlyReading;
+//     let bookID = currentlyReading._id;
+//     try {
+//         const user = await findUserInDb(User, id);
+//         let userCurrentlyReading = user.currentlyReading;
+//         if (!currentlyReading) {
+//             return await User.findOneAndUpdate({ _id: id }, dataupdate, {
+//                 new: true,
+//             });
+//         } else {
+//             userCurrentlyReading.forEach(async (book) => {
+//                 if (book._id === bookID) {
+//                 }
+//             });
+//         }
+//     } catch (error) {
+//         throw error;
+//     }
+// }
 // user löscht sich
 async function userDeleteSelf(id) {
     try {
