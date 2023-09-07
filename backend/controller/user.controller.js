@@ -11,9 +11,6 @@ const {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
-
-    // addBookToAlreadyRead,
-    // addBookToWantToRead,
 } = require("../model/user.model");
 const { createSecurityToken } = require("../lib/security/token");
 const { findUserInDb } = require("../middleware/errorHandler");
@@ -142,7 +139,10 @@ async function httpUploadUserAvatar(req, res, next) {
 }
 async function httpGetSingleUserData(req, res, next) {
     try {
-        //
+        const { userID: _userID } = req;
+        const user = await findUserInDb(User, _userID);
+        console.log(user);
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }

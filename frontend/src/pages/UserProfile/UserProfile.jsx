@@ -29,9 +29,9 @@ const UserProfile = () => {
         }
         fetchData();
     }, []);
+
     return (
         <>
-            <h1 className="profile">Profile</h1>
             <div>
                 <UserStatistic />
                 <LeseChallenge />
