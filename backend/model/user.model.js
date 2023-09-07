@@ -91,6 +91,24 @@ async function showReadlist(userID) {
     }
 }
 
+const updateUserCurrentPage = async (userId, bookId, currentPage) => {
+    const user = await User.findById(userId);
+    const bookIndex = user.currentlyReading.findIndex(
+        (book) => book.book.toString() === bookId
+    );
+    user.currentlyReading[bookIndex].currentPage = currentPage;
+    await user.save();
+};
+
+const getUserCurrentlyReading = async (userId) => {
+    //find user
+    const user = await User.findById(userId);
+    //get current book array
+    const currentlyReading = user.currentlyReading;
+    await currentlyReading.populate("book").execPopulate();
+    return currentlyReading;
+};
+
 module.exports = {
     User,
     createUser,
@@ -100,4 +118,6 @@ module.exports = {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
+    updateUserCurrentPage,
+    getUserCurrentlyReading,
 };
