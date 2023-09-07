@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import "./userprofile.scss";
 import FileUpload from "../../components/FileUpload/FileUpload";
-import UserStatistic from "../../components/UserStatistic/UserStatistic";
 import UserInfoCard from "../../components/UserProfilContent/UserInfoCard/UserInfoCard";
 import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyReadingCard/CurrentlyReadingCard";
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
@@ -66,10 +65,15 @@ const UserProfile = () => {
     return (
         <>
             <div>
-                <UserStatistic />
-                <LeseChallenge />
-                <UserInfoCard />
+                <UserInfoCard
+                    wantToRead={wantToRead && wantToRead}
+                    currentlyReading={currentlyReading && currentlyReading}
+                    alreadyRead={alreadyRead && alreadyRead}
+                    username={username && username}
+                    profileImage={profileImage && profileImage}
+                />
                 <CurrentlyReadingCard />
+                <LeseChallenge />
                 <ReadCard />
                 <WantToReadCard />
                 <FileUpload />
