@@ -26,14 +26,21 @@ const userSchema = new mongoose.Schema({
     currentlyReading: [
         {
             book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            bookdetails: { type: Object, default: {} },
             currentPage: { type: Number, default: 0 },
         },
     ],
     alreadyRead: [
-        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+        {
+            book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            bookdetails: { type: Object, default: {} },
+        },
     ],
     wantToRead: [
-        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+        {
+            book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            bookdetails: { type: Object, default: {} },
+        },
     ],
 });
 
@@ -68,6 +75,7 @@ userSchema.methods.authenticate = async function (password) {
 userSchema.methods.toJSON = function () {
     const user = this.toObject();
     delete user.password;
+    delete user.email;
     return user;
 };
 

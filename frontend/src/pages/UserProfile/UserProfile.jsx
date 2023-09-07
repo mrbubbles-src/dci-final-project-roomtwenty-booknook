@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import "./userprofile.scss";
 import FileUpload from "../../components/FileUpload/FileUpload";
@@ -7,10 +7,64 @@ import UserInfoCard from "../../components/UserProfilContent/UserInfoCard/UserIn
 import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyReadingCard/CurrentlyReadingCard";
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
+import { BookNookContext } from "../../context/BookNookProvider";
 const UserProfile = () => {
+    const { token } = useContext(BookNookContext);
+    const [userdata, setUserdata] = useState({});
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(
+                `http://localhost:3000/users/userdata`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            const data = await response.json();
+            console.log("data response", data);
+            setUserdata(data);
+        }
+        fetchData();
+    }, []);
+
+    // route um user einträge zu updaten: http://localhost:3000/users/updateUser
+    // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
+    // {
+    // "type":"currentlyReading",
+    // "book": "die id die unter den key book im buch steht",
+    // "currentPage": der neue wert als zahl, NICHT als string
+    // }
+
+    // wenn irgendwas anderes am user geupdated werden muss muss das stehen:
+    // {
+    // "name des eintrags. zb email": "neuer wert"
+    // }
+
+    const {
+        username,
+        readingRank,
+        readingLevel,
+        readingChallenge,
+        profileImage,
+        wantToRead,
+        currentlyReading,
+        alreadyRead,
+    } = userdata || {};
+
+    // console.log("username", username);
+    // console.log("readingRank", readingRank);
+    // console.log("readingLevel", readingLevel);
+    // console.log("readingChallenge", readingChallenge);
+    // console.log("profileImage", profileImage);
+    // console.log("wantToRead", wantToRead);
+    // console.log("currentlyReading", currentlyReading);
+    // console.log("alreadyRead", alreadyRead);
+
     return (
         <>
-            <h1 className="profile">Profile</h1>
             <div>
                 <UserStatistic />
                 <LeseChallenge />

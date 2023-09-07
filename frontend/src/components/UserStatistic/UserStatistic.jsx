@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import userstatistic from "./userstatistic.scss";
+import "./userstatistic.scss";
 
 function getPluralText(count, singularText, pluralText) {
     if (count === 1) {
@@ -28,8 +28,8 @@ const UserStatistic = () => {
                 .then((response) => {
                     const readListData = response.data;
                     setReadListData(readListData);
-                    console.log(readListData);
-                    console.log(readListData.profilePicture);
+                    // console.log(readListData);
+                    // console.log(readListData.profilePicture);
                 })
                 .catch((error) => {
                     console.error("Something went wrong?!", error);
@@ -42,7 +42,6 @@ const UserStatistic = () => {
     }
     const serverURL = "http://localhost:3000";
     const Avatar = `${serverURL}${readListData.profilePicture}`;
-    console.log("Avatar Path", Avatar);
     return (
         <div>
             <h1>{readListData.title}</h1>

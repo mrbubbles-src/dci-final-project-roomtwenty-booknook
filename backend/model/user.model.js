@@ -40,13 +40,32 @@ async function adminGetAllUsers() {
 // User updaten
 async function updateUser(id, data) {
     try {
+        console.log("data", data);
         await findUserInDb(User, id);
-        return await User.findOneAndUpdate({ _id: id }, data, { new: true });
+        if (data.type === "currentlyReading") {
+            // Extract the book ID and currentPage from the data
+            const { book, currentPage } = data;
+            console.log("currentPage", currentPage);
+            console.log("bookId", book);
+            // Update the currentlyReading array using the $ positional operator
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: id, "currentlyReading.book": book },
+                { $set: { "currentlyReading.$.currentPage": currentPage } }
+            );
+            // Remove the currentlyReading field from the data object
+            delete data.currentlyReading;
+            return updatedUser;
+        }
+        // Update the rest of the user data
+        else {
+            return await User.findOneAndUpdate({ _id: id }, data, {
+                new: true,
+            });
+        }
     } catch (error) {
         throw error;
     }
 }
-
 // user löscht sich
 async function userDeleteSelf(id) {
     try {

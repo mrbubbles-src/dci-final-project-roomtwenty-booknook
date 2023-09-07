@@ -11,9 +11,6 @@ const {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
-
-    // addBookToAlreadyRead,
-    // addBookToWantToRead,
 } = require("../model/user.model");
 const { createSecurityToken } = require("../lib/security/token");
 const { findUserInDb } = require("../middleware/errorHandler");
@@ -69,7 +66,8 @@ async function httpAdminGetAllUsers(req, res, next) {
 async function httpUpdateUser(req, res, next) {
     try {
         const { userID: id } = req;
-        const updatedUser = await updateUser(id, req.body);
+        const dataToUpdate = req.body;
+        const updatedUser = await updateUser(id, dataToUpdate);
         res.json(updatedUser);
     } catch (error) {
         next(error);
@@ -140,32 +138,16 @@ async function httpUploadUserAvatar(req, res, next) {
         }
     });
 }
-
-// async function httpUploadUserAvatar(req, res, next) {
-//     const { userID: _userID } = req;
-//     const user = await findUserInDb(User, _userID);
-//     console.log("user upload", user);
-//     upload.single("file")(req, res, async (error) => {
-//         if (error) {
-//             // Handle the error
-//             res.status(400).json({ message: error.message });
-//         } else {
-//             try {
-//                 // Aus dem Frontend
-//                 const { originalname, path } = req.file;
-//                 const file = new File({ name: originalname, path });
-//                 await file.save();
-
-//                 res.status(200).json({
-//                     message: "Datei erfolgreich hochgeladen!",
-//                 });
-//             } catch (error) {
-//                 console.error(error);
-//                 res.status(500).json({ message: "Fehler beim Upload!?" });
-//             }
-//         }
-//     });
-// }
+async function httpGetSingleUserData(req, res, next) {
+    try {
+        const { userID: _userID } = req;
+        const user = await findUserInDb(User, _userID);
+        console.log(user);
+        res.status(200).json(user);
+    } catch (error) {
+        next(error);
+    }
+}
 module.exports = {
     httpCreateUser,
     httpAuthenticateUser,
@@ -175,4 +157,5 @@ module.exports = {
     httpAdminDeleteUser,
     httpShowReadList,
     httpUploadUserAvatar,
+    httpGetSingleUserData,
 };
