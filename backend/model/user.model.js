@@ -66,35 +66,6 @@ async function updateUser(id, data) {
         throw error;
     }
 }
-// async function updateUser(id, data) {
-//     try {
-//         await findUserInDb(User, id);
-//         return await User.findOneAndUpdate({ _id: id }, data, { new: true });
-//     } catch (error) {
-//         throw error;
-//     }
-// }
-// async function updateUser(id, data) {
-//     let dataupdate = data;
-//     let currentlyReading = dataupdate.currentlyReading;
-//     let bookID = currentlyReading._id;
-//     try {
-//         const user = await findUserInDb(User, id);
-//         let userCurrentlyReading = user.currentlyReading;
-//         if (!currentlyReading) {
-//             return await User.findOneAndUpdate({ _id: id }, dataupdate, {
-//                 new: true,
-//             });
-//         } else {
-//             userCurrentlyReading.forEach(async (book) => {
-//                 if (book._id === bookID) {
-//                 }
-//             });
-//         }
-//     } catch (error) {
-//         throw error;
-//     }
-// }
 // user löscht sich
 async function userDeleteSelf(id) {
     try {
@@ -139,24 +110,6 @@ async function showReadlist(userID) {
     }
 }
 
-const updateUserCurrentPage = async (userId, bookId, currentPage) => {
-    const user = await User.findById(userId);
-    const bookIndex = user.currentlyReading.findIndex(
-        (book) => book.book.toString() === bookId
-    );
-    user.currentlyReading[bookIndex].currentPage = currentPage;
-    await user.save();
-};
-
-const getUserCurrentlyReading = async (userId) => {
-    //find user
-    const user = await User.findById(userId);
-    //get current book array
-    const currentlyReading = user.currentlyReading;
-    await currentlyReading.populate("book").execPopulate();
-    return currentlyReading;
-};
-
 module.exports = {
     User,
     createUser,
@@ -166,6 +119,4 @@ module.exports = {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
-    updateUserCurrentPage,
-    getUserCurrentlyReading,
 };

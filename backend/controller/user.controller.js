@@ -11,8 +11,6 @@ const {
     adminDeleteUser,
     userDeleteSelf,
     showReadlist,
-    updateUserCurrentPage,
-    getUserCurrentlyReading,
 } = require("../model/user.model");
 const { createSecurityToken } = require("../lib/security/token");
 const { findUserInDb } = require("../middleware/errorHandler");
@@ -150,26 +148,6 @@ async function httpGetSingleUserData(req, res, next) {
         next(error);
     }
 }
-
-async function httpUpdateUserCurrentPage(req, res, next) {
-    try {
-        const { userId, bookId } = req.params;
-        const { currentPage } = req.body;
-        await updateUserCurrentPage(userId, bookId, currentPage);
-        res.send(200).send("UPDATE = klappt!");
-    } catch (error) {
-        next(error);
-    }
-}
-async function httpGetUserCurrentlyReading(req, res, next) {
-    try {
-        const { userId } = req.params;
-        const currentlyReading = await getUserCurrentlyReading(userId);
-        res.status(200).json(currentlyReading);
-    } catch (error) {
-        next(error);
-    }
-}
 module.exports = {
     httpCreateUser,
     httpAuthenticateUser,
@@ -180,6 +158,4 @@ module.exports = {
     httpShowReadList,
     httpUploadUserAvatar,
     httpGetSingleUserData,
-    httpUpdateUserCurrentPage,
-    httpGetUserCurrentlyReading,
 };
