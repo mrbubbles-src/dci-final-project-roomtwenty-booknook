@@ -1,11 +1,12 @@
 import React from "react";
 import "./UserInfoCard.scss";
+import LevelExpBar from "../../LevelExpBar/LevelExpBar";
 const UserInfoCard = () => {
     return (
         <div className="user-profile profile-card-container">
             <div className="profile-img"></div>
             <div className="text-right">
-                {/* <LevelExpBar xpProzent={90} /> */}
+                <LevelExpBar xpProzent={90} />
                 <div className="usercard-info-container d">
                     <p className="bücher-gelesen text-info">
                         <span className="number">20</span> Bücher gelesen.

@@ -6,6 +6,7 @@ const LevelExpBar = ({ xpProzent }) => {
     const mainDiv = {
         width: "150px",
     };
+    
 
     return (
         <div className="expLevel" style={mainDiv}>
@@ -19,4 +20,4 @@ const LevelExpBar = ({ xpProzent }) => {
     );
 };
 
-// export default LevelExpBar;
+export default LevelExpBar;
