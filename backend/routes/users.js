@@ -10,6 +10,7 @@ const {
     httpUserDeleteSelf,
     httpShowReadList,
     httpUploadUserAvatar,
+    httpGetSingleUserData,
 } = require("../controller/user.controller");
 const {
     httpRemoveBookFromLists,
@@ -57,6 +58,8 @@ router.delete(
     authenticateToken,
     httpRemoveBookFromLists
 );
+
+router.get("/userdata", authenticateToken, httpGetSingleUserData);
 
 router.get(
     "/adminGetAllUsers",
