@@ -16,26 +16,26 @@ function getPluralText(count, singularText, pluralText) {
 const UserStatistic = () => {
     const [readListData, setReadListData] = useState(null);
 
-    useEffect(() => {
-        const token = Cookies.get("jwtToken");
-        if (token) {
-            axios
-                .get("http://localhost:3000/users/getReadlist", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    const readListData = response.data;
-                    setReadListData(readListData);
-                    // console.log(readListData);
-                    // console.log(readListData.profilePicture);
-                })
-                .catch((error) => {
-                    console.error("Something went wrong?!", error);
-                });
-        }
-    }, []);
+    // useEffect(() => {
+    //     const token = Cookies.get("jwtToken");
+    //     if (token) {
+    //         axios
+    //             .get("http://localhost:3000/users/getReadlist", {
+    //                 headers: {
+    //                     Authorization: `Bearer ${token}`,
+    //                 },
+    //             })
+    //             .then((response) => {
+    //                 const readListData = response.data;
+    //                 setReadListData(readListData);
+    //                 // console.log(readListData);
+    //                 // console.log(readListData.profilePicture);
+    //             })
+    //             .catch((error) => {
+    //                 console.error("Something went wrong?!", error);
+    //             });
+    //     }
+    // }, []);
 
     if (!readListData) {
         return <div>Lade...</div>;
@@ -44,7 +44,7 @@ const UserStatistic = () => {
     const Avatar = `${serverURL}${readListData.profilePicture}`;
     return (
         <div>
-            <h1>{readListData.title}</h1>
+            {/* <h1>{readListData.title}</h1> */}
             <p>
                 {getPluralText(
                     readListData.alreadyRead.length,
