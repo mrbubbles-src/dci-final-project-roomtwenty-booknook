@@ -26,14 +26,21 @@ const userSchema = new mongoose.Schema({
     currentlyReading: [
         {
             book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            bookdetails: { type: Object, default: {} },
             currentPage: { type: Number, default: 0 },
         },
     ],
     alreadyRead: [
-        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+        {
+            book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            bookdetails: { type: Object, default: {} },
+        },
     ],
     wantToRead: [
-        { book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" } },
+        {
+            book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+            bookdetails: { type: Object, default: {} },
+        },
     ],
 });
 
