@@ -64,7 +64,7 @@ async function httpSaveBook(req, res, next) {
         const listname = req.params.listname;
 
         // überprüfung ob buch anhand ID n DB vorhanden ist
-        const existingBook = await Book.findOne({ id: book.id });
+        let existingBook = await Book.findOne({ id: book.id });
 
         // variable zum einspeichern der Buch ID
         let bookID;
@@ -79,6 +79,7 @@ async function httpSaveBook(req, res, next) {
             const newBook = await saveBook(book);
             // mongoDB_id vom neuerstelltem buch wir in bookID abgespeichert
             bookID = newBook._id;
+            existingBook = newBook;
             console.log(
                 "Das Buch wurde erfolgreich in der Datenbank gespeichert."
             );
@@ -106,7 +107,10 @@ async function httpSaveBook(req, res, next) {
             console.log(`Buch ist bereits auf ihrer ${listname} liste`);
         } else {
             // otherwise push bookID into wantToRead array
-            user[listname].push({ book: bookID });
+            user[listname].push({
+                book: bookID,
+                bookdetails: { ...existingBook },
+            });
             // save user
             await user.save();
             console.log(`Book was added to your ${listname} liste`);
