@@ -13,11 +13,7 @@ const CurrentlyReadingCard = ({ goal }) => {
             setCurrentBookProgress(0);
         }
     };
-    const updateBookProgress = (progress) => {
-        if (progress >= 0 && 100) {
-            setCurrentBookProgress(progress);
-        }
-    };
+
     // Berechnung des Lesefortschritts in Prozent
     const calculateProgressPercentage = (seitenZahl, readingProgress) => {
         if (seitenZahl > 0) {

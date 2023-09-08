@@ -74,6 +74,5 @@ router.delete(
     adminCheck,
     httpAdminDeleteUser
 );
-
 // router.post("/feedback", httpFeedback);
 module.exports = router;

@@ -24,11 +24,24 @@ const UserProfile = () => {
                 }
             );
             const data = await response.json();
-            // console.log("data response", data);
+            console.log("data response", data);
             setUserdata(data);
         }
         fetchData();
     }, []);
+
+    // route um user einträge zu updaten: http://localhost:3000/users/updateUser
+    // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
+    // {
+    // "type":"currentlyReading",
+    // "book": "die id die unter den key book im buch steht",
+    // "currentPage": der neue wert als zahl, NICHT als string
+    // }
+
+    // wenn irgendwas anderes am user geupdated werden muss muss das stehen:
+    // {
+    // "name des eintrags. zb email": "neuer wert"
+    // }
 
     const {
         username,
