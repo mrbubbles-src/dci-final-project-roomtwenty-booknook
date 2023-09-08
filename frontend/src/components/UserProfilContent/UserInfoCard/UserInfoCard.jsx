@@ -1,10 +1,8 @@
 import React from "react";
 import "./UserInfoCard.scss";
 import LevelExpBar from "../../LevelExpBar/LevelExpBar";
-const UserInfoCard = () => {
-
-    // eine route um alle gelesenen seiten zu bekommen von dem nutzer(GET-ROUTE)
-    // (POST-ROUTE) um die anzahl der gelesenen seiten zu schicken für den User ins backend
+const UserInfoCard = ({ readingRank, alreadyRead }) => {
+    console.log(alreadyRead);
     // (POST-ROUTE) das Buch abzuschicken mit de
 
     return (

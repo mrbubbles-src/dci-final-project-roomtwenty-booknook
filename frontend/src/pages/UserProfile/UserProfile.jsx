@@ -30,7 +30,7 @@ const UserProfile = () => {
         fetchData();
     }, []);
 
-    // route um user einträge zu updaten: http://localhost:3000/users/updateUser
+    // POT-route um user einträge zu updaten: http://localhost:3000/users/updateUser
     // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
     // {
     // "type":"currentlyReading",
@@ -68,7 +68,10 @@ const UserProfile = () => {
             <div>
                 <UserStatistic />
                 <LeseChallenge />
-                <UserInfoCard />
+                <UserInfoCard
+                    alreadyRead={alreadyRead && alreadyRead}
+                    readingRank={readingRank && readingRank}
+                />
                 <CurrentlyReadingCard />
                 <ReadCard />
                 <WantToReadCard />
