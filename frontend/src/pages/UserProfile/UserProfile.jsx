@@ -7,9 +7,11 @@ import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyRe
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 const UserProfile = () => {
     const { token } = useContext(BookNookContext);
-    const [userdata, setUserdata] = useState({});
+    const [userdata, setUserdata] = useState(null);
+    const [isLoadingUserData, setIsLoadingUserData] = useState(true);
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
@@ -25,10 +27,13 @@ const UserProfile = () => {
             const data = await response.json();
             console.log("data response", data);
             setUserdata(data);
+            setIsLoadingUserData(false);
         }
         fetchData();
     }, []);
-
+    if (isLoadingUserData) {
+        return <LoadingSpinner />;
+    }
     // route um user einträge zu updaten: http://localhost:3000/users/updateUser
     // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
     // {
@@ -66,11 +71,11 @@ const UserProfile = () => {
         <>
             <div>
                 <UserInfoCard
-                    wantToRead={wantToRead && wantToRead}
-                    currentlyReading={currentlyReading && currentlyReading}
-                    alreadyRead={alreadyRead && alreadyRead}
-                    username={username && username}
-                    profileImage={profileImage && profileImage}
+                    wantToRead={wantToRead}
+                    currentlyReading={currentlyReading}
+                    alreadyRead={alreadyRead}
+                    username={username}
+                    profileImage={profileImage}
                 />
                 <CurrentlyReadingCard />
                 <LeseChallenge />
