@@ -6,7 +6,12 @@ const LevelExpBar = ({ xpProzent }) => {
     const mainDiv = {
         width: "150px",
     };
-    
+
+    const updateReadPages = async (userId, newPages) =>{
+        const user = await getUserById(userId);
+        user.readPages += newPages;
+        await user.save();
+    }    
 
     return (
         <div className="expLevel" style={mainDiv}>
