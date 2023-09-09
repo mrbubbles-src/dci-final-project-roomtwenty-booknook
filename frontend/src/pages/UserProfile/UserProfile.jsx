@@ -77,15 +77,37 @@ const UserProfile = () => {
                     profileImage={profileImage}
                 />
             </div>
+            <h4 className="user-profile-title">
+                Liest derzeit{" "}
+                <span className="user-profile-title-number">
+                    {currentlyReading.length}
+                </span>{" "}
+                {currentlyReading.length === 1 ? "Buch" : "Bücher"}
+            </h4>
+
             <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard />
             </div>
             <div className="user-profile-card reading-challenge">
                 <LeseChallenge />
             </div>
+            <h4 className="user-profile-title">
+                Hat bereits{" "}
+                <span className="user-profile-title-number">
+                    {alreadyRead.length}
+                </span>{" "}
+                {alreadyRead.length === 1 ? "Buch" : "Bücher"} gelesen
+            </h4>
             <div className="user-profile-card already-read">
                 <ReadCard />
             </div>
+            <h4 className="user-profile-title">
+                Möchte{" "}
+                <span className="user-profile-title-number">
+                    {wantToRead.length}
+                </span>{" "}
+                {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
+            </h4>
             <div className="user-profile-card want-to-read">
                 <WantToReadCard />
             </div>
