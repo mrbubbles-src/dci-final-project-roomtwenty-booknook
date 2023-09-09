@@ -55,26 +55,21 @@ const UserProfile = () => {
         wantToRead,
         currentlyReading,
         alreadyRead,
+        readingChallengeMax,
+        readingChallengeCurrent,
     } = userdata || {};
-
-    // console.log("username", username);
-    // console.log("readingRank", readingRank);
-    // console.log("readingLevel", readingLevel);
-    // console.log("readingChallenge", readingChallenge);
-    // console.log("profileImage", profileImage);
-    // console.log("wantToRead", wantToRead);
-    // console.log("currentlyReading", currentlyReading);
-    // console.log("alreadyRead", alreadyRead);
 
     return (
         <>
-            <div className="user-profile-card user-statistic">
+            <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     wantToRead={wantToRead}
                     currentlyReading={currentlyReading}
                     alreadyRead={alreadyRead}
                     username={username}
                     profileImage={profileImage}
+                    readingChallengeCurrent={readingChallengeCurrent}
+                    readingChallengeMax={readingChallengeMax}
                 />
             </div>
             <h4 className="user-profile-title">
@@ -88,9 +83,9 @@ const UserProfile = () => {
             <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard />
             </div>
-            <div className="user-profile-card reading-challenge">
+            {/* <div className="user-profile-card reading-challenge-container">
                 <LeseChallenge />
-            </div>
+            </div> */}
             <h4 className="user-profile-title">
                 Hat bereits{" "}
                 <span className="user-profile-title-number">
@@ -98,7 +93,7 @@ const UserProfile = () => {
                 </span>{" "}
                 {alreadyRead.length === 1 ? "Buch" : "Bücher"} gelesen
             </h4>
-            <div className="user-profile-card already-read">
+            <div className="user-profile-card already-read-container">
                 <ReadCard />
             </div>
             <h4 className="user-profile-title">
@@ -108,7 +103,7 @@ const UserProfile = () => {
                 </span>{" "}
                 {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
             </h4>
-            <div className="user-profile-card want-to-read">
+            <div className="user-profile-card want-to-read-container">
                 <WantToReadCard />
             </div>
         </>

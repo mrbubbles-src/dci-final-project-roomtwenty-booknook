@@ -9,6 +9,8 @@ const UserStatistic = ({
     alreadyRead,
     username,
     profileImage,
+    readingChallengeCurrent,
+    readingChallengeMax,
 }) => {
     const { profileImageUploadPreview } = useContext(BookNookContext);
     const serverURL = "http://localhost:3000";
@@ -16,9 +18,10 @@ const UserStatistic = ({
     const previewImage = profileImageUploadPreview.preview;
     return (
         <>
-            <div className="user-statistic-profile-image-container">
+            <div className="user-statistic-avatar-container">
                 <label htmlFor="upload-button">
                     <img
+                        className="avatar"
                         src={previewImage || Avatar || NoImage}
                         alt="avatar"
                         width={"100px"}
@@ -26,12 +29,26 @@ const UserStatistic = ({
                 </label>
                 <FileUpload />
             </div>
-            <article className="user-statistic-rank">
+            <article className="user-statistic-rank-container">
                 <h3 className="user-statistic-username">{username}</h3>
+                <p>hier könnte ihre xp leiste stehen</p>
             </article>
-            <article className="user-statistic-book-info-container">
-                <p className="user-statistic-book-info-already-read">
-                    <span className="user-statistic-already-read-count">
+            <article className="user-statistic-info-container">
+                <h4>Jahres-Lese-Challenge</h4>
+                <p>
+                    Bereits{" "}
+                    <span className="user-statistic-number">
+                        {readingChallengeCurrent && readingChallengeCurrent}
+                    </span>{" "}
+                    {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
+                    {readingChallengeMax === 1 ? "vom" : "von"} geplanten{" "}
+                    <span className="user-statistic-number">
+                        {readingChallengeMax && readingChallengeMax}{" "}
+                    </span>
+                    {readingChallengeMax === 1 ? "Buch" : "Büchern"} gelesen
+                </p>
+                {/* <p className="user-statistic-book-info-already-read">
+                    <span className="user-statistic-number">
                         {alreadyRead.length}
                     </span>{" "}
                     {alreadyRead.length === 1
@@ -39,7 +56,7 @@ const UserStatistic = ({
                         : "bereits gelesene Bücher"}
                 </p>
                 <p className="user-statistic-book-info-currently-reading">
-                    <span className="user-statistic-currently-reading-count">
+                    <span className="user-statistic-number">
                         {currentlyReading.length}
                     </span>{" "}
                     {currentlyReading.length === 1
@@ -47,13 +64,13 @@ const UserStatistic = ({
                         : "aktuell lesende Bücher"}
                 </p>
                 <p className="user-statistic-book-info-want-to-tread">
-                    <span className="user-statistic-want-to-read-count">
+                    <span className="user-statistic-number">
                         {wantToRead.length}
                     </span>{" "}
                     {wantToRead.length === 1
                         ? "gewünschtes Buch"
                         : "gewünschte Bücher"}
-                </p>
+                </p> */}
             </article>
         </>
     );

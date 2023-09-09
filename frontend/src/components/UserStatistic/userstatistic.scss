@@ -1,0 +1,24 @@
+@import "../../scss/styleVariables";
+.user-statistic-container {
+    .user-statistic-avatar-container {
+        grid-area: 1 / 1 / 3 / 2;
+        width: 100%;
+        height: 100%;
+        .avatar {
+            margin: 4px 4px 1px 4px;
+            border-radius: 2px;
+        }
+    }
+    .user-statistic-rank-container {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    .user-statistic-info-container {
+        grid-area: 2 / 2 / 3 / 3;
+    }
+}
+.user-statistic-number {
+    font: {
+        family: text-bold;
+    }
+    color: $background;
+}

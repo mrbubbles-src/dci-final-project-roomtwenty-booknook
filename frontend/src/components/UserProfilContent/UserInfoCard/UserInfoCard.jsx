@@ -7,6 +7,8 @@ const UserInfoCard = ({
     alreadyRead,
     username,
     profileImage,
+    readingChallengeCurrent,
+    readingChallengeMax,
 }) => {
     return (
         <UserStatistic
@@ -15,6 +17,8 @@ const UserInfoCard = ({
             alreadyRead={alreadyRead}
             username={username}
             profileImage={profileImage}
+            readingChallengeCurrent={readingChallengeCurrent}
+            readingChallengeMax={readingChallengeMax}
         />
     );
 };
