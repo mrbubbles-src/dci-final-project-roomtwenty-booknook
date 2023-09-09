@@ -3,6 +3,8 @@ import "./userstatistic.scss";
 import FileUpload from "../FileUpload/FileUpload";
 import NoImage from "../../../public/images/various/no-image.png";
 import { BookNookContext } from "../../context/BookNookProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 const UserStatistic = ({
     wantToRead,
     currentlyReading,
@@ -45,7 +47,10 @@ const UserStatistic = ({
                     <span className="user-statistic-number">
                         {readingChallengeMax && readingChallengeMax}{" "}
                     </span>
-                    {readingChallengeMax === 1 ? "Buch" : "Büchern"} gelesen
+                    {readingChallengeMax === 1 ? "Buch" : "Büchern"} gelesen{" "}
+                    <span>
+                        <FontAwesomeIcon icon={faPencil} />
+                    </span>
                 </p>
                 {/* <p className="user-statistic-book-info-already-read">
                     <span className="user-statistic-number">
