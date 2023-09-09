@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import "./userprofile.scss";
-import FileUpload from "../../components/FileUpload/FileUpload";
 import UserInfoCard from "../../components/UserProfilContent/UserInfoCard/UserInfoCard";
 import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyReadingCard/CurrentlyReadingCard";
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
@@ -81,7 +80,6 @@ const UserProfile = () => {
                 <LeseChallenge />
                 <ReadCard />
                 <WantToReadCard />
-                <FileUpload />
             </div>
         </>
     );

@@ -7,9 +7,11 @@ export const BookNookContext = React.createContext();
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
     const [token, setToken] = useState(null);
-    // const [userRating, setUserRating] = useState([]);
-    // const [userRatingCount, setuserRatingCount] = useState(0);
-    // buch suche spezifischer context start
+    const [profileImageUploadPreview, setProfileImageUploadPreview] = useState({
+        preview: "",
+        raw: "",
+        button: false,
+    });
     const [searchTerm, setSearchTerm] = useState(null);
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
@@ -32,7 +34,7 @@ const BookNookProvider = ({ children }) => {
             fetchData();
         }
     }, [searchTerm]);
-    // buch suche spezifischer context ende
+
     useEffect(() => {
         setToken(Cookies.get("jwtToken"));
         try {
@@ -82,6 +84,8 @@ const BookNookProvider = ({ children }) => {
                 handleLoginClick,
                 handleLogout,
                 isLoginVisible,
+                profileImageUploadPreview,
+                setProfileImageUploadPreview,
             }}
         >
             {children}

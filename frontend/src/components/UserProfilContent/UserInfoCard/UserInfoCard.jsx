@@ -9,7 +9,7 @@ const UserInfoCard = ({
     profileImage,
 }) => {
     return (
-        <div className="user-profile profile-card-container">
+        <section className="profile-card-container">
             <UserStatistic
                 wantToRead={wantToRead}
                 currentlyReading={currentlyReading}
@@ -17,7 +17,7 @@ const UserInfoCard = ({
                 username={username}
                 profileImage={profileImage}
             />
-        </div>
+        </section>
     );
 };
 export default UserInfoCard;

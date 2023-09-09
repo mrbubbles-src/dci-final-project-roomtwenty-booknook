@@ -4,10 +4,16 @@ import { BookNookContext } from "../../context/BookNookProvider";
 const FileUpload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [inputKey, setInputKey] = useState(Date.now());
-    const { token } = useContext(BookNookContext);
+    const { token, setProfileImageUploadPreview, profileImageUploadPreview } =
+        useContext(BookNookContext);
 
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
+        setProfileImageUploadPreview({
+            preview: URL.createObjectURL(e.target.files[0]),
+            raw: e.target.files[0],
+            button: true,
+        });
     };
 
     const handleUpload = async () => {
@@ -37,6 +43,10 @@ const FileUpload = () => {
                 // Reset the selected file state and input element
                 setSelectedFile(null);
                 setInputKey(Date.now());
+                setProfileImageUploadPreview((prevState) => ({
+                    ...prevState,
+                    button: false,
+                }));
             }
         }
     };
@@ -44,12 +54,18 @@ const FileUpload = () => {
     return (
         <>
             <input
+                id="upload-button"
                 type="file"
                 key={inputKey}
                 accept="image/*"
+                style={{ display: "none" }}
                 onChange={handleFileChange}
             />
-            <button onClick={handleUpload}>Upload</button>
+            {profileImageUploadPreview.button ? (
+                <button onClick={handleUpload}>Upload</button>
+            ) : (
+                ""
+            )}
         </>
     );
 };

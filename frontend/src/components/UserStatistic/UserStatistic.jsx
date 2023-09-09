@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./userstatistic.scss";
+import FileUpload from "../FileUpload/FileUpload";
+import NoImage from "../../../public/images/various/no-image.png";
+import { BookNookContext } from "../../context/BookNookProvider";
 const UserStatistic = ({
     wantToRead,
     currentlyReading,
@@ -7,12 +10,21 @@ const UserStatistic = ({
     username,
     profileImage,
 }) => {
+    const { profileImageUploadPreview } = useContext(BookNookContext);
     const serverURL = "http://localhost:3000";
     const Avatar = `${serverURL}${profileImage}`;
+    const previewImage = profileImageUploadPreview.preview;
     return (
         <>
             <div className="user-statistic-profile-image-container">
-                <img src={Avatar} alt="avatar" width={"100px"} />
+                <label htmlFor="upload-button">
+                    <img
+                        src={previewImage || Avatar || NoImage}
+                        alt="avatar"
+                        width={"100px"}
+                    />
+                </label>
+                <FileUpload />
             </div>
             <article className="user-statistic-rank">
                 <h3 className="user-statistic-username">{username}</h3>
