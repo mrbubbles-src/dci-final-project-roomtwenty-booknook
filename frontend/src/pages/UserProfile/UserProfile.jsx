@@ -68,7 +68,7 @@ const UserProfile = () => {
 
     return (
         <>
-            <div>
+            <div className="user-profile-card user-statistic">
                 <UserInfoCard
                     wantToRead={wantToRead}
                     currentlyReading={currentlyReading}
@@ -76,9 +76,17 @@ const UserProfile = () => {
                     username={username}
                     profileImage={profileImage}
                 />
+            </div>
+            <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard />
+            </div>
+            <div className="user-profile-card reading-challenge">
                 <LeseChallenge />
+            </div>
+            <div className="user-profile-card already-read">
                 <ReadCard />
+            </div>
+            <div className="user-profile-card want-to-read">
                 <WantToReadCard />
             </div>
         </>
