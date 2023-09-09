@@ -9,15 +9,13 @@ const UserInfoCard = ({
     profileImage,
 }) => {
     return (
-        <section className="profile-card-container">
-            <UserStatistic
-                wantToRead={wantToRead}
-                currentlyReading={currentlyReading}
-                alreadyRead={alreadyRead}
-                username={username}
-                profileImage={profileImage}
-            />
-        </section>
+        <UserStatistic
+            wantToRead={wantToRead}
+            currentlyReading={currentlyReading}
+            alreadyRead={alreadyRead}
+            username={username}
+            profileImage={profileImage}
+        />
     );
 };
 export default UserInfoCard;
