@@ -1,0 +1,28 @@
+@import "../../scss//styleVariables";
+.currently-reading-slide-container-grid {
+    margin: 0 20px;
+    background-color: $accent-3;
+    border-radius: 20px;
+    border: 1px solid red;
+    gap: 10px;
+    height: 250px;
+    display: grid;
+    grid-template-columns: repeat (10, 1fr);
+
+    .currently-reading-slide-image-container {
+        align-self: center;
+        grid-column: 4/6;
+        grid-row: 1/2;
+    }
+    .currently-reading-slide-information {
+        align-self: center;
+        grid-column: 6/9;
+        grid-row: 1/2;
+        .fakebar {
+            width: 80%;
+            height: 20px;
+            background-color: white;
+            text-align: center;
+        }
+    }
+}
