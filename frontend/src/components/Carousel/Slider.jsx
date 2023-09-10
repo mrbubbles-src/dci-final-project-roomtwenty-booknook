@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 const Slider = ({ slides }) => {
     const [showEditModal, setShowEditModal] = useState(false);
+
     const handleShowEditModal = () => setShowEditModal(true);
     const handleCloseEditModal = () => setShowEditModal(false);
     return (
