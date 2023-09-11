@@ -1,6 +1,9 @@
 @import "../../scss/styleVariables";
 
-.profile {
-    font-family: headings-bold, sans-serif;
-    text-align: center;
+.user-statistic-container {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    // grid-row-gap: 10px;
 }

@@ -22,7 +22,8 @@ const userSchema = new mongoose.Schema({
         enum: Object.values(UserRoles),
         default: UserRoles.USER,
     },
-    readingChallenge: { type: Number, default: 0 },
+    readingChallengeMax: { type: Number, default: 0 },
+    readingChallengeCurrent: { type: Number, default: 0 },
     currentlyReading: [
         {
             book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
