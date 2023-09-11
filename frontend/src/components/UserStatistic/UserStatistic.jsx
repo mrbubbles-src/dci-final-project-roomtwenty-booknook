@@ -7,7 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import LeseChallenge from "../LeseChallenge/LeseChallenge";
 import Modal from "../Modal/Modal";
-const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
+import LevelExpBar from "../LevelExpBar/LevelExpBar";
+
+const UserStatistic = ({
+    username,
+    profileImage,
+    readingChallengeCurrent,
+    xpProzent,
+}) => {
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
     const serverURL = "http://localhost:3000";
@@ -33,7 +40,7 @@ const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
             </div>
             <article className="user-statistic-rank-container">
                 <h3 className="user-statistic-username">{username}</h3>
-                <p>hier könnte ihre xp leiste stehen</p>
+                <LevelExpBar xpProzent={xpProzent} />
             </article>
             <article className="user-statistic-info-container">
                 <h4>Jahres-Lese-Challenge</h4>
