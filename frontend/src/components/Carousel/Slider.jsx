@@ -56,11 +56,7 @@ const Slider = ({ slides }) => {
                                     {authors &&
                                         authors.map((author, index) => {
                                             return (
-                                                <>
-                                                    <h4 key={index}>
-                                                        {author}
-                                                    </h4>
-                                                </>
+                                                <h4 key={index}>{author}</h4>
                                             );
                                         })}
                                     <aside className="currently-reading-progress">

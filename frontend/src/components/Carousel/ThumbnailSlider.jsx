@@ -18,8 +18,8 @@ const ThumbnailSlider = ({ slides }) => {
             // navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log("slide change")}
+            // onSwiper={(swiper) => console.log(swiper)}
         >
             {slides.map((slide, index) => {
                 const { smallThumbnail, medium } =
