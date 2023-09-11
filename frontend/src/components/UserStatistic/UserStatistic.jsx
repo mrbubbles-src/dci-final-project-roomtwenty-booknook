@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./userstatistic.scss";
 import FileUpload from "../FileUpload/FileUpload";
 import NoImage from "../../../public/images/various/no-image.png";
 import { BookNookContext } from "../../context/BookNookProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import LeseChallenge from "../LeseChallenge/LeseChallenge";
+import Modal from "../Modal/Modal";
 const UserStatistic = ({
     wantToRead,
     currentlyReading,
@@ -18,6 +20,11 @@ const UserStatistic = ({
     const serverURL = "http://localhost:3000";
     const Avatar = `${serverURL}${profileImage}`;
     const previewImage = profileImageUploadPreview.preview;
+    const [showLeseChallengeModal, setShowLeseChallengeModal] = useState(false);
+    const handleShowLeseChallengeModal = () => setShowLeseChallengeModal(true);
+    const handleCloseLeseChallengeModal = () =>
+        setShowLeseChallengeModal(false);
+
     return (
         <>
             <div className="user-statistic-avatar-container">
@@ -49,7 +56,15 @@ const UserStatistic = ({
                     </span>
                     {readingChallengeMax === 1 ? "Buch" : "Büchern"} gelesen{" "}
                     <span>
-                        <FontAwesomeIcon icon={faPencil} />
+                        <FontAwesomeIcon
+                            icon={faPencil}
+                            onClick={handleShowLeseChallengeModal}
+                        />
+                        {showLeseChallengeModal && (
+                            <Modal onClose={handleCloseLeseChallengeModal}>
+                                <LeseChallenge />
+                            </Modal>
+                        )}
                     </span>
                 </p>
                 {/* <p className="user-statistic-book-info-already-read">
