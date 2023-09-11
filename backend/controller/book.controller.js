@@ -72,16 +72,16 @@ async function httpSaveBook(req, res, next) {
         if (existingBook) {
             // wenn buch vorhanden ist, wird dessen mongoDB_id in bookID abgespeichert
             bookID = existingBook._id;
-            // console.log("Das Buch ist bereits in der Datenbank vorhanden.");
+            console.log("Das Buch ist bereits in der Datenbank vorhanden.");
         } else {
             // wenn buch nicht vorhanden ist, wird es erstellt
             const newBook = await saveBook(book);
             // mongoDB_id vom neuerstelltem buch wir in bookID abgespeichert
             bookID = newBook._id;
             existingBook = newBook;
-            // console.log(
-            //     "Das Buch wurde erfolgreich in der Datenbank gespeichert."
-            // );
+            console.log(
+                "Das Buch wurde erfolgreich in der Datenbank gespeichert."
+            );
         }
 
         // user anhand von _id aus dem token finden
@@ -103,7 +103,7 @@ async function httpSaveBook(req, res, next) {
             )
         ) {
             // wenn ja rückmeldung geben dass es der fall ist
-            console.log(`Buch ist bereits auf ihrer ${listname} liste`);
+            console.log(`Buch ist bereits auf deiner ${listname} liste`);
         } else {
             // otherwise push bookID into wantToRead array
             user[listname].push({
@@ -112,7 +112,7 @@ async function httpSaveBook(req, res, next) {
             });
             // save user
             await user.save();
-            // console.log(`Book was added to your ${listname} liste`);
+            console.log(`Buch wurde deiner ${listname} liste hinzugefügt`);
         }
 
         // get user's readlist
