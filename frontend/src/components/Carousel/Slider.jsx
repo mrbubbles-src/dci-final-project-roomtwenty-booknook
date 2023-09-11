@@ -36,8 +36,8 @@ const Slider = ({ slides }) => {
                     return (
                         <SwiperSlide key={index}>
                             ...
-                            <div className='currently-reading-slide-container-grid'>
-                                <article className='currently-reading-slide-image-container'>
+                            <div className="currently-reading-slide-container-grid">
+                                <article className="currently-reading-slide-image-container">
                                     <img
                                         src={
                                             smallThumbnail ||
@@ -47,7 +47,7 @@ const Slider = ({ slides }) => {
                                         alt={title}
                                     />{" "}
                                 </article>
-                                <article className='currently-reading-slide-information'>
+                                <article className="currently-reading-slide-information">
                                     <h3>{title}</h3>
                                     {authors &&
                                         authors.map((author, index) => {
@@ -56,25 +56,20 @@ const Slider = ({ slides }) => {
                                                     <h4 key={index}>
                                                         {author}
                                                     </h4>
-                                                    <h2>Fortschritt</h2>
-                                                    <div className='fakebar'>
-                                                        {" "}
-                                                        <p>
-                                                            Aktuelle Seite{" "}
-                                                            {currentPage} von{" "}
-                                                            {pageCount}
-                                                        </p>
-                                                    </div>
-                                                    <button
-                                                        onClick={
-                                                            handleShowEditModal
-                                                        }
-                                                    >
-                                                        Edit
-                                                    </button>
                                                 </>
                                             );
                                         })}
+                                    <h2>Fortschritt</h2>
+                                    <div className="fakebar">
+                                        {" "}
+                                        <p>
+                                            Aktuelle Seite {currentPage} von{" "}
+                                            {pageCount}
+                                        </p>
+                                    </div>
+                                    <button onClick={handleShowEditModal}>
+                                        Edit
+                                    </button>
                                 </article>
                             </div>
                         </SwiperSlide>
@@ -85,9 +80,9 @@ const Slider = ({ slides }) => {
             ...
             {showEditModal && (
                 <Modal onClose={handleCloseEditModal}>
-                    <div className='currently-reading-modal-container'>
+                    <div className="currently-reading-modal-container">
                         <h2>Auf welcher Seite bist du?!</h2>
-                        <input type='text' /> <button>Done!</button>
+                        <input type="text" /> <button>Done!</button>
                     </div>
                 </Modal>
             )}
