@@ -62,10 +62,7 @@ const UserProfile = () => {
 
     return (
         <>
-            <div>
-                <Carousel slides={currentlyReading} />
-            </div>
-            <div className="user-profile-card user-statistic-container">
+            <div className='user-profile-card user-statistic-container'>
                 <UserInfoCard
                     wantToRead={wantToRead}
                     currentlyReading={currentlyReading}
@@ -76,35 +73,35 @@ const UserProfile = () => {
                     readingChallengeMax={readingChallengeMax}
                 />
             </div>
-            <h4 className="user-profile-title">
+            <h4 className='user-profile-title'>
                 Liest derzeit{" "}
-                <span className="user-profile-title-number">
+                <span className='user-profile-title-number'>
                     {currentlyReading.length}
                 </span>{" "}
                 {currentlyReading.length === 1 ? "Buch" : "Bücher"}
             </h4>
-            <div className="user-profile-card currently-reading">
-                <CurrentlyReadingCard />
+            <div className='user-profile-card currently-reading'>
+                <CurrentlyReadingCard currentlyReading={currentlyReading} />
             </div>
-            <h4 className="user-profile-title">
+            <h4 className='user-profile-title'>
                 Hat bereits{" "}
-                <span className="user-profile-title-number">
+                <span className='user-profile-title-number'>
                     {alreadyRead.length}
                 </span>{" "}
                 {alreadyRead.length === 1 ? "Buch" : "Bücher"} gelesen
             </h4>
-            <div className="user-profile-card already-read-container">
-                <ReadCard />
+            <div className='user-profile-card already-read-container'>
+                <ReadCard alreadyRead={alreadyRead} />
             </div>
-            <h4 className="user-profile-title">
+            <h4 className='user-profile-title'>
                 Möchte{" "}
-                <span className="user-profile-title-number">
+                <span className='user-profile-title-number'>
                     {wantToRead.length}
                 </span>{" "}
                 {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
             </h4>
-            <div className="user-profile-card want-to-read-container">
-                <WantToReadCard />
+            <div className='user-profile-card want-to-read-container'>
+                <WantToReadCard wantToRead={wantToRead} />
             </div>
         </>
     );
