@@ -2,7 +2,7 @@ import "./LeseChallenge.scss";
 // import LeseFortschritt from "../LeseFortschritt/LeseFortschritt.jsx";
 import React, { useState, useEffect } from "react";
 
-const LeseChallenge = () => {
+const LeseChallenge = ({ readingChallengeMax, readingChallengeCurrent }) => {
     const [goal, setGoal] = useState(0); // das Leseziel hier einsetzen
 
     const [currentMonth, setCurrentMonth] = useState(1); // Aktueller Monat
@@ -12,14 +12,6 @@ const LeseChallenge = () => {
         setGoal(value);
         localStorage.setItem("goal", value);
     };
-
-    useEffect(() => {
-        const _goal = localStorage.getItem("goal");
-        if (_goal) {
-            setGoal(_goal);
-        }
-    }, []);
-
     // einstellen der Monate
     const nextMonth = () => {
         if (currentMonth < 12) {
@@ -36,10 +28,6 @@ const LeseChallenge = () => {
                 value={goal}
                 onChange={(e) => handleGoalChange(e)}
             />
-            {/* <LeseFortschritt goal={goal} /> */}
-            {/* <p>Aktueller Monat: {currentMonth}</p> */}
-
-            {/* <button onClick={nextMonth}>Nächster Monat</button> */}
         </div>
     );
 };

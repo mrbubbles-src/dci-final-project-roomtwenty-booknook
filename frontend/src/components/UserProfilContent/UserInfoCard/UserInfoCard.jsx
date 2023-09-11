@@ -12,9 +12,6 @@ const UserInfoCard = ({
 }) => {
     return (
         <UserStatistic
-            wantToRead={wantToRead}
-            currentlyReading={currentlyReading}
-            alreadyRead={alreadyRead}
             username={username}
             profileImage={profileImage}
             readingChallengeCurrent={readingChallengeCurrent}

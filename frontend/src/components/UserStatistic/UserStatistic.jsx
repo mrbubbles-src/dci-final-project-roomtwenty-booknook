@@ -8,9 +8,6 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import LeseChallenge from "../LeseChallenge/LeseChallenge";
 import Modal from "../Modal/Modal";
 const UserStatistic = ({
-    wantToRead,
-    currentlyReading,
-    alreadyRead,
     username,
     profileImage,
     readingChallengeCurrent,
@@ -62,7 +59,12 @@ const UserStatistic = ({
                         />
                         {showLeseChallengeModal && (
                             <Modal onClose={handleCloseLeseChallengeModal}>
-                                <LeseChallenge />
+                                <LeseChallenge
+                                    readingChallengeMax={readingChallengeMax}
+                                    readingChallengeCurrent={
+                                        readingChallengeCurrent
+                                    }
+                                />
                             </Modal>
                         )}
                     </span>
