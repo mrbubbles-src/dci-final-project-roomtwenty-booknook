@@ -48,7 +48,7 @@ const Slider = ({ slides }) => {
                                         alt={title}
                                     />{" "}
                                 </article>
-                                <article className="currently-reading-slide-information">
+                                <article className='currently-reading-slide-information'>
                                     <h3>{title}</h3>
                                     {authors &&
                                         authors.map((author, index) => {
@@ -57,6 +57,22 @@ const Slider = ({ slides }) => {
                                                     <h4 key={index}>
                                                         {author}
                                                     </h4>
+                                                    <h2>Fortschritt</h2>
+                                                    <div className='fakebar'>
+                                                        {" "}
+                                                        <p>
+                                                            Aktuelle Seite{" "}
+                                                            {currentPage} von{" "}
+                                                            {pageCount}
+                                                        </p>
+                                                    </div>
+                                                    <button
+                                                        onClick={
+                                                            handleShowEditModal
+                                                        }
+                                                    >
+                                                        Edit
+                                                    </button>
                                                 </>
                                             );
                                         })}
