@@ -9,9 +9,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import LeseFortschritt from "../UserProfilContent/CurrentlyReadingCard/LeseFortschritt/LeseFortschritt";
 const Slider = ({ slides }) => {
     const [showEditModal, setShowEditModal] = useState(false);
-
+    const { currentPageProgress } = useContext(BookNookContext);
     const handleShowEditModal = () => setShowEditModal(true);
     const handleCloseEditModal = () => setShowEditModal(false);
     return (
@@ -19,7 +20,7 @@ const Slider = ({ slides }) => {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={0}
             slidesPerView={1}
-            navigation
+            // navigation // pfeile funktionieren mobil nicht
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             onSlideChange={() => console.log("slide change")}
@@ -27,6 +28,7 @@ const Slider = ({ slides }) => {
         >
             {slides &&
                 slides.map((slide, index) => {
+                    const singlePageID = slide.bookdetails.id;
                     const { smallThumbnail, medium } =
                         slide.bookdetails.volumeInfo.imageLinks || {};
                     const { title, authors, pageCount } =
@@ -35,7 +37,6 @@ const Slider = ({ slides }) => {
 
                     return (
                         <SwiperSlide key={index}>
-                            ...
                             <div className="currently-reading-slide-container-grid">
                                 <article className="currently-reading-slide-image-container">
                                     <img
@@ -63,8 +64,9 @@ const Slider = ({ slides }) => {
                                     <div className="fakebar">
                                         {" "}
                                         <p>
-                                            Aktuelle Seite {currentPage} von{" "}
-                                            {pageCount}
+                                            Aktuelle Seite{" "}
+                                            {currentPageProgress || currentPage}{" "}
+                                            von {pageCount}
                                         </p>
                                     </div>
                                     <button onClick={handleShowEditModal}>
@@ -72,20 +74,18 @@ const Slider = ({ slides }) => {
                                     </button>
                                 </article>
                             </div>
+                            {showEditModal && (
+                                <Modal onClose={handleCloseEditModal}>
+                                    <LeseFortschritt
+                                        bookID={`${slide.book}`}
+                                        singlePageID={singlePageID}
+                                        pageCount={pageCount}
+                                    />
+                                </Modal>
+                            )}
                         </SwiperSlide>
                     );
                 })}
-            {/* <SwiperSlide>Slide 5</SwiperSlide>
-            <SwiperSlide>Slide 6</SwiperSlide> */}
-            ...
-            {showEditModal && (
-                <Modal onClose={handleCloseEditModal}>
-                    <div className="currently-reading-modal-container">
-                        <h2>Auf welcher Seite bist du?!</h2>
-                        <input type="text" /> <button>Done!</button>
-                    </div>
-                </Modal>
-            )}
         </Swiper>
     );
 };
