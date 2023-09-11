@@ -29,7 +29,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
                 }
             );
             const responsemsg = await response.json();
-            console.log(responsemsg);
+            // console.log(responsemsg);
             setReadingGoalProgress(readingGoalProgress + 1);
         } catch (error) {
             throw new Error(error);
@@ -54,7 +54,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
                 }
             );
             const responsemsg = await response.json();
-            console.log(responsemsg);
+            // console.log(responsemsg);
         } catch (error) {
             throw new Error(error);
         }

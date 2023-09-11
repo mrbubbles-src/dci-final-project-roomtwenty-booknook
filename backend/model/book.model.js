@@ -50,11 +50,9 @@ async function findBookOnUserLists(user, bookID) {
 
 // einzelnes Buch mit Buchdaten speichern
 async function saveBook(bookData) {
-    console.log("seebook:", bookData);
     try {
         const book = new Book(bookData);
         const response = await book.save();
-        console.log("response:", response);
         return response;
     } catch (error) {
         throw error;

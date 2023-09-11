@@ -49,7 +49,6 @@ const BookNookProvider = ({ children }) => {
         } catch (error) {
             console.log(error);
         }
-        // console.log("cookie.get", Cookies.get("gibts nicht"));
     }, []);
     const { logout } = useAuth();
 

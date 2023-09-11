@@ -73,7 +73,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                 currentlyReading: false,
                 alreadyRead: false,
             });
-            console.log(data);
+            // console.log(data);
         } catch (error) {
             console.error(error);
         }

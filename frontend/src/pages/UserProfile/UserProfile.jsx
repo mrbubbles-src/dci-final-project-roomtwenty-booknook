@@ -24,7 +24,7 @@ const UserProfile = () => {
                 }
             );
             const data = await response.json();
-            console.log("data response", data);
+            // console.log("data response", data);
             setUserdata(data);
             setReadingGoal(data.readingChallengeMax);
             setReadingGoalProgress(data.readingChallengeCurrent);

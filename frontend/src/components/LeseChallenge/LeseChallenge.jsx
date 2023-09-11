@@ -28,7 +28,7 @@ const LeseChallenge = () => {
                 }
             );
             const responsemsg = await response.json();
-            console.log(responsemsg);
+            // console.log(responsemsg);
         } catch (error) {
             throw new Error(error);
         }

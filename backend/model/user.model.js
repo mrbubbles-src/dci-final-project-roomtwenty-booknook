@@ -40,13 +40,10 @@ async function adminGetAllUsers() {
 // User updaten
 async function updateUser(id, data) {
     try {
-        console.log("data", data);
         await findUserInDb(User, id);
         if (data.type === "currentlyReading") {
             // Extract the book ID and currentPage from the data
             const { book, currentPage } = data;
-            console.log("currentPage", currentPage);
-            console.log("bookId", book);
             // Update the currentlyReading array using the $ positional operator
             const updatedUser = await User.findOneAndUpdate(
                 { _id: id, "currentlyReading.book": book },
