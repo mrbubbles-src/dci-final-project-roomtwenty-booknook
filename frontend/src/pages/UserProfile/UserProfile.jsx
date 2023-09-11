@@ -6,7 +6,6 @@ import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-
 const UserProfile = () => {
     const { token, setReadingGoal, setReadingGoalProgress, isRead } =
         useContext(BookNookContext);
@@ -64,13 +63,6 @@ const UserProfile = () => {
 
     return (
         <>
-            <div>
-                {currentlyReading.length !== 0 ? (
-                    <Carousel slides={currentlyReading} />
-                ) : (
-                    <p>Du liest derzeit keine Bücher</p>
-                )}
-            </div>
             <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     username={username}
@@ -78,34 +70,34 @@ const UserProfile = () => {
                     readingChallengeCurrent={readingChallengeCurrent}
                 />
             </div>
-            <h4 className='user-profile-title'>
+            <h4 className="user-profile-title">
                 Liest derzeit{" "}
-                <span className='user-profile-title-number'>
+                <span className="user-profile-title-number">
                     {currentlyReading.length}
                 </span>{" "}
                 {currentlyReading.length === 1 ? "Buch" : "Bücher"}
             </h4>
-            <div className='user-profile-card currently-reading'>
+            <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard currentlyReading={currentlyReading} />
             </div>
-            <h4 className='user-profile-title'>
+            <h4 className="user-profile-title">
                 Hat bereits{" "}
-                <span className='user-profile-title-number'>
+                <span className="user-profile-title-number">
                     {alreadyRead.length}
                 </span>{" "}
                 {alreadyRead.length === 1 ? "Buch" : "Bücher"} gelesen
             </h4>
-            <div className='user-profile-card already-read-container'>
+            <div className="user-profile-card already-read-container">
                 <ReadCard alreadyRead={alreadyRead} />
             </div>
-            <h4 className='user-profile-title'>
+            <h4 className="user-profile-title">
                 Möchte{" "}
-                <span className='user-profile-title-number'>
+                <span className="user-profile-title-number">
                     {wantToRead.length}
                 </span>{" "}
                 {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
             </h4>
-            <div className='user-profile-card want-to-read-container'>
+            <div className="user-profile-card want-to-read-container">
                 <WantToReadCard wantToRead={wantToRead} />
             </div>
         </>
