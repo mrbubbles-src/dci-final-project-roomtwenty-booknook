@@ -5,7 +5,6 @@ import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyRe
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
-import Carousel from "../../components/Carousel/Carousel";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const UserProfile = () => {

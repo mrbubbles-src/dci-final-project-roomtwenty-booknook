@@ -1,7 +1,6 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import React from "react";
 import { Link } from "react-router-dom";
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { Swiper, SwiperSlide } from "swiper/react";
 import NoImage from "../../../public/images/various/no-image.png";
 import "./carousel.scss";
@@ -25,18 +24,22 @@ const ThumbnailSlider = ({ slides }) => {
             {slides.map((slide, index) => {
                 const { smallThumbnail, medium } =
                     slide.bookdetails.volumeInfo.imageLinks || {};
-                const { title } = slide.bookdetails.volumeInfo;
                 return (
                     <SwiperSlide key={index}>
                         <div className='thumbnail-slide-container'>
-                            <img
-                                src={
-                                    smallThumbnail ||
-                                    medium?.replace("http", "https") ||
-                                    NoImage
-                                }
-                                alt={title}
-                            />{" "}
+                            <Link
+                                className='card-image-anchor-tag'
+                                to={`/buch/${slide.bookdetails.id}`}
+                            >
+                                <img
+                                    src={
+                                        smallThumbnail ||
+                                        medium?.replace("http", "https") ||
+                                        NoImage
+                                    }
+                                    alt={slide.bookdetails.volumeInfo}
+                                />{" "}
+                            </Link>
                         </div>
                     </SwiperSlide>
                 );
