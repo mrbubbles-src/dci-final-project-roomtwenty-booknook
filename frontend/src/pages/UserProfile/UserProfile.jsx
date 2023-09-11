@@ -83,9 +83,6 @@ const UserProfile = () => {
             <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard />
             </div>
-            {/* <div className="user-profile-card reading-challenge-container">
-                <LeseChallenge />
-            </div> */}
             <h4 className="user-profile-title">
                 Hat bereits{" "}
                 <span className="user-profile-title-number">
