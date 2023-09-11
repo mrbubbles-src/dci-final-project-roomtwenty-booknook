@@ -20,13 +20,9 @@ const UserInfoCard = ({ readingRank, alreadyRead }) => {
                 setCurrentLevel((prevLevel) => prevLevel + 1);
                 experienceLevelBar(0);
             } else if (alreadyReadLength % 3 === 1) {
-                newReadingLevel += 1;
-                xpProzent = 33.3;
-                return newReadingLevel, xpProzent;
+                experienceLevelBar(33.3);
             } else if (alreadyReadLength % 3 === 2) {
-                newReadingLevel += 1;
-                xpProzent = 66.6;
-                return newReadingLevel, xpProzent;
+                experienceLevelBar(66.6);
             }
         };
         checkBooksRead();
