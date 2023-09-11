@@ -4,8 +4,13 @@ import { BookNookContext } from "../../../../context/BookNookProvider";
 
 //wenn currently reading geupdatet wird, benutze modal und dann da drin in der card die erscheint kommt, das man das buch auf fertig gelesen setzen kann und auch die anzeige bearbeiten kann: seite 343 von 643 gelesen
 const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
-    const { token, setCurrentPageProgress, setIsRead } =
-        useContext(BookNookContext);
+    const {
+        token,
+        setCurrentPageProgress,
+        readingGoalProgress,
+        setReadingGoalProgress,
+        setIsRead,
+    } = useContext(BookNookContext);
     const inputElement = useRef();
 
     async function updateCurrentPageInDBFetch() {
