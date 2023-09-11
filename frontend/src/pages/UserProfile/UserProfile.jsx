@@ -53,7 +53,8 @@ const UserProfile = () => {
         currentlyReading,
         alreadyRead,
     } = userdata || {};
-
+    // console.log("userdata", userdata);
+    // console.log("upAR", alreadyRead);
     return (
         <>
             <div>
@@ -62,6 +63,7 @@ const UserProfile = () => {
                 <UserInfoCard
                     alreadyRead={alreadyRead && alreadyRead}
                     readingRank={readingRank && readingRank}
+                    readingLevel={readingLevel && readingLevel}
                 />
                 <CurrentlyReadingCard />
                 <ReadCard />
