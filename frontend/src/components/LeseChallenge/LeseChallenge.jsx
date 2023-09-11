@@ -4,8 +4,7 @@ import React, { useContext, useState } from "react";
 
 const LeseChallenge = () => {
     const { readingGoal, setReadingGoal } = useContext(BookNookContext);
-    const [newReadingGoal, setNewReadingGoal] = useState(null);
-    console.log(readingGoal);
+    const [newReadingGoal, setNewReadingGoal] = useState("");
     function handleUpdatedReadingGoal(e) {
         e.preventDefault();
         setReadingGoal(newReadingGoal);

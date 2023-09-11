@@ -7,9 +7,9 @@ export const BookNookContext = React.createContext();
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
     const [token, setToken] = useState(null);
-    const [readingGoal, setReadingGoal] = useState(null);
-    const [readingGoalProgress, setReadingGoalProgress] = useState(null);
-    const [currentPageProgress, setCurrentPageProgress] = useState(null);
+    const [readingGoal, setReadingGoal] = useState(0);
+    const [readingGoalProgress, setReadingGoalProgress] = useState(0);
+    const [currentPageProgress, setCurrentPageProgress] = useState(0);
     const [profileImageUploadPreview, setProfileImageUploadPreview] = useState({
         preview: "",
         raw: "",

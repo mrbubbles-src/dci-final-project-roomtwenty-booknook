@@ -53,13 +53,13 @@ const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
                             icon={faPencil}
                             onClick={handleShowLeseChallengeModal}
                         />
-                        {showLeseChallengeModal && (
-                            <Modal onClose={handleCloseLeseChallengeModal}>
-                                <LeseChallenge />
-                            </Modal>
-                        )}
                     </span>
                 </p>
+                {showLeseChallengeModal && (
+                    <Modal onClose={handleCloseLeseChallengeModal}>
+                        <LeseChallenge />
+                    </Modal>
+                )}
             </article>
         </>
     );
