@@ -60,30 +60,6 @@ const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
                         )}
                     </span>
                 </p>
-                {/* <p className="user-statistic-book-info-already-read">
-                    <span className="user-statistic-number">
-                        {alreadyRead.length}
-                    </span>{" "}
-                    {alreadyRead.length === 1
-                        ? "bereits gelesenes Buch"
-                        : "bereits gelesene Bücher"}
-                </p>
-                <p className="user-statistic-book-info-currently-reading">
-                    <span className="user-statistic-number">
-                        {currentlyReading.length}
-                    </span>{" "}
-                    {currentlyReading.length === 1
-                        ? "aktuell lesendes Buch"
-                        : "aktuell lesende Bücher"}
-                </p>
-                <p className="user-statistic-book-info-want-to-tread">
-                    <span className="user-statistic-number">
-                        {wantToRead.length}
-                    </span>{" "}
-                    {wantToRead.length === 1
-                        ? "gewünschtes Buch"
-                        : "gewünschte Bücher"}
-                </p> */}
             </article>
         </>
     );
