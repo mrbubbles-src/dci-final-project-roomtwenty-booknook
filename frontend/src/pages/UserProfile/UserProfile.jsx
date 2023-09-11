@@ -64,6 +64,7 @@ const UserProfile = () => {
         <>
             <div>
                 <Carousel slides={currentlyReading} />
+            </div>
             <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     wantToRead={wantToRead}
