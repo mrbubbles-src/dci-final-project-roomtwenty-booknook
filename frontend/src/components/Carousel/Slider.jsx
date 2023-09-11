@@ -23,8 +23,8 @@ const Slider = ({ slides }) => {
             // navigation // pfeile funktionieren mobil nicht
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log("slide change")}
+            // onSwiper={(swiper) => console.log(swiper)}
         >
             {slides &&
                 slides.map((slide, index) => {
@@ -41,11 +41,14 @@ const Slider = ({ slides }) => {
                                 <article className="currently-reading-slide-image-container">
                                     <img
                                         src={
-                                            smallThumbnail ||
-                                            medium?.replace("http", "https") ||
-                                            NoImage
+                                            (smallThumbnail || medium)?.replace(
+                                                "http",
+                                                "https"
+                                            ) || NoImage
                                         }
                                         alt={title}
+                                        // BILDGRÖßE ANPASSEN NUR SO ZUM TESTEN SO EINGESTELLT
+                                        width={"100px"}
                                     />{" "}
                                 </article>
                                 <article className="currently-reading-slide-information">
