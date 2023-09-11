@@ -65,6 +65,8 @@ const UserProfile = () => {
         <>
             <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
+                    readingRank={readingRank}
+                    alreadyRead={alreadyRead}
                     username={username}
                     profileImage={profileImage}
                     readingChallengeCurrent={readingChallengeCurrent}
