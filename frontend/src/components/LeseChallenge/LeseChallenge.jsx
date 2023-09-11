@@ -1,35 +1,32 @@
+import { BookNookContext } from "../../context/BookNookProvider";
 import "./LeseChallenge.scss";
-// import LeseFortschritt from "../LeseFortschritt/LeseFortschritt.jsx";
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 
-const LeseChallenge = ({ readingChallengeMax, readingChallengeCurrent }) => {
-    const [goal, setGoal] = useState(0); // das Leseziel hier einsetzen
-
-    const [currentMonth, setCurrentMonth] = useState(1); // Aktueller Monat
-
-    const handleGoalChange = (e) => {
-        const value = e.target.value;
-        setGoal(value);
-        localStorage.setItem("goal", value);
-    };
-    // einstellen der Monate
-    const nextMonth = () => {
-        if (currentMonth < 12) {
-            setCurrentMonth(currentMonth + 1);
-        }
-    };
-
+const LeseChallenge = () => {
+    const { readingGoal, setReadingGoal } = useContext(BookNookContext);
+    const [newReadingGoal, setNewReadingGoal] = useState(null);
+    console.log(readingGoal);
+    function handleUpdatedReadingGoal(e) {
+        e.preventDefault();
+        setReadingGoal(newReadingGoal);
+    }
     return (
-        <div className="profile-challenge">
-            <h2 className="ueberschrift">Lese-Challenge: Bücher pro Jahr</h2>
-            <p className="ziele">Dein Ziel: {goal} Bücher pro Jahr</p>
+        <div className="lese-challenge">
+            <h2 className="lese-challenge-title">Jahres-Lese-Challenge</h2>
+            <p className="lese-challenge-ziel-text">
+                Du möchtest{" "}
+                <span className="lese-challenge-number">{readingGoal}</span>{" "}
+                Bücher dieses Jahr lesen.
+            </p>
             <input
                 type="number"
-                value={goal}
-                onChange={(e) => handleGoalChange(e)}
+                value={newReadingGoal}
+                onChange={(e) => setNewReadingGoal(e.target.value)}
             />
+            <button type="submit" onClick={handleUpdatedReadingGoal}>
+                Aktualisieren
+            </button>
         </div>
     );
 };
-
 export default LeseChallenge;
