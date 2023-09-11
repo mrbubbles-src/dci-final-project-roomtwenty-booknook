@@ -1,5 +1,5 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { BookNookContext } from "../../context/BookNookProvider";
 
