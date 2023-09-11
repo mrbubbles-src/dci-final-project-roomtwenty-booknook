@@ -35,7 +35,6 @@ const Slider = ({ slides }) => {
 
                     return (
                         <SwiperSlide key={index}>
-                            ...
                             <div className="currently-reading-slide-container-grid">
                                 <article className="currently-reading-slide-image-container">
                                     <img
@@ -75,9 +74,6 @@ const Slider = ({ slides }) => {
                         </SwiperSlide>
                     );
                 })}
-            {/* <SwiperSlide>Slide 5</SwiperSlide>
-            <SwiperSlide>Slide 6</SwiperSlide> */}
-            ...
             {showEditModal && (
                 <Modal onClose={handleCloseEditModal}>
                     <div className="currently-reading-modal-container">
