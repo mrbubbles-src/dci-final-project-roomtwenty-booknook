@@ -7,17 +7,11 @@ const LevelExpBar = ({ xpProzent }) => {
         width: "150px",
     };
 
-    // const updateReadPages = async (userId, newPages) =>{
-    //     const user = await getUserById(userId);
-    //     user.readPages += newPages;
-    //     await user.save();
-    // }    
-
     return (
-        <div className="expLevel" style={mainDiv}>
+        <div className='expLevel' style={mainDiv}>
             <ProgressBar
                 completed={xpProzent}
-                bgColor="red"
+                bgColor='red'
                 animateOnRender={false}
                 isLabelVisible={true}
             />
