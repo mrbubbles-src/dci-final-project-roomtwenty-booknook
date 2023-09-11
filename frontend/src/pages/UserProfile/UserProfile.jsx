@@ -63,6 +63,7 @@ const UserProfile = () => {
                 <UserInfoCard
                     alreadyRead={alreadyRead && alreadyRead}
                     readingRank={readingRank && readingRank}
+                    readingLevel={readingLevel && readingLevel}
                 />
                 <CurrentlyReadingCard />
                 <ReadCard />
