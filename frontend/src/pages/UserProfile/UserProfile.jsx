@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import "./userprofile.scss";
 import UserInfoCard from "../../components/UserProfilContent/UserInfoCard/UserInfoCard";
 import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyReadingCard/CurrentlyReadingCard";
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
+import Carousel from "../../components/Carousel/Carousel";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
 const UserProfile = () => {
     const { token } = useContext(BookNookContext);
     const [userdata, setUserdata] = useState(null);
@@ -61,6 +62,8 @@ const UserProfile = () => {
 
     return (
         <>
+            <div>
+                <Carousel slides={currentlyReading} />
             <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     wantToRead={wantToRead}
@@ -79,7 +82,6 @@ const UserProfile = () => {
                 </span>{" "}
                 {currentlyReading.length === 1 ? "Buch" : "Bücher"}
             </h4>
-
             <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard />
             </div>
