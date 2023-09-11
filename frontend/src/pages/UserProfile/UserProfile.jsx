@@ -8,7 +8,8 @@ import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const UserProfile = () => {
-    const { token } = useContext(BookNookContext);
+    const { token, setReadingGoal, setReadingGoalProgress, isRead } =
+        useContext(BookNookContext);
     const [userdata, setUserdata] = useState(null);
     const [isLoadingUserData, setIsLoadingUserData] = useState(true);
     useEffect(() => {
@@ -26,10 +27,12 @@ const UserProfile = () => {
             const data = await response.json();
             console.log("data response", data);
             setUserdata(data);
+            setReadingGoal(data.readingChallengeMax);
+            setReadingGoalProgress(data.readingChallengeCurrent);
             setIsLoadingUserData(false);
         }
         fetchData();
-    }, []);
+    }, [isRead]);
     if (isLoadingUserData) {
         return <LoadingSpinner />;
     }
@@ -61,15 +64,18 @@ const UserProfile = () => {
 
     return (
         <>
-            <div className='user-profile-card user-statistic-container'>
+            <div>
+                {currentlyReading.length !== 0 ? (
+                    <Carousel slides={currentlyReading} />
+                ) : (
+                    <p>Du liest derzeit keine Bücher</p>
+                )}
+            </div>
+            <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
-                    wantToRead={wantToRead}
-                    currentlyReading={currentlyReading}
-                    alreadyRead={alreadyRead}
                     username={username}
                     profileImage={profileImage}
                     readingChallengeCurrent={readingChallengeCurrent}
-                    readingChallengeMax={readingChallengeMax}
                 />
             </div>
             <h4 className='user-profile-title'>

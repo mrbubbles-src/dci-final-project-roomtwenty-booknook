@@ -7,16 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import LeseChallenge from "../LeseChallenge/LeseChallenge";
 import Modal from "../Modal/Modal";
-const UserStatistic = ({
-    wantToRead,
-    currentlyReading,
-    alreadyRead,
-    username,
-    profileImage,
-    readingChallengeCurrent,
-    readingChallengeMax,
-}) => {
-    const { profileImageUploadPreview } = useContext(BookNookContext);
+const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
+    const { profileImageUploadPreview, readingGoal } =
+        useContext(BookNookContext);
     const serverURL = "http://localhost:3000";
     const Avatar = `${serverURL}${profileImage}`;
     const previewImage = profileImageUploadPreview.preview;
@@ -50,47 +43,23 @@ const UserStatistic = ({
                         {readingChallengeCurrent && readingChallengeCurrent}
                     </span>{" "}
                     {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
-                    {readingChallengeMax === 1 ? "vom" : "von"} geplanten{" "}
+                    {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
                     <span className="user-statistic-number">
-                        {readingChallengeMax && readingChallengeMax}{" "}
+                        {readingGoal && readingGoal}{" "}
                     </span>
-                    {readingChallengeMax === 1 ? "Buch" : "Büchern"} gelesen{" "}
+                    {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
                     <span>
                         <FontAwesomeIcon
                             icon={faPencil}
                             onClick={handleShowLeseChallengeModal}
                         />
-                        {showLeseChallengeModal && (
-                            <Modal onClose={handleCloseLeseChallengeModal}>
-                                <LeseChallenge />
-                            </Modal>
-                        )}
                     </span>
                 </p>
-                {/* <p className="user-statistic-book-info-already-read">
-                    <span className="user-statistic-number">
-                        {alreadyRead.length}
-                    </span>{" "}
-                    {alreadyRead.length === 1
-                        ? "bereits gelesenes Buch"
-                        : "bereits gelesene Bücher"}
-                </p>
-                <p className="user-statistic-book-info-currently-reading">
-                    <span className="user-statistic-number">
-                        {currentlyReading.length}
-                    </span>{" "}
-                    {currentlyReading.length === 1
-                        ? "aktuell lesendes Buch"
-                        : "aktuell lesende Bücher"}
-                </p>
-                <p className="user-statistic-book-info-want-to-tread">
-                    <span className="user-statistic-number">
-                        {wantToRead.length}
-                    </span>{" "}
-                    {wantToRead.length === 1
-                        ? "gewünschtes Buch"
-                        : "gewünschte Bücher"}
-                </p> */}
+                {showLeseChallengeModal && (
+                    <Modal onClose={handleCloseLeseChallengeModal}>
+                        <LeseChallenge />
+                    </Modal>
+                )}
             </article>
         </>
     );
