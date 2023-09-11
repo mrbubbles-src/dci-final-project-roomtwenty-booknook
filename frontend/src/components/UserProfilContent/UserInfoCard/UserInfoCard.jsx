@@ -3,21 +3,23 @@ import "./UserInfoCard.scss";
 import LevelExpBar from "../../LevelExpBar/LevelExpBar";
 
 const UserInfoCard = ({ readingRank, alreadyRead }) => {
+    const alreadyReadLength = alreadyRead.length;
     useEffect(() => {
         const checkBooksRead = () => {
-            const xpProzent = (alreadyRead.length % 3) * 33.3;
+            const xpProzent = (alreadyReadLength % 3) * 33.3;
             // zum updaten der exp-bar
             experienceLevelBar(xpProzent);
 
-            if (alreadyRead.length % 3 === 0) {
+            if (alreadyReadLength % 3 === 0) {
                 readingRank + 1;
                 experienceLevelBar(0);
-            } else if (alreadyRead.length % 3 === 1) {
+            } else if (alreadyReadLength % 3 === 1) {
                 experienceLevelBar(33.3);
-            } else if (alreadyRead.length % 3 === 2) {
+            } else if (alreadyReadLength % 3 === 2) {
                 experienceLevelBar(66.6);
             }
         };
+        checkBooksRead();
     }, []);
 
     // funktion überprüft anzahl bücher im alreadyRead
