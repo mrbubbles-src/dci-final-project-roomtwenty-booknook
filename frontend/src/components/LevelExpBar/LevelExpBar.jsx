@@ -8,10 +8,10 @@ const LevelExpBar = ({ xpProzent }) => {
     };
 
     return (
-        <div className="expLevel" style={mainDiv}>
+        <div className='expLevel' style={mainDiv}>
             <ProgressBar
                 completed={xpProzent}
-                bgColor="red"
+                bgColor='red'
                 animateOnRender={false}
                 isLabelVisible={true}
             />
@@ -19,4 +19,4 @@ const LevelExpBar = ({ xpProzent }) => {
     );
 };
 
-// export default LevelExpBar;
+export default LevelExpBar;
