@@ -69,7 +69,8 @@ const Slider = ({ slides }) => {
                                     <h2>Fortschritt</h2>{" "}
                                     <div className="fakebar">
                                         <p>
-                                            Aktuelle Seite {currentPageProgress}{" "}
+                                            Aktuelle Seite{" "}
+                                            {currentPageProgress || currentPage}{" "}
                                             von {pageCount}
                                         </p>
                                     </div>
