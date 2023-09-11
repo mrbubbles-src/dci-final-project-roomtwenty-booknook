@@ -4,8 +4,7 @@ const WantToReadCard = () => {
     const [wantToReadBooks, setWantToReadBooks] = useState([]);
     return (
         <>
-            <p>Möchte noch lesen</p>
-            <div className="noch-lesen profile-card-container">
+            <div className="want-to-read-container">
                 <p>Hier kommen die Bücher rein </p>
             </div>
         </>

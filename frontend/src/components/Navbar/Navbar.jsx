@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "./navbar.scss";
 import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
