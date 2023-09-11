@@ -20,7 +20,7 @@ const Slider = ({ slides }) => {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={0}
             slidesPerView={1}
-            navigation
+            // navigation // pfeile funktionieren mobil nicht
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             onSlideChange={() => console.log("slide change")}
