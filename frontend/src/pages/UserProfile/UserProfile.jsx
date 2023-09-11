@@ -53,14 +53,14 @@ const UserProfile = () => {
         currentlyReading,
         alreadyRead,
     } = userdata || {};
-
+    console.log("upAR", alreadyRead);
     return (
         <>
             <div>
                 <UserStatistic />
                 <LeseChallenge />
                 <UserInfoCard
-                    alreadyRead={alreadyRead && alreadyRead}
+                    alreadyRead={alreadyRead && alreadyRead && alreadyRead}
                     readingRank={readingRank && readingRank}
                 />
                 <CurrentlyReadingCard />

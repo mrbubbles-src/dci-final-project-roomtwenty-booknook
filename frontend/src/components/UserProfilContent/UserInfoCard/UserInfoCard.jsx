@@ -3,20 +3,23 @@ import "./UserInfoCard.scss";
 import LevelExpBar from "../../LevelExpBar/LevelExpBar";
 
 const UserInfoCard = ({ readingRank, alreadyRead }) => {
+    console.log("ar", alreadyRead);
     const alreadyReadLength = alreadyRead.length;
+    console.log("l", alreadyReadLength);
+    let newReadingRank = 0;
+    let xpProzent = (alreadyReadLength % 3) * 33.3;
     useEffect(() => {
         const checkBooksRead = () => {
-            const xpProzent = (alreadyReadLength % 3) * 33.3;
             // zum updaten der exp-bar
-            experienceLevelBar(xpProzent);
+            // experienceLevelBar(xpProzent);
 
             if (alreadyReadLength % 3 === 0) {
-                readingRank + 1;
-                experienceLevelBar(0);
+                newReadingRank = readingRank + 1;
+                xpProzent = 0;
             } else if (alreadyReadLength % 3 === 1) {
-                experienceLevelBar(33.3);
+                xpProzent = 33.3;
             } else if (alreadyReadLength % 3 === 2) {
-                experienceLevelBar(66.6);
+                xpProzent = 66.6;
             }
         };
         checkBooksRead();
@@ -33,13 +36,13 @@ const UserInfoCard = ({ readingRank, alreadyRead }) => {
 
     // (POST-ROUTE) das Buch abzuschicken mit de
 
-    const experienceLevelBar = () => {};
+    // const experienceLevelBar = () => {};
 
     return (
         <div className="user-profile profile-card-container">
             <div className="profile-img"></div>
             <div className="text-right">
-                <LevelExpBar xpProzent={90} />
+                <LevelExpBar xpProzent={xpProzent} />
                 <div className="usercard-info-container d">
                     <p className="bücher-gelesen text-info">
                         <span className="number">20</span> Bücher gelesen.
