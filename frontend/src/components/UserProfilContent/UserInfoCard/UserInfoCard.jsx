@@ -3,9 +3,9 @@ import "./UserInfoCard.scss";
 import LevelExpBar from "../../LevelExpBar/LevelExpBar";
 
 const UserInfoCard = ({ readingRank, alreadyRead }) => {
-    console.log("ar", alreadyRead);
+    // console.log("ar", alreadyRead);
     const alreadyReadLength = alreadyRead.length;
-    console.log("l", alreadyReadLength);
+    // console.log("l", alreadyReadLength);
     let newReadingRank = 0;
     let xpProzent = (alreadyReadLength % 3) * 33.3;
     useEffect(() => {
