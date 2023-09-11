@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import "./LeseFortschritt.scss";
 import { BookNookContext } from "../../../../context/BookNookProvider";
 
