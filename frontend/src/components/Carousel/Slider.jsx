@@ -37,10 +37,7 @@ const Slider = ({ slides }) => {
 
                     return (
                         <SwiperSlide key={index}>
-                            <div
-                                className="currently-reading-slide-container-grid"
-                                key={index + 2}
-                            >
+                            <div className="currently-reading-slide-container-grid">
                                 <article className="currently-reading-slide-image-container">
                                     <img
                                         src={
@@ -66,17 +63,20 @@ const Slider = ({ slides }) => {
                                                 </>
                                             );
                                         })}
-                                    <h2>Fortschritt</h2>{" "}
-                                    <div className="fakebar">
-                                        <p>
-                                            Aktuelle Seite{" "}
-                                            {currentPageProgress || currentPage}{" "}
-                                            von {pageCount}
-                                        </p>
-                                    </div>
-                                    <button onClick={handleShowEditModal}>
-                                        Edit
-                                    </button>
+                                    <aside className="currently-reading-progress">
+                                        <h2>Fortschritt</h2>{" "}
+                                        <div className="fakebar">
+                                            <p>
+                                                Aktuelle Seite{" "}
+                                                {currentPageProgress ||
+                                                    currentPage}{" "}
+                                                von {pageCount}
+                                            </p>
+                                        </div>
+                                        <button onClick={handleShowEditModal}>
+                                            Edit
+                                        </button>
+                                    </aside>
                                 </article>
                             </div>
                             {showEditModal && (

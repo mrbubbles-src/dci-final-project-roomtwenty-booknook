@@ -15,7 +15,7 @@ const ThumbnailSlider = ({ slides }) => {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={0}
             slidesPerView={4}
-            navigation
+            // navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             onSlideChange={() => console.log("slide change")}
@@ -26,9 +26,9 @@ const ThumbnailSlider = ({ slides }) => {
                     slide.bookdetails.volumeInfo.imageLinks || {};
                 return (
                     <SwiperSlide key={index}>
-                        <div className='thumbnail-slide-container'>
+                        <div className="thumbnail-slide-container">
                             <Link
-                                className='card-image-anchor-tag'
+                                className="card-image-anchor-tag"
                                 to={`/buch/${slide.bookdetails.id}`}
                             >
                                 <img
