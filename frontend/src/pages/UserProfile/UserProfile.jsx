@@ -9,7 +9,8 @@ import Carousel from "../../components/Carousel/Carousel";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const UserProfile = () => {
-    const { token } = useContext(BookNookContext);
+    const { token, setReadingGoal, setReadingGoalProgress, isRead } =
+        useContext(BookNookContext);
     const [userdata, setUserdata] = useState(null);
     const [isLoadingUserData, setIsLoadingUserData] = useState(true);
     useEffect(() => {
@@ -27,10 +28,12 @@ const UserProfile = () => {
             const data = await response.json();
             console.log("data response", data);
             setUserdata(data);
+            setReadingGoal(data.readingChallengeMax);
+            setReadingGoalProgress(data.readingChallengeCurrent);
             setIsLoadingUserData(false);
         }
         fetchData();
-    }, []);
+    }, [isRead]);
     if (isLoadingUserData) {
         return <LoadingSpinner />;
     }
@@ -63,14 +66,17 @@ const UserProfile = () => {
     return (
         <>
             <div>
-                <Carousel slides={currentlyReading} />
+                {currentlyReading.length !== 0 ? (
+                    <Carousel slides={currentlyReading} />
+                ) : (
+                    <p>Du liest derzeit keine Bücher</p>
+                )}
             </div>
             <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     username={username}
                     profileImage={profileImage}
                     readingChallengeCurrent={readingChallengeCurrent}
-                    readingChallengeMax={readingChallengeMax}
                 />
             </div>
             <h4 className="user-profile-title">

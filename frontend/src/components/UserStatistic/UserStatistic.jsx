@@ -7,13 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import LeseChallenge from "../LeseChallenge/LeseChallenge";
 import Modal from "../Modal/Modal";
-const UserStatistic = ({
-    username,
-    profileImage,
-    readingChallengeCurrent,
-    readingChallengeMax,
-}) => {
-    const { profileImageUploadPreview } = useContext(BookNookContext);
+const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
+    const { profileImageUploadPreview, readingGoal } =
+        useContext(BookNookContext);
     const serverURL = "http://localhost:3000";
     const Avatar = `${serverURL}${profileImage}`;
     const previewImage = profileImageUploadPreview.preview;
@@ -47,11 +43,11 @@ const UserStatistic = ({
                         {readingChallengeCurrent && readingChallengeCurrent}
                     </span>{" "}
                     {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
-                    {readingChallengeMax === 1 ? "vom" : "von"} geplanten{" "}
+                    {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
                     <span className="user-statistic-number">
-                        {readingChallengeMax && readingChallengeMax}{" "}
+                        {readingGoal && readingGoal}{" "}
                     </span>
-                    {readingChallengeMax === 1 ? "Buch" : "Büchern"} gelesen{" "}
+                    {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
                     <span>
                         <FontAwesomeIcon
                             icon={faPencil}
@@ -59,12 +55,7 @@ const UserStatistic = ({
                         />
                         {showLeseChallengeModal && (
                             <Modal onClose={handleCloseLeseChallengeModal}>
-                                <LeseChallenge
-                                    readingChallengeMax={readingChallengeMax}
-                                    readingChallengeCurrent={
-                                        readingChallengeCurrent
-                                    }
-                                />
+                                <LeseChallenge />
                             </Modal>
                         )}
                     </span>

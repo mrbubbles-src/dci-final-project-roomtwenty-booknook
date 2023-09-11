@@ -7,6 +7,9 @@ export const BookNookContext = React.createContext();
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
     const [token, setToken] = useState(null);
+    const [readingGoal, setReadingGoal] = useState(null);
+    const [readingGoalProgress, setReadingGoalProgress] = useState(null);
+    const [currentPageProgress, setCurrentPageProgress] = useState(null);
     const [profileImageUploadPreview, setProfileImageUploadPreview] = useState({
         preview: "",
         raw: "",
@@ -18,6 +21,7 @@ const BookNookProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
+    const [isRead, setIsRead] = useState(false);
 
     useEffect(() => {
         if (searchTerm !== null) {
@@ -86,6 +90,14 @@ const BookNookProvider = ({ children }) => {
                 isLoginVisible,
                 profileImageUploadPreview,
                 setProfileImageUploadPreview,
+                readingGoal,
+                setReadingGoal,
+                readingGoalProgress,
+                setReadingGoalProgress,
+                currentPageProgress,
+                setCurrentPageProgress,
+                isRead,
+                setIsRead,
             }}
         >
             {children}
