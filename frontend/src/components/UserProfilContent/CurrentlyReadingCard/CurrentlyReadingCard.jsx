@@ -23,7 +23,6 @@ const CurrentlyReadingCard = ({ goal }) => {
     };
     return (
         <>
-            <p className="reading-now">Liest derzeit {currentBook}</p>
             <div className="fortschritt profile-card-container">
                 <div className="img-container"></div>
                 <div className="information-container">

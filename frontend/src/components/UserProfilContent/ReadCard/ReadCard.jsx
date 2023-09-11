@@ -3,8 +3,7 @@ import "./ReadCard.scss";
 const ReadCard = () => {
     return (
         <>
-            <p>Hat bereits gelesen</p>
-            <div className="bereits-gelesen profile-card-container">
+            <div className="already-read-container">
                 <p>Hier kommen die Bücher rein</p>
             </div>
         </>

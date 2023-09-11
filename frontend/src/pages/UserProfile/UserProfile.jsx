@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import LeseChallenge from "../../components/LeseChallenge/LeseChallenge";
 import "./userprofile.scss";
-import FileUpload from "../../components/FileUpload/FileUpload";
-import UserStatistic from "../../components/UserStatistic/UserStatistic";
 import UserInfoCard from "../../components/UserProfilContent/UserInfoCard/UserInfoCard";
 import CurrentlyReadingCard from "../../components/UserProfilContent/CurrentlyReadingCard/CurrentlyReadingCard";
 import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
+import Carousel from "../../components/Carousel/Carousel";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
 const UserProfile = () => {
-    const { token } = useContext(BookNookContext);
-    const [userdata, setUserdata] = useState({});
+    const { token, setReadingGoal, setReadingGoalProgress, isRead } =
+        useContext(BookNookContext);
+    const [userdata, setUserdata] = useState(null);
+    const [isLoadingUserData, setIsLoadingUserData] = useState(true);
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
@@ -26,11 +28,16 @@ const UserProfile = () => {
             const data = await response.json();
             console.log("data response", data);
             setUserdata(data);
+            setReadingGoal(data.readingChallengeMax);
+            setReadingGoalProgress(data.readingChallengeCurrent);
+            setIsLoadingUserData(false);
         }
         fetchData();
-    }, []);
-
-    // POT-route um user einträge zu updaten: http://localhost:3000/users/updateUser
+    }, [isRead]);
+    if (isLoadingUserData) {
+        return <LoadingSpinner />;
+    }
+    // route um user einträge zu updaten: http://localhost:3000/users/updateUser
     // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
     // {
     // "type":"currentlyReading",
@@ -52,23 +59,55 @@ const UserProfile = () => {
         wantToRead,
         currentlyReading,
         alreadyRead,
+        readingChallengeMax,
+        readingChallengeCurrent,
     } = userdata || {};
-    // console.log("userdata", userdata);
-    // console.log("upAR", alreadyRead);
+
     return (
         <>
             <div>
-                <UserStatistic />
-                <LeseChallenge />
+                {currentlyReading.length !== 0 ? (
+                    <Carousel slides={currentlyReading} />
+                ) : (
+                    <p>Du liest derzeit keine Bücher</p>
+                )}
+            </div>
+            <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
-                    alreadyRead={alreadyRead && alreadyRead}
-                    readingRank={readingRank && readingRank}
-                    readingLevel={readingLevel && readingLevel}
+                    username={username}
+                    profileImage={profileImage}
+                    readingChallengeCurrent={readingChallengeCurrent}
                 />
+            </div>
+            <h4 className="user-profile-title">
+                Liest derzeit{" "}
+                <span className="user-profile-title-number">
+                    {currentlyReading.length}
+                </span>{" "}
+                {currentlyReading.length === 1 ? "Buch" : "Bücher"}
+            </h4>
+            <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard />
+            </div>
+            <h4 className="user-profile-title">
+                Hat bereits{" "}
+                <span className="user-profile-title-number">
+                    {alreadyRead.length}
+                </span>{" "}
+                {alreadyRead.length === 1 ? "Buch" : "Bücher"} gelesen
+            </h4>
+            <div className="user-profile-card already-read-container">
                 <ReadCard />
+            </div>
+            <h4 className="user-profile-title">
+                Möchte{" "}
+                <span className="user-profile-title-number">
+                    {wantToRead.length}
+                </span>{" "}
+                {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
+            </h4>
+            <div className="user-profile-card want-to-read-container">
                 <WantToReadCard />
-                <FileUpload />
             </div>
         </>
     );

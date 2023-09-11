@@ -1,47 +1,56 @@
+import { BookNookContext } from "../../context/BookNookProvider";
 import "./LeseChallenge.scss";
-// import LeseFortschritt from "../LeseFortschritt/LeseFortschritt.jsx";
-import React, { useState, useEffect } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 const LeseChallenge = () => {
-    const [goal, setGoal] = useState(0); // das Leseziel hier einsetzen
-
-    const [currentMonth, setCurrentMonth] = useState(1); // Aktueller Monat
-
-    const handleGoalChange = (e) => {
-        const value = e.target.value;
-        setGoal(value);
-        localStorage.setItem("goal", value);
-    };
-
-    useEffect(() => {
-        const _goal = localStorage.getItem("goal");
-        if (_goal) {
-            setGoal(_goal);
+    const {
+        token,
+        readingGoal,
+        setReadingGoal,
+        readingGoalProgress,
+        setReadingGoalProgress,
+    } = useContext(BookNookContext);
+    const inputElement = useRef();
+    async function handleUpdateReadingGoalFetch() {
+        const body = {
+            readingChallengeMax: parseInt(inputElement.current.value),
+        };
+        try {
+            const response = await fetch(
+                "http://localhost:3000/users/updateUser",
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(body),
+                }
+            );
+            const responsemsg = await response.json();
+            console.log(responsemsg);
+        } catch (error) {
+            throw new Error(error);
         }
-    }, []);
-
-    // einstellen der Monate
-    const nextMonth = () => {
-        if (currentMonth < 12) {
-            setCurrentMonth(currentMonth + 1);
-        }
-    };
-
+    }
+    function handleUpdatedReadingGoal(e) {
+        e.preventDefault();
+        setReadingGoal(parseInt(inputElement.current.value));
+        handleUpdateReadingGoalFetch();
+    }
     return (
-        <div className="profile-challenge">
-            <h2 className="ueberschrift">Lese-Challenge: Bücher pro Jahr</h2>
-            <p className="ziele">Dein Ziel: {goal} Bücher pro Jahr</p>
-            <input
-                type="number"
-                value={goal}
-                onChange={(e) => handleGoalChange(e)}
-            />
-            {/* <LeseFortschritt goal={goal} /> */}
-            {/* <p>Aktueller Monat: {currentMonth}</p> */}
-
-            {/* <button onClick={nextMonth}>Nächster Monat</button> */}
+        <div className="lese-challenge">
+            <h2 className="lese-challenge-title">Jahres-Lese-Challenge</h2>
+            <p className="lese-challenge-ziel-text">
+                Du möchtest{" "}
+                <span className="lese-challenge-number">{readingGoal}</span>{" "}
+                Bücher dieses Jahr lesen.
+            </p>
+            <input type="number" ref={inputElement} />
+            <button type="submit" onClick={handleUpdatedReadingGoal}>
+                Aktualisieren
+            </button>
         </div>
     );
 };
-
 export default LeseChallenge;

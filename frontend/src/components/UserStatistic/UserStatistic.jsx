@@ -1,73 +1,67 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
+import React, { useContext, useState } from "react";
 import "./userstatistic.scss";
-
-function getPluralText(count, singularText, pluralText) {
-    if (count === 1) {
-        return `${count} ${singularText}`;
-    } else if (count > 1) {
-        return `${count} ${pluralText}`;
-    } else {
-        return `Kein ${singularText}`;
-    }
-}
-// nur /images/dateiname im backend abspeichern
-const UserStatistic = () => {
-    const [readListData, setReadListData] = useState(null);
-
-    useEffect(() => {
-        const token = Cookies.get("jwtToken");
-        if (token) {
-            axios
-                .get("http://localhost:3000/users/getReadlist", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    const readListData = response.data;
-                    setReadListData(readListData);
-                    // console.log(readListData);
-                    // console.log(readListData.profilePicture);
-                })
-                .catch((error) => {
-                    console.error("Something went wrong?!", error);
-                });
-        }
-    }, []);
-
-    if (!readListData) {
-        return <div>Lade...</div>;
-    }
+import FileUpload from "../FileUpload/FileUpload";
+import NoImage from "../../../public/images/various/no-image.png";
+import { BookNookContext } from "../../context/BookNookProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import LeseChallenge from "../LeseChallenge/LeseChallenge";
+import Modal from "../Modal/Modal";
+const UserStatistic = ({ username, profileImage, readingChallengeCurrent }) => {
+    const { profileImageUploadPreview, readingGoal } =
+        useContext(BookNookContext);
     const serverURL = "http://localhost:3000";
-    const Avatar = `${serverURL}${readListData.profilePicture}`;
+    const Avatar = `${serverURL}${profileImage}`;
+    const previewImage = profileImageUploadPreview.preview;
+    const [showLeseChallengeModal, setShowLeseChallengeModal] = useState(false);
+    const handleShowLeseChallengeModal = () => setShowLeseChallengeModal(true);
+    const handleCloseLeseChallengeModal = () =>
+        setShowLeseChallengeModal(false);
+
     return (
-        <div>
-            <h1>{readListData.title}</h1>
-            <p>
-                {getPluralText(
-                    readListData.alreadyRead.length,
-                    "bereits gelesenes Buch",
-                    "bereits gelesene Bücher"
+        <>
+            <div className="user-statistic-avatar-container">
+                <label htmlFor="upload-button">
+                    <img
+                        className="avatar"
+                        src={previewImage || Avatar || NoImage}
+                        alt="avatar"
+                        width={"100px"}
+                    />
+                </label>
+                <FileUpload />
+            </div>
+            <article className="user-statistic-rank-container">
+                <h3 className="user-statistic-username">{username}</h3>
+                <p>hier könnte ihre xp leiste stehen</p>
+            </article>
+            <article className="user-statistic-info-container">
+                <h4>Jahres-Lese-Challenge</h4>
+                <p>
+                    Bereits{" "}
+                    <span className="user-statistic-number">
+                        {readingChallengeCurrent && readingChallengeCurrent}
+                    </span>{" "}
+                    {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
+                    {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
+                    <span className="user-statistic-number">
+                        {readingGoal && readingGoal}{" "}
+                    </span>
+                    {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
+                    <span>
+                        <FontAwesomeIcon
+                            icon={faPencil}
+                            onClick={handleShowLeseChallengeModal}
+                        />
+                    </span>
+                </p>
+                {showLeseChallengeModal && (
+                    <Modal onClose={handleCloseLeseChallengeModal}>
+                        <LeseChallenge />
+                    </Modal>
                 )}
-            </p>
-            <p>
-                {getPluralText(
-                    readListData.currentlyReading.length,
-                    "aktuell lesendes Buch",
-                    "aktuell lesende Bücher"
-                )}
-            </p>
-            <p>
-                {getPluralText(
-                    readListData.wantToRead.length,
-                    "gewünschtes Buch",
-                    "gewünschte Bücher"
-                )}
-            </p>
-            <img src={Avatar} alt="avatar" width={"100px"} />
-        </div>
+            </article>
+        </>
     );
 };
 

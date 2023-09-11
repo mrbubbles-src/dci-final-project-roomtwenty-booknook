@@ -7,15 +7,21 @@ export const BookNookContext = React.createContext();
 const BookNookProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(null);
     const [token, setToken] = useState(null);
-    // const [userRating, setUserRating] = useState([]);
-    // const [userRatingCount, setuserRatingCount] = useState(0);
-    // buch suche spezifischer context start
+    const [readingGoal, setReadingGoal] = useState(0);
+    const [readingGoalProgress, setReadingGoalProgress] = useState(0);
+    const [currentPageProgress, setCurrentPageProgress] = useState(0);
+    const [profileImageUploadPreview, setProfileImageUploadPreview] = useState({
+        preview: "",
+        raw: "",
+        button: false,
+    });
     const [searchTerm, setSearchTerm] = useState(null);
     const [bookData, setBookData] = useState({});
     const [searchReadMore, setsearchReadMore] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
+    const [isRead, setIsRead] = useState(false);
 
     useEffect(() => {
         if (searchTerm !== null) {
@@ -32,7 +38,7 @@ const BookNookProvider = ({ children }) => {
             fetchData();
         }
     }, [searchTerm]);
-    // buch suche spezifischer context ende
+
     useEffect(() => {
         setToken(Cookies.get("jwtToken"));
         try {
@@ -82,6 +88,16 @@ const BookNookProvider = ({ children }) => {
                 handleLoginClick,
                 handleLogout,
                 isLoginVisible,
+                profileImageUploadPreview,
+                setProfileImageUploadPreview,
+                readingGoal,
+                setReadingGoal,
+                readingGoalProgress,
+                setReadingGoalProgress,
+                currentPageProgress,
+                setCurrentPageProgress,
+                isRead,
+                setIsRead,
             }}
         >
             {children}
