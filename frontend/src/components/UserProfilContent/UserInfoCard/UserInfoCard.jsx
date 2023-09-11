@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./UserInfoCard.scss";
 import LevelExpBar from "../../LevelExpBar/LevelExpBar";
+
 const UserInfoCard = ({ readingRank, alreadyRead }) => {
-    console.log(alreadyRead);
+    useEffect(() => {
+        const checkBooksRead = () => {
+            const xpProzent = (alreadyRead.length % 3) * 33.3;
+            // zum updaten der exp-bar
+            experienceLevelBar(xpProzent);
+
+            if (alreadyRead.length % 3 === 0) {
+                readingRank + 1;
+                experienceLevelBar(0);
+            } else if (alreadyRead.length % 3 === 1) {
+                experienceLevelBar(33.3);
+            } else if (alreadyRead.length % 3 === 2) {
+                experienceLevelBar(66.6);
+            }
+        };
+    }, []);
+
+    // funktion überprüft anzahl bücher im alreadyRead
+    // pro buch in list alreadyRead bekommt leiste 33,3% xp
+
+    // und es wird wieder angezeigt für die nächsten 3 bücher usw.
+    // jedes mal wenn 100% erreicht wurden, wird readingRank um 1 erhöht
+    // readingRank wird bei seitenladen in state zwischen gespeichert
+    // wenn readingRank höher ist als eintrag aus datenbank
+    // readingRank put fetch auf /users/updateUser machen
+
     // (POST-ROUTE) das Buch abzuschicken mit de
+
+    const experienceLevelBar = () => {};
 
     return (
         <div className="user-profile profile-card-container">

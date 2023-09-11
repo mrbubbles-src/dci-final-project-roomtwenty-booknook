@@ -54,15 +54,6 @@ const UserProfile = () => {
         alreadyRead,
     } = userdata || {};
 
-    // console.log("username", username);
-    // console.log("readingRank", readingRank);
-    // console.log("readingLevel", readingLevel);
-    // console.log("readingChallenge", readingChallenge);
-    // console.log("profileImage", profileImage);
-    // console.log("wantToRead", wantToRead);
-    // console.log("currentlyReading", currentlyReading);
-    // console.log("alreadyRead", alreadyRead);
-
     return (
         <>
             <div>
