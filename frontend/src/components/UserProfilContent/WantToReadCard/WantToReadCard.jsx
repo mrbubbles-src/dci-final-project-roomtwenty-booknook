@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import "./WantToReadCard.scss";
-const WantToReadCard = () => {
-    const [wantToReadBooks, setWantToReadBooks] = useState([]);
-    return (
-        <>
-            <div className="want-to-read-container">
-                <p>Hier kommen die Bücher rein </p>
-            </div>
-        </>
-    );
+import React from "react";
+import ThumbnailSlider from "../../Carousel/ThumbnailSlider";
+const WantToReadCard = ({ wantToRead }) => {
+    return <ThumbnailSlider slides={wantToRead} />;
 };
+
 export default WantToReadCard;
