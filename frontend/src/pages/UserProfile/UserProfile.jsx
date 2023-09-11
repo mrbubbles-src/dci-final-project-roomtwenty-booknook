@@ -81,6 +81,16 @@ const UserProfile = () => {
             </h4>
             <div className="user-profile-card currently-reading">
                 <CurrentlyReadingCard currentlyReading={currentlyReading} />
+            </div>{" "}
+            <h4 className="user-profile-title">
+                Möchte{" "}
+                <span className="user-profile-title-number">
+                    {wantToRead.length}
+                </span>{" "}
+                {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
+            </h4>
+            <div className="user-profile-card want-to-read-container">
+                <WantToReadCard wantToRead={wantToRead} />
             </div>
             <h4 className="user-profile-title">
                 Hat bereits{" "}
@@ -91,16 +101,6 @@ const UserProfile = () => {
             </h4>
             <div className="user-profile-card already-read-container">
                 <ReadCard alreadyRead={alreadyRead} />
-            </div>
-            <h4 className="user-profile-title">
-                Möchte{" "}
-                <span className="user-profile-title-number">
-                    {wantToRead.length}
-                </span>{" "}
-                {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
-            </h4>
-            <div className="user-profile-card want-to-read-container">
-                <WantToReadCard wantToRead={wantToRead} />
             </div>
         </>
     );
