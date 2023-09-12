@@ -1,8 +1,7 @@
 @import "../../scss/styleVariables";
 
 .book-actions-add-to-lists,
-.book-actions-add-to-lists-dropdown,
-.book-actions-remove-from-list {
+.book-actions-add-to-lists-dropdown {
     height: 50px;
     padding: 0.5rem;
     border: none;
@@ -10,6 +9,7 @@
 }
 .book-actions-add-to-lists {
     border-radius: 4px 0 0 4px;
+    // width: 14px;
 }
 .book-actions-add-to-lists-dropdown {
     border: 1px solid black;
