@@ -8,6 +8,7 @@ import {
     faUser,
     faCalendarDays,
     faBook,
+    faGear
 } from "@fortawesome/free-solid-svg-icons";
 
 const MenuBar = () => {
@@ -27,6 +28,9 @@ const MenuBar = () => {
                     </NavLink>
                     <NavLink className='nav' to='/#'>
                         {<FontAwesomeIcon icon={faBook} />}
+                    </NavLink>
+                    <NavLink className='nav' to='/#'>
+                        {<FontAwesomeIcon icon={faGear} />}
                     </NavLink>
                 </div>
             </>
