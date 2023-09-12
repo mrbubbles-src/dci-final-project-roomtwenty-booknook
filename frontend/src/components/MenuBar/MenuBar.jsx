@@ -8,34 +8,54 @@ import {
     faUser,
     faCalendarDays,
     faBook,
-    faGear
+    faGear,
 } from "@fortawesome/free-solid-svg-icons";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MenuBar = () => {
     const { isLoggedIn } = useContext(BookNookContext);
-    if (isLoggedIn) {
-        return (
-            <>
-                <div className='menubar-container'>
-                    <NavLink className='nav' to='/#'>
-                        {<FontAwesomeIcon icon={faCalendarDays} />}
-                    </NavLink>
-                    <NavLink className='nav' to='suche'>
-                        {<FontAwesomeIcon icon={faMagnifyingGlass} />}
-                    </NavLink>
+    const toolTipText = "Diese Funktion ist derzeitig in der Entwicklung";
+    const handleIconClick = () => {
+        toast.info(toolTipText, { autoClose: 2000 });
+    };
+
+    return (
+        <div className='menubar-container'>
+            <NavLink
+                className='nav'
+                to='/#'
+                onClick={() => handleIconClick(`${toolTipText}`)}
+            >
+                {<FontAwesomeIcon icon={faCalendarDays} />}
+            </NavLink>
+            <NavLink className='nav' to='suche'>
+                {<FontAwesomeIcon icon={faMagnifyingGlass} />}
+            </NavLink>
+            {isLoggedIn && (
+                <>
                     <NavLink className='nav' to='/#'>
                         {<FontAwesomeIcon icon={faUser} />}
                     </NavLink>
-                    <NavLink className='nav' to='/#'>
+                    <NavLink
+                        className='nav'
+                        to='/#'
+                        onClick={() => handleIconClick(`${toolTipText}`)}
+                    >
                         {<FontAwesomeIcon icon={faBook} />}
                     </NavLink>
-                    <NavLink className='nav' to='/#'>
+                    <NavLink
+                        className='nav'
+                        to='/#'
+                        onClick={() => handleIconClick(`${toolTipText}`)}
+                    >
                         {<FontAwesomeIcon icon={faGear} />}
                     </NavLink>
-                </div>
-            </>
-        );
-    }
+                </>
+            )}
+            <ToastContainer position='top-right' autoClose={2000} />
+        </div>
+    );
 };
 
 export default MenuBar;
