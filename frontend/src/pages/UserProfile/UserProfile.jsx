@@ -6,6 +6,7 @@ import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
 const UserProfile = () => {
     const { token, setReadingGoal, setReadingGoalProgress, isRead } =
         useContext(BookNookContext);

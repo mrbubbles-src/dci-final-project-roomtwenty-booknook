@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "./thumbNailSlider.scss";
 
 const ThumbnailSlider = ({ slides }) => {
     return (
@@ -24,22 +25,40 @@ const ThumbnailSlider = ({ slides }) => {
             {slides.map((slide, index) => {
                 const { smallThumbnail, medium } =
                     slide.bookdetails.volumeInfo.imageLinks || {};
+                const { title, authors } = slide.bookdetails.volumeInfo;
                 return (
                     <SwiperSlide key={index}>
                         <div className="thumbnail-slide-container">
-                            <Link
-                                className="card-image-anchor-tag"
-                                to={`/buch/${slide.bookdetails.id}`}
-                            >
-                                <img
-                                    src={
-                                        smallThumbnail ||
-                                        medium?.replace("http", "https") ||
-                                        NoImage
-                                    }
-                                    alt={slide.bookdetails.volumeInfo}
-                                />{" "}
-                            </Link>
+                            <div>
+                                <div classname="möchteUndHatGelesenEinzelCard">
+                                    <Link
+                                        className="card-image-anchor-tag"
+                                        to={`/buch/${slide.bookdetails.id}`}
+                                    >
+                                        <img
+                                            className="möchteUndHatGelesenPics"
+                                            src={
+                                                smallThumbnail ||
+                                                medium?.replace(
+                                                    "http",
+                                                    "https"
+                                                ) ||
+                                                NoImage
+                                            }
+                                            alt={slide.bookdetails.volumeInfo}
+                                        />{" "}
+                                    </Link>
+                                </div>
+                                <div>
+                                    <h5>{title}</h5>
+                                    {authors &&
+                                        authors.map((author, index) => {
+                                            return (
+                                                <h6 key={index}>{author}</h6>
+                                            );
+                                        })}
+                                </div>
+                            </div>
                         </div>
                     </SwiperSlide>
                 );
