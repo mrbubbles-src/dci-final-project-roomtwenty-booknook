@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { BookNookContext } from "../../context/BookNookProvider";
-import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
@@ -8,12 +7,10 @@ import "./LandingpageRegisterAndLogin.scss";
 
 const LandingpageRegisterAndLogin = () => {
     const {
-        isLoggedIn,
         setIsLoggedIn,
         showModal,
         handleCloseModal,
         handleLoginClick,
-        handleLogout,
         isLoginVisible,
         toggleForm,
     } = useContext(BookNookContext);
