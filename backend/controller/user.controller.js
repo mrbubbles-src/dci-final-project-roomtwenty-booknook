@@ -78,7 +78,6 @@ async function httpUpdateUser(req, res, next) {
 async function httpUserDeleteSelf(req, res, next) {
     try {
         const { userID: id } = req;
-        console.log(id);
         await userDeleteSelf(id);
         res.status(200).json({ message: "Benutzer gelöscht" });
     } catch (error) {
@@ -142,7 +141,6 @@ async function httpGetSingleUserData(req, res, next) {
     try {
         const { userID: _userID } = req;
         const user = await findUserInDb(User, _userID);
-        console.log(user);
         res.status(200).json(user);
     } catch (error) {
         next(error);

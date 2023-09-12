@@ -40,7 +40,7 @@ const UserStatistic = ({
             </div>
             <article className="user-statistic-rank-container">
                 <h3 className="user-statistic-username">{username}</h3>
-                <LevelExpBar xpProzent={xpProzent} />
+                <LevelExpBar xpProzent={xpProzent || 0} />
             </article>
             <article className="user-statistic-info-container">
                 <h4>Jahres-Lese-Challenge</h4>

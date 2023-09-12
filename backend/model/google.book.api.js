@@ -1,6 +1,5 @@
 const Book = require("../model/book.schema");
 const fetch = require("node-fetch");
-const util = require("util");
 require("dotenv").config();
 
 const apiKey = process.env.GOOGLE_API_KEY;
@@ -15,13 +14,6 @@ async function GoogleBooksAPI(searchQuery) {
         const responseSearchURL = await fetch(searchURL);
 
         const dataSearchURL = await responseSearchURL.json();
-        // console.log(
-        //     util.inspect(dataSearchURL, {
-        //         showHidden: false,
-        //         depth: null,
-        //         colors: true,
-        //     })
-        // );
         return dataSearchURL;
     } catch (err) {
         console.error(err);
@@ -31,7 +23,6 @@ async function GoogleBooksAPI(searchQuery) {
 async function SingleGoogleBookURLWithID(id) {
     try {
         const existingBook = await Book.findOne({ id: id });
-        // console.log("existingBook", existingBook);
         if (!existingBook) {
             try {
                 const singleURL = `${url}/${id}`;

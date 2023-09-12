@@ -23,8 +23,8 @@ const Slider = ({ slides }) => {
             // navigation // pfeile funktionieren mobil nicht
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log("slide change")}
+            // onSwiper={(swiper) => console.log(swiper)}
         >
             {slides &&
                 slides.map((slide, index) => {
@@ -41,53 +41,38 @@ const Slider = ({ slides }) => {
                                 <article className="currently-reading-slide-image-container">
                                     <img
                                         src={
-                                            smallThumbnail ||
-                                            medium?.replace("http", "https") ||
-                                            NoImage
+                                            (smallThumbnail || medium)?.replace(
+                                                "http",
+                                                "https"
+                                            ) || NoImage
                                         }
                                         alt={title}
+                                        // BILDGRÖßE ANPASSEN NUR SO ZUM TESTEN SO EINGESTELLT
+                                        width={"100px"}
                                     />{" "}
                                 </article>
-                                <article className='currently-reading-slide-information'>
+                                <article className="currently-reading-slide-information">
                                     <h3>{title}</h3>
                                     {authors &&
                                         authors.map((author, index) => {
                                             return (
-                                                <>
-                                                    <h4 key={index}>
-                                                        {author}
-                                                    </h4>
-                                                    <h2>Fortschritt</h2>
-                                                    <div className='fakebar'>
-                                                        {" "}
-                                                        <p>
-                                                            Aktuelle Seite{" "}
-                                                            {currentPage} von{" "}
-                                                            {pageCount}
-                                                        </p>
-                                                    </div>
-                                                    <button
-                                                        onClick={
-                                                            handleShowEditModal
-                                                        }
-                                                    >
-                                                        Edit
-                                                    </button>
-                                                </>
+                                                <h4 key={index}>{author}</h4>
                                             );
                                         })}
-                                    <h2>Fortschritt</h2>
-                                    <div className="fakebar">
-                                        {" "}
-                                        <p>
-                                            Aktuelle Seite{" "}
-                                            {currentPageProgress || currentPage}{" "}
-                                            von {pageCount}
-                                        </p>
-                                    </div>
-                                    <button onClick={handleShowEditModal}>
-                                        Edit
-                                    </button>
+                                    <aside className="currently-reading-progress">
+                                        <h2>Fortschritt</h2>{" "}
+                                        <div className="fakebar">
+                                            <p>
+                                                Aktuelle Seite{" "}
+                                                {currentPageProgress ||
+                                                    currentPage}{" "}
+                                                von {pageCount}
+                                            </p>
+                                        </div>
+                                        <button onClick={handleShowEditModal}>
+                                            Edit
+                                        </button>
+                                    </aside>
                                 </article>
                             </div>
                             {showEditModal && (
