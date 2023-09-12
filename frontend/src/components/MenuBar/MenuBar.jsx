@@ -22,19 +22,20 @@ const MenuBar = () => {
 
     return (
         <div className='menubar-container'>
-            <NavLink
-                className='nav'
-                to='/#'
-                onClick={() => handleIconClick(`${toolTipText}`)}
-            >
-                {<FontAwesomeIcon icon={faCalendarDays} />}
-            </NavLink>
-            <NavLink className='nav' to='suche'>
-                {<FontAwesomeIcon icon={faMagnifyingGlass} />}
-            </NavLink>
             {isLoggedIn && (
                 <>
-                    <NavLink className='nav' to='/#'>
+                    {" "}
+                    <NavLink
+                        className='nav'
+                        to='/#'
+                        onClick={() => handleIconClick(`${toolTipText}`)}
+                    >
+                        {<FontAwesomeIcon icon={faCalendarDays} />}
+                    </NavLink>
+                    <NavLink className='menu-item' to='suche'>
+                        {<FontAwesomeIcon icon={faMagnifyingGlass} />}
+                    </NavLink>
+                    <NavLink className='menu-item' to='/#'>
                         {<FontAwesomeIcon icon={faUser} />}
                     </NavLink>
                     <NavLink

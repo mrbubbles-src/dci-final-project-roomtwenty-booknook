@@ -2,16 +2,21 @@
 
 .menubar-container {
     display: flex;
-    background-color: $secondary;
-    padding: 0.01em;
-    justify-content: center;
-    .nav {
-        border: 2px solid $accent-2;
+    background-color: $background;
+    justify-content: space-evenly;
+    box-shadow: -1px -1px 10px 2px rgba(0, 0, 0, 0.54);
+    border-radius: 20px;
+    .nav,
+    .menu-item {
         color: black;
         border-radius: 15px;
         margin: 9px;
         padding: 9px 13px;
-        background-color: $primary;
-        font-size: 2.15rem;
+        font-size: 2.5rem;
+    }
+    .menu-item {
+        &:hover {
+            color: $accent-1;
+        }
     }
 }
