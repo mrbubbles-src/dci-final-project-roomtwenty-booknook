@@ -13,29 +13,29 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
         isRead,
     } = useContext(BookNookContext);
     const inputElement = useRef();
-    // async function updateReadingChallengeCurrent() {
-    //     const body = {
-    //         readingChallengeCurrent: readingGoalProgress + 1,
-    //     };
-    //     try {
-    //         const response = await fetch(
-    //             "http://localhost:3000/users/updateUser",
-    //             {
-    //                 method: "PUT",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${token}`,
-    //                 },
-    //                 body: JSON.stringify(body),
-    //             }
-    //         );
-    //         const responsemsg = await response.json();
-    //         // console.log(responsemsg);
-    //         setReadingGoalProgress(readingGoalProgress + 1);
-    //     } catch (error) {
-    //         throw new Error(error);
-    //     }
-    // }
+    async function updateReadingChallengeCurrent() {
+        const body = {
+            readingChallengeCurrent: readingGoalProgress + 1,
+        };
+        try {
+            const response = await fetch(
+                "http://localhost:3000/users/updateUser",
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(body),
+                }
+            );
+            const responsemsg = await response.json();
+            // console.log(responsemsg);
+            setReadingGoalProgress(readingGoalProgress + 1);
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
     async function updateCurrentPageInDBFetch() {
         const body = {
             type: "currentlyReading",
@@ -77,7 +77,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
                     body: JSON.stringify(body),
                 }
             );
-            // await updateReadingChallengeCurrent();
+            await updateReadingChallengeCurrent();
             setIsRead(!isRead);
             const responseJson = await response.json();
             // console.log(responseJson);
