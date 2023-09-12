@@ -1,0 +1,23 @@
+@import "../../scss/styleVariables";
+
+.book-actions-add-to-lists,
+.book-actions-add-to-lists-dropdown,
+.book-actions-remove-from-list {
+    height: 50px;
+    padding: 0.5rem;
+    border: none;
+    background-color: $accent-1;
+}
+.book-actions-add-to-lists {
+    border-radius: 4px 0 0 4px;
+}
+.book-actions-add-to-lists-dropdown {
+    border: 1px solid black;
+    border-radius: 0 4px 4px 0;
+}
+.want-to-read-modal,
+.currently-reading-modal,
+.already-read-modal,
+.remove-btn-modal {
+    all: unset;
+}
