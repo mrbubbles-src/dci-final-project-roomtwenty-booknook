@@ -1,19 +1,9 @@
 import React, { useContext } from "react";
 import { BookNookContext } from "../../context/BookNookProvider";
-import Modal from "../Modal/Modal";
-import LoginForm from "../LoginForm/LoginForm";
-import SignupForm from "../SignupForm/SignupForm";
 import "./LandingpageRegisterAndLogin.scss";
 
 const LandingpageRegisterAndLogin = () => {
-    const {
-        setIsLoggedIn,
-        showModal,
-        handleCloseModal,
-        handleLoginClick,
-        isLoginVisible,
-        toggleForm,
-    } = useContext(BookNookContext);
+    const { handleLoginClick } = useContext(BookNookContext);
     return (
         <article className='text-container'>
             <p className='text login'>
@@ -29,26 +19,6 @@ const LandingpageRegisterAndLogin = () => {
             <button className='btn-login' onClick={handleLoginClick}>
                 Hier ist dein Ticket
             </button>
-            {showModal && (
-                <Modal onClose={handleCloseModal}>
-                    {isLoginVisible ? (
-                        <LoginForm
-                            onClose={handleCloseModal}
-                            onLogin={() => setIsLoggedIn(true)}
-                        />
-                    ) : (
-                        <SignupForm
-                            onClose={handleCloseModal}
-                            onLogin={() => setIsLoggedIn(true)}
-                        />
-                    )}
-                    <button className='btn-login' onClick={toggleForm}>
-                        {isLoginVisible
-                            ? "Noch kein Mitglied?"
-                            : "Bereits Mitglied?"}
-                    </button>
-                </Modal>
-            )}
         </article>
     );
 };
