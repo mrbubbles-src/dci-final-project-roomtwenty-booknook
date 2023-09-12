@@ -32,12 +32,17 @@
     }
 }
 
-.swiper-wrapper {
+.thumbnail-slide-container {
+    // display: grid;
+    // grid-column: 4;
+    // grid-row: 2;
+    // column-gap: 10px;
+    // row-gap: 5px;
     display: grid;
-    grid-column: 4;
-    grid-row: 2;
-    column-gap: 10px;
-    row-gap: 5px;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(3, 100px) 70px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
 }
 
 //  .want-to-read-container. {

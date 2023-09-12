@@ -30,13 +30,13 @@ const ThumbnailSlider = ({ slides }) => {
                     <SwiperSlide key={index}>
                         <div className="thumbnail-slide-container">
                             <div>
-                                <div classname="möchteUndHatGelesenEinzelCard">
+                                <div classname="listen-book-cover-container">
                                     <Link
                                         className="card-image-anchor-tag"
                                         to={`/buch/${slide.bookdetails.id}`}
                                     >
                                         <img
-                                            className="möchteUndHatGelesenPics"
+                                            className="listen-book-cover"
                                             src={
                                                 smallThumbnail ||
                                                 medium?.replace(
@@ -49,7 +49,7 @@ const ThumbnailSlider = ({ slides }) => {
                                         />{" "}
                                     </Link>
                                 </div>
-                                <div>
+                                <div className="listen-book-info">
                                     <h5>{title}</h5>
                                     {authors &&
                                         authors.map((author, index) => {
