@@ -21,37 +21,44 @@ const MenuBar = () => {
     };
 
     return (
-        <div className='menubar-container'>
+        <div className='menubar'>
             {isLoggedIn && (
                 <>
-                    {" "}
-                    <NavLink
-                        className='nav'
-                        to='/#'
-                        onClick={() => handleIconClick(`${toolTipText}`)}
-                    >
-                        {<FontAwesomeIcon icon={faCalendarDays} />}
-                    </NavLink>
-                    <NavLink className='menu-item' to='suche'>
-                        {<FontAwesomeIcon icon={faMagnifyingGlass} />}
-                    </NavLink>
-                    <NavLink className='menu-item' to='/#'>
-                        {<FontAwesomeIcon icon={faUser} />}
-                    </NavLink>
-                    <NavLink
-                        className='nav'
-                        to='/#'
-                        onClick={() => handleIconClick(`${toolTipText}`)}
-                    >
-                        {<FontAwesomeIcon icon={faBook} />}
-                    </NavLink>
-                    <NavLink
-                        className='nav'
-                        to='/#'
-                        onClick={() => handleIconClick(`${toolTipText}`)}
-                    >
-                        {<FontAwesomeIcon icon={faGear} />}
-                    </NavLink>
+                    <div className='menu-item inactive effect'>
+                        <div className='menu-item-icon'>
+                            {" "}
+                            <FontAwesomeIcon icon={faCalendarDays} />
+                        </div>
+                        <div className='menu-item-text'>Calendar</div>
+                    </div>
+                    <div className='menu-item inactive effect'>
+                        <div className='menu-item-icon'>
+                            {" "}
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </div>
+                        <div className='menu-item-text'>Search</div>
+                    </div>
+                    <div className='menu-item active effect'>
+                        <div className='menu-item-icon'>
+                            {" "}
+                            <FontAwesomeIcon icon={faUser} />
+                        </div>
+                        <div className='menu-item-text'>Profile</div>
+                    </div>
+                    <div className='menu-item inactive effect'>
+                        <div className='menu-item-icon'>
+                            {" "}
+                            <FontAwesomeIcon icon={faBook} />
+                        </div>
+                        <div className='menu-item-text'>Books</div>
+                    </div>
+                    <div className='menu-item inactive effect'>
+                        <div className='menu-item-icon'>
+                            {" "}
+                            <FontAwesomeIcon icon={faGear} />
+                        </div>
+                        <div className='menu-item-text'>Settings</div>
+                    </div>
                 </>
             )}
             <ToastContainer position='top-right' autoClose={2000} />
