@@ -5,15 +5,22 @@
     justify-content: center;
     flex-direction: column;
     background-color: $accent-1;
-    padding: 1em 1em 0 1em;
+    padding: 1em;
     .text {
         color: white;
         text-align: center;
         margin-bottom: 1em;
         font-family: text-bold, sans-serif;
     }
-    a {
+    .btn-login {
+        background: none;
+        border: 2px solid $accent-2;
+        border-radius: 20px;
+        font: {
+            size: $m;
+        }
         color: $accent-2;
+        padding: 8px;
     }
 }
 
