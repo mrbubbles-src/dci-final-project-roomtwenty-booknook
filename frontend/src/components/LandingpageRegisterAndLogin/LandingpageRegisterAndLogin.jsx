@@ -11,10 +11,10 @@ const LandingpageRegisterAndLogin = () => {
                 doch bei uns und lege sowie verwalte deine eigenen Bücherlisten.
             </p>
             <p className='text login'>
-                Erstelle eigene Challenges um am Ball zu bleiben.
+                Erstelle eigene Challenges, um am Ball zu bleiben.{" "}
             </p>
             <p className='text login'>
-                Wohin die Reise geht, ist ganz allein Deine Entscheidung !
+                Wohin die Reise geht, liegt ganz allein in deiner Entscheidung!
             </p>
             <button className='btn-login' onClick={handleLoginClick}>
                 Hier ist dein Ticket!
