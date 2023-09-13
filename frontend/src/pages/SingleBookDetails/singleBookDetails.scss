@@ -27,6 +27,16 @@
             margin-top: 0.5rem;
         }
     }
+    .single-book-image-container,
+    .single-book-actions-external-link-left,
+    .single-book-actions-external-link-right,
+    .single-book-rating-container,
+    .single-book-info-section,
+    .single-book-genre {
+        -webkit-box-shadow: 0px 0px 7px -3px $font;
+        box-shadow: 0px 0px 7px -3px $font;
+        border: 1px solid $placeholder;
+    }
     .single-book-grid-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -82,6 +92,7 @@
         }
         .single-book-rating-container {
             grid-area: 4 / 3 / 5 / 5;
+            border-radius: 0 4px 4px 0;
             display: flex;
             flex-wrap: wrap;
             width: 100%;
@@ -142,5 +153,7 @@
         color: $background;
         background-color: #102d5b7c;
         transition: all ease-in-out 200ms;
+        -webkit-box-shadow: 0px 0px 7px -3px $font;
+        box-shadow: 0px 0px 7px -3px $font;
     }
 }
