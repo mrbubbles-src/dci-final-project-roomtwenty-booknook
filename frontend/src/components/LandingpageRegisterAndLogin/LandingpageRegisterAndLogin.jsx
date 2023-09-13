@@ -17,7 +17,7 @@ const LandingpageRegisterAndLogin = () => {
                 Wohin die Reise geht, ist ganz allein Deine Entscheidung !
             </p>
             <button className='btn-login' onClick={handleLoginClick}>
-                Hier ist dein Ticket
+                Hier ist dein Ticket!
             </button>
         </article>
     );
