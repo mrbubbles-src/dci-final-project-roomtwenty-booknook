@@ -1,16 +1,20 @@
 @import "../../scss/styleVariables";
 
 .footer-container {
-    height: 7rem;
-    background-color: $primary;
+    padding: 5px;
+    height: 35px;
+    margin-top: 10px;
+    background-color: #102d5b;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: auto;
     .footer-links {
         font: {
             family: text-bold, sans-serif;
         }
-        color: $font;
+        color: $accent-2;
         &:focus,
         &:hover {
             outline: none;

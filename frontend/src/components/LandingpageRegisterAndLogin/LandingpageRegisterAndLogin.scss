@@ -5,7 +5,11 @@
     justify-content: center;
     flex-direction: column;
     background-color: $accent-1;
-    padding: 1rem;
+    padding: 1em 1em 0 1em;
+    border-radius: 20px;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.399);
     .text {
         color: white;
         text-align: center;
