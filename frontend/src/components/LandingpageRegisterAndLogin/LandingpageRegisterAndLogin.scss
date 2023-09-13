@@ -5,20 +5,26 @@
     justify-content: center;
     flex-direction: column;
     background-color: $accent-1;
-    padding: 1em 1em 0 1em;
+    padding: 1em;
+    border-radius: 20px;
+    width: 90%;
+    margin: 10px auto;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.399);
     .text {
         color: white;
         text-align: center;
         margin-bottom: 1em;
         font-family: text-bold, sans-serif;
     }
-    a {
+    .btn-login {
+        background: $accent-4;
+        border: 2px solid $accent-2;
+        border-radius: 20px;
+        font: {
+            size: $m;
+            family: text-bold;
+        }
         color: $accent-2;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    .text-container {
-        padding: 1.6em 1.6em 0 1.6em;
+        padding: 8px;
     }
 }
