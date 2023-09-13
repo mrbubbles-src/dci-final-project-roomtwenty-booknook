@@ -1,6 +1,10 @@
 @import "../../scss/styleVariables";
 
-// .expLevel {
-//     margin-left: auto;
-//     margin-right: 0px;
-// }
+.expLevel {
+    padding: {
+        top: 5px;
+        right: 5px;
+
+        left: 5rem;
+    }
+}

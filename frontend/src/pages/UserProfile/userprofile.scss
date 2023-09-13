@@ -1,9 +1,17 @@
 @import "../../scss/styleVariables";
-
 .user-statistic-container {
-    display: grid;
-    grid-template-columns: 10rem 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    // grid-row-gap: 10px;
+    // display: grid;
+    // grid-template-columns: 10rem 1fr;
+    // grid-template-rows: repeat(2, 1fr);
+    // grid-column-gap: 10px;
+    // // grid-row-gap: 10px;
+    //MEINS
+    background: $primary;
+    box-shadow: 0px 14px 80px $primary;
+    max-width: 400px;
+    display: flex;
+
+    border-radius: 30px;
+    position: relative;
+    // margin: 40px auto;
 }
