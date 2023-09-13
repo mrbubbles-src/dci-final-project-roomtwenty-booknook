@@ -50,17 +50,16 @@ const ThumbnailSlider = ({ slides }) => {
                                     </Link>
                                 </div>
                                 <div className="listen-book-info">
-                                    <h5>{title || "Unbekannter Titel"}</h5>
-                                    {authors &&
-                                        authors.map((author, index) => {
-                                            return (
-                                                <h6 key={index}>
-                                                    {author ||
-                                                        "Unbekannter Autor"}
-                                                    {""}
-                                                </h6>
-                                            );
-                                        })}
+                                    <h5> {title || "Unbekannter Titel"}</h5>
+                                    <h5>
+                                        {(authors &&
+                                            authors.join(
+                                                authors.length === 1
+                                                    ? ""
+                                                    : " & "
+                                            )) ||
+                                            "Unbekannter Autor"}
+                                    </h5>
                                 </div>
                             </div>
                         </div>

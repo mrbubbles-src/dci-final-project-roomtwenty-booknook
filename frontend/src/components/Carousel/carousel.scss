@@ -1,4 +1,8 @@
 @import "../../scss//styleVariables";
+// .currently-reading {
+//     // display: grid;
+
+// }
 .currently-reading-slide-container-grid {
     margin: 0 20px;
     background-color: $accent-3;
@@ -6,6 +10,7 @@
     border: 1px solid red;
     gap: 10px;
     height: 250px;
+    width: 400px;
     display: grid;
     grid-template-columns: repeat (10, 1fr);
 
@@ -21,7 +26,7 @@
         .fakebar {
             width: 80%;
             height: 20px;
-            background-color: white;
+            // background-color: white;
             text-align: center;
         }
     }

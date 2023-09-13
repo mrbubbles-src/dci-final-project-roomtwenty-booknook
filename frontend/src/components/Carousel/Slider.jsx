@@ -52,15 +52,19 @@ const Slider = ({ slides }) => {
                                     />{" "}
                                 </article>
                                 <article className="currently-reading-slide-information">
-                                    <h3>{title}</h3>
-                                    {authors &&
-                                        authors.map((author, index) => {
-                                            return (
-                                                <h4 key={index}>{author}</h4>
-                                            );
-                                        })}
+                                    <h4> {title || "Unbekannter Titel"}</h4>
+                                    <h5>
+                                        {(authors &&
+                                            authors.join(
+                                                authors.length === 1
+                                                    ? ""
+                                                    : " & "
+                                            )) ||
+                                            "Unbekannter Autor"}
+                                    </h5>
+
                                     <aside className="currently-reading-progress">
-                                        <h2>Fortschritt</h2>{" "}
+                                        <h3>Fortschritt</h3>{" "}
                                         <div className="fakebar">
                                             <p>
                                                 Aktuelle Seite{" "}
