@@ -33,6 +33,20 @@ h6 {
 .hidden {
     display: none;
 }
+.main-container {
+    margin: {
+        left: 0.5rem;
+        right: 0.5rem;
+    }
+}
+strong {
+    font: {
+        family: text-bold;
+    }
+}
+a {
+    color: $font;
+}
 // SEARCH CARDS \\
 .card-container {
     width: 100%;
