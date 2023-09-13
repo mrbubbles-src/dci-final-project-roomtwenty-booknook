@@ -3,16 +3,17 @@
 .footer-container {
     padding: 5px;
     margin-top: 10px;
-    background-color: $accent-1;
+    background-color: #102d5b;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-radius: 20px 20px 0 0;
+    margin-bottom: auto;
     .footer-links {
         font: {
             family: text-bold, sans-serif;
         }
-        color: white;
+        color: $accent-2;
         &:focus,
         &:hover {
             outline: none;
