@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BookNookContext } from "../../context/BookNookProvider";
 import "./LandingpageRegisterAndLogin.scss";
 
 const LandingpageRegisterAndLogin = () => {
+    const { handleLoginClick } = useContext(BookNookContext);
     return (
-        <div className='text-container'>
-            <p className='text intro'>
-                Wenn Du alle unsere Features nutzen möchtest registriere dich
-                doch bei uns und lege eigene Bücherlisten an, vernetze dich mit
-                gleichgesinnten und vieles mehr!
-            </p>
-
-            <p className='text register'>
-                Zur Registration geht es <a href='/#'>hier entlang</a>.
+        <article className='text-container'>
+            <p className='text login'>
+                Wenn du alle unsere Features nutzen möchtest, registriere dich
+                doch bei uns und lege sowie verwalte deine eigenen Bücherlisten.
             </p>
             <p className='text login'>
-                Bist du bereits Mitglied? Dann log dich <a href='/#'>hier</a>{" "}
-                ein!
+                Erstelle eigene Challenges, um am Ball zu bleiben.{" "}
             </p>
-        </div>
+            <p className='text login'>
+                Wohin die Reise geht, liegt ganz allein in deiner Entscheidung!
+            </p>
+            <button className='btn-login' onClick={handleLoginClick}>
+                Hier ist dein Ticket!
+            </button>
+        </article>
     );
 };
 

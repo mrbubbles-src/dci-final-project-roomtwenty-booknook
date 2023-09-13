@@ -63,7 +63,7 @@ const LoginForm = ({ onClose, onLogin }) => {
                 onChange={handleOnChange}
             />
             <div className='buttonContainer'>
-                <button className='btn-login' type='submit'>
+                <button className='btn-modal-login' type='submit'>
                     Login
                 </button>
             </div>

@@ -1,17 +1,106 @@
 @import "../../scss/styleVariables";
+$transition: 0.3s ease;
 
-.menubar-container {
+.menu {
+    background: $background;
     display: flex;
-    background-color: $secondary;
-    padding: 0.01em;
-    justify-content: center;
-    .nav {
-        border: 2px solid $accent-2;
-        color: black;
-        border-radius: 15px;
-        margin: 9px;
-        padding: 9px 13px;
-        background-color: $primary;
-        font-size: 2.15rem;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    box-shadow: 1px 1px 15px 2px;
+    &-item {
+        padding: 10px;
+        border-radius: 50px;
+        transition: 0.3s ease;
+
+        .menu-icon {
+            color: black;
+        }
+        .menu-item-text {
+            min-width: 0px;
+            opacity: 0;
+            font-size: 0px;
+        }
+        :hover {
+            color: $accent-1;
+        }
+
+        &-text {
+            min-width: 80px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        &-icon {
+            display: inline-block;
+            text-align: center;
+            font-size: 0px;
+            .menu-icon {
+                height: 30px;
+                width: 30px;
+            }
+        }
     }
 }
+.menu-bar {
+    background: $background;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    box-shadow: 1px 1px 15px 2px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transform: translateY(100%); /* Die MenuBar standardmäßig aus dem Sichtfeld verschieben */
+    transition: transform $transition;
+  
+    &.menu-bar-fixed {
+      transform: translateY(0); /* Die MenuBar in den Sichtbereich bewegen, wenn fixiert */
+    }
+  
+    .menu-item {
+      padding: 10px;
+      border-radius: 50px;
+      transition: $transition;
+  
+      .menu-icon {
+        color: black;
+      }
+  
+      .menu-item-text {
+        min-width: 0px;
+        opacity: 0;
+        font-size: 0px;
+      }
+  
+      :hover {
+        color: $accent-1;
+      }
+  
+      &-text {
+        min-width: 80px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 18px;
+        opacity: 1;
+        transition: opacity $transition;
+      }
+  
+      &-icon {
+        display: inline-block;
+        text-align: center;
+        font-size: 0px;
+  
+        .menu-icon {
+          height: 30px;
+          width: 30px;
+        }
+      }
+    }
+  }

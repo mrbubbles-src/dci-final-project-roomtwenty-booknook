@@ -6,12 +6,16 @@ import "./modal.scss";
 
 const Modal = ({ children, onClose }) => {
     return (
-        <div className="modal-overlay">
-            <div className="modal">
-                <button className="btn-style btn-close" onClick={onClose}>
-                    X
-                </button>
-                {children}
+        <div className='modal-overlay'>
+            {" "}
+            <div className='modal'>
+                {" "}
+                <div className='modal-btn-container'>
+                    <button className='btn-close' onClick={onClose}>
+                        X
+                    </button>
+                </div>
+                <div className='modal-input-container'> {children}</div>
             </div>
         </div>
     );
