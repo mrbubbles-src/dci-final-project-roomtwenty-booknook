@@ -15,7 +15,7 @@ const ThumbnailSlider = ({ slides }) => {
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={0}
-            slidesPerView={4}
+            slidesPerView={2}
             // navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
@@ -50,11 +50,15 @@ const ThumbnailSlider = ({ slides }) => {
                                     </Link>
                                 </div>
                                 <div className="listen-book-info">
-                                    <h5>{title}</h5>
+                                    <h5>{title || "Unbekannter Titel"}</h5>
                                     {authors &&
                                         authors.map((author, index) => {
                                             return (
-                                                <h6 key={index}>{author}</h6>
+                                                <h6 key={index}>
+                                                    {author ||
+                                                        "Unbekannter Autor"}
+                                                    {""}
+                                                </h6>
                                             );
                                         })}
                                 </div>

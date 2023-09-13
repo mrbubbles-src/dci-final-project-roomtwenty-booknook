@@ -119,11 +119,11 @@ async function httpSaveBook(req, res, next) {
         const lists = await showReadlist(_userID);
 
         // response
-        res.status(200);
-        // res.status(200).json({
-        //     title: `${user.username}'s Leseliste:`,
-        //     lists: lists,
-        // });
+        // res.status(200);
+        res.status(200).json({
+            title: `${user.username}'s Leseliste:`,
+            lists: lists,
+        });
     } catch (error) {
         next(error);
     }

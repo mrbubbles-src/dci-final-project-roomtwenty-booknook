@@ -1,15 +1,8 @@
-.listen-book-cover-container {
-    grid-area: 1 / 1 / 4 / 3;
-}
-
 .listen-book-cover {
-    width: 100%;
-    height: 100%;
+    width: 128px;
+    height: 188px;
 }
 
 .listen-book-info {
-    grid-area: 4 / 1 / 5 / 3;
+    flex-flow: column;
 }
-// .thumbnail-slide-container {
-//     text-align: left;
-// }
