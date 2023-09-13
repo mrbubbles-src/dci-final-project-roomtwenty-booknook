@@ -1,26 +1,48 @@
 @import "../../scss/styleVariables";
 $transition: 0.3s ease;
 
-.menubar {
-    background-color: $background;
+.menu {
+    background: $background;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border-radius: 20px;
-    box-shadow: -1px -1px 10px 2px rgba(0, 0, 0, 0.54);
-    .menu-item {
-        display: flex;
-        align-items: center;
-        margin-right: 20px;
+    box-shadow: 1px 1px 15px 2px black;
+
+    &-item {
+        padding: 10px;
         border-radius: 50px;
-        transition: $transition;
-        cursor: pointer;
-        &:last-child {
-            margin-right: 0px;
-        }
-        &.inactive {
-            background-color: transparent;
+        transition: 0.3s ease;
+
+        .menu-icon {
             color: black;
+        }
+        .menu-item-text {
+            min-width: 0px;
+            opacity: 0;
+            font-size: 0px;
+        }
+        :hover {
+            color: $accent-1;
+        }
+
+        &-text {
+            min-width: 80px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        &-icon {
+            display: inline-block;
+            text-align: center;
+            font-size: 0px;
+            .menu-icon {
+                height: 30px;
+                width: 30px;
+            }
         }
     }
 }
