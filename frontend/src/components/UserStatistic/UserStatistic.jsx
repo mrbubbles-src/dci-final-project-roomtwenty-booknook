@@ -14,6 +14,8 @@ const UserStatistic = ({
     profileImage,
     readingChallengeCurrent,
     xpProzent,
+    userLevel,
+    alreadyReadLength,
 }) => {
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
@@ -40,7 +42,11 @@ const UserStatistic = ({
             </div>
             <article className="user-statistic-rank-container">
                 <h3 className="user-statistic-username">{username}</h3>
-                <LevelExpBar xpProzent={xpProzent || 0} />
+
+                <p className="user-level">
+                    {1 + Math.floor(alreadyReadLength / 3)}
+                </p>
+                <LevelExpBar xpProzent={(alreadyReadLength % 3) * 33.3 || 1} />
             </article>
             <article className="user-statistic-info-container">
                 <h4>Jahres-Lese-Challenge</h4>

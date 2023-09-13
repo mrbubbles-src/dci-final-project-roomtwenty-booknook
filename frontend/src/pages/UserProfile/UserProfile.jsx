@@ -47,7 +47,7 @@ const UserProfile = () => {
     // {
     // "name des eintrags. zb email": "neuer wert"
     // }
-
+    //Schema infos
     const {
         username,
         readingRank,
@@ -70,6 +70,7 @@ const UserProfile = () => {
                     username={username}
                     profileImage={profileImage}
                     readingChallengeCurrent={readingChallengeCurrent}
+                    readingLevel={readingLevel}
                 />
             </div>
             <h4 className="user-profile-title">
