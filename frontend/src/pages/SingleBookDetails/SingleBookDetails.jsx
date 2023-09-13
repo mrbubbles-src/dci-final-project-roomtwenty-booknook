@@ -142,7 +142,7 @@ const SingleBookDetails = () => {
             });
 
             const responseJson = await response.json();
-            console.log(responseJson);
+            // console.log(responseJson);
         } catch (error) {
             console.error(error);
         }
