@@ -7,6 +7,8 @@ import { BookNookContext } from "../../context/BookNookProvider";
 import ReactCountryFlag from "react-country-flag";
 import StarRatings from "react-star-ratings";
 import AddToLists from "../../components/AddToLists/AddToLists";
+import ReadMore from "../../components/ReadMore/ReadMore";
+import ReadMoreSpans from "../../components/ReadMore/ReadMoreSpans";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
@@ -212,22 +214,8 @@ const SingleBookDetails = () => {
                         <br />
                         {publishedDate || "Unbekanntes Datum"}
                     </p>
-                    <p className="single-book-isbn-number">
-                        <strong>
-                            {isbn10Title?.replace("_", "-") || "ISBN-10"}:
-                        </strong>
-                        <br />
-                        {isbn10Number || "Keine ISBN-10 bekannt"}
-                    </p>{" "}
-                    <p className="single-book-isbn-number">
-                        <strong>
-                            {isbn13Title?.replace("_", "-") || "ISBN-13"}:
-                        </strong>
-                        <br />
-                        {isbn13Number || "Keine ISBN-13 bekannt"}
-                    </p>
                     <p className="single-book-language">
-                        <strong>Sprache:</strong>{" "}
+                        <strong>Sprache:</strong> <br />
                         {language ? (
                             <ReactCountryFlag
                                 countryCode={
@@ -241,6 +229,20 @@ const SingleBookDetails = () => {
                         ) : (
                             "keine Information vorhanden."
                         )}
+                    </p>
+                    <p className="single-book-isbn-number">
+                        <strong>
+                            {isbn10Title?.replace("_", "-") || "ISBN-10"}:
+                        </strong>
+                        <br />
+                        {isbn10Number || "Keine ISBN-10 bekannt"}
+                    </p>{" "}
+                    <p className="single-book-isbn-number">
+                        <strong>
+                            {isbn13Title?.replace("_", "-") || "ISBN-13"}:
+                        </strong>
+                        <br />
+                        {isbn13Number || "Keine ISBN-13 bekannt"}
                     </p>
                 </div>
                 {canonicalVolumeLink ? (
@@ -270,9 +272,11 @@ const SingleBookDetails = () => {
                     />
                 </div>
                 <div className="single-book-rating-container">
-                    <span className="single-book-avg-rating">
-                        {averageRating || bookDataAverageRating || 0}{" "}
-                    </span>{" "}
+                    <p className="single-book-avg-rating">
+                        <strong>
+                            {averageRating || bookDataAverageRating || 0}
+                        </strong>
+                    </p>{" "}
                     <StarRatings
                         rating={averageRating || bookDataAverageRating || 0}
                         starRatedColor="orange"
@@ -280,32 +284,45 @@ const SingleBookDetails = () => {
                         starDimension="20px"
                         starSpacing="1px"
                     />
-                    <span className="single-book-ratingcount">
-                        bei {ratingsCount || bookDataRatingsCount || 0}{" "}
+                    <p className="single-book-rating-count">
+                        bei{" "}
+                        <strong>
+                            {ratingsCount || bookDataRatingsCount || 0}
+                        </strong>{" "}
                         {ratingsCount === 1 || bookDataRatingsCount === 1
                             ? "Bewertung"
                             : "Bewertungen"}
-                    </span>
+                    </p>
                 </div>
             </div>
-
-            <p className="single-book-description">
-                {/* entfernt jegliche html tags aus der beschreibung */}
-                {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
-                    "Keine Beschreibung verfügbar"}
-            </p>
-            <p className="single-book-genre-container">
-                Genres:{" "}
-                {genres && genres.length >= 1
-                    ? genres.map((category, index) => {
-                          return (
-                              <span className="single-book-genre" key={index}>
-                                  {category}
-                              </span>
-                          );
-                      })
-                    : "keine Genres bekannt"}
-            </p>
+            <article className="single-book-description-genre-container">
+                <p className="single-book-description">
+                    {/* entfernt jegliche html tags aus der beschreibung */}
+                    <ReadMore>
+                        {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+                            "Keine Beschreibung verfügbar"}
+                    </ReadMore>
+                </p>
+                <h4 className="single-book-genre-title">
+                    <strong>Genres:</strong>
+                </h4>
+                <div className="single-book-genres-container">
+                    <ReadMoreSpans>
+                        {genres && genres.length >= 1
+                            ? genres.map((category, index) => {
+                                  return (
+                                      <span
+                                          className="single-book-genre"
+                                          key={index}
+                                      >
+                                          <strong>{category}</strong>
+                                      </span>
+                                  );
+                              })
+                            : "keine Genres bekannt"}
+                    </ReadMoreSpans>
+                </div>
+            </article>
         </section>
     );
 };
