@@ -1,6 +1,10 @@
 @import "../../scss/styleVariables";
 
 .single-book-container {
+    margin: {
+        left: 0.5rem;
+        right: 0.5rem;
+    }
     .single-book-headings-container {
         margin: 0.5rem 0 $s 0;
         .single-book-title {
@@ -103,13 +107,40 @@
         .single-book-genres-container {
             display: flex;
             flex-wrap: wrap;
+
             .single-book-genre {
-                // border: 1px solid red;
                 margin: 0.5rem;
                 padding: 0.5rem;
                 background-color: $accent-1-alt;
                 border-radius: 4px;
             }
         }
+    }
+}
+.read-or-hide {
+    user-select: none;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    color: #102d5b7c;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        text-decoration: underline #102d5b7c 3px;
+    }
+}
+.read-or-hide-spans {
+    align-self: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: #102d5b7c;
+    background-color: $background;
+    user-select: none;
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+    &:hover,
+    &:focus {
+        color: $background;
+        background-color: #102d5b7c;
+        transition: all ease-in-out 200ms;
     }
 }
