@@ -6,24 +6,27 @@
     .heading-login {
         font-size: $xxl;
         font-family: headings-medium;
+        color: $secondary;
     }
     .formInput {
+        align-self: center;
         padding: 10px;
         border-radius: 10px;
         border: none;
         margin: 10px;
+        width: 80%;
     }
     .buttonContainer {
         display: flex;
         justify-content: space-evenly;
 
-        .btn-login {
-            background: none;
+        .btn-modal-login {
+            width: 180px;
+            background: $secondary;
             border: 2px solid $accent-2;
             border-radius: 20px;
             color: $accent-2;
             padding: 8px;
-            width: 100%;
             font: {
                 size: $m;
             }

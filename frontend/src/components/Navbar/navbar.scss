@@ -30,6 +30,21 @@
         justify-content: flex-end;
         align-items: center;
     }
+    .btn-flex-container {
+        display: flex;
+        justify-content: center;
+        .btn-modal-login {
+            width: 180px;
+            background: $secondary;
+            border: 2px solid $accent-2;
+            border-radius: 20px;
+            color: $accent-2;
+            padding: 8px;
+            font: {
+                size: $m;
+            }
+        }
+    }
 
     .btn-login {
         background: none;
