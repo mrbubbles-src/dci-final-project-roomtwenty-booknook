@@ -11,19 +11,28 @@
     align-items: center;
     justify-content: center;
     z-index: 9999;
-
+    .modal-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        background-color: $secondary;
+        border-radius: 15px 15px 0 0;
+        padding: 10px 2px;
+    }
     .modal {
         display: flex;
         flex-flow: column;
-        background-color: $secondary;
-        padding: 25px;
-        border-radius: 4px;
+        background-color: $background;
+        border-radius: 15px;
         width: 90%;
+        padding-bottom: 15px;
 
         .btn-close {
-            background-color: $accent-2;
+            background-color: $secondary;
+            border: none;
+            color: $background;
             width: $xxl;
             align-self: flex-end;
+            font-size: $l;
         }
         .btn-style {
             background: none;
