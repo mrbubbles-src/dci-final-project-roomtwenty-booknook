@@ -4,17 +4,17 @@ import "./footer.scss";
 
 const Footer = () => {
     return (
-        <footer className="footer-container">
-            <Link to={"#"} className="footer-links">
+        <footer className='footer-container'>
+            <Link to={"#"} className='footer-links'>
                 Impressum
             </Link>
-            <Link to={"#"} className="footer-links">
+            <Link to={"#"} className='footer-links'>
                 Datenschutz
             </Link>
-            <Link to={"#"} className="footer-links">
-                Über Uns
+            <Link to={"#"} className='footer-links'>
+                About
             </Link>
-            <Link to={"#"} className="footer-links">
+            <Link to={"#"} className='footer-links'>
                 Kontakt
             </Link>
         </footer>
