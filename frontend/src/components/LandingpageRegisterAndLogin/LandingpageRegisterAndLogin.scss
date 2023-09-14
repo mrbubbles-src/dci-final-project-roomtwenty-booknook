@@ -16,13 +16,17 @@
             padding: 1rem;
             border-radius: 25px;
         }
+        .landingpage-article-image-left {
+            border-left: none;
+            border-right: 1px solid $accent-1;
+        }
         .article-container-text,
         .article-container-text-left {
             .article-heading,
             .article-heading-left {
                 text-decoration: underline;
                 text-decoration-color: $accent-1;
-                margin: 0 4px;
+                margin: 0 4px 10px 4px;
                 font: {
                     size: $l;
                 }
@@ -59,8 +63,6 @@
             background: $accent-1;
         }
     }
-}
-.text-container-tablet {
     @include breakpoint(tablet) {
         .article-container {
             display: grid;
