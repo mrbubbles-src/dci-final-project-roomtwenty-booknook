@@ -44,11 +44,11 @@ const UserStatistic = ({
                     <p className="user-level">
                         {1 + Math.floor(alreadyReadLength / 3)}
                     </p>
-                </div>
-                <article className="user-statistic-challenge-container">
                     <LevelExpBar
                         xpProzent={(alreadyReadLength % 3) * 33.3 || 1}
                     />
+                </div>
+                <article className="user-statistic-challenge-container">
                     <h3 className="user-statistic-username">{username}</h3>
 
                     <h4 className="challenge-header">Jahres-Lese-Challenge</h4>

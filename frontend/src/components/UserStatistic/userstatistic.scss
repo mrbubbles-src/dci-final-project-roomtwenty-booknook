@@ -23,49 +23,54 @@
 //     color: $background;
 // }
 .user-statistic-container {
+    position: relative;
     .avatar {
-        width: 100%;
-        height: 400px;
+        width: 12rem;
+        height: 100%;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         background-position: center;
-
-        border: 2px solid lightsalmon;
+        object-fit: center;
+        // border: 2px solid lightsalmon;
     }
     .level-container {
-        width: 100px;
-        height: 100px;
+        width: 7rem;
+        height: 7rem;
         position: absolute;
         border-radius: 50%;
-        border: 6px solid yellow;
-        background-image: linear-gradient(-60deg, #000000 0%, #3e340a 100%);
-        top: 15px;
-        left: 85px;
+        background-color: $accent-2;
+        top: 1.5rem;
+        left: 8rem;
+        box-shadow: inset 0 0 5px $secondary;
+        border: 4px solid $primary;
+
         .user-level {
             font-weight: bold;
-            color: red;
+            color: $font;
             text-align: center;
-            margin-top: 28px;
+            margin-top: 1.6rem;
             font-size: 3rem;
+            text-shadow: 1.2px 2px 1.2px rgba(0, 0, 0, 0.35);
         }
     }
     .user-statistic-challenge-container {
-        //hier ist die levelExpBar drin
-        margin-top: 80px;
+        margin-top: 7rem;
         .user-statistic-username {
-            border: solid 2px red;
+            font-size: xx-large;
             display: block;
-            margin-top: 50px;
-            margin-left: 1em;
-            margin: 0;
+            margin: 0 0 1rem 0;
             padding: 0 1 rem;
+            text-align: center;
         }
         .challenge-header {
             justify-content: center;
-            border: 2px solid green;
+            text-align: center;
+            font-size: large;
+            margin-bottom: 0.8rem;
+            margin-top: 0.1rem;
         }
         .challenge-body {
-            border: 2px solid orange;
+            margin: 0.3rem 1rem 2rem 1.2rem;
         }
     }
 }

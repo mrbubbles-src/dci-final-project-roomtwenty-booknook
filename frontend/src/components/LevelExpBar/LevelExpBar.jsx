@@ -4,21 +4,22 @@ import "./LevelExpBar.scss";
 
 const LevelExpBar = ({ xpProzent }) => {
     const mainDiv = {
-        width: "150px",
+        width: "180px",
     };
 
     return (
         <div className="expLevel" style={mainDiv}>
             <ProgressBar
                 completed={xpProzent}
-                bgColor="blue"
-                baseBgColor="red"
+                bgColor="#fcd8be"
+                baseBgColor="#554945"
                 borderRadius="20px"
-                height="13px"
                 labelAlignment="center"
-                labelSize="0.9rem"
-                // completedClassName="exp-container"
-                animateOnRender={false}
+                labelSize="1.4rem"
+                labelColor="#37323e"
+                height="3rem"
+                className="progressBar"
+                animateOnRender={true}
                 isLabelVisible={true}
             />
         </div>

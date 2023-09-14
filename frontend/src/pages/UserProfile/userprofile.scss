@@ -7,7 +7,9 @@
     // // grid-row-gap: 10px;
     //MEINS
     background: $primary;
-    box-shadow: 0px 14px 80px $primary;
+
+    -webkit-box-shadow: 0px 0px 7px -3px $font;
+    box-shadow: 0px 0px 7px -3px $font;
     max-width: 400px;
     display: flex;
 
