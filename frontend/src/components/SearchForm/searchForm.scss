@@ -11,11 +11,13 @@
         direction: column;
     }
     .search-title {
-        margin: 1em 1em 0 1em;
+        margin: 1.5em auto 0 auto;
         text-align: center;
+        font: {
+            size: $m;
+        }
     }
     .searchbar-form {
-        // border: 1px solid red;
         width: 100%;
         height: 5rem;
         display: flex;
@@ -72,5 +74,24 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+@mixin breakpoint($user-value) {
+    $my-map: map-get($breakpoints, $user-value);
+    @if $my-map {
+        @media (#{$my-map}) {
+            @content;
+        }
+    } @else {
+        @error "Oops, something gone wrong #{$user-value} is not definde yet";
+    }
+}
+.search-section {
+    .search-title {
+        @include breakpoint(tablet) {
+            font: {
+                size: $xl;
+            }
+        }
     }
 }

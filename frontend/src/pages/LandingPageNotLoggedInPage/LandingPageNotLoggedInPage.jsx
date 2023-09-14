@@ -3,13 +3,12 @@ import Herosection from "../../components/Herosection/Herosection";
 import LandingpageRegisterAndLogin from "../../components/LandingpageRegisterAndLogin/LandingpageRegisterAndLogin";
 import SearchForm from "../../components/SearchForm/SearchForm";
 
-
 const LandingPageNotLoggedInPage = () => {
     return (
         <>
             <Herosection />
             <SearchForm
-                title={"Probier unsere Büchersuche doch schon einmal aus"}
+                title={"Probiere unsere Büchersuche doch aus!"}
                 formClassName={"searchbar-form"}
                 searchBarId={"searchbar"}
                 searchSubmitId={"search-submit"}
