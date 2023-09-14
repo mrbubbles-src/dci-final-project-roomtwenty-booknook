@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
 import { BookNookContext } from "../../context/BookNookProvider";
 import "./LandingpageRegisterAndLogin.scss";
-import image1 from "../../assets/pics/bookchallenge.jpg";
-import image2 from "../../assets/pics/booklist.jpg";
-import image3 from "../../assets/pics/bookreise.jpg";
+import image1 from "../../../public/images/various/bookchallenge.jpg";
+import image2 from "../../../public/images/various/booklist.jpg";
+import image3 from "../../../public/images/various/bookreise.jpg";
 
 const LandingpageRegisterAndLogin = () => {
     const { handleLoginClick } = useContext(BookNookContext);
     return (
         <>
-            {/* TABLET & DESKTOP */}
             <section className='text-container-tablet'>
                 <article className='article-container'>
                     <div className='article-container-text'>
