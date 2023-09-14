@@ -230,14 +230,14 @@ const SingleBookDetails = () => {
                             "keine Information vorhanden."
                         )}
                     </p>
-                    <p className="single-book-isbn-number">
+                    <p className="single-book-isbn-number isbn-ten">
                         <strong>
                             {isbn10Title?.replace("_", "-") || "ISBN-10"}:
                         </strong>
                         <br />
                         {isbn10Number || "Keine ISBN-10 bekannt"}
                     </p>{" "}
-                    <p className="single-book-isbn-number">
+                    <p className="single-book-isbn-number isbn-thirteen">
                         <strong>
                             {isbn13Title?.replace("_", "-") || "ISBN-13"}:
                         </strong>
@@ -298,10 +298,13 @@ const SingleBookDetails = () => {
             <article className="single-book-description-genre-container">
                 <p className="single-book-description">
                     {/* entfernt jegliche html tags aus der beschreibung */}
-                    <ReadMore>
-                        {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
-                            "Keine Beschreibung verfügbar"}
-                    </ReadMore>
+                    {description ? (
+                        <ReadMore>
+                            {description?.replace(/<\/?[^>]+(>|$)/g, "")}
+                        </ReadMore>
+                    ) : (
+                        "Keine Beschreibung verfügbar"
+                    )}
                 </p>
                 <h4 className="single-book-genre-title">
                     <strong>Genres:</strong>
