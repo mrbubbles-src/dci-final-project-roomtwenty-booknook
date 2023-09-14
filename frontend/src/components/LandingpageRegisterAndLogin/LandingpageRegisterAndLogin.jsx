@@ -68,7 +68,6 @@ const LandingpageRegisterAndLogin = () => {
                     Hier ist dein Ticket!
                 </button>
             </section>
-            <hr />
         </>
     );
 };

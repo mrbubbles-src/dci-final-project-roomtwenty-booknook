@@ -38,6 +38,12 @@
                     size: $m;
                 }
             }
+            .article-text {
+                box-shadow: -17px 18px 21px -6px rgba(0, 0, 0, 0.6);
+            }
+            .article-text-left {
+                box-shadow: 17px 18px 21px -6px rgba(0, 0, 0, 0.6);
+            }
         }
     }
     .btn-ticket {
