@@ -47,9 +47,9 @@
     }
     @include breakpoint(tablet) {
         .modal {
+            max-width: 500px;
             .btn-close {
                 margin-right: 15px;
-
                 font: {
                     size: $xxl;
                 }
