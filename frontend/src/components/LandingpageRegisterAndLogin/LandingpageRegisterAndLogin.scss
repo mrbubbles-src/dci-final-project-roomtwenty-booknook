@@ -2,25 +2,33 @@
 
 .text-container-tablet {
     padding: 2rem 1rem;
+    display: flex;
+    flex-flow: column;
     font: {
         size: $s;
     }
     .article-container {
         img {
             width: 100%;
-            margin: 2rem 0 4rem 0;
+            margin: 2rem 0 2rem 0;
             border-left: 1px solid $accent-1;
             border-top: 1px solid $accent-1;
             padding: 1rem;
             border-radius: 25px;
         }
-        .article-container-text {
-            .article-heading {
+        .article-container-text,
+        .article-container-text-left {
+            .article-heading,
+            .article-heading-left {
+                text-decoration: underline;
+                text-decoration-color: $accent-1;
+                margin: 0 4px;
                 font: {
                     size: $l;
                 }
             }
-            .article-text {
+            .article-text,
+            .article-text-left {
                 background-color: $secondary;
                 padding: 1rem;
                 border-radius: 10px;
@@ -28,6 +36,67 @@
                 line-height: 1.3;
                 font: {
                     size: $m;
+                }
+            }
+        }
+    }
+    .btn-ticket {
+        background: $accent-2;
+        border-radius: 20px;
+        box-shadow: 1px 1px 10px;
+        width: 300px;
+        height: 60px;
+        align-self: center;
+        font-size: $l;
+        &:hover {
+            transition: ease 0.3s;
+            background: $accent-1;
+        }
+    }
+}
+.text-container-tablet {
+    @include breakpoint(tablet) {
+        .article-container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 1rem;
+            img {
+                grid-column: 1/6;
+                grid-row: 1/2;
+            }
+            .article-container-text {
+                order: 2;
+                text-align: right;
+                grid-column: 5/11;
+                grid-row: 1/2;
+                .article-text {
+                    font: {
+                        size: $l;
+                    }
+                }
+                .article-heading {
+                    font: {
+                        size: 3rem;
+                    }
+                }
+            }
+            .landingpage-article-image-left {
+                grid-column: 5/11;
+                grid-row: 1/2;
+            }
+            .article-container-text-left {
+                order: 1;
+                grid-column: 1/6;
+                grid-row: 1/2;
+                .article-text-left {
+                    font: {
+                        size: $l;
+                    }
+                }
+                .article-heading-left {
+                    font: {
+                        size: 3rem;
+                    }
                 }
             }
         }
