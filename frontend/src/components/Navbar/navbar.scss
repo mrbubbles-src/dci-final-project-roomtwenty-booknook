@@ -61,15 +61,19 @@
     .heading-login {
         text-align: center;
     }
-}
-
-// BREAKPOINTS \\
-.navbar-container {
     @include breakpoint(tablet) {
         font: {
             size: $xxl;
         }
         .btn-login {
+            font: {
+                size: $xl;
+            }
+        }
+    }
+    .btn-flex-container {
+        .btn-modal-login {
+            width: 300px;
             font: {
                 size: $xl;
             }
