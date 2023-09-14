@@ -22,7 +22,7 @@
         grid-column: 4/6;
         grid-row: 1/2;
         -webkit-box-shadow: 5px 5px 15px 5px #000000;
-        box-shadow: 5px 5px 10px 5px #330202;
+        box-shadow: 5px 5px 8px 3px #330202;
         // .liest-dezeit-cover {
         //     width: fit-content;
         //     height: fit-content;
@@ -106,7 +106,6 @@
 /*---------------------"Mini"--------------------*/
 @include breakpoint(tablet) {
     .currently-reading-slide-container-grid {
-        // margin: 0 20px;
         // margin: auto;
         background-color: $accent-3;
         // border-radius: 20px;
@@ -127,12 +126,12 @@
             grid-row: 1/2;
             -webkit-box-shadow: 5px 5px 15px 5px #000000;
             box-shadow: 5px 5px 10px 5px #330202;
-            width: 200px;
-            height: 350;
+            width: 100%;
+            height: 330px;
             .liest-derzeit-cover {
                 display: flex;
-                width: 150px;
-                height: 250px;
+                width: 100%;
+                height: 330px;
                 justify-items: center;
                 margin-left: auto;
                 margin-right: auto;
@@ -140,9 +139,9 @@
         }
         .currently-reading-slide-information {
             text-align: left;
-            margin-right: 12px;
+            margin-right: 80px;
             align-self: center;
-            padding: 10px 10px;
+            padding: 15px 15px;
             grid-column: 6/9;
             grid-row: 1/2;
             .fakebar {
@@ -152,7 +151,7 @@
                 // text-align: center;
             }
             .currently-reading-progress {
-                padding: 10px 0 10px 10px;
+                padding: 10px 5px 10px 5px;
                 border: 1px solid black;
                 border-radius: 4px;
                 margin-top: 10px;
@@ -191,10 +190,11 @@
         display: flex;
         justify-content: space-evenly;
 
-        padding: 10px;
-        margin-bottom: 15px;
+        width: 250px;
+        // padding: 10px;
+        margin-bottom: 17px;
 
-        margin-left: 15px;
+        margin-left: 55px;
     }
 
     .want-to-read-container {
