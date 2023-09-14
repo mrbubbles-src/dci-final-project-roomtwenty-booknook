@@ -8,7 +8,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 15px 15px 0 0;
     margin-bottom: auto;
     .footer-links {
         font: {
@@ -20,6 +19,11 @@
             outline: none;
             border-bottom: 2px inset $accent-1;
             margin-bottom: -2px;
+        }
+    }
+    @include breakpoint(tablet) {
+        font: {
+            size: $l;
         }
     }
 }

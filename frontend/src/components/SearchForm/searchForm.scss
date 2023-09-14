@@ -1,5 +1,4 @@
 @import "../../scss/styleVariables";
-
 .search-section {
     // border: 1px solid blue;
     background-color: $background;
@@ -11,11 +10,14 @@
         direction: column;
     }
     .search-title {
-        margin: 1em 1em 0 1em;
+        transition: ease 1s;
+        margin: 1.5em auto 0 auto;
         text-align: center;
+        font: {
+            size: $m;
+        }
     }
     .searchbar-form {
-        // border: 1px solid red;
         width: 100%;
         height: 5rem;
         display: flex;
@@ -28,6 +30,7 @@
         padding: 0 1rem;
 
         #searchbar {
+            transition: ease 1s;
             width: 24em;
             height: 3rem;
             font: {
@@ -72,5 +75,36 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+// BREAKPOINTS \\
+.search-section {
+    @include breakpoint(tablet) {
+        .search-title {
+            font: {
+                size: $xl;
+            }
+        }
+        .searchbar-form {
+            height: 7rem;
+            #searchbar {
+                width: 80%;
+                height: 5rem;
+                &::placeholder {
+                    font: {
+                        size: 2rem;
+                    }
+                }
+            }
+            #search-submit {
+                height: 5rem;
+            }
+            #search-submit {
+                font: {
+                    size: $l;
+                }
+            }
+        }
     }
 }
