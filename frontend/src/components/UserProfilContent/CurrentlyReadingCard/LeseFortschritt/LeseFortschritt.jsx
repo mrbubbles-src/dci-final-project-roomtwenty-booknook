@@ -10,6 +10,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
         readingGoalProgress,
         setReadingGoalProgress,
         setIsRead,
+        isRead,
     } = useContext(BookNookContext);
     const inputElement = useRef();
     async function updateReadingChallengeCurrent() {
@@ -77,7 +78,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
                 }
             );
             await updateReadingChallengeCurrent();
-            setIsRead(true);
+            setIsRead(!isRead);
             const responseJson = await response.json();
             // console.log(responseJson);
         } catch (error) {

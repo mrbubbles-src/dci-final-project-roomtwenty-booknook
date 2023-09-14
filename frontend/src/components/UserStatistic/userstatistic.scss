@@ -1,24 +1,122 @@
 @import "../../scss/styleVariables";
-.user-statistic-container {
-    .user-statistic-avatar-container {
-        grid-area: 1 / 1 / 3 / 2;
-        width: 100%;
+@import "../../scss/breakpoints.scss";
+// .user-statistic-container {
+//     .user-statistic-avatar-container {
+//         grid-area: 1 / 1 / 3 / 2;
+//         width: 100%;
+//         height: 100%;
+//         .avatar {
+//             margin: 4px 4px 1px 4px;
+//             border-radius: 2px;
+//         }
+//     }
+//     .user-statistic-rank-container {
+//         grid-area: 1 / 2 / 2 / 3;
+//     }
+//     .user-statistic-info-container {
+//         grid-area: 2 / 2 / 3 / 3;
+//     }
+// }
+// .user-statistic-number {
+//     font: {
+//         family: text-bold;
+//     }
+//     color: $background;
+// }
+.user-statistics-container {
+    position: relative;
+    background: $primary;
+    -webkit-box-shadow: 0px 0px 7px -3px $font;
+    box-shadow: 0px 0px 7px -3px $font;
+    // max-width: 400px;
+    display: flex;
+    border-radius: 30px;
+
+    @include breakpoint(tablet) {
+        border: 1px solid red;
+        height: 40rem;
+    }
+    .avatar {
+        width: 12rem;
         height: 100%;
-        .avatar {
-            margin: 4px 4px 1px 4px;
-            border-radius: 2px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background-position: center;
+        object-fit: center;
+        // border: 2px solid lightsalmon;
+        @include breakpoint(tablet) {
+            border: 1px solid red;
+            width: 25rem;
         }
     }
-    .user-statistic-rank-container {
-        grid-area: 1 / 2 / 2 / 3;
+    .level-container {
+        width: 7rem;
+        height: 7rem;
+        position: absolute;
+        border-radius: 50%;
+        background-color: $accent-2;
+        top: 1.5rem;
+        left: 8rem;
+        box-shadow: inset 0 0 5px $secondary;
+        border: 4px solid $primary;
+        @include breakpoint(tablet) {
+            border: 3px solid red;
+            top: 1.5rem;
+            left: 20rem;
+            width: 10rem;
+        height: 10rem;
+        }
+
+        .user-level {
+            font-weight: bold;
+            color: $font;
+            text-align: center;
+            margin-top: 1.6rem;
+            font-size: 3rem;
+            text-shadow: 1.2px 2px 1.2px rgba(0, 0, 0, 0.35);
+            @include breakpoint(tablet){
+                margin-top: 2rem;
+                font-size: 5rem;
+            }
+        }
     }
-    .user-statistic-info-container {
-        grid-area: 2 / 2 / 3 / 3;
+    .user-statistic-challenge-container {
+        margin-top: 7rem;
+        @include breakpoint(tablet){
+        margin-top: 13rem;
+        margin-left: 3rem;
+           
+        }
+        .user-statistic-username {
+            font-size: xx-large;
+            display: block;
+            margin: 0 0 1rem 0;
+            padding: 0 1 rem;
+            text-align: center;
+            @include breakpoint(tablet){
+            font-size: 5rem;
+              
+            }
+        }
+        .challenge-header {
+            justify-content: center;
+            text-align: center;
+            font-size: large;
+            margin-bottom: 0.8rem;
+            margin-top: 0.1rem;
+            @include breakpoint(tablet){
+            font-size: 4rem;
+              
+            }
+        }
+        .challenge-body {
+            margin: 0.3rem 1rem 2rem 1.2rem;
+            @include breakpoint(tablet){
+            font-size: 3rem;
+            margin: 4rem 8rem 2rem 3rem;
+
+              
+            }
+        }
     }
-}
-.user-statistic-number {
-    font: {
-        family: text-bold;
-    }
-    color: $background;
 }

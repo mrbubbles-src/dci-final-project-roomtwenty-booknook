@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    readingLevel: { type: Number, default: 0 },
+    readingLevel: { type: Number, default: 1 },
     readingRank: { type: String, default: "Lesewurm" },
     role: {
         type: String,
