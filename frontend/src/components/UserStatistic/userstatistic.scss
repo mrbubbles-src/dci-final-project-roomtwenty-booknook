@@ -28,13 +28,13 @@
     background: $primary;
     -webkit-box-shadow: 0px 0px 7px -3px $font;
     box-shadow: 0px 0px 7px -3px $font;
-    max-width: 400px;
+    // max-width: 400px;
     display: flex;
-
     border-radius: 30px;
 
     @include breakpoint(tablet) {
         border: 1px solid red;
+        height: 40rem;
     }
     .avatar {
         width: 12rem;
@@ -46,6 +46,7 @@
         // border: 2px solid lightsalmon;
         @include breakpoint(tablet) {
             border: 1px solid red;
+            width: 25rem;
         }
     }
     .level-container {
@@ -60,6 +61,10 @@
         border: 4px solid $primary;
         @include breakpoint(tablet) {
             border: 3px solid red;
+            top: 1.5rem;
+            left: 20rem;
+            width: 10rem;
+        height: 10rem;
         }
 
         .user-level {
@@ -69,16 +74,29 @@
             margin-top: 1.6rem;
             font-size: 3rem;
             text-shadow: 1.2px 2px 1.2px rgba(0, 0, 0, 0.35);
+            @include breakpoint(tablet){
+                margin-top: 2rem;
+                font-size: 5rem;
+            }
         }
     }
     .user-statistic-challenge-container {
         margin-top: 7rem;
+        @include breakpoint(tablet){
+        margin-top: 13rem;
+        margin-left: 3rem;
+           
+        }
         .user-statistic-username {
             font-size: xx-large;
             display: block;
             margin: 0 0 1rem 0;
             padding: 0 1 rem;
             text-align: center;
+            @include breakpoint(tablet){
+            font-size: 5rem;
+              
+            }
         }
         .challenge-header {
             justify-content: center;
@@ -86,9 +104,19 @@
             font-size: large;
             margin-bottom: 0.8rem;
             margin-top: 0.1rem;
+            @include breakpoint(tablet){
+            font-size: 4rem;
+              
+            }
         }
         .challenge-body {
             margin: 0.3rem 1rem 2rem 1.2rem;
+            @include breakpoint(tablet){
+            font-size: 3rem;
+            margin: 4rem 8rem 2rem 3rem;
+
+              
+            }
         }
     }
 }
