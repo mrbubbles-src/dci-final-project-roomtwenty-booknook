@@ -45,4 +45,15 @@
             }
         }
     }
+    @include breakpoint(tablet) {
+        .modal {
+            .btn-close {
+                margin-right: 15px;
+
+                font: {
+                    size: $xxl;
+                }
+            }
+        }
+    }
 }
