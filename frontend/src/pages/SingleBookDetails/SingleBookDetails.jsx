@@ -7,6 +7,8 @@ import { BookNookContext } from "../../context/BookNookProvider";
 import ReactCountryFlag from "react-country-flag";
 import StarRatings from "react-star-ratings";
 import AddToLists from "../../components/AddToLists/AddToLists";
+import ReadMore from "../../components/ReadMore/ReadMore";
+import ReadMoreSpans from "../../components/ReadMore/ReadMoreSpans";
 
 const SingleBookDetails = () => {
     const { id } = useParams();
@@ -128,7 +130,7 @@ const SingleBookDetails = () => {
                 },
             },
             accessInfo: {
-                webReaderLink: "",
+                webReaderLink: webReaderLink,
             },
         };
         try {
@@ -142,7 +144,7 @@ const SingleBookDetails = () => {
             });
 
             const responseJson = await response.json();
-            console.log(responseJson);
+            // console.log(responseJson);
         } catch (error) {
             console.error(error);
         }
@@ -150,78 +152,70 @@ const SingleBookDetails = () => {
 
     return (
         <section className="single-book-container">
+            <div className="single-book-headings-container">
+                <h2 className="single-book-title">
+                    {title || "Unbekannter Titel"}
+                </h2>
+                {subtitle ? (
+                    <h3 className="single-book-subtitle">{subtitle}</h3>
+                ) : null}
+                <h5 className="single-book-author">
+                    von{" "}
+                    {(authors &&
+                        authors.join(authors.length === 1 ? "" : " & ")) ||
+                        "Unbekannter Autor"}
+                </h5>
+            </div>
             <div className="single-book-grid-container">
-                <div className="single-book-headings-container">
-                    <h2 className="single-book-title">
-                        {title || "Unbekannter Titel"}
-                    </h2>
-                    {subtitle ? (
-                        <h3 className="single-book-subtitle">{subtitle}</h3>
-                    ) : null}
-                    <h5 className="single-book-author">
-                        von{" "}
-                        {(authors &&
-                            authors.join(authors.length === 1 ? "" : " & ")) ||
-                            "Unbekannter Autor"}
-                    </h5>
-                </div>
-                <a
-                    href={
-                        (
-                            extraLarge ||
-                            large ||
-                            medium ||
-                            thumbnail ||
-                            smallThumbnail
-                        )?.replace("http", "https") || NoImage
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    alt={`${title} cover`}
-                >
-                    <img
-                        className="single-book-image"
-                        src={
-                            (medium || thumbnail || smallThumbnail)?.replace(
-                                "http",
-                                "https"
-                            ) || NoImage
+                <div className="single-book-image-container">
+                    <a
+                        href={
+                            (
+                                extraLarge ||
+                                large ||
+                                medium ||
+                                thumbnail ||
+                                smallThumbnail
+                            )?.replace("http", "https") || NoImage
                         }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         alt={`${title} cover`}
-                    />
-                </a>{" "}
+                    >
+                        <img
+                            className="single-book-image"
+                            src={
+                                (
+                                    medium ||
+                                    thumbnail ||
+                                    smallThumbnail
+                                )?.replace("http", "https") || NoImage
+                            }
+                            alt={`${title} cover`}
+                        />
+                    </a>{" "}
+                </div>
                 <div className="single-book-info-section">
                     <h5 className="single-book-info-section-title">
                         Buchinformationen:
                     </h5>
-                    <p className="single-book-pagecount-container">
-                        <span className="single-book-pagecount-count">
-                            {pageCount || "Unbekannte anzahl"}
-                        </span>{" "}
-                        Seiten
+                    <p className="single-book-pagecount-count">
+                        <strong>Seiten:</strong>
+                        <br />
+                        {pageCount || "Unbekannte anzahl"}
                     </p>
-                    <p className="single-book-publisher-container">
-                        Verlag:{" "}
-                        <span className="single-book-publisher">
-                            {publisher}
-                        </span>
+                    <p className="single-book-publisher">
+                        <strong>Verlag:</strong>
+                        <br />
+                        {publisher}
                     </p>
-                    <p className="single-book-first-published-container">
-                        Erstveröffentlichung:{" "}
-                        <span className="single-book-first-published-date">
-                            {publishedDate || "Unbekanntes Datum"}
-                        </span>
-                    </p>
-                    <p className="single-book-isbn">
-                        {isbn10Title?.replace("_", "-") || "ISBN-10"}:{" "}
-                        {isbn10Number || "Keine ISBN-10 bekannt"}
-                    </p>{" "}
-                    <p className="single-book-isbn">
-                        {isbn13Title?.replace("_", "-") || "ISBN-13"}:{" "}
-                        {isbn13Number || "Keine ISBN-13 bekannt"}
+                    <p className="single-book-first-published-date">
+                        <strong>Erstveröffentlichung:</strong>
+                        <br />
+                        {publishedDate || "Unbekanntes Datum"}
                     </p>
                     <p className="single-book-language">
-                        Sprache:{" "}
+                        <strong>Sprache:</strong> <br />
                         {language ? (
                             <ReactCountryFlag
                                 countryCode={
@@ -236,37 +230,53 @@ const SingleBookDetails = () => {
                             "keine Information vorhanden."
                         )}
                     </p>
+                    <p className="single-book-isbn-number">
+                        <strong>
+                            {isbn10Title?.replace("_", "-") || "ISBN-10"}:
+                        </strong>
+                        <br />
+                        {isbn10Number || "Keine ISBN-10 bekannt"}
+                    </p>{" "}
+                    <p className="single-book-isbn-number">
+                        <strong>
+                            {isbn13Title?.replace("_", "-") || "ISBN-13"}:
+                        </strong>
+                        <br />
+                        {isbn13Number || "Keine ISBN-13 bekannt"}
+                    </p>
                 </div>
-                <div className="single-book-actions-container">
-                    {canonicalVolumeLink ? (
-                        <a
-                            className="single-book-actions-external-link"
-                            href={canonicalVolumeLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Mehr Informationen auf GooglePlay Books
-                        </a>
-                    ) : null}
-                    {webReaderLink ? (
-                        <a
-                            className="single-book-actions-external-link"
-                            href={webReaderLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Leseprobe auf GooglePlay Books
-                        </a>
-                    ) : null}
+                {canonicalVolumeLink ? (
+                    <a
+                        className="single-book-actions-external-link single-book-actions-external-link-left"
+                        href={canonicalVolumeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Mehr Informationen auf GooglePlay Books
+                    </a>
+                ) : null}
+                {webReaderLink ? (
+                    <a
+                        className="single-book-actions-external-link single-book-actions-external-link-right"
+                        href={webReaderLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Leseprobe auf GooglePlay Books
+                    </a>
+                ) : null}
+                <div className="single-book-add-to-lists-container">
                     <AddToLists
                         onButtonClick={handleSendToLists}
                         bookId={mongoDBBookID}
                     />
                 </div>
                 <div className="single-book-rating-container">
-                    <span className="single-book-avg-rating">
-                        {averageRating || bookDataAverageRating || 0}{" "}
-                    </span>{" "}
+                    <p className="single-book-avg-rating">
+                        <strong>
+                            {averageRating || bookDataAverageRating || 0}
+                        </strong>
+                    </p>{" "}
                     <StarRatings
                         rating={averageRating || bookDataAverageRating || 0}
                         starRatedColor="orange"
@@ -274,33 +284,45 @@ const SingleBookDetails = () => {
                         starDimension="20px"
                         starSpacing="1px"
                     />
-                    /{" "}
-                    <span className="single-book-ratingcount">
-                        {ratingsCount || bookDataRatingsCount || 0}{" "}
+                    <p className="single-book-rating-count">
+                        bei{" "}
+                        <strong>
+                            {ratingsCount || bookDataRatingsCount || 0}
+                        </strong>{" "}
                         {ratingsCount === 1 || bookDataRatingsCount === 1
                             ? "Bewertung"
                             : "Bewertungen"}
-                    </span>
+                    </p>
                 </div>
             </div>
-
-            <p className="single-book-description">
-                {/* entfernt jegliche html tags aus der beschreibung */}
-                {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
-                    "Keine Beschreibung verfügbar"}
-            </p>
-            <p className="single-book-genre-container">
-                Genres:{" "}
-                {genres && genres.length >= 1
-                    ? genres.map((category, index) => {
-                          return (
-                              <span className="single-book-genre" key={index}>
-                                  {category}
-                              </span>
-                          );
-                      })
-                    : "keine Genres bekannt"}
-            </p>
+            <article className="single-book-description-genre-container">
+                <p className="single-book-description">
+                    {/* entfernt jegliche html tags aus der beschreibung */}
+                    <ReadMore>
+                        {description?.replace(/<\/?[^>]+(>|$)/g, "") ||
+                            "Keine Beschreibung verfügbar"}
+                    </ReadMore>
+                </p>
+                <h4 className="single-book-genre-title">
+                    <strong>Genres:</strong>
+                </h4>
+                <div className="single-book-genres-container">
+                    <ReadMoreSpans>
+                        {genres && genres.length >= 1
+                            ? genres.map((category, index) => {
+                                  return (
+                                      <span
+                                          className="single-book-genre"
+                                          key={index}
+                                      >
+                                          <strong>{category}</strong>
+                                      </span>
+                                  );
+                              })
+                            : "keine Genres bekannt"}
+                    </ReadMoreSpans>
+                </div>
+            </article>
         </section>
     );
 };

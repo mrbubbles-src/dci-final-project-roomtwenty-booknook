@@ -8,7 +8,7 @@ const LandingPageNotLoggedInPage = () => {
         <>
             <Herosection />
             <SearchForm
-                title={"Probier unsere Büchersuche doch schon einmal aus"}
+                title={"Probiere unsere Büchersuche doch aus!"}
                 formClassName={"searchbar-form"}
                 searchBarId={"searchbar"}
                 searchSubmitId={"search-submit"}

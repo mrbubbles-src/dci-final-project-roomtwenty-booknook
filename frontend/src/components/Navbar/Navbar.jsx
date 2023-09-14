@@ -19,19 +19,19 @@ const Navbar = () => {
     } = useContext(BookNookContext);
 
     return (
-        <nav className="navbar-container">
-            <div className="logo-container">
-                <Link to={"/"} className="logo-text">
+        <nav className='navbar-container'>
+            <div className='logo-container'>
+                <Link to={"/"} className='logo-text'>
                     bookNook
                 </Link>{" "}
             </div>
-            <div className="btn-container">
+            <div className='btn-container'>
                 {isLoggedIn ? (
-                    <button className="btn-login" onClick={handleLogout}>
+                    <button className='btn-login' onClick={handleLogout}>
                         Logout
                     </button>
                 ) : (
-                    <button className="btn-login" onClick={handleLoginClick}>
+                    <button className='btn-login' onClick={handleLoginClick}>
                         Login
                     </button>
                 )}
@@ -49,11 +49,16 @@ const Navbar = () => {
                                 onLogin={() => setIsLoggedIn(true)}
                             />
                         )}
-                        <button className="btn-style" onClick={toggleForm}>
-                            {isLoginVisible
-                                ? "Noch kein Mitglied?"
-                                : "Bereits Mitglied?"}
-                        </button>
+                        <div className="btn-flex-container">
+                            <button
+                                className='btn-modal-login'
+                                onClick={toggleForm}
+                            >
+                                {isLoginVisible
+                                    ? "Noch kein Mitglied?"
+                                    : "Bereits Mitglied?"}
+                            </button>
+                        </div>
                     </Modal>
                 )}
             </div>
