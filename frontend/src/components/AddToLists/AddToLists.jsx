@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import "./addToLists.scss";
 import Modal from "../../components/Modal/Modal";
-
 import { BookNookContext } from "../../context/BookNookProvider";
 import AddToListButton from "./AddToListButton";
 import ModalButtons from "./ModalButtons";
@@ -108,7 +108,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
                     {/* machen das button zum löschen nur angezeigt wird wenn das buch auch der liste ist */}
                     {wantToRead || currentlyReading || alreadyRead ? (
                         <button
-                            className="book-actions-remove-from-list remove-btn"
+                            className="book-actions-remove-from-list remove-btn-modal"
                             onClick={() =>
                                 handleDeleteFromLists(
                                     `${serverURL}/users/removeBookFromLists`
