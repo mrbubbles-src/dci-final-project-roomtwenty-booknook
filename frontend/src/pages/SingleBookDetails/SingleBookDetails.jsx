@@ -296,7 +296,7 @@ const SingleBookDetails = () => {
                             : "Bewertungen"}
                     </p>
                 </div>
-                <article className="single-book-description-genre-container">
+                <article className="single-book-description-container">
                     <p className="single-book-description">
                         {/* entfernt jegliche html tags aus der beschreibung */}
                         {description ? (
@@ -310,22 +310,22 @@ const SingleBookDetails = () => {
                     <h4 className="single-book-genre-title">
                         <strong>Genres:</strong>
                     </h4>
-                    <div className="single-book-genres-container">
-                        <ReadMoreSpans>
-                            {genres && genres.length >= 1
-                                ? genres.map((category, index) => {
-                                      return (
-                                          <span
-                                              className="single-book-genre"
-                                              key={index}
-                                          >
-                                              <strong>{category}</strong>
-                                          </span>
-                                      );
-                                  })
-                                : "keine Genres bekannt"}
-                        </ReadMoreSpans>
-                    </div>
+                </article>
+                <article className="single-book-genres-container">
+                    <ReadMoreSpans>
+                        {genres && genres.length >= 1
+                            ? genres.map((category, index) => {
+                                  return (
+                                      <span
+                                          className="single-book-genre"
+                                          key={index}
+                                      >
+                                          <strong>{category}</strong>
+                                      </span>
+                                  );
+                              })
+                            : "keine Genres bekannt"}
+                    </ReadMoreSpans>
                 </article>
             </section>
         </section>
