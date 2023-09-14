@@ -8,13 +8,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "./thumbNailSlider.scss";
 
 const ThumbnailSlider = ({ slides }) => {
     return (
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={0}
-            slidesPerView={4}
+            slidesPerView={2}
             // navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
@@ -24,22 +25,43 @@ const ThumbnailSlider = ({ slides }) => {
             {slides.map((slide, index) => {
                 const { smallThumbnail, medium } =
                     slide.bookdetails.volumeInfo.imageLinks || {};
+                const { title, authors } = slide.bookdetails.volumeInfo;
                 return (
                     <SwiperSlide key={index}>
                         <div className="thumbnail-slide-container">
-                            <Link
-                                className="card-image-anchor-tag"
-                                to={`/buch/${slide.bookdetails.id}`}
-                            >
-                                <img
-                                    src={
-                                        smallThumbnail ||
-                                        medium?.replace("http", "https") ||
-                                        NoImage
-                                    }
-                                    alt={slide.bookdetails.volumeInfo}
-                                />{" "}
-                            </Link>
+                            <div>
+                                <div classname="listen-book-cover-container">
+                                    <Link
+                                        className="card-image-anchor-tag"
+                                        to={`/buch/${slide.bookdetails.id}`}
+                                    >
+                                        <img
+                                            className="listen-book-cover"
+                                            src={
+                                                smallThumbnail ||
+                                                medium?.replace(
+                                                    "http",
+                                                    "https"
+                                                ) ||
+                                                NoImage
+                                            }
+                                            alt={slide.bookdetails.volumeInfo}
+                                        />{" "}
+                                    </Link>
+                                </div>
+                                <div className="listen-book-info">
+                                    <h5> {title || "Unbekannter Titel"}</h5>
+                                    <h5>
+                                        {(authors &&
+                                            authors.join(
+                                                authors.length === 1
+                                                    ? ""
+                                                    : " & "
+                                            )) ||
+                                            "Unbekannter Autor"}
+                                    </h5>
+                                </div>
+                            </div>
                         </div>
                     </SwiperSlide>
                 );

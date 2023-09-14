@@ -10,6 +10,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import LeseFortschritt from "../UserProfilContent/CurrentlyReadingCard/LeseFortschritt/LeseFortschritt";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+
 const Slider = ({ slides }) => {
     const [showEditModal, setShowEditModal] = useState(false);
     const { currentPageProgress } = useContext(BookNookContext);
@@ -40,6 +43,7 @@ const Slider = ({ slides }) => {
                             <div className="currently-reading-slide-container-grid">
                                 <article className="currently-reading-slide-image-container">
                                     <img
+                                        className="liest-derzeit-cover"
                                         src={
                                             (smallThumbnail || medium)?.replace(
                                                 "http",
@@ -52,26 +56,38 @@ const Slider = ({ slides }) => {
                                     />{" "}
                                 </article>
                                 <article className="currently-reading-slide-information">
-                                    <h3>{title}</h3>
-                                    {authors &&
-                                        authors.map((author, index) => {
-                                            return (
-                                                <h4 key={index}>{author}</h4>
-                                            );
-                                        })}
+                                    <h4> {title || "Unbekannter Titel"}</h4>
+                                    <h4>
+                                        {(authors &&
+                                            authors.join(
+                                                authors.length === 1
+                                                    ? ""
+                                                    : " & "
+                                            )) ||
+                                            "Unbekannter Autor"}
+                                    </h4>
+
                                     <aside className="currently-reading-progress">
-                                        <h2>Fortschritt</h2>{" "}
+                                        <h5>Fortschritt</h5>{" "}
                                         <div className="fakebar">
                                             <p>
-                                                Aktuelle Seite{" "}
+                                                Seite{" "}
                                                 {currentPageProgress ||
                                                     currentPage}{" "}
-                                                von {pageCount}
+                                                von {pageCount}{" "}
+                                                <span>
+                                                    <FontAwesomeIcon
+                                                        icon={faPencil}
+                                                        onClick={
+                                                            handleShowEditModal
+                                                        }
+                                                    />
+                                                </span>
                                             </p>
                                         </div>
-                                        <button onClick={handleShowEditModal}>
+                                        {/* <button onClick={handleShowEditModal}>
                                             Edit
-                                        </button>
+                                        </button> */}
                                     </aside>
                                 </article>
                             </div>
