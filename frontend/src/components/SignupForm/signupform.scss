@@ -45,4 +45,25 @@
         background: $accent-2;
         border: none;
     }
+    @include breakpoint(tablet) {
+        .heading-login {
+            padding: 10px;
+        }
+        .formInput {
+            padding: 15px;
+            &::placeholder {
+                font: {
+                    size: $l;
+                }
+            }
+        }
+        .buttonContainer {
+            .btn-modal-login {
+                width: 300px;
+                font: {
+                    size: $xl;
+                }
+            }
+        }
+    }
 }
