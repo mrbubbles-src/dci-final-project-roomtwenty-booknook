@@ -3,14 +3,15 @@
 .navbar-container {
     z-index: 1;
     background-color: #102d5b;
-    // position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    box-shadow: 1px 1px 15px 1px black;
     align-items: center;
     opacity: 1;
     width: 100%;
     padding: 5px 10px;
     color: $accent-2;
+    transition: ease 1s;
     font: {
         family: headings-black;
         size: $xl;
@@ -30,11 +31,27 @@
         justify-content: flex-end;
         align-items: center;
     }
+    .btn-flex-container {
+        display: flex;
+        justify-content: center;
+        .btn-modal-login {
+            width: 180px;
+            background: $secondary;
+            border: none;
+            border-radius: 20px;
+            color: $accent-2;
+            padding: 8px;
+            font: {
+                size: $m;
+            }
+        }
+    }
 
     .btn-login {
         background: none;
         border: 2px solid $accent-2;
-        border-radius: 20px;
+        border-radius: 50px;
+        cursor: pointer;
         font: {
             size: $m;
         }
@@ -44,4 +61,24 @@
     .heading-login {
         text-align: center;
     }
+    @include breakpoint(tablet) {
+        font: {
+            size: $xxl;
+        }
+        .btn-login {
+            font: {
+                size: $xl;
+            }
+        }
+    }
+    .btn-flex-container {
+        .btn-modal-login {
+            width: 300px;
+            font: {
+                size: $xl;
+            }
+        }
+    }
 }
+
+// BUTTON RESIZING \\

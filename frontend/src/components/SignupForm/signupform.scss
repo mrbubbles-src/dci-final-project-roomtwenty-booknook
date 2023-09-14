@@ -6,24 +6,27 @@
     .heading-login {
         font-size: $xxl;
         font-family: headings-medium;
+        color: $secondary;
     }
     .formInput {
+        align-self: center;
         padding: 10px;
         border-radius: 10px;
         border: none;
         margin: 10px;
+        width: 80%;
     }
     .buttonContainer {
         display: flex;
         justify-content: space-evenly;
 
-        .btn-login {
-            background: none;
-            border: 2px solid $accent-2;
+        .btn-modal-login {
+            width: 180px;
+            background: $secondary;
+            border: none;
             border-radius: 20px;
             color: $accent-2;
             padding: 8px;
-            width: 100%;
             font: {
                 size: $m;
             }
@@ -41,5 +44,26 @@
     .btn-toSignup {
         background: $accent-2;
         border: none;
+    }
+    @include breakpoint(tablet) {
+        .heading-login {
+            padding: 10px;
+        }
+        .formInput {
+            padding: 15px;
+            &::placeholder {
+                font: {
+                    size: $l;
+                }
+            }
+        }
+        .buttonContainer {
+            .btn-modal-login {
+                width: 300px;
+                font: {
+                    size: $xl;
+                }
+            }
+        }
     }
 }

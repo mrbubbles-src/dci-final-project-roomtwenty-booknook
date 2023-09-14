@@ -43,7 +43,7 @@ const SignupForm = ({ onClose, onLogin }) => {
             <h2 className='heading-login'>Sign up!</h2>
             <label htmlFor='username'></label>
             <input
-                placeholder='Enter your username'
+                placeholder='Username'
                 type='text'
                 id='username'
                 className='formInput'
@@ -74,7 +74,7 @@ const SignupForm = ({ onClose, onLogin }) => {
                 onChange={handleOnChange}
             />
             <div className='buttonContainer'>
-                <button type='submit' className='btn-login'>
+                <button type='submit' className='btn-modal-login'>
                     Sign Up !
                 </button>
             </div>
