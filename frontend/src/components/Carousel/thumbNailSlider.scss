@@ -1,3 +1,5 @@
+@import "../../scss//styleVariables";
+@import "../../scss/breakpoints.scss";
 .listen-book-cover {
     width: 128px;
     height: 188px;
@@ -5,4 +7,15 @@
 
 .listen-book-info {
     flex-flow: column;
+}
+
+@include breakpoint(tablet) {
+    .listen-book-cover {
+        width: 256px;
+        height: 400px;
+    }
+
+    .listen-book-info {
+        flex-flow: column;
+    }
 }
