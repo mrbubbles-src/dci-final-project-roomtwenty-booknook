@@ -166,7 +166,7 @@ const SingleBookDetails = () => {
                         "Unbekannter Autor"}
                 </h5>
             </div>
-            <div className="single-book-grid-container">
+            <section className="single-book-grid-container">
                 <div className="single-book-image-container">
                     <a
                         href={
@@ -195,7 +195,7 @@ const SingleBookDetails = () => {
                         />
                     </a>{" "}
                 </div>
-                <div className="single-book-info-section">
+                <article className="single-book-info-section">
                     <h5 className="single-book-info-section-title">
                         Buchinformationen:
                     </h5>
@@ -244,27 +244,29 @@ const SingleBookDetails = () => {
                         <br />
                         {isbn13Number || "Keine ISBN-13 bekannt"}
                     </p>
-                </div>
-                {canonicalVolumeLink ? (
-                    <a
-                        className="single-book-actions-external-link single-book-actions-external-link-left"
-                        href={canonicalVolumeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Mehr Informationen auf GooglePlay Books
-                    </a>
-                ) : null}
-                {webReaderLink ? (
-                    <a
-                        className="single-book-actions-external-link single-book-actions-external-link-right"
-                        href={webReaderLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Leseprobe auf GooglePlay Books
-                    </a>
-                ) : null}
+                </article>
+                <article className="single-book-actions-external-links-container">
+                    {canonicalVolumeLink ? (
+                        <a
+                            className="single-book-actions-external-link single-book-actions-external-link-left"
+                            href={canonicalVolumeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Mehr Informationen auf GooglePlay Books
+                        </a>
+                    ) : null}
+                    {webReaderLink ? (
+                        <a
+                            className="single-book-actions-external-link single-book-actions-external-link-right"
+                            href={webReaderLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Leseprobe auf GooglePlay Books
+                        </a>
+                    ) : null}
+                </article>
                 <div className="single-book-add-to-lists-container">
                     <AddToLists
                         onButtonClick={handleSendToLists}
@@ -294,38 +296,38 @@ const SingleBookDetails = () => {
                             : "Bewertungen"}
                     </p>
                 </div>
-            </div>
-            <article className="single-book-description-genre-container">
-                <p className="single-book-description">
-                    {/* entfernt jegliche html tags aus der beschreibung */}
-                    {description ? (
-                        <ReadMore>
-                            {description?.replace(/<\/?[^>]+(>|$)/g, "")}
-                        </ReadMore>
-                    ) : (
-                        "Keine Beschreibung verfügbar"
-                    )}
-                </p>
-                <h4 className="single-book-genre-title">
-                    <strong>Genres:</strong>
-                </h4>
-                <div className="single-book-genres-container">
-                    <ReadMoreSpans>
-                        {genres && genres.length >= 1
-                            ? genres.map((category, index) => {
-                                  return (
-                                      <span
-                                          className="single-book-genre"
-                                          key={index}
-                                      >
-                                          <strong>{category}</strong>
-                                      </span>
-                                  );
-                              })
-                            : "keine Genres bekannt"}
-                    </ReadMoreSpans>
-                </div>
-            </article>
+                <article className="single-book-description-genre-container">
+                    <p className="single-book-description">
+                        {/* entfernt jegliche html tags aus der beschreibung */}
+                        {description ? (
+                            <ReadMore>
+                                {description?.replace(/<\/?[^>]+(>|$)/g, "")}
+                            </ReadMore>
+                        ) : (
+                            "Keine Beschreibung verfügbar"
+                        )}
+                    </p>
+                    <h4 className="single-book-genre-title">
+                        <strong>Genres:</strong>
+                    </h4>
+                    <div className="single-book-genres-container">
+                        <ReadMoreSpans>
+                            {genres && genres.length >= 1
+                                ? genres.map((category, index) => {
+                                      return (
+                                          <span
+                                              className="single-book-genre"
+                                              key={index}
+                                          >
+                                              <strong>{category}</strong>
+                                          </span>
+                                      );
+                                  })
+                                : "keine Genres bekannt"}
+                        </ReadMoreSpans>
+                    </div>
+                </article>
+            </section>
         </section>
     );
 };
