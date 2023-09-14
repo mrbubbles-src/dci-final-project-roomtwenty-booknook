@@ -10,7 +10,9 @@ const ReadMore = ({ children }) => {
         <>
             {isReadMore ? text.slice(0, 100) : text}
             <span onClick={toggleReadMore} className="read-or-hide">
-                {isReadMore ? " ...mehr lesen" : " ...weniger lesen"}
+                <strong>
+                    {isReadMore ? "...mehr lesen" : "...weniger lesen"}
+                </strong>
             </span>
         </>
     );

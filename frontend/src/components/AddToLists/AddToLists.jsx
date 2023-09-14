@@ -97,29 +97,31 @@ const AddToLists = ({ onButtonClick, bookId }) => {
             )}
             {showAddToListModal && (
                 <Modal onClose={handleCloseAddToListModal}>
-                    <h2 className="add-to-lists-title">
-                        Auf welche Liste möchtest du das Buch hinzufügen?
-                    </h2>
-                    <ModalButtons
-                        isBookOnList={isBookOnList}
-                        serverURL={serverURL}
-                        handleButtonClick={handleButtonClick}
-                    />
-                    {/* machen das button zum löschen nur angezeigt wird wenn das buch auch der liste ist */}
-                    {wantToRead || currentlyReading || alreadyRead ? (
-                        <button
-                            className="book-actions-remove-from-list remove-btn-modal"
-                            onClick={() =>
-                                handleDeleteFromLists(
-                                    `${serverURL}/users/removeBookFromLists`
-                                )
-                            }
-                        >
-                            Entferne das Buch von deinen Listen
-                        </button>
-                    ) : (
-                        <></>
-                    )}
+                    <aside className="add-to-lists-modal-container">
+                        <h2 className="add-to-lists-modal-title">
+                            Auf welche Liste möchtest du das Buch hinzufügen?
+                        </h2>
+                        <ModalButtons
+                            isBookOnList={isBookOnList}
+                            serverURL={serverURL}
+                            handleButtonClick={handleButtonClick}
+                        />
+                        {/* machen das button zum löschen nur angezeigt wird wenn das buch auch der liste ist */}
+                        {wantToRead || currentlyReading || alreadyRead ? (
+                            <button
+                                className="book-actions-remove-from-list remove-btn-modal"
+                                onClick={() =>
+                                    handleDeleteFromLists(
+                                        `${serverURL}/users/removeBookFromLists`
+                                    )
+                                }
+                            >
+                                Entferne das Buch von deinen Listen
+                            </button>
+                        ) : (
+                            <></>
+                        )}
+                    </aside>
                 </Modal>
             )}
         </div>

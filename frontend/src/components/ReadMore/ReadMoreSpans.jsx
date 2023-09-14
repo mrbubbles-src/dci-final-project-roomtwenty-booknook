@@ -17,7 +17,9 @@ const ReadMoreSpans = ({ children }) => {
             {childrenToShow}
             {childrenArray.length > limit && (
                 <span onClick={toggleReadMore} className="read-or-hide-spans">
-                    {isReadMore ? " ...mehr genres" : " ...weniger genres"}
+                    <strong>
+                        {isReadMore ? "...mehr genres" : "...weniger genres"}
+                    </strong>
                 </span>
             )}
         </>
