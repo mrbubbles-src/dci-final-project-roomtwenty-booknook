@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import "./fileupload.scss";
 import { BookNookContext } from "../../context/BookNookProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -63,7 +64,7 @@ const FileUpload = () => {
                 onChange={handleFileChange}
             />
             {profileImageUploadPreview.button ? (
-                <button onClick={handleUpload}>
+                <button id="upload-image" onClick={handleUpload}>
                     {<FontAwesomeIcon icon={faArrowUpFromBracket} />}
                 </button>
             ) : (

@@ -6,6 +6,7 @@ import ReadCard from "../../components/UserProfilContent/ReadCard/ReadCard";
 import WantToReadCard from "../../components/UserProfilContent/WantToReadCard/WantToReadCard";
 import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+
 const UserProfile = () => {
     const { token, setReadingGoal, setReadingGoalProgress, isRead } =
         useContext(BookNookContext);
@@ -47,7 +48,7 @@ const UserProfile = () => {
     // {
     // "name des eintrags. zb email": "neuer wert"
     // }
-
+    //Schema infos
     const {
         username,
         readingRank,
@@ -70,6 +71,7 @@ const UserProfile = () => {
                     username={username}
                     profileImage={profileImage}
                     readingChallengeCurrent={readingChallengeCurrent}
+                    readingLevel={readingLevel}
                 />
             </div>
             <h4 className="user-profile-title">

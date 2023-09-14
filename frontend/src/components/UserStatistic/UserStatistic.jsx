@@ -14,6 +14,8 @@ const UserStatistic = ({
     profileImage,
     readingChallengeCurrent,
     xpProzent,
+    userLevel,
+    alreadyReadLength,
 }) => {
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
@@ -27,7 +29,7 @@ const UserStatistic = ({
 
     return (
         <>
-            <div className="user-statistic-avatar-container">
+            <div className="user-statistics-container">
                 <label htmlFor="upload-button">
                     <img
                         className="avatar"
@@ -37,37 +39,44 @@ const UserStatistic = ({
                     />
                 </label>
                 <FileUpload />
+
+                <div className="level-container">
+                    <p className="user-level">
+                        {1 + Math.floor(alreadyReadLength / 3)}
+                    </p>
+                    <LevelExpBar
+                        xpProzent={(alreadyReadLength % 3) * 33.3 || 1}
+                    />
+                </div>
+                <article className="user-statistic-challenge-container">
+                    <h3 className="user-statistic-username">{username}</h3>
+
+                    <h4 className="challenge-header">Jahres-Lese-Challenge</h4>
+                    <p className="challenge-body">
+                        Bereits{" "}
+                        <span className="user-statistic-number">
+                            {readingChallengeCurrent && readingChallengeCurrent}
+                        </span>{" "}
+                        {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
+                        {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
+                        <span className="user-statistic-number">
+                            {readingGoal && readingGoal}{" "}
+                        </span>
+                        {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
+                        <span>
+                            <FontAwesomeIcon
+                                icon={faPencil}
+                                onClick={handleShowLeseChallengeModal}
+                            />
+                        </span>
+                    </p>
+                    {showLeseChallengeModal && (
+                        <Modal onClose={handleCloseLeseChallengeModal}>
+                            <LeseChallenge />
+                        </Modal>
+                    )}
+                </article>
             </div>
-            <article className="user-statistic-rank-container">
-                <h3 className="user-statistic-username">{username}</h3>
-                <LevelExpBar xpProzent={xpProzent || 0} />
-            </article>
-            <article className="user-statistic-info-container">
-                <h4>Jahres-Lese-Challenge</h4>
-                <p>
-                    Bereits{" "}
-                    <span className="user-statistic-number">
-                        {readingChallengeCurrent && readingChallengeCurrent}
-                    </span>{" "}
-                    {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
-                    {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
-                    <span className="user-statistic-number">
-                        {readingGoal && readingGoal}{" "}
-                    </span>
-                    {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
-                    <span>
-                        <FontAwesomeIcon
-                            icon={faPencil}
-                            onClick={handleShowLeseChallengeModal}
-                        />
-                    </span>
-                </p>
-                {showLeseChallengeModal && (
-                    <Modal onClose={handleCloseLeseChallengeModal}>
-                        <LeseChallenge />
-                    </Modal>
-                )}
-            </article>
         </>
     );
 };
