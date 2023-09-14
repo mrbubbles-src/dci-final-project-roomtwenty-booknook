@@ -17,16 +17,8 @@
     width: 90%;
     text-align: center;
 }
-@mixin breakpoint($user-value) {
-    $my-map: map-get($breakpoints, $user-value);
-    @if $my-map {
-        @media (#{$my-map}) {
-            @content;
-        }
-    } @else {
-        @error "Oops, something gone wrong #{$user-value} is not definde yet";
-    }
-}
+
+// BREAKPOINTS \\
 .hero-section-cointainer {
     @include breakpoint(tablet) {
         background-size: cover;
