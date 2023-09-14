@@ -1,4 +1,178 @@
 @import "../../scss/styleVariables";
 
 .single-book-container {
+    margin: {
+        left: 1rem;
+        right: 1rem;
+    }
+    .single-book-headings-container {
+        .single-book-title {
+            font: {
+                size: 1.45em;
+            }
+        }
+        .single-book-subtitle {
+            font: {
+                size: 1.12em;
+            }
+        }
+        .single-book-author {
+            font: {
+                size: 0.82em;
+            }
+        }
+    }
+    .single-book-grid-container {
+        .single-book-image-container {
+            .single-book-image {
+                width: 300px;
+                height: 100%;
+            }
+        }
+        .single-book-info-section {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            grid-column-gap: 4px;
+            grid-row-gap: 5px;
+            align-items: center;
+            background: $secondary;
+            border-radius: 4px;
+            color: $background;
+            padding: {
+                left: 0.5rem;
+                right: 0.5rem;
+                bottom: 1rem;
+            }
+            .single-book-info-section-title {
+                // border: 1px solid;
+                grid-area: 1 / 1 / 2 / 4;
+                text-align: center;
+                font: {
+                    size: 1.75rem;
+                }
+            }
+            .single-book-pagecount-count {
+                grid-area: 2 / 1 / 3 / 2;
+            }
+            .single-book-publisher {
+                grid-area: 3 / 1 / 4 / 2;
+                font: {
+                    // size: 1.5rem;
+                }
+            }
+            .single-book-first-published-date {
+                grid-area: 3 / 3 / 4 / 4;
+            }
+
+            .single-book-language {
+                grid-area: 2 / 3 / 3 / 4;
+            }
+            .isbn-ten {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+            .isbn-thirteen {
+                grid-area: 4 / 3 / 5 / 4;
+            }
+            .single-book-pagecount-count,
+            .single-book-publisher,
+            .single-book-first-published-date,
+            .single-book-isbn-number,
+            .single-book-language {
+                width: 100%;
+                padding: 0.12rem;
+            }
+            .single-book-pagecount-count,
+            .single-book-publisher,
+            .isbn-ten {
+                text-align: right;
+            }
+        }
+        .single-book-actions-external-links-container {
+            // width: 100%;
+            // height: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 50px;
+            grid-column-gap: 5px;
+            grid-row-gap: 0px;
+            .single-book-actions-external-link {
+                width: 100%;
+                height: 50px;
+                text-align: center;
+                background-color: $accent-2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0.5rem;
+            }
+            .single-book-actions-external-link-left {
+                grid-area: 1 / 1 / 2 / 3;
+            }
+            .single-book-actions-external-link-right {
+                grid-area: 1 / 3 / 2 / 5;
+            }
+        }
+        .single-book-add-to-lists-container {
+        }
+        .single-book-rating-container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: $accent-2;
+            justify-content: center;
+            align-items: center;
+            .single-book-avg-rating {
+                font: {
+                    size: 1.8rem;
+                }
+                margin-right: 0.2rem;
+            }
+            .single-book-rating-count {
+                margin-left: 0.2rem;
+            }
+        }
+        .single-book-description-container {
+            .single-book-description {
+            }
+        }
+        .single-book-genres-container {
+            display: flex;
+            flex-wrap: wrap;
+            .single-book-genre {
+                margin: 0.5rem;
+                padding: 0.5rem;
+                background-color: $accent-1-alt;
+                border-radius: 4px;
+            }
+        }
+    }
+}
+.read-or-hide {
+    user-select: none;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    color: #102d5b7c;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        text-decoration: underline #102d5b7c 3px;
+    }
+}
+.read-or-hide-spans {
+    align-self: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: #102d5b7c;
+    background-color: $background;
+    user-select: none;
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+    &:hover,
+    &:focus {
+        color: $background;
+        background-color: #102d5b7c;
+        transition: all ease-in-out 200ms;
+        -webkit-box-shadow: 0px 0px 7px -3px $font;
+        box-shadow: 0px 0px 7px -3px $font;
+    }
 }
