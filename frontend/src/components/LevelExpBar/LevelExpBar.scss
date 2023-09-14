@@ -1,11 +1,8 @@
 @import "../../scss/styleVariables";
-
+@import "../../scss/breakpoints.scss";
 .expLevel {
     width: 100%;
-    margin-left: 2rem;
-    margin-top: -2.8rem;
-    margin-left: 8rem;
     margin: -3.6rem 1rem -1rem 7.5rem;
     border-radius: 20px;
-    box-shadow: -2px -1px 5px $secondary;
+    box-shadow: -2px -1px 5px $secondary; 
 }

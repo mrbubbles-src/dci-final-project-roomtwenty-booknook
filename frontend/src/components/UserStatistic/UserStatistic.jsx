@@ -29,7 +29,7 @@ const UserStatistic = ({
 
     return (
         <>
-            <div className="user-statistic-container">
+            <div className="user-statistics-container">
                 <label htmlFor="upload-button">
                     <img
                         className="avatar"

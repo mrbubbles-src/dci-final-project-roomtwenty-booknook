@@ -1,4 +1,5 @@
 @import "../../scss/styleVariables";
+@import "../../scss/breakpoints.scss";
 // .user-statistic-container {
 //     .user-statistic-avatar-container {
 //         grid-area: 1 / 1 / 3 / 2;
@@ -22,8 +23,19 @@
 //     }
 //     color: $background;
 // }
-.user-statistic-container {
+.user-statistics-container {
     position: relative;
+    background: $primary;
+    -webkit-box-shadow: 0px 0px 7px -3px $font;
+    box-shadow: 0px 0px 7px -3px $font;
+    max-width: 400px;
+    display: flex;
+
+    border-radius: 30px;
+
+    @include breakpoint(tablet) {
+        border: 1px solid red;
+    }
     .avatar {
         width: 12rem;
         height: 100%;
@@ -32,6 +44,9 @@
         background-position: center;
         object-fit: center;
         // border: 2px solid lightsalmon;
+        @include breakpoint(tablet) {
+            border: 1px solid red;
+        }
     }
     .level-container {
         width: 7rem;
@@ -43,6 +58,9 @@
         left: 8rem;
         box-shadow: inset 0 0 5px $secondary;
         border: 4px solid $primary;
+        @include breakpoint(tablet) {
+            border: 3px solid red;
+        }
 
         .user-level {
             font-weight: bold;
