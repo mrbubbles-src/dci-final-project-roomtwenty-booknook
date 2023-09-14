@@ -1,47 +1,35 @@
 import React, { useContext } from "react";
 import { BookNookContext } from "../../context/BookNookProvider";
 import "./LandingpageRegisterAndLogin.scss";
+import image1 from "../../assets/pics/bookchallenge.jpg";
+import image2 from "../../assets/pics/booklist.jpg";
+import image3 from "../../assets/pics/bookreise.jpg";
 
 const LandingpageRegisterAndLogin = () => {
     const { handleLoginClick } = useContext(BookNookContext);
     return (
         <>
-            {" "}
-            <section>
-                <article className='text-container'>
-                    <p className='text login'>
-                        Wenn du alle unsere Features nutzen möchtest,
-                        registriere dich doch bei uns und lege sowie verwalte
-                        deine eigenen Bücherlisten.
-                    </p>
-                    <p className='text login'>
-                        Erstelle eigene Challenges, um am Ball zu bleiben.{" "}
-                    </p>
-                    <p className='text login'>
-                        Wohin die Reise geht, liegt ganz allein in deiner
-                        Entscheidung!
-                    </p>
-                    <button className='btn-login' onClick={handleLoginClick}>
-                        Hier ist dein Ticket!
-                    </button>
-                </article>
-            </section>
+            <hr />
             {/* TABLET & DESKTOP */}
             <section className='text-container-tablet'>
                 <article className='article-container'>
                     <div className='article-container-text'>
-                        <h2>Bücherlisten</h2>
+                        <h2 className='article-heading'>Bücherlisten</h2>
                         <p className='article-text'>
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Sapiente fuga exercitationem sequi a quae ut
                             reprehenderit necessitatibus nulla, et non.
                         </p>
                     </div>
-                    <img src='' alt='' />
+                    <img
+                        className='landingpage-article-image'
+                        src={image1}
+                        alt=''
+                    />
                 </article>
                 <article className='article-container'>
                     <div className='article-container-text'>
-                        <h2>Challenges</h2>
+                        <h2 className='article-heading'>Challenges</h2>
                         <p className='article-text'>
                             Diese persönlichen Lesen-Challenges ermöglichen es
                             jedem, seine Lesegewohnheiten zu steigern, neue
@@ -49,11 +37,15 @@ const LandingpageRegisterAndLogin = () => {
                             unterhaltsamen und erfüllenden Aktivität zu machen.
                         </p>
                     </div>
-                    <img src='' alt='' />
+                    <img
+                        className='landingpage-article-image'
+                        src={image2}
+                        alt=''
+                    />
                 </article>
                 <article className='article-container'>
                     <div className='article-container-text'>
-                        <h2>Du entscheidest</h2>
+                        <h2 className='article-heading'>Du entscheidest</h2>
                         <p className='article-text'>
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Consequatur officiis nihil quibusdam
@@ -61,12 +53,17 @@ const LandingpageRegisterAndLogin = () => {
                             recusandae perferendis?
                         </p>
                     </div>
-                    <img src='' alt='' />
+                    <img
+                        className='landingpage-article-image'
+                        src={image3}
+                        alt=''
+                    />
                 </article>
                 <button className='btn-login' onClick={handleLoginClick}>
                     Hier ist dein Ticket!
                 </button>
             </section>
+            <hr />
         </>
     );
 };
