@@ -10,9 +10,12 @@
    @include breakpoint(tablet){
      margin: -5.5rem -20rem -10rem 15rem;
      width: 40rem;
+     
 
 
    }
-   
+   .progressBar{
+    font-size: 5rem;
+   }
    
 }
