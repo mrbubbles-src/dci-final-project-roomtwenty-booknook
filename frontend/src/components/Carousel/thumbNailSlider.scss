@@ -1,20 +1,34 @@
-@import "../../scss/styleVariables";
+@import "../../scss//styleVariables";
+@import "../../scss/breakpoints.scss";
 .listen-book-cover {
-    width: 128px;
-    height: 188px;
+    // width: 128px;
+    // width: 100%;
+    // height: 185px;
+    width: 125px;
+    height: 175px;
 }
 
 .listen-book-info {
-    flex-flow: column;
+    // width: fit-content;
+
+    // flex-flow: column;
+    h5 {
+        display: none;
+    }
 }
 
 @include breakpoint(tablet) {
     .listen-book-cover {
-        width: 256px;
-        height: 400px;
+        width: 100%;
+        height: 350px;
+        // height: 400px;
+        // width: 250px;
+
+        margin-left: 5px;
     }
 
     .listen-book-info {
         flex-flow: column;
+        // text-align: ;
     }
 }
