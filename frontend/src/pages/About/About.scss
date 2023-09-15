@@ -1,8 +1,15 @@
 @import "../../scss/styleVariables";
+@import "../../scss/breakpoints";
 
 .heading-container {
     width: 100%;
-    background-color: rgba(0, 0, 255, 0.542);
+    // background-color: rgba(0, 0, 255, 0.542);
+    // background: rgb(203, 192, 182);
+    // background: linear-gradient(
+    //     129deg,
+    //     rgba(203, 192, 182, 1) 11%,
+    //     rgba(202, 106, 84, 1) 85%
+    // );
     height: 120px;
     display: flex;
     justify-content: center;
@@ -11,7 +18,7 @@
         decoration: underline;
         // align: center;
     }
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     font: {
         size: $m;
         family: headings-semibold sans-serif;
@@ -31,34 +38,50 @@
 .container {
     font: {
         family: text-bold sans-serif;
-        size: 1.7rem;
+        size: 1.6rem;
+        weight: 800;
     }
     margin: 1rem 1rem 1rem 1rem;
     .image {
         width: 110px;
         height: 90px;
         border-radius: 25px;
-        margin: 1rem;
+        margin: 0 1rem;
     }
 }
 .first-paragraph-container {
     .image {
-        float: left;
+        float: right;
     }
 }
 .second-paragraph-container {
     margin: {
-        top: 1rem;
-        bottom: 1rem;
-    }
-    .second-paragraph {
+        top: 2rem;
+        bottom: 2rem;
     }
     .image {
-        float: right;
+        float: left;
     }
 }
 .third-paragraph-container {
     .image {
-        float: left;
+        float: right;
+    }
+}
+body {
+    // background: rgb(203, 192, 182);
+    // background: linear-gradient(
+    //     39deg,
+    //     rgba(203, 192, 182, 1) 41%,
+    //     rgba(202, 106, 84, 1) 85%
+    // );
+}
+
+@include breakpoint(tablet) {
+    .second-paragraph-container {
+        margin: {
+            top: 6rem;
+            bottom: 6rem;
+        }
     }
 }
