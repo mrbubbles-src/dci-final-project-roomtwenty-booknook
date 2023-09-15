@@ -99,11 +99,9 @@ const SingleBookDetails = () => {
         }
         return null;
     }
-
     const item = findInBookData(bookData, singleBookData.id);
     const bookDataAverageRating = item ? item.volumeInfo.averageRating : 0;
     const bookDataRatingsCount = item ? item.volumeInfo.ratingsCount : 0;
-
     const handleSendToLists = async (url) => {
         const body = {
             id: id,
@@ -149,7 +147,6 @@ const SingleBookDetails = () => {
             console.error(error);
         }
     };
-
     return (
         <section className="single-book-container">
             <div className="single-book-headings-container">
@@ -167,6 +164,12 @@ const SingleBookDetails = () => {
                 </h5>
             </div>
             <section className="single-book-grid-container">
+                <div className="single-book-add-to-lists-container">
+                    <AddToLists
+                        onButtonClick={handleSendToLists}
+                        bookId={mongoDBBookID}
+                    />
+                </div>
                 <div className="single-book-image-container">
                     <a
                         href={
@@ -193,8 +196,43 @@ const SingleBookDetails = () => {
                             }
                             alt={`${title} cover`}
                         />
-                    </a>{" "}
+                    </a>
                 </div>
+                <div className="single-book-rating-container">
+                    <p className="single-book-avg-rating">
+                        <strong>
+                            {averageRating || bookDataAverageRating || 0}
+                        </strong>
+                    </p>{" "}
+                    <StarRatings
+                        rating={averageRating || bookDataAverageRating || 0}
+                        starRatedColor="orange"
+                        name="single-book-rating"
+                        starDimension="20px"
+                        starSpacing="1px"
+                    />
+                    <p className="single-book-rating-count">
+                        bei{" "}
+                        <strong>
+                            {ratingsCount || bookDataRatingsCount || 0}
+                        </strong>{" "}
+                        {ratingsCount === 1 || bookDataRatingsCount === 1
+                            ? "Bewertung"
+                            : "Bewertungen"}
+                    </p>
+                </div>
+                <article className="single-book-description-container">
+                    <p className="single-book-description">
+                        {/* entfernt jegliche html tags aus der beschreibung */}
+                        {description ? (
+                            <ReadMore>
+                                {description?.replace(/<\/?[^>]+(>|$)/g, "")}
+                            </ReadMore>
+                        ) : (
+                            "Keine Beschreibung verfügbar"
+                        )}
+                    </p>
+                </article>
                 <article className="single-book-info-section">
                     <h5 className="single-book-info-section-title">
                         Buchinformationen:
@@ -210,7 +248,7 @@ const SingleBookDetails = () => {
                         {publisher}
                     </p>
                     <p className="single-book-first-published-date">
-                        <strong>Erstveröffentlichung:</strong>
+                        <strong>Veröffentlicht:</strong>
                         <br />
                         {publishedDate || "Unbekanntes Datum"}
                     </p>
@@ -253,7 +291,9 @@ const SingleBookDetails = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Mehr Informationen auf GooglePlay Books
+                            <strong>
+                                Mehr Informationen auf GooglePlay Books
+                            </strong>
                         </a>
                     ) : null}
                     {webReaderLink ? (
@@ -263,54 +303,13 @@ const SingleBookDetails = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Leseprobe auf GooglePlay Books
+                            <strong>Leseprobe auf GooglePlay Books</strong>
                         </a>
                     ) : null}
                 </article>
-                <div className="single-book-add-to-lists-container">
-                    <AddToLists
-                        onButtonClick={handleSendToLists}
-                        bookId={mongoDBBookID}
-                    />
-                </div>
-                <div className="single-book-rating-container">
-                    <p className="single-book-avg-rating">
-                        <strong>
-                            {averageRating || bookDataAverageRating || 0}
-                        </strong>
-                    </p>{" "}
-                    <StarRatings
-                        rating={averageRating || bookDataAverageRating || 0}
-                        starRatedColor="orange"
-                        name="single-book-rating"
-                        starDimension="20px"
-                        starSpacing="1px"
-                    />
-                    <p className="single-book-rating-count">
-                        bei{" "}
-                        <strong>
-                            {ratingsCount || bookDataRatingsCount || 0}
-                        </strong>{" "}
-                        {ratingsCount === 1 || bookDataRatingsCount === 1
-                            ? "Bewertung"
-                            : "Bewertungen"}
-                    </p>
-                </div>
-                <article className="single-book-description-container">
-                    <p className="single-book-description">
-                        {/* entfernt jegliche html tags aus der beschreibung */}
-                        {description ? (
-                            <ReadMore>
-                                {description?.replace(/<\/?[^>]+(>|$)/g, "")}
-                            </ReadMore>
-                        ) : (
-                            "Keine Beschreibung verfügbar"
-                        )}
-                    </p>
-                    <h4 className="single-book-genre-title">
-                        <strong>Genres:</strong>
-                    </h4>
-                </article>
+                <h4 className="single-book-genre-title">
+                    <strong>Genres:</strong>
+                </h4>
                 <article className="single-book-genres-container">
                     <ReadMoreSpans>
                         {genres && genres.length >= 1
