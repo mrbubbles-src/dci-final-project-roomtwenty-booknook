@@ -307,10 +307,10 @@ const SingleBookDetails = () => {
                         </a>
                     ) : null}
                 </article>
-                <h4 className="single-book-genre-title">
-                    <strong>Genres:</strong>
-                </h4>
                 <article className="single-book-genres-container">
+                    <h4 className="single-book-genre-title">
+                        <strong>Genres:</strong>
+                    </h4>
                     <ReadMoreSpans>
                         {genres && genres.length >= 1
                             ? genres.map((category, index) => {
