@@ -25,7 +25,7 @@ const FileUpload = () => {
 
             try {
                 const response = await fetch(
-                    "https://roomtwenty-booknook-backend.cyclic.cloud/users/upload",
+                    "http://localhost:3000/users/upload",
                     {
                         method: "POST",
                         headers: {

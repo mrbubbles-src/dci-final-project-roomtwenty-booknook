@@ -15,7 +15,7 @@ const UserProfile = () => {
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
-                `https://roomtwenty-booknook-backend.cyclic.cloud/users/userdata`,
+                `http://localhost:3000/users/userdata`,
                 {
                     method: "GET",
                     headers: {
@@ -36,7 +36,7 @@ const UserProfile = () => {
     if (isLoadingUserData) {
         return <LoadingSpinner />;
     }
-    // route um user einträge zu updaten: https://roomtwenty-booknook-backend.cyclic.cloud/users/updateUser
+    // route um user einträge zu updaten: http://localhost:3000/users/updateUser
     // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
     // {
     // "type":"currentlyReading",

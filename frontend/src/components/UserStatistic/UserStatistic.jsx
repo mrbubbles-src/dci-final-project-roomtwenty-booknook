@@ -19,7 +19,7 @@ const UserStatistic = ({
 }) => {
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
-    const serverURL = "https://roomtwenty-booknook-backend.cyclic.cloud";
+    const serverURL = "http://localhost:3000";
     const Avatar = `${serverURL}${profileImage}`;
     const previewImage = profileImageUploadPreview.preview;
     const [showLeseChallengeModal, setShowLeseChallengeModal] = useState(false);

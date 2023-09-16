@@ -19,7 +19,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
         };
         try {
             const response = await fetch(
-                "https://roomtwenty-booknook-backend.cyclic.cloud/users/updateUser",
+                "http://localhost:3000/users/updateUser",
                 {
                     method: "PUT",
                     headers: {
@@ -44,7 +44,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
         };
         try {
             const response = await fetch(
-                "https://roomtwenty-booknook-backend.cyclic.cloud/users/updateUser",
+                "http://localhost:3000/users/updateUser",
                 {
                     method: "PUT",
                     headers: {
@@ -67,7 +67,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
 
         try {
             const response = await fetch(
-                "https://roomtwenty-booknook-backend.cyclic.cloud/books/addBooks/alreadyRead",
+                "http://localhost:3000/books/addBooks/alreadyRead",
                 {
                     method: "POST",
                     headers: {

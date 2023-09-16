@@ -13,7 +13,7 @@ const useAuth = () => {
     const login = async (userData) => {
         try {
             const response = await axios.post(
-                "https://roomtwenty-booknook-backend.cyclic.cloud/users/login",
+                "http://localhost:3000/users/login",
                 userData,
                 { withCredentials: true }
             );
@@ -45,7 +45,7 @@ const useAuth = () => {
     const register = async (userData) => {
         try {
             const response = await axios.post(
-                "https://roomtwenty-booknook-backend.cyclic.cloud/users/signup",
+                "http://localhost:3000/users/signup",
                 userData,
                 { withCredentials: true }
             );

@@ -50,7 +50,7 @@ const UserInfoCard = ({
     //             };
     //             try {
     //                 const response = await fetch(
-    //                     "https://roomtwenty-booknook-backend.cyclic.cloud/users/updateUser",
+    //                     "http://localhost:3000/users/updateUser",
     //                     {
     //                         method: "PUT",
     //                         headers: {
