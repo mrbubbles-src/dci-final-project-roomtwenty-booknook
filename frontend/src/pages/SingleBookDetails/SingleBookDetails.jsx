@@ -19,7 +19,7 @@ const SingleBookDetails = () => {
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
-                `http://localhost:3000/books/singlebook/${id}`
+                `https://roomtwenty-booknook-backend.cyclic.cloud/books/singlebook/${id}`
             );
             const data = await response.json();
             setSingleBookData(data);
