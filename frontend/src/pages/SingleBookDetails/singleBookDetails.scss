@@ -23,6 +23,11 @@
                     size: 5vw;
                 }
             }
+            @include breakpoint(desktop) {
+                font: {
+                    size: 3vw;
+                }
+            }
         }
         .single-book-subtitle {
             font: {
@@ -31,6 +36,11 @@
             @include breakpoint(tablet) {
                 font: {
                     size: 3.4vw;
+                }
+            }
+            @include breakpoint(desktop) {
+                font: {
+                    size: 2vw;
                 }
             }
         }
@@ -43,12 +53,18 @@
                     size: 2.8vw;
                 }
             }
+            @include breakpoint(desktop) {
+                font: {
+                    size: 1.5vw;
+                }
+            }
         }
         @include breakpoint(tablet) {
             margin-bottom: 1.5rem;
         }
     }
     .single-book-grid-container {
+        border: 1px solid red;
         // .single-book-add-to-lists-container,
         // .single-book-image-container,
         // .single-book-rating-container,
@@ -266,6 +282,16 @@
             grid-row-gap: 10px;
             // grid-auto-rows: min-content;
         }
+        @include breakpoint(desktop) {
+            display: grid;
+            grid-template-columns: repeat(4, 100px) repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr) 50px 20px 50px auto;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            // grid-auto-rows: min-content;
+        }
+    }
+    @include breakpoint(desktop) {
     }
 }
 .read-or-hide {
