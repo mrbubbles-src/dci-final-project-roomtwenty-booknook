@@ -189,6 +189,8 @@ const SingleBookDetails = () => {
                             className="single-book-image"
                             src={
                                 (
+                                    extraLarge ||
+                                    large ||
                                     medium ||
                                     thumbnail ||
                                     smallThumbnail
@@ -308,9 +310,7 @@ const SingleBookDetails = () => {
                     ) : null}
                 </article>
                 <article className="single-book-genres-container">
-                    <h4 className="single-book-genre-title">
-                        <strong>Genres:</strong>
-                    </h4>
+                    <h4 className="single-book-genre-title">Genres:</h4>
                     <ReadMoreSpans>
                         {genres && genres.length >= 1
                             ? genres.map((category, index) => {
