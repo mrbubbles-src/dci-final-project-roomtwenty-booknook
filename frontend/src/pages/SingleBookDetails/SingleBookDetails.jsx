@@ -15,7 +15,11 @@ const SingleBookDetails = () => {
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
     const { bookData, token } = useContext(BookNookContext);
-
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
+    const [isVisible, setIsVisible] = useState(true);
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
@@ -28,6 +32,35 @@ const SingleBookDetails = () => {
         }
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const newWindowSize = {
+                width: window.innerWidth,
+                height: window.innerHeight,
+            };
+            setWindowSize(newWindowSize);
+
+            const thresholdWidth = 1024;
+            const thresholdHeight = 100;
+
+            if (
+                newWindowSize.width < thresholdWidth ||
+                newWindowSize.height < thresholdHeight
+            ) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+
+        handleResize();
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [isVisible]);
 
     if (isSingleBookLoading) {
         return <LoadingSpinner />;
@@ -225,10 +258,15 @@ const SingleBookDetails = () => {
                 </div>
                 <article className="single-book-description-container">
                     <p className="single-book-description">
-                        {/* entfernt jegliche html tags aus der beschreibung */}
-                        {description ? (
+                        {isVisible ? (
+                            description !== undefined && description !== "" ? (
+                                description.replace(/<\/?[^>]+(>|$)/g, "")
+                            ) : (
+                                "Keine Beschreibung verfügbar"
+                            )
+                        ) : description !== undefined && description !== "" ? (
                             <ReadMore>
-                                {description?.replace(/<\/?[^>]+(>|$)/g, "")}
+                                {description.replace(/<\/?[^>]+(>|$)/g, "")}
                             </ReadMore>
                         ) : (
                             "Keine Beschreibung verfügbar"
@@ -311,20 +349,30 @@ const SingleBookDetails = () => {
                 </article>
                 <article className="single-book-genres-container">
                     <h4 className="single-book-genre-title">Genres:</h4>
-                    <ReadMoreSpans>
-                        {genres && genres.length >= 1
-                            ? genres.map((category, index) => {
-                                  return (
+                    {isVisible ? (
+                        genres && genres.length >= 1 ? (
+                            genres.map((category, index) => (
+                                <span className="single-book-genre" key={index}>
+                                    <strong>{category}</strong>
+                                </span>
+                            ))
+                        ) : (
+                            "Keine Genres bekannt"
+                        )
+                    ) : (
+                        <ReadMoreSpans>
+                            {genres && genres.length >= 1
+                                ? genres.map((category, index) => (
                                       <span
                                           className="single-book-genre"
                                           key={index}
                                       >
                                           <strong>{category}</strong>
                                       </span>
-                                  );
-                              })
-                            : "keine Genres bekannt"}
-                    </ReadMoreSpans>
+                                  ))
+                                : "Keine Genres bekannt"}
+                        </ReadMoreSpans>
+                    )}
                 </article>
             </section>
         </section>
