@@ -25,10 +25,18 @@ const About = () => {
                         alt=""
                     />
                     <p className="name">Manuel</p>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://github.com/mrbubbles-src"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faGithub} />{" "} */}
                     </a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/manuel-fahrenholz/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faLinkedin} /> */}
                     </a>
                 </div>
@@ -38,11 +46,19 @@ const About = () => {
                         src="../../../public/images/placeholder/Hamburger.jpg"
                         alt=""
                     />
-                    <p className="name">Jaqueline</p>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <p className="name">Jacqueline</p>
+                    <a
+                        href="https://github.com/jacqueline-s-w"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faGithub} /> */}
                     </a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/jacqueline-scharrer-weißgerber/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faLinkedin} /> */}
                     </a>
                 </div>
@@ -53,10 +69,18 @@ const About = () => {
                         alt=""
                     />
                     <p className="name">Muhammed</p>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://github.com/MuhammedTinmaz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faGithub} /> */}
                     </a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/muhammed-tinmaz-b562a225a/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faLinkedin} /> */}
                     </a>
                 </div>
@@ -67,10 +91,18 @@ const About = () => {
                         alt=""
                     />
                     <p className="name">Katharina</p>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://github.com/Katharina-Groller"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faGithub} /> */}
                     </a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/katharina-g-354362276/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faLinkedin} /> */}
                     </a>
                 </div>
@@ -81,10 +113,18 @@ const About = () => {
                         alt=""
                     />
                     <p className="name">Metin</p>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://github.com/MetinArsu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faGithub} /> */}
                     </a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/metin-m-arsu-4991b8276/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {/* <FontAwesomeIcon icon={faLinkedin} /> */}
                     </a>
                 </div>
