@@ -1,5 +1,8 @@
 import React from "react";
 import "./About.scss";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGithub } from "@fortawesome/free-solid-svg-icons";
+// import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const About = () => {
     return (
@@ -14,58 +17,95 @@ const About = () => {
                     alt="Hamburger"
                 />
             </div> */}
-            <div className="first-picture-container picture-container">
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
-            </div>
-            <div className="second-picture-container picture-container">
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
+            <div className="picture-container">
+                <div className="first-container">
+                    <img
+                        className="image"
+                        src="../../../public/images/placeholder/Hamburger.jpg"
+                        alt=""
+                    />
+                    <p className="name">Manuel</p>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faGithub} />{" "} */}
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                    </a>
+                </div>
+                <div className="second-container">
+                    <img
+                        className="image"
+                        src="../../../public/images/placeholder/Hamburger.jpg"
+                        alt=""
+                    />
+                    <p className="name">Jaqueline</p>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                    </a>
+                </div>
+                <div className="third-container">
+                    <img
+                        className="image"
+                        src="../../../public/images/placeholder/Hamburger.jpg"
+                        alt=""
+                    />
+                    <p className="name">Muhammed</p>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                    </a>
+                </div>
+                <div className="fourth-container">
+                    <img
+                        className="image"
+                        src="../../../public/images/placeholder/Hamburger.jpg"
+                        alt=""
+                    />
+                    <p className="name">Katharina</p>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                    </a>
+                </div>
+                <div className="fifth-container">
+                    <img
+                        className="image"
+                        src="../../../public/images/placeholder/Hamburger.jpg"
+                        alt=""
+                    />
+                    <p className="name">Metin</p>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                    </a>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                    </a>
+                </div>
             </div>
             <div className="paragraph-container container">
                 <p className="first-paragraph">
-                    Wir sind die Gruppe RoomTwenty, die sich auf eine spannende
-                    Reise in die Welt der Webentwicklung begeben haben. Jeder
-                    von uns hat verschiedene Situationen erlebt und dadurch
-                    beschlossen, eine Umschulung zum Webentwickler zu beginnen.
-                    Unsere unterschiedlichen Hintergründe und Erfahrungen
-                    bereichern unser Team und ermöglichen es uns, aus
-                    verschiedenen Perspektiven auf Probleme zu blicken.
+                    Wir sind roomTwenty - eine Gruppe von Freunden die sich
+                    während der Weiterbildung zum Fullstack Webentwickler beim
+                    DCI Digital Career Institute gefunden hat.
                 </p>
                 <p className="second-paragraph">
-                    Unser Ziel ist es, benutzerfreundliche und ansprechende
-                    Webseiten zu erstellen, die sowohl funktional als auch
-                    ästhetisch ansprechend sind. Wir glauben an kontinuierliches
-                    Lernen und streben danach, uns ständig weiterzuentwickeln
-                    und neue Technologien und Methoden zu erlernen.
+                    Dies ist unser Finales Projekt unserer Weiterbildung,
+                    'bookNook', eine Anwendung in der du nach Buchinformationen
+                    suchen und deinen Lesefortschrit verwalten kannst in dem du
+                    den Seitenstand der Bücher die du aktuell liest verfolgen
+                    kannst und je eine Liste für deine bereits gelesenen Bücher
+                    und den Büchern die noch lesen möchtes zur verfügung hast.
                 </p>
                 <p className="third-paragraph">
-                    Wir sind stolz darauf, unser finales Projekt präsentieren zu
-                    können: eine vollständig funktionierende Webseite, die das
-                    Ergebnis unserer harten Arbeit und unseres Engagements ist.
-                    Wir hoffen, dass Sie unsere Webseite genauso sehr schätzen
-                    wie wir ihre Entwicklung.
+                    Wir hoffen dir gefällt es hier und, dass bookNook dir in
+                    deiner Lesereise helfend zur Seite steht!
                 </p>
             </div>
         </div>
