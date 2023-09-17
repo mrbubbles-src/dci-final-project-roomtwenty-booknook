@@ -30,7 +30,7 @@ const ThumbnailSlider = ({ slides }) => {
                     <SwiperSlide key={index}>
                         <div className="thumbnail-slide-container">
                             <div>
-                                <div classname="listen-book-cover-container">
+                                <div className="listen-book-cover-container">
                                     <Link
                                         className="card-image-anchor-tag"
                                         to={`/buch/${slide.bookdetails.id}`}
