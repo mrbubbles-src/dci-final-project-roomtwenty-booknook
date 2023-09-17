@@ -1,11 +1,28 @@
 @import "../../scss/styleVariables";
-/* Stil für das Hauptmenü */
+
+.menu-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+
+}
 .menu {
     background: $accent-3;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     border-top: 1px solid rgb(141, 141, 141);
-
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+    &.menu-expanded {
+        transform: translateY(0%);
+    }
     &-item {
         padding: 10px;
         border-radius: 50px;
@@ -14,15 +31,18 @@
         flex-flow: column;
         justify-content: center;
         align-items: center;
-
         .menu-icon {
             color: black;
             height: 30px;
             width: 30px;
         }
     }
-
     :hover {
         color: $accent-1;
+    }
+    .flex-in-grid {
+        display: flex;
+        flex-direction: column;
+        
     }
 }
