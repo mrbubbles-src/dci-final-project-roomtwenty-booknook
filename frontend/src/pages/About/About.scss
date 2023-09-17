@@ -18,67 +18,66 @@
         decoration: underline;
         // align: center;
     }
-    margin: 1.5rem 0;
+    // margin: 1.5rem 0;
     font: {
         size: $m;
         family: headings-semibold sans-serif;
     }
 }
-.image-container {
-    width: 400px;
-    height: 100px;
-    // align-items: center;
-    margin: 1.5rem auto;
-    .image {
-        width: 300px;
-        height: 90px;
-        border-radius: 25px;
-    }
-}
+// .image-container {
+//     width: 400px;
+//     height: 100px;
+//     // align-items: center;
+//     margin: 1.5rem auto;
+//     .image {
+//         width: 300px;
+//         height: 90px;
+//         border-radius: 25px;
+//     }
+// }
 .container {
     font: {
-        family: text-bold sans-serif;
+        family: text sans-serif;
         size: 1.6rem;
         weight: 800;
     }
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 1rem 2rem 1rem 2rem;
+}
+.paragraph-container {
+    margin: {
+        top: 2rem;
+        bottom: 2rem;
+    }
+    .second-paragraph {
+        margin: {
+            top: 2.3rem;
+            bottom: 2.3rem;
+        }
+    }
+}
+
+.picture-container {
+    display: flex;
+    justify-content: space-evenly;
     .image {
-        width: 110px;
+        width: 100px;
         height: 90px;
         border-radius: 25px;
         margin: 0 1rem;
     }
 }
-.first-paragraph-container {
-    .image {
-        float: right;
-    }
+.first-picture-container {
 }
-.second-paragraph-container {
-    margin: {
-        top: 2rem;
-        bottom: 2rem;
-    }
-    .image {
-        float: left;
-    }
+.second-picture-container {
 }
-.third-paragraph-container {
-    .image {
-        float: right;
-    }
-}
-body {
-    // background: rgb(203, 192, 182);
-    // background: linear-gradient(
-    //     39deg,
-    //     rgba(203, 192, 182, 1) 41%,
-    //     rgba(202, 106, 84, 1) 85%
-    // );
+.about-us {
+    background-image: url("../../assets/pics/paper-68829_1280-mobile.jpg");
+    // background-size:
+    // background-color: #353c40;
 }
 
 @include breakpoint(tablet) {
-    .second-paragraph-container {
+    .second-paragraph {
         margin: {
             top: 6rem;
             bottom: 6rem;

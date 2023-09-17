@@ -3,7 +3,7 @@ import "./About.scss";
 
 const About = () => {
     return (
-        <>
+        <div className="about-us">
             <div className="heading-container">
                 <h2 className="heading">About us</h2>
             </div>
@@ -14,13 +14,36 @@ const About = () => {
                     alt="Hamburger"
                 />
             </div> */}
-
-            <div className="first-paragraph-container container">
+            <div className="first-picture-container picture-container">
                 <img
                     className="image"
                     src="../../../public/images/placeholder/Hamburger.jpg"
                     alt=""
                 />
+                <img
+                    className="image"
+                    src="../../../public/images/placeholder/Hamburger.jpg"
+                    alt=""
+                />
+                <img
+                    className="image"
+                    src="../../../public/images/placeholder/Hamburger.jpg"
+                    alt=""
+                />
+            </div>
+            <div className="second-picture-container picture-container">
+                <img
+                    className="image"
+                    src="../../../public/images/placeholder/Hamburger.jpg"
+                    alt=""
+                />
+                <img
+                    className="image"
+                    src="../../../public/images/placeholder/Hamburger.jpg"
+                    alt=""
+                />
+            </div>
+            <div className="paragraph-container container">
                 <p className="first-paragraph">
                     Wir sind die Gruppe RoomTwenty, die sich auf eine spannende
                     Reise in die Welt der Webentwicklung begeben haben. Jeder
@@ -30,13 +53,6 @@ const About = () => {
                     bereichern unser Team und ermöglichen es uns, aus
                     verschiedenen Perspektiven auf Probleme zu blicken.
                 </p>
-            </div>
-            <div className="second-paragraph-container container">
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
                 <p className="second-paragraph">
                     Unser Ziel ist es, benutzerfreundliche und ansprechende
                     Webseiten zu erstellen, die sowohl funktional als auch
@@ -44,13 +60,6 @@ const About = () => {
                     Lernen und streben danach, uns ständig weiterzuentwickeln
                     und neue Technologien und Methoden zu erlernen.
                 </p>
-            </div>
-            <div className="third-paragraph-container container">
-                <img
-                    className="image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt=""
-                />
                 <p className="third-paragraph">
                     Wir sind stolz darauf, unser finales Projekt präsentieren zu
                     können: eine vollständig funktionierende Webseite, die das
@@ -59,7 +68,7 @@ const About = () => {
                     wie wir ihre Entwicklung.
                 </p>
             </div>
-        </>
+        </div>
     );
 };
 
