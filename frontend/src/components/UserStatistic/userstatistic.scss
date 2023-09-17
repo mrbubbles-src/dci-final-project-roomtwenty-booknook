@@ -59,12 +59,32 @@
         left: 8rem;
         box-shadow: inset 0 0 5px $secondary;
         border: 4px solid $primary;
+
+        .expLevel {
+            width: 20rem;
+            .wrapper {
+                background-color: $secondary;
+                border-radius: 20px;
+                width: 25rem;
+            }
+            .container {
+                background-color: $secondary;
+                margin-left: 0;
+                border-radius: 20px;
+            }
+            // .barCompleted {
+            // }
+            .label {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }
         @include breakpoint(tablet) {
             border: 3px solid red;
             top: 1.5rem;
             left: 20rem;
             width: 10rem;
-         height: 10rem;
+            height: 10rem;
         }
 
         .user-level {
@@ -74,7 +94,7 @@
             margin-top: 1.6rem;
             font-size: 3rem;
             text-shadow: 1.2px 2px 1.2px rgba(0, 0, 0, 0.35);
-            @include breakpoint(tablet){
+            @include breakpoint(tablet) {
                 margin-top: 2rem;
                 font-size: 5rem;
             }
@@ -82,10 +102,9 @@
     }
     .user-statistic-challenge-container {
         margin-top: 7rem;
-        @include breakpoint(tablet){
-        margin-top: 13rem;
-        margin-left: 3rem;
-           
+        @include breakpoint(tablet) {
+            margin-top: 13rem;
+            margin-left: 3rem;
         }
         .user-statistic-username {
             font-size: xx-large;
@@ -93,9 +112,8 @@
             margin: 0 0 1rem 0;
             padding: 0 1 rem;
             text-align: center;
-            @include breakpoint(tablet){
-            font-size: 5rem;
-              
+            @include breakpoint(tablet) {
+                font-size: 5rem;
             }
         }
         .challenge-header {
@@ -104,18 +122,15 @@
             font-size: large;
             margin-bottom: 0.8rem;
             margin-top: 0.1rem;
-            @include breakpoint(tablet){
-            font-size: 4rem;
-              
+            @include breakpoint(tablet) {
+                font-size: 4rem;
             }
         }
         .challenge-body {
             margin: 0.3rem 1rem 2rem 1.2rem;
-            @include breakpoint(tablet){
-            font-size: 3rem;
-            margin: 4rem 8rem 2rem 3rem;
-
-              
+            @include breakpoint(tablet) {
+                font-size: 3rem;
+                margin: 4rem 8rem 2rem 3rem;
             }
         }
     }
