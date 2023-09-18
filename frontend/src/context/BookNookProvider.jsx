@@ -23,6 +23,7 @@ const BookNookProvider = ({ children }) => {
     const [isLoginVisible, setIsLoginVisible] = useState(true);
     const [isRead, setIsRead] = useState(false);
 
+
     useEffect(() => {
         if (searchTerm !== null) {
             async function fetchData() {
@@ -68,6 +69,7 @@ const BookNookProvider = ({ children }) => {
         logout();
         setIsLoggedIn(false);
     };
+
     return (
         <BookNookContext.Provider
             value={{
