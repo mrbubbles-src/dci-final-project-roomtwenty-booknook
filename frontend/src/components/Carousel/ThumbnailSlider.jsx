@@ -51,9 +51,12 @@ const ThumbnailSlider = ({ slides }) => {
                                     </Link>
                                 </div>
                                 <div className="listen-book-info">
-                                    <h5> {title || "Unbekannter Titel"}</h5>
+                                    <h5 className="tns-title">
+                                        {" "}
+                                        {title || "Unbekannter Titel"}
+                                    </h5>
                                     <br />
-                                    <h5>
+                                    <h5 className="tns-author">
                                         {(authors &&
                                             authors.join(
                                                 authors.length === 1
