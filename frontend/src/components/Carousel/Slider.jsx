@@ -32,7 +32,7 @@ const Slider = ({ slides }) => {
             {slides &&
                 slides.map((slide, index) => {
                     const singlePageID = slide.bookdetails.id;
-                    const { smallThumbnail, medium } =
+                    const { smallThumbnail, medium, large, extralarge } =
                         slide.bookdetails.volumeInfo.imageLinks || {};
                     const { title, authors, pageCount } =
                         slide.bookdetails.volumeInfo;
@@ -45,10 +45,13 @@ const Slider = ({ slides }) => {
                                     <img
                                         className="liest-derzeit-cover"
                                         src={
-                                            (smallThumbnail || medium)?.replace(
-                                                "http",
-                                                "https"
-                                            ) || NoImage
+                                            (
+                                                extralarge ||
+                                                large ||
+                                                medium ||
+                                                smallThumbnail
+                                            )?.replace("http", "https") ||
+                                            NoImage
                                         }
                                         alt={title}
                                         // BILDGRÖßE ANPASSEN NUR SO ZUM TESTEN SO EINGESTELLT

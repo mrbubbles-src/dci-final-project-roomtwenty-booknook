@@ -21,37 +21,41 @@ const BookSearch = ({ amountShown }) => {
                         title,
                         subtitle,
                         authors,
-                        imageLinks,
+
                         averageRating,
                         ratingsCount,
                     } = book.volumeInfo || {};
+                    const {
+                        smallThumbnail,
+                        thumbnail,
+                        medium,
+                        large,
+                        extraLarge,
+                    } = book.volumeInfo.imageLinks || {};
                     const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
-                            <Link
-                                className="card-image-anchor-tag"
-                                to={`/buch/${book.id}`}
-                            >
-                                <img
-                                    className="card-image"
-                                    src={imageLinks?.thumbnail || NoImage}
-                                    alt={title}
-                                />
-                            </Link>
-                            <h4 className="card-title">
-                                {title || "Titel nicht verfügbar"}
-                            </h4>
-                            {subtitle ? (
-                                <h3 className="card-subtitle">{subtitle}</h3>
-                            ) : null}
-                            <h5 className="card-author">
-                                von{" "}
-                                {(authors &&
-                                    authors.join(
-                                        authors.length === 1 ? "" : " & "
-                                    )) ||
-                                    "Unbekannter Autor"}
-                            </h5>
+                            <div className="card-book-image-container">
+                                <Link
+                                    className="card-image-anchor-tag"
+                                    to={`/buch/${book.id}`}
+                                >
+                                    <img
+                                        className="card-image"
+                                        src={
+                                            (
+                                                extraLarge ||
+                                                large ||
+                                                medium ||
+                                                thumbnail ||
+                                                smallThumbnail
+                                            )?.replace("http", "https") ||
+                                            NoImage
+                                        }
+                                        alt={title}
+                                    />
+                                </Link>
+                            </div>
                             <div className="card-rating-container">
                                 <span className="card-avg-rating">
                                     {averageRating || 0}{" "}
@@ -62,7 +66,7 @@ const BookSearch = ({ amountShown }) => {
                                     name="single-book-rating"
                                     starDimension="20px"
                                     starSpacing="1px"
-                                />
+                                />{" "}
                                 /{" "}
                                 <span className="card-ratingcount">
                                     {ratingsCount || 0}{" "}
@@ -71,21 +75,40 @@ const BookSearch = ({ amountShown }) => {
                                         : "Bewertungen"}
                                 </span>
                             </div>
-                            <p className="card-infotext">
-                                {textSnippet
-                                    ?.replace(/<\/?[^>]+(>|$)/g, "")
-                                    .replace("&quot;", "") ||
-                                    "Keine beschreibung verfügbar"}
-                                {textSnippet && (
-                                    <Link
-                                        className="show-more-results"
-                                        to={`/buch/${book.id}`}
-                                    >
-                                        {" "}
-                                        ...mehr
-                                    </Link>
-                                )}
-                            </p>
+                            <div className="card-text-container">
+                                <h4 className="card-title">
+                                    {title || "Titel nicht verfügbar"}
+                                </h4>
+                                {subtitle ? (
+                                    <h3 className="card-subtitle">
+                                        {subtitle}
+                                    </h3>
+                                ) : null}
+                                <h5 className="card-author">
+                                    von{" "}
+                                    {(authors &&
+                                        authors.join(
+                                            authors.length === 1 ? "" : " & "
+                                        )) ||
+                                        "Unbekannter Autor"}
+                                </h5>
+
+                                <p className="card-infotext">
+                                    {textSnippet
+                                        ?.replace(/<\/?[^>]+(>|$)/g, "")
+                                        .replace("&quot;", "") ||
+                                        "Keine beschreibung verfügbar"}
+                                    {textSnippet && (
+                                        <Link
+                                            className="show-more-results card-show-more-results-description"
+                                            to={`/buch/${book.id}`}
+                                        >
+                                            {" "}
+                                            ...mehr
+                                        </Link>
+                                    )}
+                                </p>
+                            </div>
                         </div>
                     );
                 })}

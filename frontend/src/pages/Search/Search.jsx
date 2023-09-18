@@ -1,6 +1,5 @@
 import React from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import "./search.scss";
 const Search = () => {
     return (
         <>
