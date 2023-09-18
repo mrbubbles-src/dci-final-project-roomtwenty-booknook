@@ -2,108 +2,198 @@
 
 .single-book-container {
     margin: {
+        top: 0.5rem;
         left: 1rem;
         right: 1rem;
     }
     .single-book-headings-container {
-        margin: 0.5rem 0 $s 0;
-        .single-book-title {
+        .single-book-title,
+        .single-book-subtitle,
+        .single-book-author {
             text-align: center;
+        }
+        .single-book-title {
             font: {
-                size: 1.45em;
+                size: 6.8vw;
             }
+            text-decoration: underline;
+            text-decoration-color: $accent-1;
             @include breakpoint(tablet) {
                 font: {
-                    size: 2em;
+                    size: 5vw;
+                }
+            }
+            @include breakpoint(desktop) {
+                font: {
+                    size: 2.8vw;
                 }
             }
         }
         .single-book-subtitle {
-            text-align: center;
             font: {
-                size: 1.12em;
+                size: 5vw;
             }
             @include breakpoint(tablet) {
                 font: {
-                    size: 1.5em;
+                    size: 3.4vw;
+                }
+            }
+            @include breakpoint(desktop) {
+                font: {
+                    size: 1.8vw;
                 }
             }
         }
         .single-book-author {
-            text-align: center;
             font: {
-                size: 0.82em;
+                size: 4vw;
             }
             @include breakpoint(tablet) {
                 font: {
-                    size: 1.1em;
+                    size: 2.8vw;
                 }
             }
-            margin-top: 0.5rem;
+            @include breakpoint(desktop) {
+                font: {
+                    size: 1.2vw;
+                }
+            }
         }
-    }
-    .single-book-actions-external-link-left,
-    .single-book-actions-external-link-right,
-    .single-book-rating-container,
-    .single-book-genre {
-        -webkit-box-shadow: 0px 0px 7px -3px $font;
-        box-shadow: 0px 0px 7px -3px $font;
-        border: 1px solid $placeholder;
+        @include breakpoint(tablet) {
+            margin-bottom: 1.5rem;
+        }
     }
     .single-book-grid-container {
-        display: grid;
-        grid-template-columns: 50px repeat(4, 1fr) 50px;
-        grid-template-rows: repeat(3, 0.5fr) repeat(2, 50px);
-        grid-column-gap: 10px;
-        grid-row-gap: 10px;
-        .single-book-image-container {
-            grid-area: 1 / 1 / 3 / 7;
-            display: flex;
-            justify-content: center;
-            background: #000;
-            box-shadow: 0 0px 10px 0 $primary;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-radius: 4px;
-            .single-book-image {
-                width: 300px;
-                height: 100%;
-                -webkit-box-shadow: 0px 0px 7px -3px $background;
-                box-shadow: 0px 0px 7px -3px $background;
-                @include breakpoint(tablet) {
-                }
+        .single-book-genres-container {
+            @include breakpoint(tablet) {
+                align-self: start;
             }
         }
+
+        .single-book-add-to-lists-container {
+            margin: 1.5rem auto;
+            width: 280px;
+            @include breakpoint(tablet) {
+                //div1
+                order: 1;
+                grid-area: 1 / 2 / 1 / 4;
+                width: 100%;
+                margin-top: -1.5rem;
+            }
+        }
+        .single-book-image-container {
+            text-align: center;
+            .single-book-image {
+                cursor: pointer;
+                width: 300px;
+                height: 100%;
+                border-left: 1px solid $accent-1;
+                border-top: 1px solid $accent-1;
+                padding: 1rem;
+                border-radius: 25px;
+                @include breakpoint(tablet) {
+                    width: 100%;
+                }
+            }
+            @include breakpoint(tablet) {
+                //div2
+                grid-area: 1 / 1 / 5 / 5;
+                text-align: initial;
+            }
+        }
+        .single-book-rating-container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: $accent-2;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            width: 280px;
+            margin: 1rem auto;
+            box-shadow: 1px 1px 2px $font;
+
+            .single-book-avg-rating {
+                font: {
+                    size: 1.8rem;
+                }
+                margin-right: 0.2rem;
+            }
+            .single-book-rating-count {
+                margin-left: 0.2rem;
+            }
+            @include breakpoint(tablet) {
+                //div3
+                grid-area: 4 / 2 / 5 / 4;
+                width: 100%;
+                height: 100%;
+            }
+            @include breakpoint(desktop) {
+            }
+        }
+        .single-book-description-container {
+            .single-book-description {
+                background-color: $secondary;
+                padding: 1rem;
+                border-radius: 10px;
+                color: $background;
+                line-height: 1.3;
+                box-shadow: 1px 1px 2px $font;
+                font: {
+                    size: $m;
+                }
+            }
+            @include breakpoint(tablet) {
+                //div4
+                grid-area: 6 / 1 / 8 / 5;
+            }
+            @include breakpoint(desktop) {
+                grid-area: 2 / 8 / 5 / 12;
+            }
+        }
+
         .single-book-info-section {
-            grid-area: 3 / 1 / 4 / 7;
-            background: $primary;
-            box-shadow: 0 0px 10px 0 $primary;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-radius: 4px;
-            color: $background;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1fr 1px 1fr;
             grid-template-rows: repeat(4, 1fr);
-            grid-column-gap: 5px;
+            grid-column-gap: 4px;
             grid-row-gap: 5px;
             align-items: center;
+            background: $secondary;
+            border-radius: 10px;
+            color: $background;
+            margin: 1rem 0;
             padding: {
                 left: 0.5rem;
                 right: 0.5rem;
                 bottom: 1rem;
             }
+            box-shadow: 0px 0px 21px -6px rgba(0, 0, 0, 0.6);
+
             .single-book-info-section-title {
-                grid-area: 1 / 1 / 2 / 6;
+                grid-area: 1 / 1 / 2 / 4;
                 text-align: center;
                 font: {
                     size: 1.75rem;
                 }
-                @include breakpoint(tablet) {
-                    font: {
-                        size: $xl;
-                    }
-                }
+            }
+            .single-book-pagecount-count {
+                grid-area: 2 / 1 / 3 / 2;
+            }
+            .single-book-publisher {
+                grid-area: 3 / 1 / 4 / 2;
+            }
+            .single-book-first-published-date {
+                grid-area: 3 / 3 / 4 / 4;
+            }
+
+            .single-book-language {
+                grid-area: 2 / 3 / 3 / 4;
+            }
+            .isbn-ten {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+            .isbn-thirteen {
+                grid-area: 4 / 3 / 5 / 4;
             }
             .single-book-pagecount-count,
             .single-book-publisher,
@@ -112,129 +202,110 @@
             .single-book-language {
                 width: 100%;
                 padding: 0.12rem;
-                @include breakpoint(tablet) {
-                    font: {
-                        size: $l;
-                    }
-                }
             }
-            .single-book-language,
-            .isbn-ten,
-            .isbn-thirteen {
+            .single-book-pagecount-count,
+            .single-book-publisher,
+            .isbn-ten {
                 text-align: right;
             }
-            .single-book-pagecount-count {
-                grid-area: 2 / 1 / 3 / 3;
+            @include breakpoint(tablet) {
+                //div5
+                grid-area: 2 / 4 / 3 / 7;
+                width: 100%;
+                height: 100%;
             }
-            .single-book-publisher {
-                grid-area: 4 / 1 / 5 /3;
-            }
-            .single-book-first-published-date {
-                grid-area: 3 / 1 / 4 / 3;
-            }
-            .single-book-language {
-                grid-area: 2 / 3 / 3 / 5;
-            }
-            .isbn-ten {
-                grid-area: 3 / 3 / 4 / 5;
-            }
-            .isbn-thirteen {
-                grid-area: 4 / 3 / 5 / 5;
+            @include breakpoint(desktop) {
+                grid-area: 2 / 4 / 3 / 8;
+                height: 250px;
+                margin: 0;
             }
         }
-        .single-book-actions-external-link {
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            background-color: $accent-2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.5rem;
-        }
-        .single-book-actions-external-link-left {
-            border-radius: 4px;
-            grid-area: 4 / 1 / 5 / 4;
-        }
-        .single-book-actions-external-link-right {
-            border-radius: 4px;
-            grid-area: 4 / 4 / 5 / 7;
-        }
-        .single-book-add-to-lists-container {
-            grid-area: 5 / 1 / 6 / 4;
-            width: 100%;
-            height: 100%;
-        }
-        .single-book-rating-container {
-            grid-area: 5 / 4 / 6 / 7;
-            border-radius: 4px;
-            display: flex;
-            flex-wrap: wrap;
-            background-color: $accent-2;
-            justify-content: center;
-            align-items: center;
-            .single-book-avg-rating {
-                font: {
-                    size: 1.8rem;
-                }
-                margin-right: 0.2rem;
+        .single-book-actions-external-links-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 50px;
+            grid-column-gap: 5px;
+            grid-row-gap: 0px;
+            margin: 1rem 0;
+            .single-book-actions-external-link {
+                width: 100%;
+                height: 50px;
+                text-align: center;
+                background-color: $accent-2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0.5rem;
+                border-radius: 10px;
+                box-shadow: 1px 1px 2px $font;
+            }
+            .single-book-actions-external-link-left {
+                grid-area: 1 / 1 / 2 / 3;
+            }
+            .single-book-actions-external-link-right {
+                grid-area: 1 / 3 / 2 / 5;
             }
             @include breakpoint(tablet) {
-                padding: 0.3rem;
+                //div6
+                grid-area: 3 / 4 / 4 / 7;
+                width: 100%;
             }
-        }
-        @include breakpoint(tablet) {
-            grid-template-columns: 50px repeat(4, 1fr) 50px;
-            grid-template-rows: repeat(2, 1fr) 0.5fr repeat(2, 50px);
-        }
-    }
-    .single-book-description-genre-container {
-        margin: 2rem 0;
-        // .single-book-description {
-        // }
-        .single-book-genre-title {
-            margin-top: 2rem;
+            @include breakpoint(desktop) {
+                grid-area: 3 / 4 / 3 / 8;
+                margin: 0;
+            }
         }
         .single-book-genres-container {
             display: flex;
             flex-wrap: wrap;
-
+            margin-bottom: 0.5rem;
+            .single-book-genre-title {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
             .single-book-genre {
                 margin: 0.5rem;
-                padding: 0.5rem;
+                padding: 0.7rem;
                 background-color: $accent-1-alt;
-                border-radius: 4px;
-                @include breakpoint(tablet) {
-                    margin: 1.2rem;
-                }
+                border-radius: 10px;
+                box-shadow: 1px 1px 2px $font;
+            }
+            @include breakpoint(tablet) {
+                //div7
+                grid-area: 6 / 5 / 8 / 7;
+            }
+            @include breakpoint(desktop) {
+                grid-area: 2 / 12 / 5 / 15;
             }
         }
         @include breakpoint(tablet) {
-            // margin: 3rem 0;
+            display: grid;
+            grid-template-columns: repeat(4, 100px) repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr) 50px 20px auto;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            margin-top: 3rem;
         }
-    }
-    @include breakpoint(tablet) {
-        margin: {
-            left: 14rem;
-            right: 14rem;
+        @include breakpoint(desktop) {
+            grid-template-columns: repeat(4, 100px) repeat(10, 1fr);
+            grid-template-rows: 1fr auto 1fr 50px;
         }
     }
 }
 .read-or-hide {
     user-select: none;
     margin-left: 0.5rem;
-    border-radius: 4px;
-    color: #102d5b7c;
+    color: $accent-1;
     cursor: pointer;
     &:hover,
     &:focus {
-        text-decoration: underline #102d5b7c 3px;
+        text-decoration: underline 3px;
     }
 }
 .read-or-hide-spans {
     align-self: center;
-    padding: 0.5rem;
-    border-radius: 4px;
+    padding: 0.7rem;
+    border-radius: 10px;
     color: #102d5b7c;
     background-color: $background;
     user-select: none;
