@@ -52,7 +52,7 @@ const Slider = ({ slides }) => {
                                         }
                                         alt={title}
                                         // BILDGRÖßE ANPASSEN NUR SO ZUM TESTEN SO EINGESTELLT
-                                        width={"100px"}
+                                        // width={"100px"}
                                     />{" "}
                                 </article>
                                 <article className="currently-reading-slide-information">
