@@ -1,5 +1,10 @@
 @import "../../scss/styleVariables";
 
 #upload-image {
-    border: 2px solid rgb(224, 28, 224);
+    border: none;
+    background-color: $accent-2;
+    border-radius: 10px;
+    margin-top: 21rem;
+
+    padding: 0.3rem;
 }
