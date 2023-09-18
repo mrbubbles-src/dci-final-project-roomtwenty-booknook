@@ -1,98 +1,58 @@
 @import "../../scss/styleVariables";
+
+.menu-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
 .menu {
-    background: $background;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 20px;
+    background: $accent-3;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid rgb(141, 141, 141);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+    &.menu-expanded {
+        transform: translateY(0%);
+    }
     &-item {
         padding: 10px;
         border-radius: 50px;
         transition: 0.3s ease;
-
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
         .menu-icon {
             color: black;
-        }
-        .menu-item-text {
-            min-width: 0px;
-            opacity: 0;
-            font-size: 0px;
+            height: 30px;
+            width: 30px;
         }
         :hover {
             color: $accent-1;
-        }
-
-        &-text {
-            min-width: 80px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 18px;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-
-        &-icon {
-            display: inline-block;
-            text-align: center;
-            font-size: 0px;
-            .menu-icon {
-                height: 30px;
-                width: 30px;
-            }
         }
     }
 }
-.menu-bar {
-    background: $background;
+.menu-item-footer {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 20px;
-    box-shadow: 1px 1px 15px 2px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    transition: transform 0.3s ease;
-
-    .menu-item {
-        padding: 10px;
-        border-radius: 50px;
-        transition: 0.3s ease;
-
-        .menu-icon {
-            color: black;
+    flex-flow: column;
+    grid-row: 2/3;
+    grid-column: 1 / 6;
+    margin: 10px;
+    .footer-links {
+        font: {
+            family: text-bold;
         }
-
-        .menu-item-text {
-            min-width: 0px;
-            opacity: 0;
-            font-size: 0px;
-        }
-
-        :hover {
-            color: $accent-1;
-        }
-
-        &-text {
-            min-width: 80px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 18px;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-
-        &-icon {
-            display: inline-block;
-            text-align: center;
-            font-size: 0px;
-
-            .menu-icon {
-                height: 30px;
-                width: 30px;
-            }
-        }
+    }
+    :hover {
+        color: $accent-1;
+        text-decoration: underline;
     }
 }

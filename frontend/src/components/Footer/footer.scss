@@ -3,12 +3,15 @@
 .footer-container {
     padding: 5px;
     height: 45px;
-    margin-top: 10px;
     background-color: #102d5b;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     margin-bottom: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .footer-links {
         font: {
             family: text-bold, sans-serif;

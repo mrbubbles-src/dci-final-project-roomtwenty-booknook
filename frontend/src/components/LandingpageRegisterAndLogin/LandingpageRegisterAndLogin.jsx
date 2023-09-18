@@ -63,9 +63,9 @@ const LandingpageRegisterAndLogin = () => {
                         alt=''
                     />
                 </article>
-                <button className='btn-ticket' onClick={handleLoginClick}>
+                {/* <button className='btn-ticket' onClick={handleLoginClick}>
                     Hier ist dein Ticket!
-                </button>
+                </button> */}
             </section>
         </>
     );
