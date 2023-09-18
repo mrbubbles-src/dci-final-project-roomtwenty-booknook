@@ -21,10 +21,17 @@ const BookSearch = ({ amountShown }) => {
                         title,
                         subtitle,
                         authors,
-                        imageLinks,
+
                         averageRating,
                         ratingsCount,
                     } = book.volumeInfo || {};
+                    const {
+                        smallThumbnail,
+                        thumbnail,
+                        medium,
+                        large,
+                        extraLarge,
+                    } = book.volumeInfo.imageLinks || {};
                     const { textSnippet } = book.searchInfo || {};
                     return (
                         <div className="card-container" key={index}>
@@ -34,7 +41,15 @@ const BookSearch = ({ amountShown }) => {
                             >
                                 <img
                                     className="card-image"
-                                    src={imageLinks?.thumbnail || NoImage}
+                                    src={
+                                        (
+                                            extraLarge ||
+                                            large ||
+                                            medium ||
+                                            thumbnail ||
+                                            smallThumbnail
+                                        )?.replace("http", "https") || NoImage
+                                    }
                                     alt={title}
                                 />
                             </Link>
