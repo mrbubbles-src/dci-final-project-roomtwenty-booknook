@@ -23,7 +23,7 @@ const ThumbnailSlider = ({ slides }) => {
             // onSwiper={(swiper) => console.log(swiper)}
         >
             {slides.map((slide, index) => {
-                const { smallThumbnail, medium } =
+                const { smallThumbnail, medium, large, extralarge } =
                     slide.bookdetails.volumeInfo.imageLinks || {};
                 const { title, authors } = slide.bookdetails.volumeInfo;
                 return (
@@ -38,11 +38,12 @@ const ThumbnailSlider = ({ slides }) => {
                                         <img
                                             className="listen-book-cover"
                                             src={
-                                                smallThumbnail ||
-                                                medium?.replace(
-                                                    "http",
-                                                    "https"
-                                                ) ||
+                                                (
+                                                    extralarge ||
+                                                    large ||
+                                                    medium ||
+                                                    smallThumbnail
+                                                )?.replace("http", "https") ||
                                                 NoImage
                                             }
                                             alt={slide.bookdetails.volumeInfo}
