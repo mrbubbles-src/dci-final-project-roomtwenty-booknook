@@ -1,25 +1,43 @@
 @import "../../scss/styleVariables";
-
-.listen-book-cover {
-    width: 125px;
-    height: 175px;
-    margin-top: 15px;
-    @include breakpoint(tablet) {
-        width: 100%;
-        height: 300px;
-        margin-left: 5px;
+.thumbnail-slide-container {
+    // background-color: black;
+    @include breakpoint(desktop) {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
     }
-}
-.listen-book-info {
-    .tns-title,
-    .tns-author {
-        display: none;
+    .listen-book-cover {
+        width: 125px;
+        height: 175px;
+        margin-top: 15px;
+        -webkit-box-shadow: 2px 2px 10px 0 #000000;
+        box-shadow: 2px 2px 10px 0 #000000;
         @include breakpoint(tablet) {
-            display: inline-block;
+            width: 100%;
+            height: 330px;
+        }
+        @include breakpoint(desktop) {
+            width: auto;
         }
     }
-    @include breakpoint(tablet) {
-        flex-flow: column;
-        text-align: left;
+    .listen-book-info {
+        .tns-title,
+        .tns-author {
+            color: $background;
+            display: none;
+            @include breakpoint(tablet) {
+                display: inline-block;
+            }
+        }
+        .tns-title {
+            font: {
+                size: 2.1vw;
+            }
+        }
+        .tns-author {
+            font: {
+                size: 1.6vw;
+            }
+        }
     }
 }

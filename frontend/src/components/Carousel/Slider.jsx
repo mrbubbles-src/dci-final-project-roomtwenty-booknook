@@ -59,8 +59,11 @@ const Slider = ({ slides }) => {
                                     />{" "}
                                 </article>
                                 <article className="currently-reading-slide-information">
-                                    <h4> {title || "Unbekannter Titel"}</h4>
-                                    <h4>
+                                    <h4 className="currently-reading-title">
+                                        {" "}
+                                        {title || "Unbekannter Titel"}
+                                    </h4>
+                                    <h4 className="currently-reading-author">
                                         {(authors &&
                                             authors.join(
                                                 authors.length === 1
