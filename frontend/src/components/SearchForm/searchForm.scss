@@ -2,10 +2,8 @@
 .search-section {
     // border: 1px solid blue;
     background-color: $background;
-    // min-height: 29.8rem;
     display: flex;
     margin-bottom: 5px;
-    align-items: center;
     flex: {
         direction: column;
     }
@@ -26,7 +24,7 @@
         }
         justify-content: center;
         align-items: center;
-        margin: 1rem 2rem;
+        margin: 1rem 0;
         padding: 0 1rem;
 
         #searchbar {
@@ -70,11 +68,18 @@
     }
     .search-results-container {
         // border: 1px solid green;
-        // width: 100%;
         margin: 0 0.3em;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+
+        @include breakpoint(tablet) {
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: center;
+        }
+    }
+    @include breakpoint(tablet) {
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
     }
 }
 
@@ -86,6 +91,7 @@
                 size: $xl;
             }
         }
+
         .searchbar-form {
             height: 7rem;
             #searchbar {
