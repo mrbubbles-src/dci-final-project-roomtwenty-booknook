@@ -71,9 +71,11 @@ const Slider = ({ slides }) => {
                                     </h4>
 
                                     <aside className="currently-reading-progress">
-                                        <h5>Fortschritt</h5>{" "}
+                                        <h5 className="currently-reading-progress-title">
+                                            Fortschritt
+                                        </h5>{" "}
                                         <div className="fakebar">
-                                            <p>
+                                            <p className="currently-reading-progress-count">
                                                 Seite{" "}
                                                 {currentPageProgress ||
                                                     currentPage}{" "}
