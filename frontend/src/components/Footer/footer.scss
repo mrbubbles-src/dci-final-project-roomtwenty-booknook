@@ -4,12 +4,14 @@
     padding: 5px;
     height: 45px;
     background-color: #102d5b;
-    // HIER EINBLENDEN
-    display: none;
-    // HIER EINBLENDEN
-    justify-content: space-around;
-    align-items: center;
     margin-bottom: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .footer-links {
         font: {
             family: text-bold, sans-serif;

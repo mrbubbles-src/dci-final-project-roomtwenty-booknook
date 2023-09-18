@@ -23,7 +23,8 @@ const MenuBar = () => {
         toast.info(toolTipText, { autoClose: 2000 });
     };
 
-    const handleExtraContentClick = () => {
+    const handleExtraContentClick = (e) => {
+        e.preventDefault();
         setIsContentActive(!isContentActive);
     };
 
@@ -91,8 +92,7 @@ const MenuBar = () => {
                             </div>
                         </NavLink>
                         {isContentActive && (
-                            <div className='flex-in-grid'>
-                                {" "}
+                            <div className='menu-item-footer'>
                                 <NavLink
                                     to={"./About"}
                                     className='footer-links'
