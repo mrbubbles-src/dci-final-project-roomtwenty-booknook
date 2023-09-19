@@ -98,11 +98,13 @@ const Slider = ({ slides }) => {
                                         />
                                         <p className="progress-xp-percent">
                                             <span className="progress-xp-percent-count">
-                                                {Math.floor(
-                                                    ((currentPage || 0) /
-                                                        pageCount) *
-                                                        100
-                                                )}
+                                                <strong>
+                                                    {Math.floor(
+                                                        ((currentPage || 0) /
+                                                            pageCount) *
+                                                            100
+                                                    )}
+                                                </strong>
                                             </span>{" "}
                                             % bereits gelesen
                                         </p>
