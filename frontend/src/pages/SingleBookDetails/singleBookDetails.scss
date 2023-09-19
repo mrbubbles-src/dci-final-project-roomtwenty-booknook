@@ -17,7 +17,7 @@
                 size: 6.8vw;
             }
             text-decoration: underline;
-            text-decoration-color: $accent-1;
+            text-decoration-color: $accent-2;
             @include breakpoint(tablet) {
                 font: {
                     size: 5vw;
@@ -111,7 +111,7 @@
             width: 280px;
             margin: 1rem auto;
             box-shadow: 1px 1px 2px $font;
-
+            color: $background;
             .single-book-avg-rating {
                 font: {
                     size: 1.8rem;
@@ -238,6 +238,7 @@
                 padding: 0.5rem;
                 border-radius: 10px;
                 box-shadow: 1px 1px 2px $font;
+                color: $background;
             }
             .single-book-actions-external-link-left {
                 grid-area: 1 / 1 / 2 / 3;
@@ -269,6 +270,7 @@
                 background-color: $accent-1-alt;
                 border-radius: 10px;
                 box-shadow: 1px 1px 2px $font;
+                // color: $background;
             }
             @include breakpoint(tablet) {
                 //div7

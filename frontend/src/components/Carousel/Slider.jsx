@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Pagination, A11y } from "swiper/modules";
 import React, { useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import NoImage from "../../../public/images/various/no-image.png";
@@ -6,9 +6,7 @@ import Modal from "../Modal/Modal";
 import { BookNookContext } from "../../context/BookNookProvider";
 import "./carousel.scss";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import LeseFortschritt from "../UserProfilContent/CurrentlyReadingCard/LeseFortschritt/LeseFortschritt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
@@ -20,14 +18,10 @@ const Slider = ({ slides }) => {
     const handleCloseEditModal = () => setShowEditModal(false);
     return (
         <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Pagination, A11y]}
             spaceBetween={0}
             slidesPerView={1}
-            // navigation // pfeile funktionieren mobil nicht
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            // onSlideChange={() => console.log("slide change")}
-            // onSwiper={(swiper) => console.log(swiper)}
         >
             {slides &&
                 slides.map((slide, index) => {

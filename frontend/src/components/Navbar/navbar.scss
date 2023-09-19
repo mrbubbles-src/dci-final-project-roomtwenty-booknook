@@ -17,7 +17,7 @@
         size: $xl;
     }
     .logo-text {
-        color: $accent-2;
+        color: $background;
     }
     .logo-container {
         grid-column: 2;
@@ -49,13 +49,13 @@
 
     .btn-login {
         background: none;
-        border: 2px solid $accent-2;
+        border: 2px solid $background;
         border-radius: 50px;
         cursor: pointer;
         font: {
             size: $m;
         }
-        color: $accent-2;
+        color: $background;
         padding: 8px;
     }
     .heading-login {
