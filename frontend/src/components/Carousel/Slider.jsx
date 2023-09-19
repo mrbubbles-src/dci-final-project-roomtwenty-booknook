@@ -77,7 +77,7 @@ const Slider = ({ slides }) => {
                                                 {currentPageProgress ||
                                                     currentPage}{" "}
                                                 von {pageCount}{" "}
-                                                <span>
+                                                <span className="pencil-icon">
                                                     <FontAwesomeIcon
                                                         icon={faPencil}
                                                         onClick={
