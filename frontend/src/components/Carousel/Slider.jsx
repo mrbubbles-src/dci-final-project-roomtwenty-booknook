@@ -1,12 +1,13 @@
 import { Pagination, A11y } from "swiper/modules";
 import React, { useState, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ProgressBar from "@ramonak/react-progress-bar";
 import NoImage from "../../../public/images/various/no-image.png";
 import Modal from "../Modal/Modal";
 import { BookNookContext } from "../../context/BookNookProvider";
+import "swiper/scss";
+import "swiper/scss/pagination";
 import "./carousel.scss";
-import "swiper/css";
-import "swiper/css/pagination";
 import LeseFortschritt from "../UserProfilContent/CurrentlyReadingCard/LeseFortschritt/LeseFortschritt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
@@ -48,8 +49,6 @@ const Slider = ({ slides }) => {
                                             NoImage
                                         }
                                         alt={title}
-                                        // BILDGRÖßE ANPASSEN NUR SO ZUM TESTEN SO EINGESTELLT
-                                        // width={"100px"}
                                     />{" "}
                                 </article>
                                 <article className="currently-reading-slide-information">
@@ -66,32 +65,49 @@ const Slider = ({ slides }) => {
                                             )) ||
                                             "Unbekannter Autor"}
                                     </h4>
-
-                                    <aside className="currently-reading-progress">
-                                        <h5 className="currently-reading-progress-title">
-                                            Fortschritt
-                                        </h5>{" "}
-                                        <div className="fakebar">
-                                            <p className="currently-reading-progress-count">
-                                                Seite{" "}
-                                                {currentPageProgress ||
-                                                    currentPage}{" "}
-                                                von {pageCount}{" "}
-                                                <span className="pencil-icon">
-                                                    <FontAwesomeIcon
-                                                        icon={faPencil}
-                                                        onClick={
-                                                            handleShowEditModal
-                                                        }
-                                                    />
-                                                </span>
-                                            </p>
-                                        </div>
-                                        {/* <button onClick={handleShowEditModal}>
-                                            Edit
-                                        </button> */}
-                                    </aside>
                                 </article>
+                                <aside className="currently-reading-progress">
+                                    <aside className="progress-info-container">
+                                        <h5 className="currently-reading-progress-title">
+                                            Buchfortschritt
+                                        </h5>{" "}
+                                        <p className="currently-reading-progress-count">
+                                            Seite {currentPage} von {pageCount}{" "}
+                                            <span className="pencil-icon">
+                                                <FontAwesomeIcon
+                                                    icon={faPencil}
+                                                    onClick={
+                                                        handleShowEditModal
+                                                    }
+                                                />
+                                            </span>
+                                        </p>
+                                    </aside>
+                                    <div className="progress-xp-bar-container">
+                                        <ProgressBar
+                                            completed={Math.floor(
+                                                ((currentPage || 0) /
+                                                    pageCount) *
+                                                    100
+                                            )}
+                                            animateOnRender={true}
+                                            isLabelVisible={false}
+                                            bgColor="#02c1c2"
+                                            baseBgColor="#102d5b"
+                                            // margin="5px 0 10px 0"
+                                        />
+                                        <p className="progress-xp-percent">
+                                            <span className="progress-xp-percent-count">
+                                                {Math.floor(
+                                                    ((currentPage || 0) /
+                                                        pageCount) *
+                                                        100
+                                                )}
+                                            </span>{" "}
+                                            % bereits gelesen
+                                        </p>
+                                    </div>
+                                </aside>
                             </div>
                             {showEditModal && (
                                 <Modal onClose={handleCloseEditModal}>
