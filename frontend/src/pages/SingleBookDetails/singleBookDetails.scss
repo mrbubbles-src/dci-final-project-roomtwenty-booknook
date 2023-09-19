@@ -111,7 +111,7 @@
             width: 280px;
             margin: 1rem auto;
             box-shadow: 1px 1px 2px $font;
-            color: $background;
+            color: $font-alt;
             .single-book-avg-rating {
                 font: {
                     size: 1.8rem;
@@ -132,10 +132,10 @@
         }
         .single-book-description-container {
             .single-book-description {
-                background-color: $secondary;
+                background-color: $primary;
                 padding: 1rem;
                 border-radius: 10px;
-                color: $background;
+                color: $font-alt;
                 line-height: 1.3;
                 box-shadow: 1px 1px 2px $font;
                 font: {
@@ -158,9 +158,9 @@
             grid-column-gap: 4px;
             grid-row-gap: 5px;
             align-items: center;
-            background: $secondary;
+            background: $primary;
             border-radius: 10px;
-            color: $background;
+            color: $font-alt;
             margin: 1rem 0;
             padding: {
                 left: 0.5rem;
@@ -238,7 +238,7 @@
                 padding: 0.5rem;
                 border-radius: 10px;
                 box-shadow: 1px 1px 2px $font;
-                color: $background;
+                color: $font-alt;
             }
             .single-book-actions-external-link-left {
                 grid-area: 1 / 1 / 2 / 3;
@@ -270,7 +270,7 @@
                 background-color: $accent-1-alt;
                 border-radius: 10px;
                 box-shadow: 1px 1px 2px $font;
-                // color: $background;
+                // color: $font-alt;
             }
             @include breakpoint(tablet) {
                 //div7
@@ -309,13 +309,13 @@
     padding: 0.7rem;
     border-radius: 10px;
     color: #102d5b7c;
-    background-color: $background;
+    background-color: $font-alt;
     user-select: none;
     cursor: pointer;
     transition: all ease-in-out 200ms;
     &:hover,
     &:focus {
-        color: $background;
+        color: $font-alt;
         background-color: #102d5b7c;
         transition: all ease-in-out 200ms;
         -webkit-box-shadow: 0px 0px 7px -3px $font;

@@ -23,7 +23,7 @@
     .listen-book-info {
         .tns-title,
         .tns-author {
-            color: $background;
+            color: $font-alt;
             display: none;
             @include breakpoint(tablet) {
                 display: inline-block;

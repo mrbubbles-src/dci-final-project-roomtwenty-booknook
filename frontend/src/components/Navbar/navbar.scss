@@ -17,7 +17,7 @@
         size: $xl;
     }
     .logo-text {
-        color: $background;
+        color: $font-alt;
     }
     .logo-container {
         grid-column: 2;
@@ -36,7 +36,7 @@
         justify-content: center;
         .btn-modal-login {
             width: 180px;
-            background: $secondary;
+            background: $primary;
             border: none;
             border-radius: 20px;
             color: $accent-2;
@@ -55,7 +55,7 @@
         font: {
             size: $m;
         }
-        color: $background;
+        color: $font-alt;
         padding: 8px;
     }
     .heading-login {

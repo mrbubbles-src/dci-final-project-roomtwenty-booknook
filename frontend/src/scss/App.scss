@@ -17,7 +17,7 @@ body {
         family: text-regular, sans-serif;
     }
     color: $font;
-    background-color: $background;
+    background-color: $font-alt;
 }
 
 h1,
@@ -50,7 +50,7 @@ a {
         direction: column;
     }
     border-radius: 20px;
-    background-color: $secondary;
+    background-color: $primary;
     margin: 0.5rem;
     padding: 1em;
     -webkit-box-shadow: 0px 0px 5px 2px #00000037;
@@ -86,6 +86,7 @@ a {
         margin: 1rem auto 0.1rem auto;
         padding: 0.5rem;
         box-shadow: 1px 1px 2px $font;
+        color: $font-alt;
         .card-avg-rating {
             margin-right: 0.5rem;
         }
@@ -105,7 +106,7 @@ a {
         .card-subtitle,
         .card-author,
         .card-infotext {
-            color: $background;
+            color: $font-alt;
             @include breakpoint(tablet) {
                 align-self: center;
             }
@@ -230,5 +231,5 @@ a {
     // border: 3px solid black;
     border-radius: 25px;
     margin: 1rem;
-    background-color: $secondary;
+    background-color: $primary;
 }

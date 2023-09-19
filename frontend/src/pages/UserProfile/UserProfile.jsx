@@ -64,7 +64,7 @@ const UserProfile = () => {
 
     return (
         <>
-            {/* <div className="user-profile-card user-statistic-container">
+            <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     readingRank={readingRank}
                     alreadyRead={alreadyRead}
@@ -73,7 +73,7 @@ const UserProfile = () => {
                     readingChallengeCurrent={readingChallengeCurrent}
                     readingLevel={readingLevel}
                 />
-            </div> */}
+            </div>
             <h4 className="user-profile-title">
                 Liest derzeit{" "}
                 <span className="user-profile-title-number">

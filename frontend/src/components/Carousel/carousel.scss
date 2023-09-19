@@ -1,4 +1,4 @@
-@import "../../scss//styleVariables";
+@import "../../scss/styleVariables";
 .currently-reading-slide-container-grid {
     gap: 10px;
     width: 100%;
@@ -62,7 +62,7 @@
         }
         .currently-reading-title,
         .currently-reading-author {
-            color: $background;
+            color: $font-alt;
         }
 
         .currently-reading-title {
