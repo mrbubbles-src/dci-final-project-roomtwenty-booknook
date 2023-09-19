@@ -63,15 +63,15 @@ const UserProfile = () => {
     } = userdata || {};
 
     return (
-        <>
+        <div className="user-profile-container">
             {/* <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
-                    readingRank={readingRank}
-                    alreadyRead={alreadyRead}
-                    username={username}
-                    profileImage={profileImage}
-                    readingChallengeCurrent={readingChallengeCurrent}
-                    readingLevel={readingLevel}
+                readingRank={readingRank}
+                alreadyRead={alreadyRead}
+                username={username}
+                profileImage={profileImage}
+                readingChallengeCurrent={readingChallengeCurrent}
+                readingLevel={readingLevel}
                 />
             </div> */}
             <h4 className="user-profile-title">
@@ -104,7 +104,7 @@ const UserProfile = () => {
             <div className="user-profile-card already-read-container">
                 <ReadCard alreadyRead={alreadyRead} />
             </div>
-        </>
+        </div>
     );
 };
 
