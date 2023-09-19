@@ -14,7 +14,6 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 const Slider = ({ slides }) => {
     const [showEditModal, setShowEditModal] = useState(false);
-    const { currentPageProgress } = useContext(BookNookContext);
     const handleShowEditModal = () => setShowEditModal(true);
     const handleCloseEditModal = () => setShowEditModal(false);
     return (

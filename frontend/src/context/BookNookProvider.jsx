@@ -9,7 +9,6 @@ const BookNookProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [readingGoal, setReadingGoal] = useState(0);
     const [readingGoalProgress, setReadingGoalProgress] = useState(0);
-    const [currentPageProgress, setCurrentPageProgress] = useState(0);
     const [profileImageUploadPreview, setProfileImageUploadPreview] = useState({
         preview: "",
         raw: "",
@@ -22,7 +21,6 @@ const BookNookProvider = ({ children }) => {
     const [showModal, setShowModal] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(true);
     const [isRead, setIsRead] = useState(false);
-
 
     useEffect(() => {
         if (searchTerm !== null) {
@@ -95,8 +93,6 @@ const BookNookProvider = ({ children }) => {
                 setReadingGoal,
                 readingGoalProgress,
                 setReadingGoalProgress,
-                currentPageProgress,
-                setCurrentPageProgress,
                 isRead,
                 setIsRead,
             }}
