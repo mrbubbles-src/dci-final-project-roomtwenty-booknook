@@ -9,6 +9,7 @@ const BookNookProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [readingGoal, setReadingGoal] = useState(0);
     const [readingGoalProgress, setReadingGoalProgress] = useState(0);
+    const [currentPageProgress, setCurrentPageProgress] = useState(0);
     const [profileImageUploadPreview, setProfileImageUploadPreview] = useState({
         preview: "",
         raw: "",
@@ -93,6 +94,8 @@ const BookNookProvider = ({ children }) => {
                 setReadingGoal,
                 readingGoalProgress,
                 setReadingGoalProgress,
+                currentPageProgress,
+                setCurrentPageProgress,
                 isRead,
                 setIsRead,
             }}
