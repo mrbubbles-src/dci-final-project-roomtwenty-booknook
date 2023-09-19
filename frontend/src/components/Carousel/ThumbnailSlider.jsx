@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import NoImage from "../../../public/images/various/no-image.png";
-// import "./carousel.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./thumbNailSlider.scss";
