@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-// import "./ReadCard.scss";
+import React from "react";
 import ThumbnailSlider from "../../Carousel/ThumbnailSlider";
-import "../../Carousel/carousel.scss";
 
 const ReadCard = ({ alreadyRead }) => {
     return alreadyRead.length !== 0 ? (
