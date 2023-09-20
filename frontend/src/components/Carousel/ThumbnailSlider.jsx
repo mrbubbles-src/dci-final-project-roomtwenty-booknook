@@ -1,42 +1,38 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Pagination, A11y } from "swiper/modules";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import NoImage from "../../../public/images/various/no-image.png";
+import "swiper/scss";
+import "swiper/scss/pagination";
 import "./carousel.scss";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "./thumbNailSlider.scss";
+// import "./thumbNailSlider.scss";
 
 const ThumbnailSlider = ({ slides }) => {
     return (
         <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Pagination, A11y]}
             spaceBetween={0}
-            slidesPerView={2}
-            // navigation
+            slidesPerView={1}
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            // onSlideChange={() => console.log("slide change")}
-            // onSwiper={(swiper) => console.log(swiper)}
         >
-            {slides.map((slide, index) => {
-                const { smallThumbnail, medium, large, extralarge } =
-                    slide.bookdetails.volumeInfo.imageLinks || {};
-                const { title, authors } = slide.bookdetails.volumeInfo;
-                return (
-                    <SwiperSlide key={index}>
-                        <div className="thumbnail-slide-container">
-                            <div>
-                                <div className="listen-book-cover-container">
+            {slides &&
+                slides.map((slide, index) => {
+                    const singlePageID = slide.bookdetails.id;
+                    const { smallThumbnail, medium, large, extralarge } =
+                        slide.bookdetails.volumeInfo.imageLinks || {};
+                    const { title, authors } = slide.bookdetails.volumeInfo;
+
+                    return (
+                        <SwiperSlide key={index}>
+                            <div className="currently-reading-slide-container-grid">
+                                <article className="currently-reading-slide-image-container">
                                     <Link
                                         className="card-image-anchor-tag"
-                                        to={`/buch/${slide.bookdetails.id}`}
+                                        to={`/buch/${singlePageID}`}
                                     >
                                         <img
-                                            className="listen-book-cover"
+                                            className="liest-derzeit-cover"
                                             src={
                                                 (
                                                     extralarge ||
@@ -46,14 +42,16 @@ const ThumbnailSlider = ({ slides }) => {
                                                 )?.replace("http", "https") ||
                                                 NoImage
                                             }
-                                            alt={slide.bookdetails.volumeInfo}
+                                            alt={title}
                                         />{" "}
                                     </Link>
-                                </div>
-                                <div className="listen-book-info">
-                                    <h5> {title || "Unbekannter Titel"}</h5>
-                                    <br />
-                                    <h5>
+                                </article>
+                                <article className="currently-reading-slide-information">
+                                    <h4 className="currently-reading-title">
+                                        {" "}
+                                        {title || "Unbekannter Titel"}
+                                    </h4>
+                                    <h4 className="currently-reading-author">
                                         {(authors &&
                                             authors.join(
                                                 authors.length === 1
@@ -61,14 +59,120 @@ const ThumbnailSlider = ({ slides }) => {
                                                     : " & "
                                             )) ||
                                             "Unbekannter Autor"}
-                                    </h5>
+                                    </h4>
+                                </article>
+                                {/* <aside className="currently-reading-progress">
+                                <aside className="progress-info-container">
+                                    <h5 className="currently-reading-progress-title">
+                                        Buchfortschritt
+                                    </h5>{" "}
+                                    <p className="currently-reading-progress-count">
+                                        Seite {currentPage} von {pageCount}{" "}
+                                        <span className="pencil-icon">
+                                            <FontAwesomeIcon
+                                                icon={faPencil}
+                                                onClick={
+                                                    handleShowEditModal
+                                                }
+                                            />
+                                        </span>
+                                    </p>
+                                </aside>
+                                <div className="progress-xp-bar-container">
+                                    <ProgressBar
+                                        completed={Math.floor(
+                                            ((currentPage || 0) /
+                                                pageCount) *
+                                                100
+                                        )}
+                                        animateOnRender={true}
+                                        isLabelVisible={false}
+                                        bgColor="#02c1c2"
+                                        baseBgColor="#102d5b"
+                                        // margin="5px 0 10px 0"
+                                    />
+                                    <p className="progress-xp-percent">
+                                        <span className="progress-xp-percent-count">
+                                            <strong>
+                                                {Math.floor(
+                                                    ((currentPage || 0) /
+                                                        pageCount) *
+                                                        100
+                                                )}
+                                            </strong>
+                                        </span>{" "}
+                                        % bereits gelesen
+                                    </p>
                                 </div>
+                            </aside> */}
                             </div>
-                        </div>
-                    </SwiperSlide>
-                );
-            })}
+                            {/* {showEditModal && (
+                            <Modal onClose={handleCloseEditModal}>
+                                <LeseFortschritt
+                                    bookID={`${slide.book}`}
+                                    singlePageID={singlePageID}
+                                    pageCount={pageCount}
+                                />
+                            </Modal>
+                        )} */}
+                        </SwiperSlide>
+                    );
+                })}
         </Swiper>
+        // <Swiper
+        //     modules={[Pagination, A11y]}
+        //     spaceBetween={0}
+        //     slidesPerView={2}
+        //     pagination={{ clickable: true }}
+        // >
+        //     {slides.map((slide, index) => {
+        //         const { smallThumbnail, medium, large, extralarge } =
+        //             slide.bookdetails.volumeInfo.imageLinks || {};
+        //         const { title, authors } = slide.bookdetails.volumeInfo;
+        //         return (
+        //             <SwiperSlide key={index}>
+        //                 <div className="currently-reading-slide-container-grid">
+        //                     <di className="currently-reading-slide-image-container">
+        //                         <Link
+        //                             className="card-image-anchor-tag"
+        //                             to={`/buch/${slide.bookdetails.id}`}
+        //                         >
+        //                             <img
+        //                                 className="liest-derzeit-cover"
+        //                                 src={
+        //                                     (
+        //                                         extralarge ||
+        //                                         large ||
+        //                                         medium ||
+        //                                         smallThumbnail
+        //                                     )?.replace("http", "https") ||
+        //                                     NoImage
+        //                                 }
+        //                                 alt={slide.bookdetails.volumeInfo}
+        //                             />{" "}
+        //                         </Link>
+        //                         <div className="listen-book-info">
+        //                             <h5 className="tns-title">
+        //                                 {" "}
+        //                                 {title || "Unbekannter Titel"}
+        //                             </h5>
+        //                             <br />
+        //                             <h5 className="tns-author">
+        //                                 {(authors &&
+        //                                     authors.join(
+        //                                         authors.length === 1
+        //                                             ? ""
+        //                                             : " & "
+        //                                     )) ||
+        //                                     "Unbekannter Autor"}
+        //                             </h5>
+        //                         </div>
+        //                     </di>
+        //                 </div>
+        //             </SwiperSlide>
+        //         );
+        //     })}
+        // </Swiper>
     );
 };
 

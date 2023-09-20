@@ -42,7 +42,7 @@ $delay: calc($duration/6);
     width: 40px;
     height: 120px;
     opacity: 0;
-    background-color: $secondary;
+    background-color: $primary;
     border: $thickness solid $accent-1;
     transform-origin: bottom left;
     transform: translateX(300px);
@@ -194,7 +194,7 @@ $delay: calc($duration/6);
         position: absolute;
         width: 100%;
         height: 100%;
-        @include polka(10px, 30%, $secondary, $accent-1);
+        @include polka(10px, 30%, $primary, $accent-1);
         top: 200%;
         left: 7.6%;
 

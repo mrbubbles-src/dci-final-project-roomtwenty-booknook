@@ -23,7 +23,6 @@ const BookNookProvider = ({ children }) => {
     const [isLoginVisible, setIsLoginVisible] = useState(true);
     const [isRead, setIsRead] = useState(false);
 
-
     useEffect(() => {
         if (searchTerm !== null) {
             async function fetchData() {

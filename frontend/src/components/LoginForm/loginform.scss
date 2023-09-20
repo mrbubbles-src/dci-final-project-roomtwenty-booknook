@@ -6,7 +6,7 @@
     .heading-login {
         font-size: $xxl;
         font-family: headings-medium;
-        color: $secondary;
+        color: $primary;
     }
     .formInput {
         align-self: center;
@@ -22,7 +22,7 @@
 
         .btn-modal-login {
             width: 180px;
-            background: $secondary;
+            background: $primary;
             border: none;
             border-radius: 20px;
             color: $accent-2;

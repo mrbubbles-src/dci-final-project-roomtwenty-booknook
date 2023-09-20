@@ -55,6 +55,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
                 }
             );
             const responsemsg = await response.json();
+            setIsRead(!isRead);
             // console.log(responsemsg);
         } catch (error) {
             throw new Error(error);
