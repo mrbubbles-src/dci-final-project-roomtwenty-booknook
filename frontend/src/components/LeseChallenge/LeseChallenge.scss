@@ -6,21 +6,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    &-title {
-        font: {
-            size: 7vw;
-        }
-    }
+    // &-title {
+    // font: {
+    // size: 7vw;
+    // }
+    // }
     &-ziel-text {
         margin: 1rem;
         width: 70%;
         // text-align: center;
-        font: {
-            size: 5vw;
-        }
+        // font: {
+        // size: 5vw;
+        // }
         .lese-challenge-number {
             color: $accent-1;
         }
+        // @include breakpoint(tablet) {
+        // }
     }
     &-input-container {
         &-input {
@@ -31,7 +33,7 @@
             padding: 0 0.5em;
             text-align: center;
             font: {
-                size: $l;
+                size: $m;
                 family: text-bold, sans-serif;
             }
             &::placeholder {
