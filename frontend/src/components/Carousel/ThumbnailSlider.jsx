@@ -25,14 +25,14 @@ const ThumbnailSlider = ({ slides }) => {
 
                     return (
                         <SwiperSlide key={index}>
-                            <div className="currently-reading-slide-container-grid">
-                                <article className="currently-reading-slide-image-container">
+                            <div className="slide-container-grid">
+                                <article className="slide-image-container">
                                     <Link
                                         className="card-image-anchor-tag"
                                         to={`/buch/${singlePageID}`}
                                     >
                                         <img
-                                            className="liest-derzeit-cover"
+                                            className="cover-image"
                                             src={
                                                 (
                                                     extralarge ||
@@ -46,12 +46,12 @@ const ThumbnailSlider = ({ slides }) => {
                                         />{" "}
                                     </Link>
                                 </article>
-                                <article className="currently-reading-slide-information">
-                                    <h4 className="currently-reading-title">
+                                <article className="book-slide-information">
+                                    <h4 className="book-slide-information-title">
                                         {" "}
                                         {title || "Unbekannter Titel"}
                                     </h4>
-                                    <h4 className="currently-reading-author">
+                                    <h4 className="book-slide-information-author">
                                         {(authors &&
                                             authors.join(
                                                 authors.length === 1
