@@ -5,7 +5,7 @@ import "../UserStatistic/userstatistic.scss";
 
 const LevelExpBar = ({ xpProzent }) => {
     return (
-        <div className="expLevel">
+        <div className="expbar">
             <ProgressBar
                 bgColor="#fcd8be"
                 baseBgColor="#554945"
