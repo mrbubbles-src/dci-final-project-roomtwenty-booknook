@@ -6,29 +6,34 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     align-items: center;
+    height: 100%;
     .grid-container-1 {
         padding-top: 4px;
         grid-row: 1/4;
         grid-column: 1/2;
         justify-content: center;
         align-items: center;
+        margin: 0.5rem;
         .user-infocard-container-image {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             &-avatar {
                 object-fit: cover;
                 object-position: center;
-                border-radius: 100px;
-                border: 2px solid blue;
+                border-radius: 50%;
+                border: 2px solid $accent-1;
                 width: 150px;
                 height: 150px;
+                cursor: pointer;
             }
         }
     }
     .grid-container-2 {
         grid-column: 2 /4;
         grid-row: 1/4;
+        margin: 0.5rem;
         .username-container {
             align-self: flex-end;
             &-name {

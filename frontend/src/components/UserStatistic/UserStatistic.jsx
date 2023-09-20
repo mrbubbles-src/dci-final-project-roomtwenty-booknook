@@ -57,6 +57,17 @@ const UserStatistic = ({
                         <LevelExpBar
                             xpProzent={(alreadyReadLength % 3) * 33.3 || 1}
                         />
+                        <p className="level-progress-xp-percent">
+                            Levelfortschritt:{" "}
+                            <span className="progress-xp-percent-count">
+                                <strong>
+                                    {Math.floor(
+                                        (alreadyReadLength % 3) * 33.3 || 1
+                                    )}
+                                </strong>
+                            </span>{" "}
+                            %
+                        </p>
                     </div>
                     {/* CHALLENGE, i guess?! */}
                     <article className="user-statistic-challenge-container">
@@ -77,6 +88,7 @@ const UserStatistic = ({
                             {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
                             <span>
                                 <FontAwesomeIcon
+                                    className="pencil-icon"
                                     icon={faPencil}
                                     onClick={handleShowLeseChallengeModal}
                                 />
