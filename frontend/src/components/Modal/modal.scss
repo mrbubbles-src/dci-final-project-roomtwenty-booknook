@@ -14,7 +14,7 @@
     .modal-btn-container {
         display: flex;
         justify-content: flex-end;
-        background-color: $secondary;
+        background-color: $primary;
         border-radius: 15px 15px 0 0;
         padding: 10px 2px;
     }
@@ -27,9 +27,9 @@
         padding-bottom: 15px;
 
         .btn-close {
-            background-color: $secondary;
+            background-color: $primary;
             border: none;
-            color: $background;
+            color: $font-alt;
             width: $xxl;
             align-self: flex-end;
             font-size: $l;

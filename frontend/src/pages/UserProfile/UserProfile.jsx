@@ -63,7 +63,7 @@ const UserProfile = () => {
     } = userdata || {};
 
     return (
-        <>
+        <div className="user-profile-container">
             <div className="user-profile-card user-statistic-container">
                 <UserInfoCard
                     readingRank={readingRank}
@@ -91,7 +91,7 @@ const UserProfile = () => {
                 </span>{" "}
                 {wantToRead.length === 1 ? "Buch" : "Bücher"} lesen
             </h4>
-            <div className="user-profile-card want-to-read-container">
+            <div className="user-profile-card currently-reading">
                 <WantToReadCard wantToRead={wantToRead} />
             </div>
             <h4 className="user-profile-title">
@@ -101,10 +101,10 @@ const UserProfile = () => {
                 </span>{" "}
                 {alreadyRead.length === 1 ? "Buch" : "Bücher"} gelesen
             </h4>
-            <div className="user-profile-card already-read-container">
+            <div className="user-profile-card currently-reading">
                 <ReadCard alreadyRead={alreadyRead} />
             </div>
-        </>
+        </div>
     );
 };
 
