@@ -43,9 +43,7 @@ const LeseChallenge = () => {
             <h2 className="lese-challenge-title">Jahres-Lese-Challenge</h2>
             <p className="lese-challenge-ziel-text">
                 Du möchtest{" "}
-                <span className="lese-challenge-number">
-                    {readingGoalProgress}
-                </span>{" "}
+                <span className="lese-challenge-number">{readingGoal}</span>{" "}
                 Bücher dieses Jahr lesen.
             </p>
             <input type="number" ref={inputElement} />
