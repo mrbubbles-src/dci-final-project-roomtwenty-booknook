@@ -8,10 +8,10 @@
     transition: transform 0.3s ease;
 }
 .menu {
-    background: $accent-3;
+    background: $primary;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    border-top: 1px solid rgb(141, 141, 141);
+    // border-top: 1px solid rgb(141, 141, 141);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -31,7 +31,7 @@
         justify-content: center;
         align-items: center;
         .menu-icon {
-            color: black;
+            color: $background;
             height: 30px;
             width: 30px;
         }
@@ -42,10 +42,11 @@
 }
 .menu-item-footer {
     display: flex;
-    flex-flow: column;
+    // flex-flow: column;
     grid-row: 2/3;
     grid-column: 1 / 6;
     margin: 10px;
+    justify-content: space-around;
     .footer-links {
         font: {
             family: text-bold;
@@ -54,5 +55,8 @@
     :hover {
         color: $accent-1;
         text-decoration: underline;
+    }
+    @include breakpoint(tablet) {
+        justify-content: space-evenly;
     }
 }

@@ -17,7 +17,7 @@ body {
         family: text-regular, sans-serif;
     }
     color: $font;
-    background-color: $font-alt;
+    background-color: $background;
 }
 
 h1,
@@ -39,8 +39,9 @@ strong {
         family: text-bold;
     }
 }
-a {
-    color: $font;
+a,
+.footer-links {
+    color: $font-alt;
 }
 // SEARCH CARDS \\
 .card-container {
