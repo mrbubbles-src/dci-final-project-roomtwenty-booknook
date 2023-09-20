@@ -103,14 +103,28 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
     }
     return (
         <div className="lese-fortschritt-container">
-            <h2>Auf welcher Seite bist du?</h2>
-            <div>
-                <input type="number" ref={inputElement} />
-                <button onClick={handleUpdateCurrentPageNumber}>
+            <h2 className="lese-fortschritt-title">
+                Auf welcher Seite bist du?
+            </h2>
+            <div className="lese-fortschritt-input-container">
+                <input
+                    className="lese-fortschritt-input"
+                    type="number"
+                    ref={inputElement}
+                />
+                <button
+                    className="lese-fortschritt-aktualisieren-btn"
+                    onClick={handleUpdateCurrentPageNumber}
+                >
                     Lesefortschritt Aktualisieren
                 </button>
             </div>
-            <button onClick={handleBookRead}>Buch fertig gelesen</button>
+            <button
+                className="lese-fortschritt-fertig-btn"
+                onClick={handleBookRead}
+            >
+                Buch fertig gelesen
+            </button>
         </div>
     );
 };
