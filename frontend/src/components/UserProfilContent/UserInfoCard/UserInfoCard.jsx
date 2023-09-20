@@ -15,13 +15,13 @@ const UserInfoCard = ({
     readingLevel,
 }) => {
     // const { token } = useContext(BookNookContext);
-    const alreadyReadList = alreadyRead || [];
+    // const alreadyReadList = alreadyRead || [];
     // const [userReadingRank, setReadingRank] = useState(readingRank);
     const [userLevel, setUserLevel] = useState(readingLevel);
 
-    const [alreadyReadLength, setAlreadyReadLength] = useState(
-        alreadyReadList.length
-    );
+    // const [alreadyReadLength, setAlreadyReadLength] = useState(
+    //     alreadyReadList.length
+    // );
 
     // Berechne xpProzent basierend auf bereits gelesenen Büchern
     // const xpProzent = (alreadyReadLength % 3) * 33.3;
@@ -80,7 +80,7 @@ const UserInfoCard = ({
             profileImage={profileImage}
             readingChallengeCurrent={readingChallengeCurrent}
             userLevel={userLevel}
-            alreadyReadLength={alreadyReadLength}
+            alreadyRead={alreadyRead}
         />
     );
 };

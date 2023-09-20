@@ -13,7 +13,7 @@ const UserStatistic = ({
     username,
     profileImage,
     readingChallengeCurrent,
-    alreadyReadLength,
+    alreadyRead,
 }) => {
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
@@ -24,33 +24,34 @@ const UserStatistic = ({
     const handleShowLeseChallengeModal = () => setShowLeseChallengeModal(true);
     const handleCloseLeseChallengeModal = () =>
         setShowLeseChallengeModal(false);
+    const alreadyReadLength = alreadyRead.length;
 
     return (
         <>
-            <div className='user-infocard-container'>
+            <div className="user-infocard-container">
                 {/* GRID 1 (BILD) */}
-                <div className='grid-container-1'>
-                    <div className='user-infocard-container-image'>
-                        <label htmlFor='upload-button'>
+                <div className="grid-container-1">
+                    <div className="user-infocard-container-image">
+                        <label htmlFor="upload-button">
                             <img
-                                className='user-infocard-container-image-avatar'
+                                className="user-infocard-container-image-avatar"
                                 src={previewImage || Avatar || NoImage}
-                                alt='avatar'
+                                alt="avatar"
                             />
                         </label>
                         <FileUpload />
                     </div>
                 </div>
                 {/* GRID 2 (Rechte Spalte) */}
-                <div className='grid-container-2'>
+                <div className="grid-container-2">
                     {/* USERNAME */}
-                    <div className='username-container'>
+                    <div className="username-container">
                         {" "}
-                        <h3 className='username-container-name'>{username}</h3>
+                        <h3 className="username-container-name">{username}</h3>
                     </div>
                     {/* LEVEL COMPONENT */}
-                    <div className='user-infocard-container-level'>
-                        <p className='user-infocard-container-level-number'>
+                    <div className="user-infocard-container-level">
+                        <p className="user-infocard-container-level-number">
                             {1 + Math.floor(alreadyReadLength / 3)}
                         </p>
                         <LevelExpBar
@@ -58,19 +59,19 @@ const UserStatistic = ({
                         />
                     </div>
                     {/* CHALLENGE, i guess?! */}
-                    <article className='user-statistic-challenge-container'>
-                        <h4 className='challenge-header'>
+                    <article className="user-statistic-challenge-container">
+                        <h4 className="challenge-header">
                             Jahres-Lese-Challenge
                         </h4>
-                        <p className='challenge-body'>
+                        <p className="challenge-body">
                             Bereits{" "}
-                            <span className='user-statistic-number'>
+                            <span className="user-statistic-number">
                                 {readingChallengeCurrent &&
                                     readingChallengeCurrent}
                             </span>{" "}
                             {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
                             {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
-                            <span className='user-statistic-number'>
+                            <span className="user-statistic-number">
                                 {readingGoal && readingGoal}{" "}
                             </span>
                             {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
