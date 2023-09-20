@@ -263,6 +263,14 @@ a,
             width: 900px;
         }
     }
+    .user-statistic-container {
+        @include breakpoint(tablet) {
+            width: 650px;
+        }
+        @include breakpoint(desktop) {
+            width: 900px;
+        }
+    }
     .pencil-icon {
         color: $accent-1;
         cursor: grab;

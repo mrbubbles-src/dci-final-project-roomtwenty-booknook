@@ -11,14 +11,9 @@ const LevelExpBar = ({ xpProzent }) => {
                 isLabelVisible={false}
                 bgColor="#02c1c2"
                 baseBgColor="#f0eedc"
-                // className="wrapper"
-                // labelAlignment="center"
-                // barContainerClassName="container"
-                //completedClassName="barCompleted"
-                // labelClassName="label"
                 completed={xpProzent}
                 width="95%"
-                margin="0.5rem"
+                // height="3rem"
             />
         </div>
     );

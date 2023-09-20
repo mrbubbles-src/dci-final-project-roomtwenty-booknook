@@ -46,44 +46,47 @@ const UserStatistic = ({
                 <div className="grid-container-2">
                     {/* USERNAME */}
                     <div className="username-container">
-                        {" "}
                         <h3 className="username-container-name">{username}</h3>
+                        <span className="username-container-level-number">
+                            <strong>
+                                Level: {1 + Math.floor(alreadyReadLength / 3)}
+                            </strong>
+                        </span>
                     </div>
                     {/* LEVEL COMPONENT */}
                     <div className="user-infocard-container-level">
-                        <p className="user-infocard-container-level-number">
-                            {1 + Math.floor(alreadyReadLength / 3)}
-                        </p>
                         <LevelExpBar
                             xpProzent={(alreadyReadLength % 3) * 33.3 || 1}
                         />
-                        <p className="level-progress-xp-percent">
-                            Levelfortschritt:{" "}
-                            <span className="progress-xp-percent-count">
-                                <strong>
+                        <p className="user-infocard-container-level-xp-percent">
+                            <strong>
+                                Levelfortschritt:{" "}
+                                <span className="user-infocard-container-level-xp-percent-count">
                                     {Math.floor(
                                         (alreadyReadLength % 3) * 33.3 || 1
                                     )}
-                                </strong>
-                            </span>{" "}
-                            %
+                                </span>{" "}
+                                %
+                            </strong>
                         </p>
                     </div>
                     {/* CHALLENGE, i guess?! */}
                     <article className="user-statistic-challenge-container">
-                        <h4 className="challenge-header">
+                        <h4 className="user-statistic-challenge-container-challenge-header">
                             Jahres-Lese-Challenge
                         </h4>
-                        <p className="challenge-body">
+                        <p className="user-statistic-challenge-container-challenge-body">
                             Bereits{" "}
-                            <span className="user-statistic-number">
-                                {readingChallengeCurrent &&
-                                    readingChallengeCurrent}
+                            <span className="user-statistic-challenge-container-challenge-body-user-statistic-number">
+                                <strong>
+                                    {readingChallengeCurrent &&
+                                        readingChallengeCurrent}
+                                </strong>
                             </span>{" "}
                             {readingChallengeCurrent === 1 ? "Buch" : "Bücher"}{" "}
                             {readingGoal === 1 ? "vom" : "von"} geplanten{" "}
-                            <span className="user-statistic-number">
-                                {readingGoal && readingGoal}{" "}
+                            <span className="user-statistic-challenge-container-challenge-body-user-statistic-number">
+                                <strong>{readingGoal && readingGoal} </strong>
                             </span>
                             {readingGoal === 1 ? "Buch" : "Büchern"} gelesen{" "}
                             <span>

@@ -27,6 +27,15 @@
                 width: 150px;
                 height: 150px;
                 cursor: pointer;
+                @include breakpoint(tablet) {
+                    width: 200px;
+                    height: 200px;
+                    margin-left: 1rem;
+                }
+                @include breakpoint(tablet) {
+                    width: 300px;
+                    height: 300px;
+                }
             }
         }
     }
@@ -35,20 +44,111 @@
         grid-row: 1/4;
         margin: 0.5rem;
         .username-container {
-            align-self: flex-end;
+            // align-self: flex-end;
+            display: flex;
+            margin-bottom: 0.5rem;
             &-name {
-                // USERNAME STYLING
+                font: {
+                    size: 6vw;
+                }
+                @include breakpoint(tablet) {
+                    font: {
+                        size: 5vw;
+                    }
+                }
+                @include breakpoint(desktop) {
+                    font: {
+                        size: 3vw;
+                    }
+                }
+            }
+            &-level-number {
+                align-self: center;
+                background-color: $accent-2;
+                // width: 6rem;
+                padding: 0.2rem 0.5rem;
+                margin-left: 0.7rem;
+                border-radius: 10px;
+                font: {
+                    size: 4vw;
+                }
+                @include breakpoint(tablet) {
+                    font: {
+                        size: 3vw;
+                    }
+                    margin-left: 2rem;
+                }
+                @include breakpoint(desktop) {
+                    font: {
+                        size: 1.5vw;
+                    }
+                }
             }
         }
         .user-infocard-container-level {
-            &-number {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: red;
+            // &-expbar {
+            // }
+            &-xp-percent {
+                margin: 1rem 0;
+                padding: 0.5rem 1rem;
+                width: fit-content;
+                background-color: $background;
+                color: $primary;
+                // text-align: center;
+                border-radius: 20px;
+                font: {
+                    size: 4vw;
+                }
+                &-count {
+                    color: $accent-1;
+                }
+                @include breakpoint(tablet) {
+                    font: {
+                        size: 3vw;
+                    }
+                }
+                @include breakpoint(desktop) {
+                    font: {
+                        size: 1.5vw;
+                    }
+                }
             }
-            &-expbar {
-                background-color: blue;
+        }
+        .user-statistic-challenge-container {
+            margin-bottom: 0.5rem;
+
+            &-challenge-header {
+                font: {
+                    size: 4.5vw;
+                }
+                @include breakpoint(tablet) {
+                    font: {
+                        size: 3.5vw;
+                    }
+                }
+                @include breakpoint(desktop) {
+                    font: {
+                        size: 2.5vw;
+                    }
+                }
+            }
+            &-challenge-body {
+                font: {
+                    size: 4.3vw;
+                }
+                @include breakpoint(tablet) {
+                    font: {
+                        size: 3.2vw;
+                    }
+                }
+                @include breakpoint(desktop) {
+                    font: {
+                        size: 2vw;
+                    }
+                }
+                &-user-statistic-number {
+                    color: $accent-1;
+                }
             }
         }
     }

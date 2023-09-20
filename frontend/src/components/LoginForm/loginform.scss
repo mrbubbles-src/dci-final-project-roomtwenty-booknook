@@ -19,13 +19,12 @@
     .buttonContainer {
         display: flex;
         justify-content: center;
-
         .btn-modal-login {
             width: 180px;
             background: $primary;
             border: none;
             border-radius: 20px;
-            color: $accent-2;
+            color: $font-alt;
             padding: 8px;
             font: {
                 size: $m;
