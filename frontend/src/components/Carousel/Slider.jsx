@@ -11,6 +11,7 @@ import "./carousel.scss";
 import LeseFortschritt from "../UserProfilContent/CurrentlyReadingCard/LeseFortschritt/LeseFortschritt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Slider = ({ slides }) => {
     const [showEditModal, setShowEditModal] = useState(false);
@@ -37,19 +38,24 @@ const Slider = ({ slides }) => {
                         <SwiperSlide key={index}>
                             <div className="currently-reading-slide-container-grid">
                                 <article className="currently-reading-slide-image-container">
-                                    <img
-                                        className="liest-derzeit-cover"
-                                        src={
-                                            (
-                                                extralarge ||
-                                                large ||
-                                                medium ||
-                                                smallThumbnail
-                                            )?.replace("http", "https") ||
-                                            NoImage
-                                        }
-                                        alt={title}
-                                    />{" "}
+                                    <Link
+                                        className="card-image-anchor-tag"
+                                        to={`/buch/${singlePageID}`}
+                                    >
+                                        <img
+                                            className="liest-derzeit-cover"
+                                            src={
+                                                (
+                                                    extralarge ||
+                                                    large ||
+                                                    medium ||
+                                                    smallThumbnail
+                                                )?.replace("http", "https") ||
+                                                NoImage
+                                            }
+                                            alt={title}
+                                        />{" "}
+                                    </Link>
                                 </article>
                                 <article className="currently-reading-slide-information">
                                     <h4 className="currently-reading-title">
