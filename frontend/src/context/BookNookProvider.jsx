@@ -28,7 +28,7 @@ const BookNookProvider = ({ children }) => {
             async function fetchData() {
                 setIsLoading(true);
                 const res = await fetch(
-                    `http://localhost:3000/books/searchbooks?q=${searchTerm}`
+                    `https://roomtwenty-booknook-backend.onrender.com/books/searchbooks?q=${searchTerm}`
                 );
                 const data = await res.json();
                 setBookData(data);

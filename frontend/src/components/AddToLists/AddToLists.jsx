@@ -17,7 +17,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
     const alreadyRead = isBookOnList.alreadyRead;
     const { token, handleLoginClick } = useContext(BookNookContext);
     const [showAddToListModal, setShowAddToListModal] = useState(false);
-    const serverURL = "http://localhost:3000";
+    const serverURL = "https://roomtwenty-booknook-backend.onrender.com";
     useEffect(() => {
         if (!token) {
             return;

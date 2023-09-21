@@ -17,7 +17,7 @@ const UserStatistic = ({
 }) => {
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
-    const serverURL = "http://localhost:3000";
+    const serverURL = "https://roomtwenty-booknook-backend.onrender.com";
     const Avatar = `${serverURL}${profileImage}`;
     const previewImage = profileImageUploadPreview.preview;
     const [showLeseChallengeModal, setShowLeseChallengeModal] = useState(false);

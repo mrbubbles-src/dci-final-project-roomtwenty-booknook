@@ -19,7 +19,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
         };
         try {
             const response = await fetch(
-                "http://localhost:3000/users/updateUser",
+                "https://roomtwenty-booknook-backend.onrender.com/users/updateUser",
                 {
                     method: "PUT",
                     headers: {
@@ -44,7 +44,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
         };
         try {
             const response = await fetch(
-                "http://localhost:3000/users/updateUser",
+                "https://roomtwenty-booknook-backend.onrender.com/users/updateUser",
                 {
                     method: "PUT",
                     headers: {
@@ -68,7 +68,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
 
         try {
             const response = await fetch(
-                "http://localhost:3000/books/addBooks/alreadyRead",
+                "https://roomtwenty-booknook-backend.onrender.com/books/addBooks/alreadyRead",
                 {
                     method: "POST",
                     headers: {

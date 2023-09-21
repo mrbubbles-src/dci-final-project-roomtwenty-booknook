@@ -23,7 +23,7 @@ const SingleBookDetails = () => {
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
-                `http://localhost:3000/books/singlebook/${id}`
+                `https://roomtwenty-booknook-backend.onrender.com/books/singlebook/${id}`
             );
             const data = await response.json();
             setSingleBookData(data);
