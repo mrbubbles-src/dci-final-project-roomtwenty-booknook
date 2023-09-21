@@ -15,9 +15,10 @@ const UserStatistic = ({
     readingChallengeCurrent,
     alreadyRead,
 }) => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const { profileImageUploadPreview, readingGoal } =
         useContext(BookNookContext);
-    const serverURL = "https://roomtwenty-booknook-backend.onrender.com";
+    const serverURL = `${backEndUrl}`;
     const Avatar = `${serverURL}${profileImage}`;
     const previewImage = profileImageUploadPreview.preview;
     const [showLeseChallengeModal, setShowLeseChallengeModal] = useState(false);

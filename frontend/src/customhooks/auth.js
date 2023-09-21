@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 const useAuth = () => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -13,7 +14,7 @@ const useAuth = () => {
     const login = async (userData) => {
         try {
             const response = await axios.post(
-                "https://roomtwenty-booknook-backend.onrender.com/users/login",
+                `${backEndUrl}/users/login`,
                 userData,
                 { withCredentials: true }
             );
@@ -45,7 +46,7 @@ const useAuth = () => {
     const register = async (userData) => {
         try {
             const response = await axios.post(
-                "https://roomtwenty-booknook-backend.onrender.com/users/signup",
+                `${backEndUrl}/users/signup`,
                 userData,
                 { withCredentials: true }
             );

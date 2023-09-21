@@ -7,6 +7,7 @@ import ModalButtons from "./ModalButtons";
 import NotLoggedInButtons from "./NotLoggedInButtons";
 
 const AddToLists = ({ onButtonClick, bookId }) => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const [isBookOnList, setIsBookOnList] = useState({
         wantToRead: false,
         currentlyReading: false,
@@ -17,7 +18,7 @@ const AddToLists = ({ onButtonClick, bookId }) => {
     const alreadyRead = isBookOnList.alreadyRead;
     const { token, handleLoginClick } = useContext(BookNookContext);
     const [showAddToListModal, setShowAddToListModal] = useState(false);
-    const serverURL = "https://roomtwenty-booknook-backend.onrender.com";
+    const serverURL = `${backEndUrl}`;
     useEffect(() => {
         if (!token) {
             return;

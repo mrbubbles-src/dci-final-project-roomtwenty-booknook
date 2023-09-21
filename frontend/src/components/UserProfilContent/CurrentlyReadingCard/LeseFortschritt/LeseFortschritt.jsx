@@ -4,6 +4,7 @@ import { BookNookContext } from "../../../../context/BookNookProvider";
 
 //wenn currently reading geupdatet wird, benutze modal und dann da drin in der card die erscheint kommt, das man das buch auf fertig gelesen setzen kann und auch die anzeige bearbeiten kann: seite 343 von 643 gelesen
 const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const {
         token,
         setCurrentPageProgress,
@@ -18,17 +19,14 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
             readingChallengeCurrent: readingGoalProgress + 1,
         };
         try {
-            const response = await fetch(
-                "https://roomtwenty-booknook-backend.onrender.com/users/updateUser",
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify(body),
-                }
-            );
+            const response = await fetch(`${backEndUrl}/users/updateUser`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(body),
+            });
             const responsemsg = await response.json();
             // console.log(responsemsg);
             setReadingGoalProgress(readingGoalProgress + 1);
@@ -43,17 +41,14 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
             currentPage: parseInt(inputElement.current.value),
         };
         try {
-            const response = await fetch(
-                "https://roomtwenty-booknook-backend.onrender.com/users/updateUser",
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify(body),
-                }
-            );
+            const response = await fetch(`${backEndUrl}/users/updateUser`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(body),
+            });
             const responsemsg = await response.json();
             setIsRead(!isRead);
             // console.log(responsemsg);
@@ -68,7 +63,7 @@ const LeseFortschritt = ({ bookID, singlePageID, pageCount }) => {
 
         try {
             const response = await fetch(
-                "https://roomtwenty-booknook-backend.onrender.com/books/addBooks/alreadyRead",
+                `${backEndUrl}/books/addBooks/alreadyRead`,
                 {
                     method: "POST",
                     headers: {

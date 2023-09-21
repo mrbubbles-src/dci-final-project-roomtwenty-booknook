@@ -8,22 +8,20 @@ import { BookNookContext } from "../../context/BookNookProvider";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const UserProfile = () => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const { token, setReadingGoal, setReadingGoalProgress, isRead } =
         useContext(BookNookContext);
     const [userdata, setUserdata] = useState(null);
     const [isLoadingUserData, setIsLoadingUserData] = useState(true);
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(
-                `https://roomtwenty-booknook-backend.onrender.com/users/userdata`,
-                {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await fetch(`${backEndUrl}/users/userdata`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             const data = await response.json();
             // console.log("data response", data);
             setUserdata(data);
@@ -36,7 +34,7 @@ const UserProfile = () => {
     if (isLoadingUserData) {
         return <LoadingSpinner />;
     }
-    // route um user einträge zu updaten: https://roomtwenty-booknook-backend.onrender.com/users/updateUser
+    // route um user einträge zu updaten: ${backEndUrl}/users/updateUser
     // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
     // {
     // "type":"currentlyReading",
