@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGithub, faLinkedin } from "@fortawesome/free-solid-svg-icons";
 
 const About = () => {
     return (
@@ -32,20 +32,20 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faGithub}
-                        />{" "}
+                        />{" "} */}
                     </a>
                     <a
                         href="https://www.linkedin.com/in/manuel-fahrenholz/"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faLinkedin}
-                        />
+                        /> */}
                     </a>
                 </div>
                 <div className="picture-container-individual-image">
@@ -63,10 +63,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faGithub}
-                        />
+                        /> */}
                     </a>
                     <a
                         href="https://www.linkedin.com/in/jacqueline-scharrer-weißgerber/"
@@ -74,10 +74,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faLinkedin}
-                        />
+                        /> */}
                     </a>
                 </div>
                 <div className="picture-container-individual-image">
@@ -95,10 +95,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faGithub}
-                        />
+                        /> */}
                     </a>
                     <a
                         href="https://www.linkedin.com/in/muhammed-tinmaz-b562a225a/"
@@ -106,10 +106,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faLinkedin}
-                        />
+                        /> */}
                     </a>
                 </div>
                 <div className="picture-container-individual-image">
@@ -127,10 +127,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faGithub}
-                        />
+                        /> */}
                     </a>
                     <a
                         href="https://www.linkedin.com/in/katharina-g-354362276/"
@@ -138,10 +138,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faLinkedin}
-                        />
+                        /> */}
                     </a>
                 </div>
                 <div className="picture-container-individual-image">
@@ -159,10 +159,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faGithub}
-                        />
+                        /> */}
                     </a>
                     <a
                         href="https://www.linkedin.com/in/metin-m-arsu-4991b8276/"
@@ -170,10 +170,10 @@ const About = () => {
                         rel="noopener noreferrer"
                         className="social-link-container"
                     >
-                        <FontAwesomeIcon
+                        {/* <FontAwesomeIcon
                             className="social-link-container-icon"
                             icon={faLinkedin}
-                        />
+                        /> */}
                     </a>
                 </div>
             </div>
