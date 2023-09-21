@@ -1,17 +1,14 @@
 # dci-final-project-roomtwenty-booknook
 
-XP BAR - bei KEINER Challenge, bar auf 33%
+## bookNook - Buchverwaltungsapp
 
+Finales Projekt von
 
-Reg/Log - Links auf der Landingpage nicht verlinkt ans Modal
-Footer - Keine Links
+-   [Manuel Fahrenholz](https://github.com/mrbubbles-src)
+-   [Jacqueline Scharrer-Weißgerber](https://github.com/jacqueline-s-w)
 
-MenuBar - 2 Buttons useless
+-   [Metin Arsu](https://github.com/MetinArsu)
 
-Liest Derzeit - eingetragende Zahlen werden überall übernommen aber nach einem Reload wirds richtig angezeigt
+-   [Katharina Groller](https://github.com/Katharina-Groller)
 
-Thumbnails - Zu groß
-
-Account - Self Destruction Button [(O)] (User soll Account selber Löschen können)
-
-UserStatistic - in Top Card
+-   [Muhammed Tinmaz](https://github.com/MuhammedTinmaz)
