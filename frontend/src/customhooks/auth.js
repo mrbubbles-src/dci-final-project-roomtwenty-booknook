@@ -13,7 +13,7 @@ const useAuth = () => {
     const login = async (userData) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/users/login",
+                "https://roomtwenty-booknook-backend.onrender.com/users/login",
                 userData,
                 { withCredentials: true }
             );
@@ -45,7 +45,7 @@ const useAuth = () => {
     const register = async (userData) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/users/signup",
+                "https://roomtwenty-booknook-backend.onrender.com/users/signup",
                 userData,
                 { withCredentials: true }
             );

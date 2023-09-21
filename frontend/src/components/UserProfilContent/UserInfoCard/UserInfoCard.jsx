@@ -50,7 +50,7 @@ const UserInfoCard = ({
     //             };
     //             try {
     //                 const response = await fetch(
-    //                     "http://localhost:3000/users/updateUser",
+    //                     "https://roomtwenty-booknook-backend.onrender.com/users/updateUser",
     //                     {
     //                         method: "PUT",
     //                         headers: {

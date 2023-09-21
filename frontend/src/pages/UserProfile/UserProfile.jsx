@@ -15,7 +15,7 @@ const UserProfile = () => {
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
-                `http://localhost:3000/users/userdata`,
+                `https://roomtwenty-booknook-backend.onrender.com/users/userdata`,
                 {
                     method: "GET",
                     headers: {
@@ -36,7 +36,7 @@ const UserProfile = () => {
     if (isLoadingUserData) {
         return <LoadingSpinner />;
     }
-    // route um user einträge zu updaten: http://localhost:3000/users/updateUser
+    // route um user einträge zu updaten: https://roomtwenty-booknook-backend.onrender.com/users/updateUser
     // wenn currentPage geupdated werden muss, muss das in den daten stehen die gesendet werden:
     // {
     // "type":"currentlyReading",
