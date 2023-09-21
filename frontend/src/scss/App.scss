@@ -256,7 +256,6 @@ a,
         margin: 1rem;
         background-color: $primary;
         @include breakpoint(tablet) {
-            aspect-ratio: 16/9;
             width: 510px;
         }
         @include breakpoint(desktop) {
@@ -265,6 +264,7 @@ a,
     }
     .user-statistic-container {
         @include breakpoint(tablet) {
+            // aspect-ratio: 16/9;
             width: 650px;
         }
         @include breakpoint(desktop) {
@@ -274,5 +274,13 @@ a,
     .pencil-icon {
         color: $accent-1;
         cursor: grab;
+    }
+    .no-slides {
+        color: $font-alt;
+        padding: 1rem;
+        text-align: center;
+        font: {
+            size: $l;
+        }
     }
 }
