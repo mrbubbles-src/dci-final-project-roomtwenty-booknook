@@ -50,7 +50,7 @@ const LeseChallenge = () => {
             </p>
             <aside className="lese-challenge-input-container">
                 <input
-                    className="lese-challenge-input-container-input"
+                    className="lese-challenge-input-container-input no-spinner"
                     type="number"
                     ref={inputElement}
                     placeholder="Du willst mehr lesen?"

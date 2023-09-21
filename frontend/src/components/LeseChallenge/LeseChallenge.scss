@@ -25,6 +25,11 @@
         // }
     }
     &-input-container {
+        input[type="number"].no-spinner::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
         &-input {
             width: 17rem;
             height: 3rem;
