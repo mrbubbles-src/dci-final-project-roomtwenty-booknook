@@ -42,16 +42,27 @@ const LeseChallenge = () => {
         <div className="lese-challenge">
             <h2 className="lese-challenge-title">Jahres-Lese-Challenge</h2>
             <p className="lese-challenge-ziel-text">
-                Du möchtest{" "}
-                <span className="lese-challenge-number">
-                    {readingGoalProgress}
-                </span>{" "}
-                Bücher dieses Jahr lesen.
+                <strong>
+                    Du möchtest{" "}
+                    <span className="lese-challenge-number">{readingGoal}</span>{" "}
+                    Bücher dieses Jahr lesen.
+                </strong>
             </p>
-            <input type="number" ref={inputElement} />
-            <button type="submit" onClick={handleUpdatedReadingGoal}>
-                Aktualisieren
-            </button>
+            <aside className="lese-challenge-input-container">
+                <input
+                    className="lese-challenge-input-container-input"
+                    type="number"
+                    ref={inputElement}
+                    placeholder="Du willst mehr lesen?"
+                />
+                <button
+                    className="lese-challenge-input-container-submit"
+                    type="submit"
+                    onClick={handleUpdatedReadingGoal}
+                >
+                    <strong>Aktualisieren</strong>
+                </button>
+            </aside>
         </div>
     );
 };

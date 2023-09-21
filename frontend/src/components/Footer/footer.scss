@@ -3,7 +3,7 @@
 .footer-container {
     padding: 5px;
     height: 45px;
-    background-color: #102d5b;
+    background-color: $primary;
     margin-bottom: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -13,10 +13,10 @@
         align-items: center;
     }
     .footer-links {
+        // color: $font-alt; //musste ich in der app.scss stylen. keine ahnung warum
         font: {
             family: text-bold, sans-serif;
         }
-        color: $accent-2;
         &:focus,
         &:hover {
             outline: none;

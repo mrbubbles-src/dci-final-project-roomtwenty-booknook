@@ -1,0 +1,61 @@
+@import "../../scss/styleVariables";
+
+.lese-challenge {
+    color: $font;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // &-title {
+    // font: {
+    // size: 7vw;
+    // }
+    // }
+    &-ziel-text {
+        margin: 1rem;
+        width: 70%;
+        // text-align: center;
+        // font: {
+        // size: 5vw;
+        // }
+        .lese-challenge-number {
+            color: $accent-1;
+        }
+        // @include breakpoint(tablet) {
+        // }
+    }
+    &-input-container {
+        &-input {
+            width: 17rem;
+            height: 3rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            padding: 0 0.5em;
+            text-align: center;
+            font: {
+                size: $m;
+                family: text-bold, sans-serif;
+            }
+            &::placeholder {
+                font: {
+                    family: text-bold, sans-serif;
+                    size: 1.5rem;
+                }
+                color: $placeholder;
+            }
+            &:focus,
+            &:hover {
+                outline: none;
+                border-bottom: 2px inset $accent-1;
+                margin-bottom: -2px;
+            }
+        }
+        &-submit {
+            all: unset;
+            height: 3rem;
+            padding: 0 0.5em;
+            background-color: $accent-1;
+            border-radius: 0 4px 4px 0;
+        }
+    }
+}

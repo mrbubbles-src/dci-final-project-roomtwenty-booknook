@@ -5,18 +5,15 @@ import "../UserStatistic/userstatistic.scss";
 
 const LevelExpBar = ({ xpProzent }) => {
     return (
-        <div className="expLevel">
+        <div className="expbar">
             <ProgressBar
-                bgColor="#fcd8be"
-                baseBgColor="#554945"
-                className="wrapper"
-                labelAlignment="center"
-                barContainerClassName="container"
-                //completedClassName="barCompleted"
-                labelClassName="label"
-                completed={xpProzent}
                 animateOnRender={true}
-                isLabelVisible={true}
+                isLabelVisible={false}
+                bgColor="#02c1c2"
+                baseBgColor="#f0eedc"
+                completed={xpProzent}
+                width="95%"
+                // height="3rem"
             />
         </div>
     );
