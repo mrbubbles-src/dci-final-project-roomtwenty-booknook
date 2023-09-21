@@ -19,6 +19,9 @@ const mongoUser = process.env.MONGO_USER;
 const mongoPassword = process.env.MONGO_PASSWORD;
 const mongoCluster = process.env.MONGO_CLUSTER;
 const mongoDatabase = process.env.MONGO_DATABASE;
+const corsEins = process.env.CORS_EINS;
+const corsZwei = process.env.CORS_ZWEI;
+const corsDrei = process.env.CORS_DREI;
 
 mongoose
     .connect(
@@ -37,11 +40,7 @@ mongoose
 
 app.use(
     cors({
-        origin: [
-            "http://localhost:5173",
-            "http://127.0.0.1:5173",
-            "https://roomtwenty-booknook.vercel.app",
-        ],
+        origin: [corsEins, corsZwei, corsDrei],
         credentials: true,
     })
 );

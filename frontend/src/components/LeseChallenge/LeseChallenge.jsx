@@ -3,6 +3,7 @@ import "./LeseChallenge.scss";
 import React, { useContext, useRef, useState } from "react";
 
 const LeseChallenge = () => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const {
         token,
         readingGoal,
@@ -16,17 +17,14 @@ const LeseChallenge = () => {
             readingChallengeMax: parseInt(inputElement.current.value),
         };
         try {
-            const response = await fetch(
-                "https://roomtwenty-booknook-backend.onrender.com/users/updateUser",
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify(body),
-                }
-            );
+            const response = await fetch(`${backEndUrl}/users/updateUser`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(body),
+            });
             const responsemsg = await response.json();
             // console.log(responsemsg);
         } catch (error) {

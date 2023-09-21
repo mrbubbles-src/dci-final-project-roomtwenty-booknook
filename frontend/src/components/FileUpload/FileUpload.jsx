@@ -4,6 +4,7 @@ import { BookNookContext } from "../../context/BookNookProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 const FileUpload = () => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const [selectedFile, setSelectedFile] = useState(null);
     const [inputKey, setInputKey] = useState(Date.now());
     const { token, setProfileImageUploadPreview, profileImageUploadPreview } =
@@ -24,16 +25,13 @@ const FileUpload = () => {
             formData.append("file", selectedFile);
 
             try {
-                const response = await fetch(
-                    "https://roomtwenty-booknook-backend.onrender.com/users/upload",
-                    {
-                        method: "POST",
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                        body: formData,
-                    }
-                );
+                const response = await fetch(`${backEndUrl}/users/upload`, {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: formData,
+                });
                 if (response.ok) {
                     console.log("Datei erfolgreich hochgeladen!");
                 } else {

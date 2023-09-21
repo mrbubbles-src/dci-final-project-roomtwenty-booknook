@@ -11,6 +11,7 @@ import ReadMore from "../../components/ReadMore/ReadMore";
 import ReadMoreSpans from "../../components/ReadMore/ReadMoreSpans";
 
 const SingleBookDetails = () => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const { id } = useParams();
     const [isSingleBookLoading, setIsSingleBookLoading] = useState(true);
     const [singleBookData, setSingleBookData] = useState({});
@@ -23,7 +24,7 @@ const SingleBookDetails = () => {
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(
-                `https://roomtwenty-booknook-backend.onrender.com/books/singlebook/${id}`
+                `${backEndUrl}/books/singlebook/${id}`
             );
             const data = await response.json();
             setSingleBookData(data);

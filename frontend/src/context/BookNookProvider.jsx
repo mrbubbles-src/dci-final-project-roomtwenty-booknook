@@ -5,6 +5,7 @@ import useAuth from "../customhooks/auth";
 export const BookNookContext = React.createContext();
 
 const BookNookProvider = ({ children }) => {
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const [isLoading, setIsLoading] = useState(null);
     const [token, setToken] = useState(null);
     const [readingGoal, setReadingGoal] = useState(0);
@@ -28,7 +29,7 @@ const BookNookProvider = ({ children }) => {
             async function fetchData() {
                 setIsLoading(true);
                 const res = await fetch(
-                    `https://roomtwenty-booknook-backend.onrender.com/books/searchbooks?q=${searchTerm}`
+                    `${backEndUrl}/books/searchbooks?q=${searchTerm}`
                 );
                 const data = await res.json();
                 setBookData(data);
