@@ -1,8 +1,7 @@
 import React from "react";
 import "./About.scss";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGithub } from "@fortawesome/free-solid-svg-icons";
-// import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-solid-svg-icons";
 
 const About = () => {
     return (
@@ -10,122 +9,171 @@ const About = () => {
             <div className="heading-container">
                 <h2 className="heading">About us</h2>
             </div>
-            {/* <div className="image-container">
+            <div className="image-container">
                 <img
-                    className="image"
+                    className="picture-container-individual-image"
                     src="../../../public/images/placeholder/Hamburger.jpg"
                     alt="Hamburger"
                 />
-            </div> */}
+            </div>
             <div className="picture-container">
-                <div className="first-container">
+                <div className="picture-container-individual-image">
                     <img
-                        className="image"
+                        className="picture-container-individual-image-image"
                         src="../../../public/images/placeholder/Hamburger.jpg"
                         alt=""
                     />
-                    <p className="name">Manuel</p>
+                    <p className="picture-container-individual-image-name">
+                        <strong>Manuel</strong>
+                    </p>
                     <a
                         href="https://github.com/mrbubbles-src"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faGithub} />{" "} */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faGithub}
+                        />{" "}
                     </a>
                     <a
                         href="https://www.linkedin.com/in/manuel-fahrenholz/"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faLinkedin}
+                        />
                     </a>
                 </div>
-                <div className="second-container">
+                <div className="picture-container-individual-image">
                     <img
-                        className="image"
+                        className="picture-container-individual-image-image"
                         src="../../../public/images/placeholder/Hamburger.jpg"
                         alt=""
                     />
-                    <p className="name">Jacqueline</p>
+                    <p className="picture-container-individual-image-name">
+                        <strong>Jacqueline</strong>
+                    </p>
                     <a
                         href="https://github.com/jacqueline-s-w"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faGithub}
+                        />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/jacqueline-scharrer-weißgerber/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faLinkedin}
+                        />
                     </a>
                 </div>
-                <div className="third-container">
+                <div className="picture-container-individual-image">
                     <img
-                        className="image"
+                        className="picture-container-individual-image-image"
                         src="../../../public/images/placeholder/Hamburger.jpg"
                         alt=""
                     />
-                    <p className="name">Muhammed</p>
+                    <p className="picture-container-individual-image-name">
+                        <strong>Muhammed</strong>
+                    </p>
                     <a
                         href="https://github.com/MuhammedTinmaz"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faGithub}
+                        />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/muhammed-tinmaz-b562a225a/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faLinkedin}
+                        />
                     </a>
                 </div>
-                <div className="fourth-container">
+                <div className="picture-container-individual-image">
                     <img
-                        className="image"
+                        className="picture-container-individual-image-image"
                         src="../../../public/images/placeholder/Hamburger.jpg"
                         alt=""
                     />
-                    <p className="name">Katharina</p>
+                    <p className="picture-container-individual-image-name">
+                        <strong>Katharina</strong>
+                    </p>
                     <a
                         href="https://github.com/Katharina-Groller"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faGithub}
+                        />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/katharina-g-354362276/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faLinkedin}
+                        />
                     </a>
                 </div>
-                <div className="fifth-container">
+                <div className="picture-container-individual-image">
                     <img
-                        className="image"
+                        className="picture-container-individual-image-image"
                         src="../../../public/images/placeholder/Hamburger.jpg"
                         alt=""
                     />
-                    <p className="name">Metin</p>
+                    <p className="picture-container-individual-image-name">
+                        <strong>Metin</strong>
+                    </p>
                     <a
                         href="https://github.com/MetinArsu"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faGithub}
+                        />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/metin-m-arsu-4991b8276/"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="social-link-container"
                     >
-                        {/* <FontAwesomeIcon icon={faLinkedin} /> */}
+                        <FontAwesomeIcon
+                            className="social-link-container-icon"
+                            icon={faLinkedin}
+                        />
                     </a>
                 </div>
             </div>

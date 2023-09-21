@@ -5,7 +5,9 @@ const CurrentlyReadingCard = ({ currentlyReading }) => {
     return currentlyReading.length !== 0 ? (
         <Slider slides={currentlyReading} />
     ) : (
-        <p>Du hast noch keine Bücher auf dieser Liste</p>
+        <p className="no-slides">
+            <strong>Du hast noch keine Bücher auf dieser Liste</strong>
+        </p>
     );
 };
 export default CurrentlyReadingCard;
