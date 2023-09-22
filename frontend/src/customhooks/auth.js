@@ -12,13 +12,14 @@ const useAuth = () => {
     }, []);
     // Login \\
     const login = async (userData) => {
+        // console.log("beURL", backEndUrl);
         try {
             const response = await axios.post(
                 `${backEndUrl}/users/login`,
                 userData,
                 { withCredentials: true }
             );
-
+            // console.log("res", response);
             const loggedInUser = response.data;
 
             if (loggedInUser.securityToken) {

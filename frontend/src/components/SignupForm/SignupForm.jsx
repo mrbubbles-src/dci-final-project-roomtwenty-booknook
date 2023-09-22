@@ -27,7 +27,7 @@ const SignupForm = ({ onClose, onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        // console.log("signup");
         const success = await register(signupValue);
 
         if (success) {
@@ -39,42 +39,42 @@ const SignupForm = ({ onClose, onLogin }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className='signup-form'>
-            <h2 className='heading-login'>Sign up!</h2>
-            <label htmlFor='username'></label>
+        <form onSubmit={handleSubmit} className="signup-form">
+            <h2 className="heading-login">Sign up!</h2>
+            <label htmlFor="username"></label>
             <input
-                placeholder='Username'
-                type='text'
-                id='username'
-                className='formInput'
-                name='username'
+                placeholder="Username"
+                type="text"
+                id="username"
+                className="formInput"
+                name="username"
                 value={username}
                 required
                 onChange={handleOnChange}
             />
-            <label htmlFor='password'></label>
+            <label htmlFor="password"></label>
             <input
-                placeholder='Password'
-                type='password'
-                id='password'
-                name='password'
-                className='formInput'
+                placeholder="Password"
+                type="password"
+                id="password"
+                name="password"
+                className="formInput"
                 value={password}
                 required
                 onChange={handleOnChange}
             />
             <input
-                placeholder='E-Mail'
-                type='email'
-                id='email'
-                name='email'
-                className='formInput'
+                placeholder="E-Mail"
+                type="email"
+                id="email"
+                name="email"
+                className="formInput"
                 value={email}
                 required
                 onChange={handleOnChange}
             />
-            <div className='buttonContainer'>
-                <button type='submit' className='btn-modal-login'>
+            <div className="buttonContainer">
+                <button type="submit" className="btn-modal-login">
                     Sign Up !
                 </button>
             </div>

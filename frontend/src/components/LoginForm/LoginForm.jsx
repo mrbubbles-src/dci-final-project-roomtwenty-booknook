@@ -23,7 +23,7 @@ const LoginForm = ({ onClose, onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        // console.log("submit");
         const success = await login({
             username: loginValue.username,
             password: loginValue.password,
@@ -38,32 +38,32 @@ const LoginForm = ({ onClose, onLogin }) => {
     };
 
     return (
-        <form className='login-form' onSubmit={handleSubmit}>
-            <h2 className='heading-login'>Login</h2>
-            <label htmlFor='username'></label>
+        <form className="login-form" onSubmit={handleSubmit}>
+            <h2 className="heading-login">Login</h2>
+            <label htmlFor="username"></label>
             <input
-                placeholder='Username'
-                type='text'
-                id='username'
-                name='username'
-                className='formInput'
+                placeholder="Username"
+                type="text"
+                id="username"
+                name="username"
+                className="formInput"
                 value={loginValue.username}
                 required
                 onChange={handleOnChange}
             />
-            <label htmlFor='password'></label>
+            <label htmlFor="password"></label>
             <input
-                placeholder='Password'
-                type='password'
-                id='password'
-                name='password'
-                className='formInput'
+                placeholder="Password"
+                type="password"
+                id="password"
+                name="password"
+                className="formInput"
                 value={loginValue.password}
                 required
                 onChange={handleOnChange}
             />
-            <div className='buttonContainer'>
-                <button className='btn-modal-login' type='submit'>
+            <div className="buttonContainer">
+                <button className="btn-modal-login" type="submit">
                     Login
                 </button>
             </div>
