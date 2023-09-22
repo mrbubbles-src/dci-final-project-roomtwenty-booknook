@@ -24,7 +24,7 @@ const developers = [
         picture: manu,
     },
     {
-        name: "Jacqueline Scharrer-Weißberger",
+        name: "Jacqueline Scharrer-Weißgerger",
         title: "Fullstack Web Developer (MERN)",
         githubLink: "https://github.com/jacqueline-s-w",
         linkedinLink:
