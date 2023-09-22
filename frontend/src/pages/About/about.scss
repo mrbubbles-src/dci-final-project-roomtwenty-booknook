@@ -18,29 +18,29 @@
             background: #fff;
             border-radius: 20px;
             box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
-            // transition: 0.5s;
+            transition: 0.5s;
 
-            // &:hover {
-            //     transition: 0.5s;
-            //     height: 450px;
-            //     .about-card-imgbox {
-            //         transition: 0.5s;
-            //         height: 250px;
-            //         width: 250px;
-            //     }
-            // }
+            &:hover {
+                transition: 0.5s;
+                height: 450px;
+                .about-card-imgbox {
+                    transition: 0.5s;
+                    height: 250px;
+                    width: 250px;
+                }
+            }
             &-imgbox {
                 position: absolute;
                 left: 50%;
                 top: -50px;
                 transform: translateX(-50%);
                 width: 150px;
-                height: 450px;
+                height: 150px;
                 background-color: #fff;
                 border-radius: 25px;
                 box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
                 overflow: hidden;
-                // transition: 0.5s;
+                transition: 0.5s;
 
                 &-picture {
                     position: absolute;
@@ -50,10 +50,10 @@
                     left: 0;
                     object-fit: cover;
                 }
-                // :hover {
-                //     width: 300px;
-                //     height: 300px;
-                // }
+                :hover {
+                    width: 300px;
+                    height: 300px;
+                }
             }
             &-content {
                 position: absolute;
