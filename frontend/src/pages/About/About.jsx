@@ -39,7 +39,7 @@ const developers = [
         picture: kathi,
     },
     {
-        name: "Manuel Fahrenholz",
+        name: "Muhammed Tinmaz",
         title: "Fullstack Web Developer (MERN)",
         githubLink: "https://github.com/MuhammedTinmaz",
         linkedinLink: "https://www.linkedin.com/in/muhammed-tinmaz-b562a225a/",
@@ -49,48 +49,48 @@ const developers = [
 
 const About = () => {
     return (
-        <section className='test-container'>
-            <section className='about-flex-container'>
+        <section className="test-container">
+            <section className="about-flex-container">
                 {developers.map((developer, index) => (
-                    <article className='about-card' key={index}>
-                        <div className='about-card-imgbox'>
+                    <article className="about-card" key={index}>
+                        <div className="about-card-imgbox">
                             <img
-                                className='about-card-imgbox-picture'
+                                className="about-card-imgbox-picture"
                                 src={developer.picture}
                                 alt={`Profilbild von ${developer.name}`}
                             />
                         </div>
-                        <div className='about-card-content'>
-                            <div className='about-card-content-details'>
-                                <h2 className='about-card-content-details-name'>
+                        <div className="about-card-content">
+                            <div className="about-card-content-details">
+                                <h2 className="about-card-content-details-name">
                                     {developer.name}
                                     <br />
-                                    <span className='about-card-content-details-name-title'>
+                                    <span className="about-card-content-details-name-title">
                                         {developer.title}
                                     </span>
                                 </h2>
-                                <h3 className='about-card-content-details-follow'>
+                                <h3 className="about-card-content-details-follow">
                                     Folge mir auf:
                                 </h3>
-                                <div className='about-card-content-details-name-data'>
+                                <div className="about-card-content-details-name-data">
                                     <NavLink
-                                        target='_blank'
+                                        target="_blank"
                                         to={developer.githubLink}
                                     >
-                                        <div className='about-card-content-details-name-data-container'>
+                                        <div className="about-card-content-details-name-data-container">
                                             <FontAwesomeIcon
-                                                className='about-card-content-details-name-data-container-icon'
+                                                className="about-card-content-details-name-data-container-icon"
                                                 icon={faSquareGithub}
                                             />
                                         </div>
                                     </NavLink>
                                     <NavLink
-                                        target='_blank'
+                                        target="_blank"
                                         to={developer.linkedinLink}
                                     >
-                                        <div className='about-card-content-details-name-data-container'>
+                                        <div className="about-card-content-details-name-data-container">
                                             <FontAwesomeIcon
-                                                className='about-card-content-details-name-data-container-icon2'
+                                                className="about-card-content-details-name-data-container-icon2"
                                                 icon={faLinkedin}
                                             />
                                         </div>
@@ -102,7 +102,7 @@ const About = () => {
                 ))}
             </section>
             <article>
-                <p className='about-text'>
+                <p className="about-text">
                     Willkommen bei bookNook! Room Twenty ist der Name unseres
                     ambitionierten Teams, das sich auf sein Abschlussprojekt im
                     Rahmen der Fullstack Developer-Ausbildung am Digital Career
