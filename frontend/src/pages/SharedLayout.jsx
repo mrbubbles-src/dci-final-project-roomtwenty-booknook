@@ -12,7 +12,7 @@ const SharedLayout = () => {
                 <Outlet />
             </main>
             <MenuBar /> {/* ausgeschaltet ab Desktop größe */}
-            <Footer /> {/*  ausgeschaltet bis Desktop größe */}
+            {/* <Footer />   */}
         </div>
     );
 };

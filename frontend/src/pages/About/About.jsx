@@ -1,202 +1,129 @@
-import React from "react";
-import "./About.scss";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGithub, faLinkedin } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import "./about.scss";
+import metin from "../../../public/images/aboutus/metin.jpg";
+import manu from "../../../public/images/aboutus/manu.jpg";
+import jacky from "../../../public/images/aboutus/jacky.jpg";
+import kathi from "../../../public/images/aboutus/kathi.jpg";
+import momo from "../../../public/images/aboutus/momo.png";
+
+const developers = [
+    {
+        name: "Metin Arsu",
+        title: "Fullstack Web Developer (MERN)",
+        githubLink: "https://github.com/MetinArsu",
+        linkedinLink: "https://www.linkedin.com/in/metin-m-arsu-4991b8276/",
+        picture: metin,
+    },
+    {
+        name: "Manuel Fahrenholz",
+        title: "Fullstack Web Developer (MERN)",
+        githubLink: "https://github.com/ManuelFahrenholz",
+        linkedinLink: "https://www.linkedin.com/in/manuel-fahrenholz/",
+        picture: manu,
+    },
+    {
+        name: "Jacqueline Scharrer-Weißberger",
+        title: "Fullstack Web Developer (MERN)",
+        githubLink: "https://github.com/jacqueline-s-w",
+        linkedinLink:
+            "https://www.linkedin.com/in/jacqueline-scharrer-wei%C3%9Fgerber/",
+        picture: jacky,
+    },
+    {
+        name: "Katharina Groller",
+        title: "Fullstack Web Developer (MERN)",
+        githubLink: "https://github.com/Katharina-Groller",
+        linkedinLink: "https://www.linkedin.com/in/katharina-g-354362276/",
+        picture: kathi,
+    },
+    {
+        name: "Manuel Fahrenholz",
+        title: "Fullstack Web Developer (MERN)",
+        githubLink: "https://github.com/MuhammedTinmaz",
+        linkedinLink: "https://www.linkedin.com/in/muhammed-tinmaz-b562a225a/",
+        picture: momo,
+    },
+];
 
 const About = () => {
     return (
-        <div className="about-us">
-            <div className="heading-container">
-                <h2 className="heading">About us</h2>
-            </div>
-            <div className="image-container">
-                <img
-                    className="picture-container-individual-image"
-                    src="../../../public/images/placeholder/Hamburger.jpg"
-                    alt="Hamburger"
-                />
-            </div>
-            <div className="picture-container">
-                <div className="picture-container-individual-image">
-                    <img
-                        className="picture-container-individual-image-image"
-                        src="../../../public/images/placeholder/Hamburger.jpg"
-                        alt=""
-                    />
-                    <p className="picture-container-individual-image-name">
-                        <strong>Manuel</strong>
-                    </p>
-                    <a
-                        href="https://github.com/mrbubbles-src"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faGithub}
-                        />{" "} */}
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/manuel-fahrenholz/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faLinkedin}
-                        /> */}
-                    </a>
-                </div>
-                <div className="picture-container-individual-image">
-                    <img
-                        className="picture-container-individual-image-image"
-                        src="../../../public/images/placeholder/Hamburger.jpg"
-                        alt=""
-                    />
-                    <p className="picture-container-individual-image-name">
-                        <strong>Jacqueline</strong>
-                    </p>
-                    <a
-                        href="https://github.com/jacqueline-s-w"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faGithub}
-                        /> */}
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/jacqueline-scharrer-weißgerber/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faLinkedin}
-                        /> */}
-                    </a>
-                </div>
-                <div className="picture-container-individual-image">
-                    <img
-                        className="picture-container-individual-image-image"
-                        src="../../../public/images/placeholder/Hamburger.jpg"
-                        alt=""
-                    />
-                    <p className="picture-container-individual-image-name">
-                        <strong>Muhammed</strong>
-                    </p>
-                    <a
-                        href="https://github.com/MuhammedTinmaz"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faGithub}
-                        /> */}
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/muhammed-tinmaz-b562a225a/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faLinkedin}
-                        /> */}
-                    </a>
-                </div>
-                <div className="picture-container-individual-image">
-                    <img
-                        className="picture-container-individual-image-image"
-                        src="../../../public/images/placeholder/Hamburger.jpg"
-                        alt=""
-                    />
-                    <p className="picture-container-individual-image-name">
-                        <strong>Katharina</strong>
-                    </p>
-                    <a
-                        href="https://github.com/Katharina-Groller"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faGithub}
-                        /> */}
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/katharina-g-354362276/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faLinkedin}
-                        /> */}
-                    </a>
-                </div>
-                <div className="picture-container-individual-image">
-                    <img
-                        className="picture-container-individual-image-image"
-                        src="../../../public/images/placeholder/Hamburger.jpg"
-                        alt=""
-                    />
-                    <p className="picture-container-individual-image-name">
-                        <strong>Metin</strong>
-                    </p>
-                    <a
-                        href="https://github.com/MetinArsu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faGithub}
-                        /> */}
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/metin-m-arsu-4991b8276/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="social-link-container"
-                    >
-                        {/* <FontAwesomeIcon
-                            className="social-link-container-icon"
-                            icon={faLinkedin}
-                        /> */}
-                    </a>
-                </div>
-            </div>
-            <div className="paragraph-container container">
-                <p className="first-paragraph">
-                    Wir sind roomTwenty - eine Gruppe von Freunden die sich
-                    während der Weiterbildung zum Fullstack Webentwickler beim
-                    DCI Digital Career Institute gefunden hat.
+        <section className='test-container'>
+            <section className='about-flex-container'>
+                {developers.map((developer, index) => (
+                    <article className='about-card' key={index}>
+                        <div className='about-card-imgbox'>
+                            <img
+                                className='about-card-imgbox-picture'
+                                src={developer.picture}
+                                alt={`Profilbild von ${developer.name}`}
+                            />
+                        </div>
+                        <div className='about-card-content'>
+                            <div className='about-card-content-details'>
+                                <h2 className='about-card-content-details-name'>
+                                    {developer.name}
+                                    <br />
+                                    <span className='about-card-content-details-name-title'>
+                                        {developer.title}
+                                    </span>
+                                </h2>
+                                <h3 className='about-card-content-details-follow'>
+                                    Folge mir auf:
+                                </h3>
+                                <div className='about-card-content-details-name-data'>
+                                    <NavLink
+                                        target='_blank'
+                                        to={developer.githubLink}
+                                    >
+                                        <div className='about-card-content-details-name-data-container'>
+                                            <FontAwesomeIcon
+                                                className='about-card-content-details-name-data-container-icon'
+                                                icon={faSquareGithub}
+                                            />
+                                        </div>
+                                    </NavLink>
+                                    <NavLink
+                                        target='_blank'
+                                        to={developer.linkedinLink}
+                                    >
+                                        <div className='about-card-content-details-name-data-container'>
+                                            <FontAwesomeIcon
+                                                className='about-card-content-details-name-data-container-icon2'
+                                                icon={faLinkedin}
+                                            />
+                                        </div>
+                                    </NavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </section>
+            <article>
+                <p className='about-text'>
+                    Willkommen bei bookNook! Room Twenty ist der Name unseres
+                    ambitionierten Teams, das sich auf sein Abschlussprojekt im
+                    Rahmen der Fullstack Developer-Ausbildung am Digital Career
+                    Institute (DCI) vorbereitet. <br /> <br />
+                    Unser Name, Room Twenty, symbolisiert unseren Weg von den
+                    Anfängen in unserem Klassenzimmer (Raum 20), wo wir die
+                    Grundlagen der Programmierung erlernt haben, bis zu unserem
+                    aktuellen Projekt, bei dem wir unsere Fähigkeiten auf die
+                    nächste Stufe heben. <br /> <br />
+                    Wir sind stolz auf unsere Entwicklung und das, was wir bis
+                    heute erreicht haben. Unsere Expertise reicht von
+                    Frontend-Technologien bis zur Backend-Entwicklung, und wir
+                    sind bestrebt, die neuesten Trends und Technologien in der
+                    Webentwicklung zu verfolgen. <br /> <br />
+                    Kontaktieren Sie uns, um mehr über unsere Arbeit zu erfahren
+                    oder um Ihr nächstes Webentwicklungsprojekt zu besprechen.
+                    Wir sind bereit, Ihre Ideen zum Leben zu erwecken und
+                    großartige digitale Erfahrungen zu schaffen.
                 </p>
-                <p className="second-paragraph">
-                    Dies ist unser Finales Projekt unserer Weiterbildung,
-                    'bookNook', eine Anwendung in der du nach Buchinformationen
-                    suchen und deinen Lesefortschrit verwalten kannst in dem du
-                    den Seitenstand der Bücher die du aktuell liest verfolgen
-                    kannst und je eine Liste für deine bereits gelesenen Bücher
-                    und den Büchern die noch lesen möchtes zur verfügung hast.
-                </p>
-                <p className="third-paragraph">
-                    Wir hoffen dir gefällt es hier und, dass bookNook dir in
-                    deiner Lesereise helfend zur Seite steht!
-                </p>
-            </div>
-        </div>
+            </article>
+        </section>
     );
 };
 
