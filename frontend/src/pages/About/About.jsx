@@ -103,7 +103,7 @@ const About = () => {
             </section>
             <article>
                 <p className="about-text">
-                    Willkommen bei bookNook! Room Twenty ist der Name unseres
+                    Willkommen bei bookNook! roomTwenty ist der Name unseres
                     ambitionierten Teams, das sich auf sein Abschlussprojekt im
                     Rahmen der Fullstack Developer-Ausbildung am Digital Career
                     Institute (DCI) vorbereitet. <br /> <br />
