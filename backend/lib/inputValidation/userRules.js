@@ -13,10 +13,12 @@ exports.userValidationRules = {
             .trim()
             .notEmpty()
             .withMessage("Benutzername ist erforderlich")
-            .isLength({ min: 3, max: 8 })
-            .withMessage(
-                "Der Benutzername muss mindestens 3 Zeichen lang sein und darf maximal 8 Zeichen lang sein."
-            ),
+            // .isLength({ min: 3, max: 8 })
+            // .withMessage(
+            //     "Der Benutzername muss mindestens 3 Zeichen lang sein und darf maximal 8 Zeichen lang sein."
+            // ),
+            .isLength({ min: 3 })
+            .withMessage("Der Benutzername muss mindestens 3 Zeichen lang."),
         check("password")
             .escape()
             .trim()
@@ -32,9 +34,13 @@ exports.userValidationRules = {
             .trim()
             .notEmpty()
             .withMessage("Benutzername ist erforderlich")
-            .isLength({ min: 3, max: 8 })
+            // .isLength({ min: 3, max: 8 })
+            // .withMessage(
+            //     "Der Benutzername muss mindestens 3 Zeichen lang sein und darf maximal 8 Zeichen lang sein."
+            // ),
+            .isLength({ min: 3 })
             .withMessage(
-                "Der Benutzername muss mindestens 5 Zeichen lang sein"
+                "Der Benutzername muss mindestens 3 Zeichen lang sein"
             ),
         check("password")
             .escape()
