@@ -223,22 +223,21 @@ a,
 .user-profile-container {
     .user-profile-title {
         font: {
-            size: 5.5vw;
+            size: $l;
         }
         text-align: center;
-
         .user-profile-title-number {
             padding: 0 0.5rem;
             color: $accent-1;
         }
         @include breakpoint(tablet) {
             font: {
-                size: 4vw;
+                size: $xl;
             }
         }
         @include breakpoint(desktop) {
             font: {
-                size: 2vw;
+                // size: 2vw;
             }
             display: block;
         }
@@ -256,10 +255,10 @@ a,
         margin: 1rem;
         background-color: $primary;
         @include breakpoint(tablet) {
-            width: 510px;
+            width: 650px;
         }
         @include breakpoint(desktop) {
-            width: 900px;
+            width: 816px;
         }
     }
     .user-statistic-container {
@@ -268,7 +267,7 @@ a,
             width: 650px;
         }
         @include breakpoint(desktop) {
-            width: 900px;
+            width: fit-content;
         }
     }
     .pencil-icon {

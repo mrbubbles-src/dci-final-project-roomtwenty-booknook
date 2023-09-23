@@ -21,6 +21,8 @@
         justify-content: space-evenly;
 
         .btn-modal-login {
+            cursor: pointer;
+
             width: 180px;
             background: $primary;
             border: none;

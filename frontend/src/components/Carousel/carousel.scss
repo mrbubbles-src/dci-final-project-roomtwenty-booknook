@@ -13,11 +13,12 @@
                 grid-row-gap: 10px;
                 aspect-ratio: 16/10;
                 @include breakpoint(tablet) {
-                    width: 500px;
+                    // width: 100%;
                     aspect-ratio: 16/9;
+                    padding-right: 0.5rem;
                 }
                 @include breakpoint(desktop) {
-                    width: 900px;
+                    // width: 900px;
                 }
                 .slide-image-container {
                     width: 100%;
@@ -36,41 +37,83 @@
                 }
                 .book-slide-information {
                     grid-area: 2 / 3 / 4 / 6;
-                    // padding: 0.5rem;
                     margin: 0 1.7rem;
-
+                    .card-hidden-item {
+                        display: none;
+                    }
                     .book-slide-information-title,
-                    .book-slide-information-author {
+                    .book-slide-information-author,
+                    .book-slide-information-subtitle,
+                    .book-slide-information-description,
+                    .single-book-rating-container {
                         color: $font-alt;
                     }
 
                     .book-slide-information-title {
                         font: {
-                            size: 4vw;
+                            size: $m;
                         }
                         @include breakpoint(tablet) {
                             font: {
-                                size: 3.3vw;
+                                size: 3rem;
                             }
+                            margin-bottom: 0.3rem;
                         }
                         @include breakpoint(desktop) {
                             font: {
-                                size: 2.4vw;
+                                // size: 3.3rem;
+                            }
+                        }
+                    }
+                    .book-slide-information-subtitle {
+                        @include breakpoint(tablet) {
+                            display: initial;
+                            font: {
+                                size: $m;
                             }
                         }
                     }
                     .book-slide-information-author {
                         font: {
-                            size: 3.8vw;
+                            size: $s;
                         }
+                        margin-top: 0.5rem;
                         @include breakpoint(tablet) {
                             font: {
-                                size: 2vw;
+                                size: 1.8rem;
                             }
                         }
                         @include breakpoint(desktop) {
-                            font: {
-                                size: 1.3vw;
+                        }
+                    }
+                    .book-slide-information-description {
+                        margin-top: 1rem;
+                    }
+
+                    .single-book-rating-container {
+                        @include breakpoint(tablet) {
+                            display: flex;
+                            flex-wrap: wrap;
+                            background-color: $accent-2;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 10px;
+                            width: 280px;
+                            padding: 0.5rem;
+                            margin: 2rem auto;
+                            box-shadow: 1px 1px 2px $font;
+                            .single-book-avg-rating {
+                                font: {
+                                    size: 1.8rem;
+                                }
+                                margin-right: 0.2rem;
+                            }
+                            .single-book-rating-count {
+                                margin-left: 0.2rem;
+                            }
+                            @include breakpoint(tablet) {
+                            }
+                            @include breakpoint(desktop) {
                             }
                         }
                     }
@@ -88,32 +131,29 @@
                     .progress-info-container {
                         .currently-reading-progress-title {
                             font: {
-                                size: 4.3vw;
+                                size: $s;
                             }
                             @include breakpoint(tablet) {
                                 font: {
-                                    size: 2.5vw;
+                                    size: $l;
                                 }
                             }
                             @include breakpoint(desktop) {
                                 font: {
-                                    size: 1.7vw;
+                                    // size: 1.7vw;
                                 }
                             }
                         }
                         .currently-reading-progress-count {
                             font: {
-                                size: 4.1vw;
+                                size: $s;
                             }
                             @include breakpoint(tablet) {
                                 font: {
-                                    size: 2.2vw;
+                                    size: 1.8rem;
                                 }
                             }
                             @include breakpoint(desktop) {
-                                font: {
-                                    size: 1.5vw;
-                                }
                             }
                         }
                     }
@@ -125,6 +165,16 @@
                             text-align: center;
                             background-color: $primary;
                             color: $font-alt;
+                            font: {
+                                size: $s;
+                            }
+                            @include breakpoint(tablet) {
+                                font: {
+                                    size: 1.8rem;
+                                }
+                            }
+                            @include breakpoint(desktop) {
+                            }
                             .progress-xp-percent-count {
                                 color: $accent-1;
                             }
@@ -142,13 +192,7 @@
                 margin-bottom: 15px;
                 margin-left: 8px;
             }
-            .thumbnail-slide-container {
-                display: flex;
-                justify-content: space-evenly;
-                padding: 10px;
-                margin-bottom: 15px;
-                margin-left: 8px;
-            }
+
             .user-profile-title {
                 margin-left: 1rem;
                 text-align: left;

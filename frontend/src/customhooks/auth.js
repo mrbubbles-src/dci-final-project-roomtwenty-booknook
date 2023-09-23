@@ -35,6 +35,13 @@ const useAuth = () => {
         } catch (error) {
             console.error("Error:", error);
             return false;
+            // if (error.response && error.response.status === 422) {
+            //     // This is a validation error
+            //     handleError(error.response.data.message);
+            // } else {
+            //     console.error("Error:", error);
+            // }
+            // return false;
         }
     };
     // Logout \\
