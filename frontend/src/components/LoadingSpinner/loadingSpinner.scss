@@ -13,10 +13,16 @@ $delay: calc($duration/6);
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top: 0;
-    // left: 0;
+    top: 50px;
+    left: 0;
     z-index: 1;
-    background-color: $loading-background;
+    // background-color: $loading-background;
+    @include breakpoint(tablet) {
+        top: 200px;
+    }
+    @include breakpoint(desktop) {
+        top: 300px;
+    }
 }
 .bookshelf_wrapper {
     // background-color: #1e6cc7;
