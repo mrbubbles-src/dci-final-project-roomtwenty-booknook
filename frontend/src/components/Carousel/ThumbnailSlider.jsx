@@ -1,14 +1,33 @@
 import { Pagination, A11y } from "swiper/modules";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ReadMoreCards from "../ReadMore/ReadMoreCards";
+import StarRatings from "react-star-ratings";
 import NoImage from "../../../public/images/various/no-image.png";
 import "swiper/scss";
 import "swiper/scss/pagination";
 import "./carousel.scss";
+import { BookNookContext } from "../../context/BookNookProvider";
 // import "./thumbNailSlider.scss";
 
 const ThumbnailSlider = ({ slides }) => {
+    const { bookData } = useContext(BookNookContext);
+    const [singleBookData, setSingleBookData] = useState({});
+    function findInBookData(bookData, id) {
+        if (!bookData || !bookData.items) {
+            return null;
+        }
+        for (let i = 0; i < bookData.items.length; i++) {
+            if (bookData.items[i].id === id) {
+                return bookData.items[i];
+            }
+        }
+        return null;
+    }
+    const item = findInBookData(bookData, singleBookData.id);
+    const bookDataAverageRating = item ? item.volumeInfo.averageRating : 0;
+    const bookDataRatingsCount = item ? item.volumeInfo.ratingsCount : 0;
     return (
         <Swiper
             modules={[Pagination, A11y]}
@@ -21,7 +40,13 @@ const ThumbnailSlider = ({ slides }) => {
                     const singlePageID = slide.bookdetails.id;
                     const { smallThumbnail, medium, large, extralarge } =
                         slide.bookdetails.volumeInfo.imageLinks || {};
-                    const { title, authors } = slide.bookdetails.volumeInfo;
+                    const {
+                        title,
+                        authors,
+                        description,
+                        averageRating,
+                        ratingsCount,
+                    } = slide.bookdetails.volumeInfo;
 
                     return (
                         <SwiperSlide key={index}>
@@ -60,6 +85,52 @@ const ThumbnailSlider = ({ slides }) => {
                                             )) ||
                                             "Unbekannter Autor"}
                                     </h4>
+                                    <p className="book-slide-information-description">
+                                        {description ? (
+                                            <ReadMoreCards
+                                                singlePageID={singlePageID}
+                                            >
+                                                {description.replace(
+                                                    /<\/?[^>]+(>|$)/g,
+                                                    ""
+                                                )}
+                                            </ReadMoreCards>
+                                        ) : (
+                                            "Keine Beschreibung verfügbar"
+                                        )}
+                                    </p>
+                                    <div className="single-book-rating-container">
+                                        <p className="single-book-avg-rating">
+                                            <strong>
+                                                {averageRating ||
+                                                    bookDataAverageRating ||
+                                                    0}
+                                            </strong>
+                                        </p>{" "}
+                                        <StarRatings
+                                            rating={
+                                                averageRating ||
+                                                bookDataAverageRating ||
+                                                0
+                                            }
+                                            starRatedColor="orange"
+                                            name="single-book-rating"
+                                            starDimension="20px"
+                                            starSpacing="1px"
+                                        />
+                                        <p className="single-book-rating-count">
+                                            bei{" "}
+                                            <strong>
+                                                {ratingsCount ||
+                                                    bookDataRatingsCount ||
+                                                    0}
+                                            </strong>{" "}
+                                            {ratingsCount === 1 ||
+                                            bookDataRatingsCount === 1
+                                                ? "Bewertung"
+                                                : "Bewertungen"}
+                                        </p>
+                                    </div>
                                 </article>
                                 {/* <aside className="currently-reading-progress">
                                 <aside className="progress-info-container">
