@@ -47,12 +47,12 @@ const UserStatistic = ({
                 <div className="grid-container-2">
                     {/* USERNAME */}
                     <div className="username-container">
-                        <h3 className="username-container-name">{username}</h3>
-                        <span className="username-container-level-number">
+                        <h6 className="username-container-level-number">
                             <strong>
                                 Level: {1 + Math.floor(alreadyReadLength / 3)}
                             </strong>
-                        </span>
+                        </h6>
+                        <h3 className="username-container-name">{username}</h3>
                     </div>
                     {/* LEVEL COMPONENT */}
                     <div className="user-infocard-container-level">

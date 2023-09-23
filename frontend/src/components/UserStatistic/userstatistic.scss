@@ -7,7 +7,7 @@
     grid-template-rows: repeat(3, 1fr);
     align-items: center;
     height: 100%;
-    // padding: 0.5rem;
+    padding: 0.5rem;
     .grid-container-1 {
         padding-top: 4px;
         grid-row: 1/4;
@@ -46,42 +46,45 @@
         margin: 0.5rem;
         .username-container {
             // align-self: flex-end;
-            display: flex;
+            // display: flex;
             margin-bottom: 0.5rem;
             &-name {
+                word-wrap: break-word;
                 font: {
-                    size: 6vw;
+                    size: $xl;
+                    // stretch: condensed;
                 }
                 @include breakpoint(tablet) {
                     font: {
-                        size: 5vw;
+                        // size: 2.5rem;
                     }
                 }
                 @include breakpoint(desktop) {
                     font: {
-                        size: 3vw;
+                        size: 3rem;
                     }
                 }
             }
             &-level-number {
-                align-self: center;
+                // align-self: center;
                 background-color: $accent-2;
-                // width: 6rem;
-                padding: 0.2rem 0.5rem;
-                margin-left: 0.7rem;
+                width: fit-content;
+                text-align: center;
+                padding: 0.2rem 0.8rem;
+                margin-left: -0.2rem;
                 border-radius: 10px;
                 font: {
-                    size: 4vw;
+                    size: 1.5rem;
                 }
                 @include breakpoint(tablet) {
-                    font: {
-                        size: 3vw;
-                    }
-                    margin-left: 2rem;
+                    // font: {
+                    //     size: 3vw;
+                    // }
+                    // margin-left: 2rem;
                 }
                 @include breakpoint(desktop) {
                     font: {
-                        size: 1.5vw;
+                        size: 2rem;
                     }
                 }
             }
@@ -98,19 +101,19 @@
                 // text-align: center;
                 border-radius: 20px;
                 font: {
-                    size: 4vw;
+                    size: 1.5rem;
                 }
                 &-count {
                     color: $accent-1;
                 }
                 @include breakpoint(tablet) {
                     font: {
-                        size: 3vw;
+                        size: $m;
                     }
                 }
                 @include breakpoint(desktop) {
                     font: {
-                        size: 1.5vw;
+                        size: $l;
                     }
                 }
             }
@@ -119,33 +122,24 @@
             margin-bottom: 0.5rem;
 
             &-challenge-header {
-                font: {
-                    size: 4.5vw;
-                }
                 @include breakpoint(tablet) {
                     font: {
-                        size: 3.5vw;
+                        size: 2.5rem;
                     }
                 }
                 @include breakpoint(desktop) {
                     font: {
-                        size: 2.5vw;
+                        // size: $xxl;
                     }
                 }
             }
             &-challenge-body {
-                font: {
-                    size: 4.3vw;
-                }
                 @include breakpoint(tablet) {
                     font: {
-                        size: 3.2vw;
+                        size: 1.9rem;
                     }
                 }
                 @include breakpoint(desktop) {
-                    font: {
-                        size: 2vw;
-                    }
                 }
                 &-user-statistic-number {
                     color: $accent-1;
