@@ -21,19 +21,34 @@ const LoginForm = ({ onClose, onLogin }) => {
             position: "bottom-left",
         });
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     // console.log("submit");
+    //     const success = await login({
+    //         username: loginValue.username,
+    //         password: loginValue.password,
+    //     });
+
+    //     if (success) {
+    //         onClose();
+    //         onLogin();
+    //     } else {
+    //         handleError("Username or Password wrong.");
+    //     }
+    // };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log("submit");
-        const success = await login({
+        const result = await login({
             username: loginValue.username,
             password: loginValue.password,
         });
 
-        if (success) {
+        if (result.success) {
             onClose();
             onLogin();
         } else {
-            handleError("Username or Password wrong.");
+            // Display the error message
+            handleError(result.error);
         }
     };
 
