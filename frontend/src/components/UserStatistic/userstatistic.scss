@@ -63,6 +63,7 @@
                     font: {
                         size: 3rem;
                     }
+                    width: fit-content;
                 }
             }
             &-level-number {
@@ -90,6 +91,8 @@
             }
         }
         .user-infocard-container-level {
+            min-width: fit-content;
+            max-width: 49rem;
             // &-expbar {
             // }
             &-xp-percent {
@@ -128,9 +131,10 @@
                     }
                 }
                 @include breakpoint(desktop) {
-                    font: {
-                        // size: $xxl;
-                    }
+                    // font: {
+                    //     // size: $xxl;
+                    // }
+                    width: fit-content;
                 }
             }
             &-challenge-body {
@@ -140,11 +144,22 @@
                     }
                 }
                 @include breakpoint(desktop) {
+                    width: fit-content;
                 }
                 &-user-statistic-number {
                     color: $accent-1;
                 }
             }
+            @include breakpoint(desktop) {
+                width: fit-content;
+            }
         }
+        @include breakpoint(desktop) {
+            width: fit-content;
+        }
+    }
+    @include breakpoint(desktop) {
+        grid-template-columns: repeat(3, auto);
+        padding-right: 2rem;
     }
 }

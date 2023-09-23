@@ -256,10 +256,10 @@ a,
         margin: 1rem;
         background-color: $primary;
         @include breakpoint(tablet) {
-            width: 510px;
+            width: 650px;
         }
         @include breakpoint(desktop) {
-            width: 900px;
+            width: 816px;
         }
     }
     .user-statistic-container {
@@ -268,7 +268,7 @@ a,
             width: 650px;
         }
         @include breakpoint(desktop) {
-            width: 900px;
+            width: fit-content;
         }
     }
     .pencil-icon {
