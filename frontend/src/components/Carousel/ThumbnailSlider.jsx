@@ -42,6 +42,7 @@ const ThumbnailSlider = ({ slides }) => {
                         slide.bookdetails.volumeInfo.imageLinks || {};
                     const {
                         title,
+                        subtitle,
                         authors,
                         description,
                         averageRating,
@@ -76,6 +77,11 @@ const ThumbnailSlider = ({ slides }) => {
                                         {" "}
                                         {title || "Unbekannter Titel"}
                                     </h4>
+                                    {subtitle ? (
+                                        <h3 className="book-slide-information-subtitle card-hidden-item">
+                                            {subtitle}
+                                        </h3>
+                                    ) : null}
                                     <h4 className="book-slide-information-author">
                                         {(authors &&
                                             authors.join(
@@ -99,7 +105,7 @@ const ThumbnailSlider = ({ slides }) => {
                                             "Keine Beschreibung verfügbar"
                                         )}
                                     </p>
-                                    <div className="single-book-rating-container">
+                                    <div className="single-book-rating-container card-hidden-item">
                                         <p className="single-book-avg-rating">
                                             <strong>
                                                 {averageRating ||
