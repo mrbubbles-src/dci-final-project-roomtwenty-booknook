@@ -27,14 +27,13 @@ const SignupForm = ({ onClose, onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log("signup");
-        const success = await register(signupValue);
-
-        if (success) {
+        const result = await register(signupValue);
+        // console.log("result", result);
+        if (result.success) {
             onClose();
             onLogin();
         } else {
-            handleError("Username or Email already exist.");
+            handleError(result.error);
         }
     };
 
