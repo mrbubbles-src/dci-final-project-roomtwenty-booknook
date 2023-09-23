@@ -15,6 +15,9 @@
         border: none;
         margin: 10px;
         width: 80%;
+        font: {
+            size: $m;
+        }
     }
     .buttonContainer {
         display: flex;
