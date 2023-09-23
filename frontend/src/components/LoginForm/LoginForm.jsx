@@ -43,7 +43,6 @@ const LoginForm = ({ onClose, onLogin }) => {
             password: loginValue.password,
         });
 
-        console.log("re", result);
         if (result.success) {
             onClose();
             onLogin();
