@@ -32,14 +32,22 @@
         flex-flow: column;
         justify-content: center;
         align-items: center;
+        // width: 30px;
+        // height: 30px;
         .menu-icon {
-            color: $background;
+            // color: $background;
             height: 30px;
             width: 30px;
         }
         :hover {
             color: $accent-1;
         }
+    }
+    .active {
+        color: $accent-1;
+    }
+    .not-active {
+        color: $background;
     }
 }
 .menu-item-footer {

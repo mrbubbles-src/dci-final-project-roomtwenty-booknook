@@ -115,76 +115,67 @@ a,
         .card-title {
             font: {
                 family: headings-regular-italic, sans-serif;
-                size: 6.5vw;
+                size: $l;
             }
             margin: 0.3em 0 0.15em 0;
             @include breakpoint(tablet) {
                 // div2
                 font: {
-                    size: 3vw;
+                    size: 2.5rem;
                 }
             }
             @include breakpoint(desktop) {
                 // div5
                 font: {
-                    size: 2vw;
+                    size: 3rem;
                 }
             }
         }
         .card-subtitle {
             font: {
                 family: headings-regular-italic, sans-serif;
-                size: 4.8vw;
+                size: $m;
             }
             @include breakpoint(tablet) {
                 // div3
                 font: {
-                    size: 2.3vw;
+                    size: 2rem;
                 }
             }
             @include breakpoint(desktop) {
                 // div5
                 font: {
-                    size: 1.6vw;
+                    size: $xl;
                 }
             }
         }
         .card-author {
             font: {
                 family: headings-regular, sans-serif;
-                size: 4vw;
             }
             @include breakpoint(tablet) {
                 // div4
                 font: {
-                    size: 1.8vw;
                 }
             }
             @include breakpoint(desktop) {
                 // div5
                 font: {
-                    size: 1.1vw;
+                    size: $m;
                 }
             }
         }
         .card-infotext {
-            font: {
-                size: 5vw;
-            }
             margin: {
                 top: 0.3em;
             }
             @include breakpoint(tablet) {
                 // div5
                 font: {
-                    size: 2vw;
+                    size: $l;
                 }
             }
             @include breakpoint(desktop) {
-                // div5
-                font: {
-                    size: 1.6vw;
-                }
             }
             .card-show-more-results-description {
                 display: initial;
@@ -205,10 +196,9 @@ a,
         grid-template-rows: repeat(3, 50px);
         grid-column-gap: 15px;
         grid-row-gap: 5px;
-        padding: 0.5em;
     }
     @include breakpoint(desktop) {
-        margin: 0.5rem 15rem;
+        margin: 0.5rem 40rem;
     }
 }
 .show-more-results {

@@ -31,7 +31,7 @@ const MenuBar = () => {
     return (
         <div className={"menu-main-container"}>
             {isLoggedIn && (
-                <div className='menu-second-container'>
+                <div className="menu-second-container">
                     {" "}
                     <div
                         className={`menu ${
@@ -39,79 +39,119 @@ const MenuBar = () => {
                         }`}
                     >
                         {/* DEAD BUTTON */}
-                        <NavLink to='/#' onClick={() => handleIconClick()}>
-                            <div className='menu-item'>
-                                <div className='menu-item-icon'>
+                        <NavLink
+                            to="/"
+                            className={"not-active"}
+                            onClick={() => handleIconClick()}
+                        >
+                            <div className="menu-item">
+                                <div className="menu-item-icon">
                                     <FontAwesomeIcon
-                                        className='menu-icon'
+                                        className="menu-icon"
                                         icon={faCompass}
                                     />
                                 </div>
                             </div>
                         </NavLink>
                         {/* SEARCH */}
-                        <NavLink to='suche'>
-                            <div className='menu-item'>
-                                <div className='menu-item-icon'>
+                        <NavLink
+                            to="suche"
+                            className={({ isActive }) =>
+                                isActive ? "active" : "not-active"
+                            }
+                        >
+                            <div className="menu-item">
+                                <div className="menu-item-icon">
                                     <FontAwesomeIcon
-                                        className='menu-icon'
+                                        className="menu-icon"
                                         icon={faMagnifyingGlass}
                                     />
                                 </div>
                             </div>
                         </NavLink>
                         {/* USER */}
-                        <NavLink to='/#'>
-                            <div className='menu-item'>
-                                <div className='menu-item-icon'>
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) =>
+                                isActive ? "active" : "not-active"
+                            }
+                        >
+                            <div className="menu-item">
+                                <div className="menu-item-icon">
                                     <FontAwesomeIcon
-                                        className='menu-icon'
+                                        className="menu-icon"
                                         icon={faUser}
                                     />
                                 </div>
                             </div>
                         </NavLink>{" "}
-                        <NavLink to='/#' onClick={() => handleIconClick()}>
-                            <div className='menu-item'>
-                                <div className='menu-item-icon'>
+                        <NavLink
+                            to="/"
+                            className={"not-active"}
+                            onClick={() => handleIconClick()}
+                        >
+                            <div className="menu-item">
+                                <div className="menu-item-icon">
                                     <FontAwesomeIcon
-                                        className='menu-icon'
+                                        className="menu-icon"
                                         icon={faBook}
                                     />
                                 </div>
                             </div>
                         </NavLink>
-                        <NavLink to='/#' onClick={handleExtraContentClick}>
-                            <div className='menu-item'>
-                                <div className='menu-item-icon'>
+                        <NavLink
+                            to="/"
+                            className={"not-active"}
+                            onClick={handleExtraContentClick}
+                        >
+                            <div className="menu-item">
+                                <div className="menu-item-icon">
                                     <FontAwesomeIcon
-                                        className='menu-icon'
+                                        className="menu-icon"
                                         icon={faBars}
                                     />
                                 </div>
                             </div>
                         </NavLink>
                         {isContentActive && (
-                            <div className='menu-item-footer'>
+                            <div className="menu-item-footer">
                                 <NavLink
                                     to={"./About"}
-                                    className='footer-links'
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "active footer-links"
+                                            : "not-active footer-links"
+                                    }
+                                    // className="footer-links"
                                 >
                                     Über Uns
                                 </NavLink>
                                 <NavLink
                                     to={"./Impressum"}
-                                    className='footer-links'
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "active footer-links"
+                                            : "not-active footer-links"
+                                    }
+                                    // className="footer-links"
                                 >
                                     Impressum
                                 </NavLink>
                                 <NavLink
                                     to={"./Datenschutz"}
-                                    className='footer-links'
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "active footer-links"
+                                            : "not-active footer-links"
+                                    }
+                                    // className="footer-links"
                                 >
                                     Datenschutz
                                 </NavLink>
-                                <NavLink to={"#"} className='footer-links'>
+                                <NavLink
+                                    to={"#"}
+                                    className="footer-links not-active"
+                                >
                                     Kontakt
                                 </NavLink>
                             </div>
@@ -119,7 +159,7 @@ const MenuBar = () => {
                     </div>{" "}
                 </div>
             )}
-            <ToastContainer position='top-right' autoClose={2000} />
+            <ToastContainer position="top-right" autoClose={2000} />
         </div>
     );
 };

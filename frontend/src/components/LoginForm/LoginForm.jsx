@@ -48,7 +48,11 @@ const LoginForm = ({ onClose, onLogin }) => {
             onLogin();
         } else {
             // Display the error message
-            handleError(result.error);
+            if (result.error != "An unknown error occurred") {
+                handleError(result.error);
+            } else {
+                handleError("Benutzername oder Passwort falsch");
+            }
         }
     };
 

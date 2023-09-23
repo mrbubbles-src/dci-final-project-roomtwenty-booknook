@@ -6,14 +6,16 @@ import "./sharedlayout.scss";
 
 const SharedLayout = () => {
     return (
-        <div className='flex-container'>
+        <>
+            {/*  <div className='flex-container'> */}
             <Navbar />
-            <main className='main-container'>
+            <main className="main-container">
                 <Outlet />
             </main>
             <MenuBar /> {/* ausgeschaltet ab Desktop größe */}
             {/* <Footer />   */}
-        </div>
+            {/* </div> */}
+        </>
     );
 };
 
