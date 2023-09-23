@@ -6,9 +6,10 @@
     grid-template-rows: 50px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    color: $font;
+    color: black;
     .book-actions-add-to-lists,
     .book-actions-add-to-lists-dropdown {
+        color: black;
         cursor: pointer;
         width: 100%;
         height: 100%;
