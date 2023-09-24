@@ -28,7 +28,7 @@ const SignupForm = ({ onClose, onLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await register(signupValue);
-        // console.log("result", result);
+        console.log("result", result);
         if (result.success) {
             onClose();
             onLogin();
@@ -77,7 +77,7 @@ const SignupForm = ({ onClose, onLogin }) => {
                     Sign Up !
                 </button>
             </div>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </form>
     );
 };
