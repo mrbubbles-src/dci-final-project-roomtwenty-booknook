@@ -28,12 +28,18 @@ const SignupForm = ({ onClose, onLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await register(signupValue);
-        // console.log("result", result);
         if (result.success) {
             onClose();
             onLogin();
         } else {
-            handleError(result.error);
+            // handleError(result.error);
+            if (result.error != "An unknown error occurred") {
+                handleError(result.error);
+            } else {
+                handleError(
+                    "Benutzername existiert bereits oder Email nicht valide"
+                );
+            }
         }
     };
 
@@ -77,7 +83,7 @@ const SignupForm = ({ onClose, onLogin }) => {
                     Sign Up !
                 </button>
             </div>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </form>
     );
 };

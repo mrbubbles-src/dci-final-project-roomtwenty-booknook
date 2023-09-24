@@ -20,22 +20,6 @@ const LoginForm = ({ onClose, onLogin }) => {
         toast.error(err, {
             position: "bottom-left",
         });
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     // console.log("submit");
-    //     const success = await login({
-    //         username: loginValue.username,
-    //         password: loginValue.password,
-    //     });
-
-    //     if (success) {
-    //         onClose();
-    //         onLogin();
-    //     } else {
-    //         handleError("Username or Password wrong.");
-    //     }
-    // };
     const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await login({
@@ -47,7 +31,6 @@ const LoginForm = ({ onClose, onLogin }) => {
             onClose();
             onLogin();
         } else {
-            // Display the error message
             if (result.error != "An unknown error occurred") {
                 handleError(result.error);
             } else {
@@ -86,7 +69,7 @@ const LoginForm = ({ onClose, onLogin }) => {
                     Login
                 </button>
             </div>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </form>
     );
 };
