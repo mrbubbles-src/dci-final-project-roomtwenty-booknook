@@ -9,27 +9,27 @@ const LandingpageRegisterAndLogin = () => {
     const { handleLoginClick } = useContext(BookNookContext);
     return (
         <>
-            <section className='text-container-tablet'>
-                <article className='article-container'>
-                    <div className='article-container-text'>
-                        <h2 className='article-heading'>Challenges</h2>
-                        <p className='article-text'>
-                            Diese persönlichen Lesen-Challenges ermöglichen es
-                            jedem, seine Lesegewohnheiten zu steigern, neue
+            <section className="text-container-tablet">
+                <article className="article-container">
+                    <div className="article-container-text">
+                        <h2 className="article-heading">Challenges</h2>
+                        <p className="article-text">
+                            Diese persönlichen Lese-Challenges ermöglichen es
+                            jedem seine Lesegewohnheiten zu steigern, neue
                             Bücher zu erkunden und das Lesen zu einer
                             unterhaltsamen und erfüllenden Aktivität zu machen.
                         </p>
                     </div>
                     <img
-                        className='landingpage-article-image'
+                        className="landingpage-article-image"
                         src={image1}
-                        alt=''
+                        alt=""
                     />
                 </article>
-                <article className='article-container'>
-                    <div className='article-container-text-left'>
-                        <h2 className='article-heading-left'>Bücherlisten</h2>
-                        <p className='article-text-left'>
+                <article className="article-container">
+                    <div className="article-container-text-left">
+                        <h2 className="article-heading-left">Bücherlisten</h2>
+                        <p className="article-text-left">
                             Du kannst deine Bücher in verschiedenen Listen
                             speichern und sie nach deinen eigenen Vorlieben
                             organisieren und verwalten. Diese individuellen
@@ -40,27 +40,27 @@ const LandingpageRegisterAndLogin = () => {
                         </p>
                     </div>
                     <img
-                        className='landingpage-article-image-left'
+                        className="landingpage-article-image-left"
                         src={image2}
-                        alt=''
+                        alt=""
                     />
                 </article>
-                <article className='article-container'>
-                    <div className='article-container-text'>
-                        <h2 className='article-heading'>Deine Entscheidung!</h2>
-                        <p className='article-text'>
+                <article className="article-container">
+                    <div className="article-container-text">
+                        <h2 className="article-heading">Deine Entscheidung!</h2>
+                        <p className="article-text">
                             Bei deiner Reise durch die Welt der Bücher liegt die
                             Entscheidung ganz bei dir, egal welches Genre oder
                             Tempo du bevorzugst. Du bestimmst, wohin diese
-                            literarische Reise führt, und kannst Bücher in
-                            deinem eigenen Tempo und nach deinem eigenen
-                            Geschmack erkunden.
+                            literarische Reise führt und kannst Bücher in deinem
+                            eigenen Tempo und nach deinem eigenen Geschmack
+                            erkunden.
                         </p>
                     </div>
                     <img
-                        className='landingpage-article-image'
+                        className="landingpage-article-image"
                         src={image3}
-                        alt=''
+                        alt=""
                     />
                 </article>
                 {/* <button className='btn-ticket' onClick={handleLoginClick}>
