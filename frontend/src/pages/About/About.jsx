@@ -19,7 +19,7 @@ const developers = [
     {
         name: "Manuel Fahrenholz",
         title: "Fullstack Web Developer (MERN)",
-        githubLink: "https://github.com/ManuelFahrenholz",
+        githubLink: "https://github.com/mrbubbles-src",
         linkedinLink: "https://www.linkedin.com/in/manuel-fahrenholz/",
         picture: manu,
     },
